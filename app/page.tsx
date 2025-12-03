@@ -12,11 +12,21 @@ export default function Home() {
 
     return (
         <div className="pt-20">
-            {/* Hero Section */}
-            <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-spiritual-indigo-900 via-spiritual-indigo-800 to-spiritual-indigo-950">
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20"></div>
-                </div>
+            {/* Hero Section with Background Video */}
+            <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+                {/* Background Video */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                >
+                    <source src="/videos/hero-bg.mp4" type="video/mp4" />
+                </video>
+
+                {/* Dark Overlay (35% opacity) */}
+                <div className="absolute inset-0 bg-black/35"></div>
 
                 <div className="container-custom relative z-10 text-center text-white py-20">
                     <motion.h1
@@ -27,7 +37,7 @@ export default function Home() {
                     >
                         Extend Your Spiritual Reach
                         <br />
-                        <span className="bg-gradient-to-r from-spiritual-gold-300 to-spiritual-gold-500 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-accent-gold to-yellow-300 bg-clip-text text-transparent">
                             With AI-Powered Platforms
                         </span>
                     </motion.h1>
@@ -36,7 +46,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-xl md:text-2xl mb-8 text-spiritual-indigo-100 max-w-3xl mx-auto"
+                        className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto"
                     >
                         Empower your religious institution with AI that preserves sacred teachings while delivering personalized guidance to your global community.
                     </motion.p>
@@ -46,22 +56,22 @@ export default function Home() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, delay: 0.4 }}
-                        className="mb-12 py-8 px-6 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-spiritual-gold-400/30 max-w-4xl mx-auto"
+                        className="mb-12 py-8 px-6 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-accent-gold/40 max-w-4xl mx-auto"
                     >
                         <motion.p
                             animate={{
                                 textShadow: [
-                                    "0 0 10px rgba(250, 204, 21, 0.3)",
-                                    "0 0 20px rgba(250, 204, 21, 0.5)",
-                                    "0 0 10px rgba(250, 204, 21, 0.3)"
+                                    "0 0 10px rgba(215, 180, 106, 0.3)",
+                                    "0 0 20px rgba(215, 180, 106, 0.5)",
+                                    "0 0 10px rgba(215, 180, 106, 0.3)"
                                 ]
                             }}
                             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            className="text-2xl md:text-3xl font-serif italic text-spiritual-gold-200"
+                            className="text-2xl md:text-3xl font-serif italic text-white"
                         >
                             "You are not replacing the guru.
                             <br />
-                            <span className="text-spiritual-gold-300 font-bold">You are extending their reach."</span>
+                            <span className="text-accent-gold font-bold">You are extending their reach."</span>
                         </motion.p>
                     </motion.div>
 
@@ -117,8 +127,8 @@ export default function Home() {
                     ].map((item, index) => (
                         <Card key={index} className="text-center">
                             <div className="text-6xl mb-4">{item.icon}</div>
-                            <div className="text-spiritual-indigo-600 font-bold text-lg mb-2">Step {item.step}</div>
-                            <h3 className="text-2xl font-bold mb-4 text-spiritual-indigo-900">{item.title}</h3>
+                            <div className="text-primary-dark font-bold text-lg mb-2">Step {item.step}</div>
+                            <h3 className="text-2xl font-bold mb-4 text-primary-dark">{item.title}</h3>
                             <p className="text-gray-600">{item.description}</p>
                         </Card>
                     ))}
@@ -126,7 +136,7 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Key Features */}
-            <SectionWrapper id="features" className="bg-gradient-to-br from-spiritual-indigo-50 to-white">
+            <SectionWrapper id="features" className="bg-gradient-to-br from-primary-light to-white">
                 <div className="text-center mb-16">
                     <h2 className="section-heading">Platform Features</h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -169,7 +179,7 @@ export default function Home() {
                     ].map((feature, index) => (
                         <Card key={index}>
                             <div className="text-5xl mb-4">{feature.icon}</div>
-                            <h3 className="text-xl font-bold mb-3 text-spiritual-indigo-900">{feature.title}</h3>
+                            <h3 className="text-xl font-bold mb-3 text-primary-dark">{feature.title}</h3>
                             <p className="text-gray-600">{feature.description}</p>
                         </Card>
                     ))}
@@ -186,13 +196,13 @@ export default function Home() {
                             We understand that faith is deeply personal and sacred. The introduction of artificial intelligence into spiritual contexts requires extraordinary care, respect, and ethical consideration.
                         </p>
 
-                        <p className="text-xl font-semibold text-spiritual-indigo-900 bg-spiritual-gold-50 p-6 rounded-lg border-l-4 border-spiritual-gold-500">
+                        <p className="text-xl font-semibold text-primary-dark bg-accent-beige p-6 rounded-lg border-l-4 border-accent-gold">
                             MZhub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-6 mt-8">
-                            <div className="bg-spiritual-indigo-50 p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-3 text-spiritual-indigo-900">What We Believe</h3>
+                            <div className="bg-primary-light p-6 rounded-lg">
+                                <h3 className="font-bold text-xl mb-3 text-primary-dark">What We Believe</h3>
                                 <ul className="space-y-2 text-gray-700">
                                     <li>✓ Human spiritual leadership is irreplaceable</li>
                                     <li>✓ Institutions must maintain doctrinal control</li>
@@ -201,8 +211,8 @@ export default function Home() {
                                 </ul>
                             </div>
 
-                            <div className="bg-spiritual-gold-50 p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-3 text-spiritual-indigo-900">What We Promise</h3>
+                            <div className="bg-accent-beige p-6 rounded-lg">
+                                <h3 className="font-bold text-xl mb-3 text-primary-dark">What We Promise</h3>
                                 <ul className="space-y-2 text-gray-700">
                                     <li>✓ Complete institutional oversight</li>
                                     <li>✓ Rigorous doctrinal alignment</li>
@@ -216,10 +226,10 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Target Audience */}
-            <SectionWrapper id="audience" className="bg-gradient-to-br from-spiritual-indigo-900 to-spiritual-indigo-800 text-white">
+            <SectionWrapper id="audience" className="bg-gradient-to-br from-primary-dark to-neutral-dark text-white">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">Who We Serve</h2>
-                    <p className="text-xl text-spiritual-indigo-200 max-w-3xl mx-auto">
+                    <p className="text-xl text-primary-light max-w-3xl mx-auto">
                         MZhub is purpose-built for religious institutions seeking to expand their digital presence
                     </p>
                 </div>
@@ -241,11 +251,11 @@ export default function Home() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-white/20 hover:bg-white/20 transition-colors"
+                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-accent-gold/30 hover:bg-accent-gold/20 transition-colors"
                         >
                             <div className="text-5xl mb-3">{audience.icon}</div>
                             <h3 className="font-bold text-xl mb-2">{audience.title}</h3>
-                            <p className="text-spiritual-indigo-200 text-sm">{audience.description}</p>
+                            <p className="text-primary-light text-sm">{audience.description}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -263,12 +273,12 @@ export default function Home() {
                 <div className="grid md:grid-cols-3 gap-8">
                     {testimonials.map((testimonial, index) => (
                         <Card key={index} className="flex flex-col">
-                            <div className="text-spiritual-gold-500 text-4xl mb-4">"</div>
+                            <div className="text-accent-gold text-4xl mb-4">"</div>
                             <p className="text-gray-700 mb-6 flex-grow italic">{testimonial.content}</p>
                             <div className="border-t pt-4">
-                                <p className="font-bold text-spiritual-indigo-900">{testimonial.name}</p>
+                                <p className="font-bold text-primary-dark">{testimonial.name}</p>
                                 <p className="text-sm text-gray-600">{testimonial.role}</p>
-                                <p className="text-sm text-spiritual-indigo-600">{testimonial.institution}</p>
+                                <p className="text-sm text-primary-dark">{testimonial.institution}</p>
                             </div>
                         </Card>
                     ))}
@@ -276,7 +286,7 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Final CTA */}
-            <SectionWrapper className="bg-gradient-to-r from-spiritual-indigo-600 to-spiritual-indigo-800 text-white text-center">
+            <SectionWrapper className="bg-gradient-to-r from-primary-dark to-neutral-dark text-white text-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -287,7 +297,7 @@ export default function Home() {
                     <h2 className="text-4xl md:text-5xl font-bold mb-6">
                         Ready to Extend Your Spiritual Reach?
                     </h2>
-                    <p className="text-xl mb-8 text-spiritual-indigo-100">
+                    <p className="text-xl mb-8 text-primary-light">
                         Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">

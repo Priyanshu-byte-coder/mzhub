@@ -19,9 +19,9 @@ export default function Button({
     const baseStyles = 'font-medium rounded-lg transition-all duration-200 inline-flex items-center justify-center'
 
     const variants = {
-        primary: 'bg-spiritual-indigo-600 hover:bg-spiritual-indigo-700 text-white shadow-lg hover:shadow-xl',
-        secondary: 'bg-spiritual-gold-500 hover:bg-spiritual-gold-600 text-spiritual-indigo-900 shadow-lg hover:shadow-xl',
-        outline: 'border-2 border-spiritual-indigo-600 text-spiritual-indigo-600 hover:bg-spiritual-indigo-50'
+        primary: 'bg-primary-dark hover:bg-primary-dark/90 text-white shadow-lg hover:shadow-xl',
+        secondary: 'bg-accent-gold hover:bg-accent-gold/90 text-neutral-dark shadow-lg hover:shadow-xl',
+        outline: 'border-2 border-primary-dark text-primary-dark hover:bg-primary-light'
     }
 
     const sizes = {

@@ -9,6 +9,22 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
+                // MZhub Brand Colors
+                primary: {
+                    light: '#E3E7F3',    // Soft Mist Grey
+                    DEFAULT: '#AAB6D3',  // Zen Lavender
+                    dark: '#39457E',     // Royal Indigo
+                },
+                accent: {
+                    gold: '#D7B46A',     // Gold Aura
+                    beige: '#F4EBD4',    // Warm Beige Glow
+                },
+                neutral: {
+                    soft: '#C8CDD9',     // Soft Neutral Grey
+                    dark: '#2D2D2D',     // Deep Slate
+                    white: '#FFFFFF',    // Pure White
+                },
+                // Legacy spiritual colors for backward compatibility
                 spiritual: {
                     indigo: {
                         50: '#f0f4ff',

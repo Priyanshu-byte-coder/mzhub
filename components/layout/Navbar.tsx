@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navbar() {
@@ -21,10 +22,15 @@ export default function Navbar() {
             <div className="container-custom">
                 <div className="flex items-center justify-between h-16 md:h-20">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center space-x-2">
-                        <div className="w-10 h-10 bg-gradient-to-br from-spiritual-indigo-600 to-spiritual-gold-500 rounded-lg flex items-center justify-center">
-                            <span className="text-white font-bold text-xl">MZ</span>
-                        </div>
+                    <Link href="/" className="flex items-center space-x-3">
+                        <Image 
+                            src="/mzhub-logo.png" 
+                            alt="MZhub Logo" 
+                            width={48} 
+                            height={48}
+                            className="w-12 h-12 object-contain"
+                            priority
+                        />
                         <span className="text-2xl font-bold gradient-text">MZhub</span>
                     </Link>
 
@@ -34,7 +40,7 @@ export default function Navbar() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-gray-700 hover:text-spiritual-indigo-600 font-medium transition-colors duration-200"
+                                className="text-gray-700 hover:text-primary-dark font-medium transition-colors duration-200"
                             >
                                 {link.label}
                             </Link>
@@ -91,7 +97,7 @@ export default function Navbar() {
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="block py-2 px-4 text-gray-700 hover:bg-spiritual-indigo-50 rounded-lg transition-colors"
+                                    className="block py-2 px-4 text-gray-700 hover:bg-primary-light rounded-lg transition-colors"
                                 >
                                     {link.label}
                                 </Link>
