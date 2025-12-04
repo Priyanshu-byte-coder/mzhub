@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
@@ -9,17 +10,108 @@ import { getTestimonials } from '@/lib/testimonials'
 
 export default function Home() {
     const testimonials = getTestimonials()
+    const videoRef = useRef<HTMLVideoElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const video = videoRef.current
+        const container = containerRef.current
+        if (!video || !container) return
+
+        let targetTime = 0
+        let currentTime = 0
+        let animationId: number
+        let ticking = false
+        let hasMetadata = false
+
+        const lerp = (start: number, end: number, factor: number) => {
+            return start + (end - start) * factor
+        }
+
+        const updateVideo = () => {
+            if (!video || !hasMetadata) {
+                animationId = requestAnimationFrame(updateVideo)
+                return
+            }
+
+            // Smooth interpolation towards target time
+            currentTime = lerp(currentTime, targetTime, 0.18) // Faster/smoother response
+
+            // Clamp within duration to avoid overshooting
+            currentTime = Math.max(0, Math.min(video.duration, currentTime))
+
+            // Only update if there's a meaningful difference
+            if (Math.abs(video.currentTime - currentTime) > 0.01) {
+                video.currentTime = currentTime
+            }
+
+            animationId = requestAnimationFrame(updateVideo)
+        }
+
+        const calculateTargetTime = () => {
+            if (!video || !container || !hasMetadata) return
+
+            const rect = container.getBoundingClientRect()
+
+            // Progress of scroll within this 300vh container
+            const maxScroll = rect.height - window.innerHeight
+            if (maxScroll <= 0) return
+
+            const rawProgress = -rect.top / maxScroll
+            const scrollProgress = Math.max(0, Math.min(1, rawProgress))
+
+            targetTime = scrollProgress * video.duration
+        }
+
+        const handleScroll = () => {
+            if (ticking) return
+            ticking = true
+
+            // Defer the heavy layout read to the rAF to avoid layout thrashing
+            requestAnimationFrame(() => {
+                calculateTargetTime()
+                ticking = false
+            })
+        }
+
+        const handleLoadedMetadata = () => {
+            if (!video) return
+            hasMetadata = true
+            // Recalculate once duration is known
+            calculateTargetTime()
+        }
+
+        // Check if metadata is already loaded
+        if (video.readyState >= 1) {
+            hasMetadata = true
+        }
+
+        video.addEventListener('loadedmetadata', handleLoadedMetadata)
+        window.addEventListener('scroll', handleScroll, { passive: true })
+
+        // Start animation loop
+        animationId = requestAnimationFrame(updateVideo)
+        // Initial calculation (in case it's already in view)
+        calculateTargetTime()
+
+        return () => {
+            video.removeEventListener('loadedmetadata', handleLoadedMetadata)
+            window.removeEventListener('scroll', handleScroll)
+            cancelAnimationFrame(animationId)
+        }
+    }, [])
 
     return (
         <div className="pt-20">
             {/* Hero Section with Background Video */}
-            <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+            <div ref={containerRef} className="relative h-[300vh]">
+            <section className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
                 {/* Background Video */}
                 <video
-                    autoPlay
-                    loop
+                    ref={videoRef}
                     muted
                     playsInline
+                    preload="auto"
                     className="absolute inset-0 w-full h-full object-cover"
                 >
                     <source src="/videos/hero-bg3.mp4" type="video/mp4" />
@@ -94,6 +186,7 @@ export default function Home() {
                     </motion.div>
                 </div>
             </section>
+            </div>
 
             {/* How It Works */}
             <SectionWrapper id="how-it-works" className="bg-white">
