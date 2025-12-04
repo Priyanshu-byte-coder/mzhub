@@ -12,11 +12,13 @@ export default function Home() {
     const testimonials = getTestimonials()
     const videoRef = useRef<HTMLVideoElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+    const textRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const video = videoRef.current
         const container = containerRef.current
-        if (!video || !container) return
+        const textContainer = textRef.current
+        if (!video || !container || !textContainer) return
 
         let targetTime = 0
         let currentTime = 0
@@ -35,13 +37,13 @@ export default function Home() {
             }
 
             // Smooth interpolation towards target time
-            currentTime = lerp(currentTime, targetTime, 0.18) // Faster/smoother response
+            currentTime = lerp(currentTime, targetTime, 0.1) // Faster/smoother response
 
             // Clamp within duration to avoid overshooting
             currentTime = Math.max(0, Math.min(video.duration, currentTime))
 
             // Only update if there's a meaningful difference
-            if (Math.abs(video.currentTime - currentTime) > 0.01) {
+            if (Math.abs(video.currentTime - currentTime) > 0.04) {
                 video.currentTime = currentTime
             }
 
@@ -49,7 +51,7 @@ export default function Home() {
         }
 
         const calculateTargetTime = () => {
-            if (!video || !container || !hasMetadata) return
+            if (!video || !container || !hasMetadata || !textContainer) return
 
             const rect = container.getBoundingClientRect()
 
@@ -61,6 +63,17 @@ export default function Home() {
             const scrollProgress = Math.max(0, Math.min(1, rawProgress))
 
             targetTime = scrollProgress * video.duration
+
+            // Show text only when scroll is near the end (last 20% of scroll)
+            const textThreshold = 0.6 // Start showing at 80% scroll
+            if (scrollProgress >= textThreshold) {
+                const textProgress = (scrollProgress - textThreshold) / (1 - textThreshold)
+                textContainer.style.opacity = String(textProgress)
+                textContainer.style.transform = `translateY(${(1 - textProgress) * 30}px) scale(${0.95 + textProgress * 0.05})`
+            } else {
+                textContainer.style.opacity = '0'
+                textContainer.style.transform = 'translateY(30px) scale(0.95)'
+            }
         }
 
         const handleScroll = () => {
@@ -114,65 +127,39 @@ export default function Home() {
                     preload="auto"
                     className="absolute inset-0 w-full h-full object-cover"
                 >
-                    <source src="/videos/hero-bg3.mp4" type="video/mp4" />
+                    <source src="/videos/hero-bg5.mp4" type="video/mp4" />
                 </video>
 
                 {/* Dark Overlay (35% opacity) */}
                 <div className="absolute inset-0 bg-black/35"></div>
 
-                <div className="container-custom relative z-10 text-center text-white py-20">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif"
-                    >
+                <div 
+                    ref={textRef}
+                    className="container-custom relative z-10 text-center text-white py-20 transition-all duration-300"
+                    style={{ opacity: 0, transform: 'translateY(30px) scale(0.95)' }}
+                >
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif">
                         Extend Your Spiritual Reach
                         <br />
                         <span className="bg-gradient-to-r from-accent-gold to-yellow-300 bg-clip-text text-transparent">
                             With AI-Powered Platforms
                         </span>
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto"
-                    >
+                    <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
                         Empower your religious institution with AI that preserves sacred teachings while delivering personalized guidance to your global community.
-                    </motion.p>
+                    </p>
 
                     {/* Highlighted Guru Line */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                        className="mb-12 py-8 px-6 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-accent-gold/40 max-w-4xl mx-auto"
-                    >
-                        <motion.p
-                            animate={{
-                                textShadow: [
-                                    "0 0 10px rgba(215, 180, 106, 0.3)",
-                                    "0 0 20px rgba(215, 180, 106, 0.5)",
-                                    "0 0 10px rgba(215, 180, 106, 0.3)"
-                                ]
-                            }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            className="text-2xl md:text-3xl font-serif italic text-white"
-                        >
+                    <div className="mb-12 py-8 px-6 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-accent-gold/40 max-w-4xl mx-auto">
+                        <p className="text-2xl md:text-3xl font-serif italic text-white animate-glow">
                             "You are not replacing the guru.
                             <br />
                             <span className="text-accent-gold font-bold">You are extending their reach."</span>
-                        </motion.p>
-                    </motion.div>
+                        </p>
+                    </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                    >
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link href="/contact">
                             <Button variant="secondary" size="lg">
                                 Request Demo
@@ -183,7 +170,7 @@ export default function Home() {
                                 Explore Platform
                             </Button>
                         </Link>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
             </div>
