@@ -109,8 +109,8 @@ export default function FooterNew() {
           {/* Social Media & Theme Toggle */}
           <div className="relative">
             <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
-            <div className="mb-6 flex space-x-4">
-              <TooltipProvider>
+            <TooltipProvider>
+              <div className="mb-6 flex space-x-4">
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
@@ -129,9 +129,7 @@ export default function FooterNew() {
                     <p>Follow us on Facebook</p>
                   </TooltipContent>
                 </Tooltip>
-              </TooltipProvider>
 
-              <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
@@ -150,9 +148,7 @@ export default function FooterNew() {
                     <p>Follow us on Twitter</p>
                   </TooltipContent>
                 </Tooltip>
-              </TooltipProvider>
 
-              <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
@@ -171,9 +167,7 @@ export default function FooterNew() {
                     <p>Follow us on Instagram</p>
                   </TooltipContent>
                 </Tooltip>
-              </TooltipProvider>
 
-              <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
@@ -192,18 +186,19 @@ export default function FooterNew() {
                     <p>Connect with us on LinkedIn</p>
                   </TooltipContent>
                 </Tooltip>
-              </TooltipProvider>
-            </div>
+              </div>
+            </TooltipProvider>
 
             {/* Theme Toggle */}
             <div className="mt-4">
               <h4 className="text-sm font-semibold mb-3">Theme</h4>
               {mounted && (
-                <div className="scale-150 origin-left">
+                <div className="scale-[1.7] origin-left">
                   <Classic
                     duration={750}
                     toggled={theme === 'dark'}
                     toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    {...({} as any)}
                   />
                 </div>
               )}

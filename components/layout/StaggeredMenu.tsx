@@ -3,6 +3,8 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { useTheme } from 'next-themes'
+import '@theme-toggles/react/css/Classic.css'
+import { Classic } from '@theme-toggles/react'
 
 interface MenuItem {
   label: string
@@ -54,18 +56,21 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   onMenuClose,
   onMenuStateChange
 }) => {
-  const { theme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const [open, setOpen] = useState(false)
   const openRef = useRef(false)
   const panelRef = useRef<HTMLDivElement>(null)
   const preLayersRef = useRef<HTMLDivElement>(null)
   const preLayerElsRef = useRef<HTMLDivElement[]>([])
-  const plusHRef = useRef<HTMLSpanElement>(null)
-  const plusVRef = useRef<HTMLSpanElement>(null)
+  const bar1Ref = useRef<HTMLSpanElement>(null)
+  const bar2Ref = useRef<HTMLSpanElement>(null)
+  const bar3Ref = useRef<HTMLSpanElement>(null)
   const iconRef = useRef<HTMLSpanElement>(null)
   const textInnerRef = useRef<HTMLSpanElement>(null)
   const textWrapRef = useRef<HTMLSpanElement>(null)
+  const logoRef = useRef<HTMLDivElement>(null)
   const [textLines, setTextLines] = useState(['Menu', 'Close'])
+  const [mounted, setMounted] = useState(false)
 
   const openTlRef = useRef<gsap.core.Timeline | null>(null)
   const closeTweenRef = useRef<gsap.core.Tween | null>(null)
@@ -76,15 +81,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   const busyRef = useRef(false)
   const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null)
 
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const panel = panelRef.current
       const preContainer = preLayersRef.current
-      const plusH = plusHRef.current
-      const plusV = plusVRef.current
+      const bar1 = bar1Ref.current
+      const bar2 = bar2Ref.current
+      const bar3 = bar3Ref.current
       const icon = iconRef.current
       const textInner = textInnerRef.current
-      if (!panel || !plusH || !plusV || !icon || !textInner) return
+      if (!panel || !bar1 || !bar2 || !bar3 || !icon || !textInner) return
 
       let preLayers: HTMLDivElement[] = []
       if (preContainer) {
@@ -94,8 +104,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
       const offscreen = position === 'left' ? -100 : 100
       gsap.set([panel, ...preLayers], { xPercent: offscreen })
-      gsap.set(plusH, { transformOrigin: '50% 50%', rotate: 0 })
-      gsap.set(plusV, { transformOrigin: '50% 50%', rotate: 90 })
+      // Set initial hamburger state
+      gsap.set(bar1, { y: -5, rotate: 0, transformOrigin: 'center' })
+      gsap.set(bar2, { y: 0, rotate: 0, opacity: 1, transformOrigin: 'center' })
+      gsap.set(bar3, { y: 5, rotate: 0, transformOrigin: 'center' })
       gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' })
       gsap.set(textInner, { yPercent: 0 })
       if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, { color: menuButtonColor })
@@ -299,13 +311,30 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   }, [position])
 
   const animateIcon = useCallback((opening: boolean) => {
-    const icon = iconRef.current
-    if (!icon) return
+    const bar1 = bar1Ref.current
+    const bar2 = bar2Ref.current
+    const bar3 = bar3Ref.current
+    const logo = logoRef.current
+    if (!bar1 || !bar2 || !bar3) return
     spinTweenRef.current?.kill()
     if (opening) {
-      spinTweenRef.current = gsap.to(icon, { rotate: 225, duration: 0.8, ease: 'power4.out', overwrite: 'auto' })
+      // Animate to X (cross)
+      gsap.to(bar1, { y: 0, rotate: 45, duration: 0.4, ease: 'power2.out' })
+      gsap.to(bar2, { opacity: 0, duration: 0.2, ease: 'power2.out' })
+      gsap.to(bar3, { y: 0, rotate: -45, duration: 0.4, ease: 'power2.out' })
+      // Hide logo when opening
+      if (logo) {
+        gsap.to(logo, { opacity: 0, duration: 0.3, ease: 'power2.out' })
+      }
     } else {
-      spinTweenRef.current = gsap.to(icon, { rotate: 0, duration: 0.35, ease: 'power3.inOut', overwrite: 'auto' })
+      // Animate back to hamburger
+      gsap.to(bar1, { y: -5, rotate: 0, duration: 0.4, ease: 'power2.out' })
+      gsap.to(bar2, { opacity: 1, duration: 0.2, ease: 'power2.out', delay: 0.1 })
+      gsap.to(bar3, { y: 5, rotate: 0, duration: 0.4, ease: 'power2.out' })
+      // Show logo when closing
+      if (logo) {
+        gsap.to(logo, { opacity: 1, duration: 0.3, ease: 'power2.out', delay: 0.2 })
+      }
     }
   }, [])
 
@@ -441,31 +470,43 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
-        <div className="sm-logo" aria-label="Logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <img
-            src={theme === 'dark' ? '/mzhub-logo_w.svg' : logoUrl}
-            alt="Logo"
-            className="sm-logo-img"
-            draggable={false}
-            width={110}
-            height={24}
-          />
-          <span style={{
-            fontSize: '1.5rem',
-            fontWeight: '700',
-            background: 'linear-gradient(135deg, #39457E 0%, #D7B46A 50%, #FFD700 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            letterSpacing: '0.05em'
-          }}>
-            MZHUB
-          </span>
+        <div ref={logoRef} className="sm-logo" aria-label="Logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', opacity: 1, transition: 'opacity 0.3s ease' }}>
+          {mounted && (
+            <>
+              <img
+                src={theme === 'dark' ? '/mzhub-logo_w.svg' : logoUrl}
+                alt="Logo"
+                className="sm-logo-img"
+                draggable={false}
+                width={110}
+                height={24}
+              />
+              <span style={{
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                background: 'linear-gradient(135deg, #39457E 0%, #D7B46A 50%, #FFD700 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                letterSpacing: '0.05em'
+              }}>
+                MZHUB
+              </span>
+            </>
+          )}
         </div>
-        <div className="sm-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <div className="sm-theme-toggle-wrapper">
-            {/* Theme toggle will be injected here */}
-          </div>
+        <div className="sm-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          {/* Theme Toggle */}
+          {mounted && (
+            <div className="sm-theme-toggle-wrapper" style={{ transform: 'scale(1.3)' }}>
+              <Classic
+                duration={750}
+                toggled={theme === 'dark'}
+                toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                {...({} as any)}
+              />
+            </div>
+          )}
           <button
             ref={toggleBtnRef}
             className="sm-toggle"
@@ -475,21 +516,14 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             onClick={toggleMenu}
             type="button"
             style={{
-              color: theme === 'dark' ? '#FFD700' : '#1a202c'
+              color: theme === 'dark' ? '#FFD700' : '#1a202c',
+              transform: 'scale(1.2)'
             }}
           >
-            <span ref={textWrapRef} className="sm-toggle-textWrap" aria-hidden="true">
-              <span ref={textInnerRef} className="sm-toggle-textInner">
-                {textLines.map((l, i) => (
-                  <span className="sm-toggle-line" key={i}>
-                    {l}
-                  </span>
-                ))}
-              </span>
-            </span>
-            <span ref={iconRef} className="sm-icon" aria-hidden="true">
-              <span ref={plusHRef} className="sm-icon-line" />
-              <span ref={plusVRef} className="sm-icon-line sm-icon-line-v" />
+            <span ref={iconRef} className="sm-icon" aria-hidden="true" style={{ width: '20px', height: '16px' }}>
+              <span ref={bar1Ref} className="sm-icon-bar" style={{ position: 'absolute', left: 0, width: '100%', height: '2px', background: 'currentColor', borderRadius: '2px' }} />
+              <span ref={bar2Ref} className="sm-icon-bar" style={{ position: 'absolute', left: 0, width: '100%', height: '2px', background: 'currentColor', borderRadius: '2px' }} />
+              <span ref={bar3Ref} className="sm-icon-bar" style={{ position: 'absolute', left: 0, width: '100%', height: '2px', background: 'currentColor', borderRadius: '2px' }} />
             </span>
           </button>
         </div>

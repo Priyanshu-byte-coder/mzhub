@@ -49,11 +49,6 @@ body {
   transition: background 0.3s ease;
 }
 
-.dark .staggered-menu-header {
-  background: rgba(15, 23, 42, 0.95);
-  box-shadow: none;
-}
-
 .staggered-menu-header>* {
   pointer-events: auto;
 }
@@ -189,6 +184,14 @@ body {
   width: clamp(260px, 70vw, 420px);
   pointer-events: none;
   z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.staggered-menu-wrapper[data-open] .sm-prelayers {
+  opacity: 1;
+  visibility: visible;
 }
 
 [data-position='left'] .sm-prelayers {

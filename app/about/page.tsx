@@ -29,11 +29,11 @@ export default function About() {
             </section>
 
             {/* Mission */}
-            <SectionWrapper className="bg-white">
+            <SectionWrapper className="bg-white dark:bg-gray-900">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="section-heading text-center mb-12">Our Mission</h2>
+                    <h2 className="section-heading dark:text-accent-gold text-center mb-12">Our Mission</h2>
 
-                    <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+                    <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 space-y-6">
                         <p className="text-xl leading-relaxed">
                             The world is becoming increasingly digital, and spiritual communities are no exception. Devotees seek guidance on their phones. They connect with communities online. They access teachings through apps and websites.
                         </p>
@@ -42,8 +42,8 @@ export default function About() {
                             Yet many religious institutions struggle to meet these digital expectations while maintaining the sanctity and authenticity of their teachings. That's where MZhub comes in.
                         </p>
 
-                        <div className="bg-spiritual-indigo-50 border-l-4 border-spiritual-indigo-600 p-8 my-8 rounded-r-lg">
-                            <p className="text-2xl font-semibold text-spiritual-indigo-900 italic">
+                        <div className="bg-spiritual-indigo-50 dark:bg-gray-800 border-l-4 border-spiritual-indigo-600 dark:border-accent-gold p-8 my-8 rounded-r-lg">
+                            <p className="text-2xl font-semibold text-spiritual-indigo-900 dark:text-accent-gold italic">
                                 Our mission is to empower religious institutions with AI-powered platforms that extend their spiritual reach without compromising their sacred traditions.
                             </p>
                         </div>
@@ -56,10 +56,10 @@ export default function About() {
             </SectionWrapper>
 
             {/* Core Values */}
-            <SectionWrapper className="bg-gradient-to-br from-spiritual-gold-50 to-spiritual-indigo-50">
+            <SectionWrapper className="bg-gradient-to-br from-spiritual-gold-50 to-spiritual-indigo-50 dark:bg-gray-900">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading">Our Core Values</h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <h2 className="section-heading dark:text-accent-gold">Our Core Values</h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                         These principles guide every decision we make
                     </p>
                 </div>
@@ -99,19 +99,19 @@ export default function About() {
                     ].map((value, index) => (
                         <Card key={index}>
                             <div className="text-5xl mb-4">{value.icon}</div>
-                            <h3 className="text-2xl font-bold mb-3 text-spiritual-indigo-900">{value.title}</h3>
-                            <p className="text-gray-700">{value.description}</p>
+                            <h3 className="text-2xl font-bold mb-3 text-spiritual-indigo-900 dark:text-accent-gold">{value.title}</h3>
+                            <p className="text-gray-700 dark:text-gray-300">{value.description}</p>
                         </Card>
                     ))}
                 </div>
             </SectionWrapper>
 
             {/* Our Story */}
-            <SectionWrapper className="bg-white">
+            <SectionWrapper className="bg-white dark:bg-gray-900">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="section-heading text-center mb-12">Our Story</h2>
+                    <h2 className="section-heading dark:text-accent-gold text-center mb-12">Our Story</h2>
 
-                    <div className="space-y-6 text-lg text-gray-700">
+                    <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300">
                         <p>
                             MZhub was born from a simple observation: religious institutions possess incredible wealth—not financial wealth, but spiritual wealth. Decades of teachings, discourses, Q&A sessions, and sacred texts that could transform lives.
                         </p>
@@ -124,7 +124,7 @@ export default function About() {
                             Our founder, Dr. Arjun Patel, experienced this firsthand. As an AI researcher at Google, he had access to cutting-edge technology. As a practitioner of meditation and spiritual study, he knew the value of authentic teaching. He saw an opportunity to bridge these worlds.
                         </p>
 
-                        <p className="bg-spiritual-gold-50 border-l-4 border-spiritual-gold-500 p-6 rounded-r-lg italic">
+                        <p className="bg-spiritual-gold-50 dark:bg-gray-800 border-l-4 border-spiritual-gold-500 dark:border-accent-gold p-6 rounded-r-lg italic">
                             "What if we could help institutions digitize their teachings, make them searchable and accessible, and even use AI to provide personalized guidance—all while maintaining complete doctrinal control?"
                         </p>
 
@@ -136,7 +136,7 @@ export default function About() {
                             Today, we serve temples, churches, mosques, synagogues, and spiritual centers across traditions. Every partnership teaches us something new about the intersection of faith and technology. Every devotee who finds the guidance they need validates our mission.
                         </p>
 
-                        <p className="text-xl font-semibold text-spiritual-indigo-900">
+                        <p className="text-xl font-semibold text-spiritual-indigo-900 dark:text-accent-gold">
                             We're just getting started. The future of spiritual technology is bright, ethical, and guided by wisdom.
                         </p>
                     </div>
@@ -144,13 +144,13 @@ export default function About() {
             </SectionWrapper>
 
             {/* Team */}
-            <SectionWrapper className="bg-gradient-to-br from-spiritual-indigo-50 to-white">
+            <SectionWrapper className="bg-gradient-to-br from-spiritual-indigo-50 to-white dark:bg-gray-900">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading">Meet Our Team</h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    <h2 className="section-heading dark:text-accent-gold">Meet Our Team</h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
                         A diverse group united by a passion for ethical technology and spiritual wisdom
                     </p>
-                    <p className="text-sm text-gray-500 mb-8">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
                         Hover over team members to see their details
                     </p>
                 </div>
@@ -169,9 +169,9 @@ export default function About() {
                 <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     {team.map((member, index) => (
                         <Card key={index}>
-                            <h3 className="text-xl font-bold text-spiritual-indigo-900 mb-2">{member.name}</h3>
-                            <p className="text-spiritual-gold-600 font-semibold mb-3">{member.role}</p>
-                            <p className="text-gray-600 text-sm">{member.bio}</p>
+                            <h3 className="text-xl font-bold text-spiritual-indigo-900 dark:text-accent-gold mb-2">{member.name}</h3>
+                            <p className="text-spiritual-gold-600 dark:text-accent-gold font-semibold mb-3">{member.role}</p>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm">{member.bio}</p>
                         </Card>
                     ))}
                 </div>

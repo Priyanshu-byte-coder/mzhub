@@ -1,9 +1,12 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useTheme } from 'next-themes'
 import { renderCanvas } from './canvas'
 
 export default function AnimatedCanvas() {
+  const { theme } = useTheme()
+  
   useEffect(() => {
     // Initialize canvas animation
     renderCanvas()
@@ -25,7 +28,10 @@ export default function AnimatedCanvas() {
     <canvas
       id="canvas"
       className="absolute inset-0 w-full h-full pointer-events-none z-10"
-      style={{ mixBlendMode: 'screen' }}
+      style={{ 
+        mixBlendMode: theme === 'dark' ? 'screen' : 'multiply',
+        opacity: theme === 'dark' ? 1 : 0.3
+      }}
     />
   )
 }
