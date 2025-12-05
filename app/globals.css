@@ -44,17 +44,17 @@ html {
   .animate-glow {
     animation: glow-pulse 3s ease-in-out infinite;
   }
-  
+
   /* Fix GooeyNav black shadow overflow */
   .effect.filter::before {
     display: none !important;
   }
-  
+
   /* GooeyNav Styles */
   .gooey-nav-container :root {
     --linear-ease: linear(0, 0.068, 0.19 2.7%, 0.804 8.1%, 1.037, 1.199 13.2%, 1.245, 1.27 15.8%, 1.274, 1.272 17.4%, 1.249 19.1%, 0.996 28%, 0.949, 0.928 33.3%, 0.926, 0.933 36.8%, 1.001 45.6%, 1.013, 1.019 50.8%, 1.018 54.4%, 1 63.1%, 0.995 68%, 1.001 85%, 1);
   }
-  
+
   .effect {
     position: absolute;
     opacity: 1;
@@ -63,21 +63,21 @@ html {
     place-items: center;
     z-index: 1;
   }
-  
+
   .effect.text {
     color: white;
     transition: color 0.3s ease;
   }
-  
+
   .effect.text.active {
     color: black;
   }
-  
+
   .effect.filter {
     filter: blur(7px) contrast(100) blur(0);
     mix-blend-mode: lighten;
   }
-  
+
   .effect.filter::after {
     content: "";
     position: absolute;
@@ -88,18 +88,18 @@ html {
     z-index: -1;
     border-radius: 9999px;
   }
-  
+
   .effect.active::after {
     animation: pill 0.3s ease both;
   }
-  
+
   @keyframes pill {
     to {
       transform: scale(1);
       opacity: 1;
     }
   }
-  
+
   .particle,
   .point {
     display: block;
@@ -109,7 +109,7 @@ html {
     border-radius: 9999px;
     transform-origin: center;
   }
-  
+
   .particle {
     --time: 5s;
     position: absolute;
@@ -117,13 +117,13 @@ html {
     left: calc(50% - 8px);
     animation: particle calc(var(--time)) ease 1 -350ms;
   }
-  
+
   .point {
     background: var(--color);
     opacity: 1;
     animation: point calc(var(--time)) ease 1 -350ms;
   }
-  
+
   @keyframes particle {
     0% {
       transform: rotate(0deg) translate(calc(var(--start-x)), calc(var(--start-y)));
@@ -144,7 +144,7 @@ html {
       opacity: 1;
     }
   }
-  
+
   @keyframes point {
     0% {
       transform: scale(0);
@@ -171,17 +171,17 @@ html {
       opacity: 0;
     }
   }
-  
+
   .gooey-nav-container li.active {
     color: black;
     text-shadow: none;
   }
-  
+
   .gooey-nav-container li.active::after {
     opacity: 1;
     transform: scale(1);
   }
-  
+
   .gooey-nav-container li::after {
     content: "";
     position: absolute;
@@ -194,8 +194,6 @@ html {
     z-index: -1;
   }
 }
-
-
 
 @layer base {
   :root {
@@ -224,7 +222,7 @@ html {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    
+
     /* GooeyNav particle colors */
     --color-1: #D7B46A;
     --color-2: #AAB6D3;
@@ -259,8 +257,6 @@ html {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -273,5 +269,51 @@ html {
     font-feature-settings: 'kern' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@theme inline {
+  @keyframes ball {
+  from {
+    transform: rotate(0) translateY(-6.5em);
+    }
+  50% {
+    transform: rotate(180deg) translateY(-6em);
+    }
+  to {
+    transform: rotate(360deg) translateY(-6.5em);
+    }
+  }
+  @keyframes ballInnerShadow {
+  from {
+    transform: rotate(0);
+    }
+  to {
+    transform: rotate(-360deg);
+    }
+  }
+  @keyframes ballOuterShadow {
+  from {
+    transform: rotate(20deg);
+    }
+  to {
+    transform: rotate(-340deg);
+    }
+  }
+  @keyframes ballTexture {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(50%);
+    }
+  }
+  @keyframes trackCover {
+  from {
+    transform: rotate(0);
+    }
+  to {
+    transform: rotate(360deg);
+    }
   }
 }

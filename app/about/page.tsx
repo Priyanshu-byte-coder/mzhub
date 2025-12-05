@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { getTeamMembers } from '@/lib/teamMembers'
+import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -146,17 +147,28 @@ export default function About() {
             <SectionWrapper className="bg-gradient-to-br from-spiritual-indigo-50 to-white">
                 <div className="text-center mb-16">
                     <h2 className="section-heading">Meet Our Team</h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                         A diverse group united by a passion for ethical technology and spiritual wisdom
+                    </p>
+                    <p className="text-sm text-gray-500 mb-8">
+                        Hover over team members to see their details
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="flex justify-center mb-12">
+                    <AnimatedTooltip
+                        items={team.map((member, index) => ({
+                            id: index + 1,
+                            name: member.name,
+                            designation: member.role,
+                            image: member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}`
+                        }))}
+                    />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     {team.map((member, index) => (
-                        <Card key={index} className="text-center">
-                            <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-spiritual-indigo-400 to-spiritual-gold-400 rounded-full flex items-center justify-center text-white text-4xl font-bold">
-                                {member.name.split(' ').map(n => n[0]).join('')}
-                            </div>
+                        <Card key={index}>
                             <h3 className="text-xl font-bold text-spiritual-indigo-900 mb-2">{member.name}</h3>
                             <p className="text-spiritual-gold-600 font-semibold mb-3">{member.role}</p>
                             <p className="text-gray-600 text-sm">{member.bio}</p>

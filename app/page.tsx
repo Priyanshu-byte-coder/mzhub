@@ -5,120 +5,31 @@ import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import { getTestimonials } from '@/lib/testimonials'
+import AnimatedCanvas from '@/components/ui/AnimatedCanvas'
 
 export default function Home() {
     const testimonials = getTestimonials()
     const videoRef = useRef<HTMLVideoElement>(null)
-    const containerRef = useRef<HTMLDivElement>(null)
-    const textRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const video = videoRef.current
-        const container = containerRef.current
-        const textContainer = textRef.current
-        if (!video || !container || !textContainer) return
+        if (!video) return
 
-        let targetTime = 0
-        let currentTime = 0
-        let animationId: number
-        let ticking = false
-        let hasMetadata = false
-
-        const lerp = (start: number, end: number, factor: number) => {
-            return start + (end - start) * factor
-        }
-
-        const updateVideo = () => {
-            if (!video || !hasMetadata) {
-                animationId = requestAnimationFrame(updateVideo)
-                return
-            }
-
-            // Smooth interpolation towards target time
-            currentTime = lerp(currentTime, targetTime, 0.1) // Faster/smoother response
-
-            // Clamp within duration to avoid overshooting
-            currentTime = Math.max(0, Math.min(video.duration, currentTime))
-
-            // Only update if there's a meaningful difference
-            if (Math.abs(video.currentTime - currentTime) > 0.04) {
-                video.currentTime = currentTime
-            }
-
-            animationId = requestAnimationFrame(updateVideo)
-        }
-
-        const calculateTargetTime = () => {
-            if (!video || !container || !hasMetadata || !textContainer) return
-
-            const rect = container.getBoundingClientRect()
-
-            // Progress of scroll within this 300vh container
-            const maxScroll = rect.height - window.innerHeight
-            if (maxScroll <= 0) return
-
-            const rawProgress = -rect.top / maxScroll
-            const scrollProgress = Math.max(0, Math.min(1, rawProgress))
-
-            targetTime = scrollProgress * video.duration
-
-            // Show text only when scroll is near the end (last 20% of scroll)
-            const textThreshold = 0.6 // Start showing at 80% scroll
-            if (scrollProgress >= textThreshold) {
-                const textProgress = (scrollProgress - textThreshold) / (1 - textThreshold)
-                textContainer.style.opacity = String(textProgress)
-                textContainer.style.transform = `translateY(${(1 - textProgress) * 30}px) scale(${0.95 + textProgress * 0.05})`
-            } else {
-                textContainer.style.opacity = '0'
-                textContainer.style.transform = 'translateY(30px) scale(0.95)'
-            }
-        }
-
-        const handleScroll = () => {
-            if (ticking) return
-            ticking = true
-
-            // Defer the heavy layout read to the rAF to avoid layout thrashing
-            requestAnimationFrame(() => {
-                calculateTargetTime()
-                ticking = false
+        // Play the video once when component mounts
+        const playPromise = video.play()
+        if (playPromise !== undefined) {
+            playPromise.catch(err => {
+                console.log('Video autoplay prevented:', err)
             })
-        }
-
-        const handleLoadedMetadata = () => {
-            if (!video) return
-            hasMetadata = true
-            // Recalculate once duration is known
-            calculateTargetTime()
-        }
-
-        // Check if metadata is already loaded
-        if (video.readyState >= 1) {
-            hasMetadata = true
-        }
-
-        video.addEventListener('loadedmetadata', handleLoadedMetadata)
-        window.addEventListener('scroll', handleScroll, { passive: true })
-
-        // Start animation loop
-        animationId = requestAnimationFrame(updateVideo)
-        // Initial calculation (in case it's already in view)
-        calculateTargetTime()
-
-        return () => {
-            video.removeEventListener('loadedmetadata', handleLoadedMetadata)
-            window.removeEventListener('scroll', handleScroll)
-            cancelAnimationFrame(animationId)
         }
     }, [])
 
     return (
-        <div className="pt-20">
+        <div className="pt-16 md:pt-20">
             {/* Hero Section with Background Video */}
-            <div ref={containerRef} className="relative h-[300vh]">
-            <section className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden">
                 {/* Background Video */}
                 <video
                     ref={videoRef}
@@ -133,12 +44,11 @@ export default function Home() {
                 {/* Dark Overlay (35% opacity) */}
                 <div className="absolute inset-0 bg-black/35"></div>
 
-                <div 
-                    ref={textRef}
-                    className="container-custom relative z-10 text-center text-white py-20 transition-all duration-300"
-                    style={{ opacity: 0, transform: 'translateY(30px) scale(0.95)' }}
-                >
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif">
+                {/* Animated Canvas */}
+                <AnimatedCanvas />
+
+                <div className="container-custom relative z-20 text-center text-white py-8 px-4 md:py-20">
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 font-serif leading-tight">
                         Extend Your Spiritual Reach
                         <br />
                         <span className="bg-gradient-to-r from-accent-gold to-yellow-300 bg-clip-text text-transparent">
@@ -146,34 +56,34 @@ export default function Home() {
                         </span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
+                    {/* Hide paragraph on mobile, show on md and up */}
+                    <p className="hidden md:block text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
                         Empower your religious institution with AI that preserves sacred teachings while delivering personalized guidance to your global community.
                     </p>
 
                     {/* Highlighted Guru Line */}
-                    <div className="mb-12 py-8 px-6 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-accent-gold/40 max-w-4xl mx-auto">
-                        <p className="text-2xl md:text-3xl font-serif italic text-white animate-glow">
+                    <div className="mb-6 md:mb-12 py-4 md:py-8 px-4 md:px-6 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-accent-gold/40 max-w-4xl mx-auto">
+                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif italic text-white animate-glow">
                             "You are not replacing the guru.
                             <br />
                             <span className="text-accent-gold font-bold">You are extending their reach."</span>
                         </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Link href="/contact">
-                            <Button variant="secondary" size="lg">
+                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
+                        <Link href="/contact" className="w-full sm:w-auto">
+                            <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                                 Request Demo
                             </Button>
                         </Link>
-                        <Link href="/platform">
-                            <Button variant="outline" size="lg" className="bg-white/10 backdrop-blur-md border-white text-white hover:bg-white/20">
+                        <Link href="/platform" className="w-full sm:w-auto">
+                            <Button variant="outline" size="lg" className="w-full sm:w-auto bg-white/10 backdrop-blur-md border-white text-white hover:bg-white/20">
                                 Explore Platform
                             </Button>
                         </Link>
                     </div>
                 </div>
             </section>
-            </div>
 
             {/* How It Works */}
             <SectionWrapper id="how-it-works" className="bg-white">

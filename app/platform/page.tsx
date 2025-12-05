@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
     title: 'Platform',

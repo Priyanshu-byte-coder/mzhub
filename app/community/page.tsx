@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
     title: 'Community',
@@ -229,7 +229,7 @@ export default function Community() {
                         See how MZhub can help you connect and serve your community better.
                     </p>
                     <Link href="/contact">
-                        <Button variant="primary" size="lg">
+                        <Button variant="default" size="lg">
                             Get Started
                         </Button>
                     </Link>

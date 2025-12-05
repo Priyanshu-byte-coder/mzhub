@@ -68,7 +68,7 @@ export default function Footer() {
                         <h3 className="font-semibold text-lg mb-4">Product</h3>
                         <ul className="space-y-2">
                             {footerLinks.product.map((link) => (
-                                <li key={link.href}>
+                                <li key={`product-${link.label}`}>
                                     <Link href={link.href} className="text-accent-beige hover:text-accent-gold transition-colors">
                                         {link.label}
                                     </Link>
@@ -81,7 +81,7 @@ export default function Footer() {
                         <h3 className="font-semibold text-lg mb-4">Company</h3>
                         <ul className="space-y-2">
                             {footerLinks.company.map((link) => (
-                                <li key={link.href}>
+                                <li key={`company-${link.label}`}>
                                     <Link href={link.href} className="text-accent-beige hover:text-accent-gold transition-colors">
                                         {link.label}
                                     </Link>
@@ -94,7 +94,7 @@ export default function Footer() {
                         <h3 className="font-semibold text-lg mb-4">Resources</h3>
                         <ul className="space-y-2">
                             {footerLinks.resources.map((link) => (
-                                <li key={link.href}>
+                                <li key={`resources-${link.label}`}>
                                     <Link href={link.href} className="text-accent-beige hover:text-accent-gold transition-colors">
                                         {link.label}
                                     </Link>

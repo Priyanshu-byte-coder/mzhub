@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
+import FooterNew from '@/components/layout/FooterNew'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -56,13 +57,20 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+        <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
             <body className="font-sans">
-                <Navbar />
-                <main className="min-h-screen">
-                    {children}
-                </main>
-                <Footer />
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="light"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <Navbar />
+                    <main className="min-h-screen">
+                        {children}
+                    </main>
+                    <FooterNew />
+                </ThemeProvider>
             </body>
         </html>
     )
