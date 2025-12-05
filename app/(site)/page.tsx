@@ -6,8 +6,10 @@ import dynamic from 'next/dynamic'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { Button } from '@/components/ui/button'
-import { SneakyButton } from '@/components/ui/sneaky-button'
+import { BlobButton } from '@/components/ui/BlobButton'
 import { getTestimonials } from '@/lib/testimonials'
+import RotatingText from '@/components/RotatingText'
+import { AnimatedLines } from '@/components/ui/AnimatedLines'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
     ssr: false,
@@ -19,50 +21,51 @@ export default function Home() {
     return (
         <div>
             {/* Hero Section with Background Video */}
-            <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-[rgba(15,23,42,0.95)]">
+            <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-neutral-light dark:bg-primary-dark">
                 {/* Animated Canvas */}
                 <AnimatedCanvas />
+                {/* Animated Lines */}
+                <AnimatedLines />
 
-                <div className="container-custom relative z-20 text-center text-gray-900 dark:text-white py-8 px-4 md:py-20">
-                    <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 font-serif leading-tight">
-                        Extend Your Spiritual Reach
-                        <br />
-                        <span className="bg-gradient-to-r from-accent-gold to-yellow-300 bg-clip-text text-transparent">
-                            With AI-Powered Platforms
-                        </span>
-                    </h1>
-
-                    <p className="hidden md:block text-xl md:text-2xl mb-8 text-gray-700 dark:text-white/90 max-w-3xl mx-auto">
-                        Empower your religious institution with AI that preserves sacred teachings while delivering personalized guidance to your global community.
-                    </p>
-
-                    {/* Highlighted Guru Line */}
-                    <div className="mb-6 md:mb-12 py-4 md:py-8 px-4 md:px-6 bg-accent-beige/50 dark:bg-white/10 backdrop-blur-md rounded-2xl border-2 border-accent-gold max-w-4xl mx-auto">
-                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif italic text-gray-900 dark:text-white">
-                            "You are not replacing the guru.
-                            <br />
-                            <span className="text-accent-gold font-bold">You are extending their reach."</span>
-                        </p>
+                <div className="container-custom relative z-20 text-center text-secondary-light dark:text-text-mist py-8 px-4 md:py-20">
+                    <div className="flex items-center justify-center mb-8 md:mb-12">
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-serif flex items-center gap-4">
+                            <span className="text-secondary-light dark:text-text-mist">Spiritual</span>
+                            <RotatingText
+                                texts={['Guru', 'AI']}
+                                mainClassName="px-3 sm:px-4 md:px-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-xl"
+                                staggerFrom="last"
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                exit={{ y: "-120%" }}
+                                staggerDuration={0.025}
+                                splitLevelClassName="overflow-hidden pb-1 sm:pb-2 md:pb-2"
+                                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                rotationInterval={2000}
+                            />
+                        </h1>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
-                        <SneakyButton
-                            text="Request Demo"
-                            href="/contact"
-                        />
-                        <SneakyButton
-                            text="Explore Platform"
-                            href="/platform"
-                        />
+                    <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center px-4">
+                        <Link href="/contact">
+                            <BlobButton>
+                                Request Demo
+                            </BlobButton>
+                        </Link>
+                        <Link href="/projects">
+                            <BlobButton>
+                                Explore Projects
+                            </BlobButton>
+                        </Link>
                     </div>
                 </div>
             </section>
 
             {/* How It Works */}
-            <SectionWrapper id="how-it-works" className="bg-white dark:bg-gray-900">
+            <SectionWrapper id="how-it-works" className="bg-neutral-light dark:bg-secondary-dark">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading dark:text-accent-gold">How MZhub Works</h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    <h2 className="section-heading text-secondary-light dark:text-accent-gold">How MZhub Works</h2>
+                    <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
                         A simple, three-step process to transform your spiritual institution's digital presence
                     </p>
                 </div>
@@ -90,19 +93,19 @@ export default function Home() {
                     ].map((item, index) => (
                         <Card key={index} className="text-center">
                             <div className="text-6xl mb-4">{item.icon}</div>
-                            <div className="text-primary-dark dark:text-accent-gold font-bold text-lg mb-2">Step {item.step}</div>
-                            <h3 className="text-2xl font-bold mb-4 text-primary-dark dark:text-accent-gold">{item.title}</h3>
-                            <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
+                            <div className="text-secondary-light dark:text-accent-gold font-bold text-lg mb-2">Step {item.step}</div>
+                            <h3 className="text-2xl font-bold mb-4 text-secondary-light dark:text-accent-gold">{item.title}</h3>
+                            <p className="text-secondary-light/80 dark:text-text-mist/80">{item.description}</p>
                         </Card>
                     ))}
                 </div>
             </SectionWrapper>
 
             {/* Key Features */}
-            <SectionWrapper id="features" className="bg-white dark:bg-gray-900">
+            <SectionWrapper id="features" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading dark:text-accent-gold">Platform Features</h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    <h2 className="section-heading text-secondary-light dark:text-accent-gold">Platform Features</h2>
+                    <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
                         Everything you need to digitally transform your spiritual institution
                     </p>
                 </div>
@@ -142,31 +145,31 @@ export default function Home() {
                     ].map((feature, index) => (
                         <Card key={index}>
                             <div className="text-5xl mb-4">{feature.icon}</div>
-                            <h3 className="text-xl font-bold mb-3 text-primary-dark dark:text-accent-gold">{feature.title}</h3>
-                            <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                            <h3 className="text-xl font-bold mb-3 text-secondary-light dark:text-accent-gold">{feature.title}</h3>
+                            <p className="text-secondary-light/80 dark:text-text-mist/80">{feature.description}</p>
                         </Card>
                     ))}
                 </div>
             </SectionWrapper>
 
             {/* Philosophy & Trust */}
-            <SectionWrapper id="philosophy" className="bg-white dark:bg-gray-900">
+            <SectionWrapper id="philosophy" className="bg-neutral-light dark:bg-secondary-dark">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="section-heading dark:text-accent-gold mb-8">Our Philosophy: Technology in Service of Faith</h2>
+                    <h2 className="section-heading text-secondary-light dark:text-accent-gold mb-8">Our Philosophy: Technology in Service of Faith</h2>
 
-                    <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300 text-left">
+                    <div className="space-y-6 text-lg text-secondary-light dark:text-text-mist text-left">
                         <p>
                             We understand that faith is deeply personal and sacred. The introduction of artificial intelligence into spiritual contexts requires extraordinary care, respect, and ethical consideration.
                         </p>
 
-                        <p className="text-xl font-semibold text-primary-dark dark:text-accent-gold bg-accent-beige dark:bg-gray-800 p-6 rounded-lg border-l-4 border-accent-gold">
+                        <p className="text-xl font-semibold text-secondary-light dark:text-accent-gold bg-primary-light/20 dark:bg-secondary-dark p-6 rounded-lg border-l-4 border-accent-gold">
                             MZhub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-6 mt-8">
-                            <div className="bg-primary-light dark:bg-gray-800 p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-3 text-primary-dark dark:text-accent-gold">What We Believe</h3>
-                                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                            <div className="bg-primary-light/30 dark:bg-primary-dark p-6 rounded-lg">
+                                <h3 className="font-bold text-xl mb-3 text-secondary-light dark:text-accent-gold">What We Believe</h3>
+                                <ul className="space-y-2 text-secondary-light dark:text-text-mist">
                                     <li>✓ Human spiritual leadership is irreplaceable</li>
                                     <li>✓ Institutions must maintain doctrinal control</li>
                                     <li>✓ Privacy and sanctity must be protected</li>
@@ -174,9 +177,9 @@ export default function Home() {
                                 </ul>
                             </div>
 
-                            <div className="bg-accent-beige dark:bg-gray-800 p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-3 text-primary-dark dark:text-accent-gold">What We Promise</h3>
-                                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                            <div className="bg-accent-gold/20 dark:bg-primary-dark p-6 rounded-lg">
+                                <h3 className="font-bold text-xl mb-3 text-secondary-light dark:text-accent-gold">What We Promise</h3>
+                                <ul className="space-y-2 text-secondary-light dark:text-text-mist">
                                     <li>✓ Complete institutional oversight</li>
                                     <li>✓ Rigorous doctrinal alignment</li>
                                     <li>✓ Bank-level security and privacy</li>
@@ -189,10 +192,10 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Target Audience */}
-            <SectionWrapper id="audience" className="bg-gradient-to-br from-primary-dark to-neutral-dark text-white">
+            <SectionWrapper id="audience" className="bg-gradient-to-br from-secondary-light to-accent-blue text-white">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 dark:text-accent-gold">Who We Serve</h2>
-                    <p className="text-xl text-primary-light dark:text-gray-300 max-w-3xl mx-auto">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-accent-gold">Who We Serve</h2>
+                    <p className="text-xl text-neutral-light dark:text-text-mist max-w-3xl mx-auto">
                         MZhub is purpose-built for religious institutions seeking to expand their digital presence
                     </p>
                 </div>
@@ -216,17 +219,17 @@ export default function Home() {
                                 {audience.icon}
                             </div>
                             <h3 className="font-bold text-xl mb-2">{audience.title}</h3>
-                            <p className="text-primary-light text-sm">{audience.description}</p>
+                            <p className="text-neutral-light text-sm">{audience.description}</p>
                         </div>
                     ))}
                 </div>
             </SectionWrapper>
 
             {/* Testimonials */}
-            <SectionWrapper id="testimonials" className="bg-white dark:bg-gray-900">
+            <SectionWrapper id="testimonials" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading dark:text-accent-gold">What Spiritual Leaders Say</h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    <h2 className="section-heading text-secondary-light dark:text-accent-gold">What Spiritual Leaders Say</h2>
+                    <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
                         Trusted by religious institutions across traditions
                     </p>
                 </div>
@@ -235,11 +238,11 @@ export default function Home() {
                     {testimonials.map((testimonial, index) => (
                         <Card key={index} className="flex flex-col">
                             <div className="text-accent-gold text-4xl mb-4">"</div>
-                            <p className="text-gray-700 dark:text-gray-300 mb-6 flex-grow italic">{testimonial.content}</p>
-                            <div className="border-t dark:border-gray-700 pt-4">
-                                <p className="font-bold text-primary-dark dark:text-accent-gold">{testimonial.name}</p>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</p>
-                                <p className="text-sm text-primary-dark dark:text-accent-gold">{testimonial.institution}</p>
+                            <p className="text-secondary-light dark:text-text-mist mb-6 flex-grow italic">{testimonial.content}</p>
+                            <div className="border-t border-primary-light dark:border-secondary-dark pt-4">
+                                <p className="font-bold text-secondary-light dark:text-accent-gold">{testimonial.name}</p>
+                                <p className="text-sm text-secondary-light/70 dark:text-text-mist/70">{testimonial.role}</p>
+                                <p className="text-sm text-secondary-light dark:text-accent-gold">{testimonial.institution}</p>
                             </div>
                         </Card>
                     ))}
@@ -247,23 +250,25 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Final CTA */}
-            <SectionWrapper className="bg-gradient-to-r from-primary-dark to-neutral-dark text-white text-center">
+            <SectionWrapper className="bg-gradient-to-r from-secondary-light to-accent-blue text-white text-center">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-accent-gold">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white dark:text-accent-gold">
                         Ready to Extend Your Spiritual Reach?
                     </h2>
-                    <p className="text-xl mb-8 text-primary-light dark:text-gray-300">
+                    <p className="text-xl mb-8 text-neutral-light dark:text-text-mist">
                         Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <SneakyButton
-                            text="Schedule a Demo"
-                            href="/contact"
-                        />
-                        <SneakyButton
-                            text="Learn More"
-                            href="/platform"
-                        />
+                        <Link href="/contact">
+                            <BlobButton>
+                                Schedule Demo
+                            </BlobButton>
+                        </Link>
+                        <Link href="/projects">
+                            <BlobButton>
+                                Learn More
+                            </BlobButton>
+                        </Link>
                     </div>
                 </div>
             </SectionWrapper>

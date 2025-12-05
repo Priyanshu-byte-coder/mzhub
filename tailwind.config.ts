@@ -11,21 +11,32 @@ const config: Config = {
     	extend: {
     		colors: {
     			primary: {
-    				light: '#E3E7F3',
+    				light: '#e0e7ff',
     				DEFAULT: 'hsl(var(--primary))',
-    				dark: '#39457E',
+    				dark: '#0f172a',
     				foreground: 'hsl(var(--primary-foreground))'
     			},
+    			secondary: {
+    				light: '#6366f1',
+    				dark: '#1e293b',
+    				DEFAULT: 'hsl(var(--secondary))',
+    				foreground: 'hsl(var(--secondary-foreground))'
+    			},
     			accent: {
-    				gold: '#D7B46A',
-    				beige: '#F4EBD4',
+    				gold: '#f59e0b',
+    				beige: '#fef3c7',
+    				blue: '#6366f1',
     				DEFAULT: 'hsl(var(--accent))',
     				foreground: 'hsl(var(--accent-foreground))'
     			},
     			neutral: {
-    				soft: '#C8CDD9',
-    				dark: '#2D2D2D',
+    				light: '#f8fafc',
+    				soft: '#cbd5e1',
+    				dark: '#334155',
     				white: '#FFFFFF'
+    			},
+    			text: {
+    				mist: '#cbd5e1'
     			},
     			spiritual: {
     				indigo: {
@@ -63,10 +74,6 @@ const config: Config = {
     			popover: {
     				DEFAULT: 'hsl(var(--popover))',
     				foreground: 'hsl(var(--popover-foreground))'
-    			},
-    			secondary: {
-    				DEFAULT: 'hsl(var(--secondary))',
-    				foreground: 'hsl(var(--secondary-foreground))'
     			},
     			muted: {
     				DEFAULT: 'hsl(var(--muted))',

@@ -17,8 +17,7 @@ export default function Navbar() {
     const navLinks = [
         { label: 'Home', link: '/', ariaLabel: 'Go to home page' },
         { label: 'About', link: '/about', ariaLabel: 'Learn about us' },
-        { label: 'Platform', link: '/platform', ariaLabel: 'View our platform' },
-        { label: 'Community', link: '/community', ariaLabel: 'Join our community' },
+        { label: 'Projects', link: '/projects', ariaLabel: 'View our projects' },
         { label: 'Blog', link: '/blog', ariaLabel: 'Read our blog' },
         { label: 'Contact', link: '/contact', ariaLabel: 'Get in touch' },
     ]
@@ -33,8 +32,7 @@ export default function Navbar() {
     const gooeyItems = useMemo(() => ([
         { label: 'Home', href: '/' },
         { label: 'About', href: '/about' },
-        { label: 'Platform', href: '/platform' },
-        { label: 'Community', href: '/community' },
+        { label: 'Projects', href: '/projects' },
         { label: 'Blog', href: '/blog' },
         { label: 'Contact', href: '/contact' },
     ]), [])

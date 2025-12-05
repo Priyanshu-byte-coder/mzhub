@@ -516,7 +516,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             onClick={toggleMenu}
             type="button"
             style={{
-              color: theme === 'dark' ? '#FFD700' : '#1a202c',
+              color: mounted ? (theme === 'dark' ? '#FFD700' : '#1a202c') : '#1a202c',
               transform: 'scale(1.2)'
             }}
           >
