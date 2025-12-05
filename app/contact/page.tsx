@@ -230,7 +230,7 @@ export default function Contact() {
                                         {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
                                     </div>
 
-                                    <Button type="submit" variant="primary" size="lg" className="w-full">
+                                    <Button type="submit" variant="secondary" size="lg" className="w-full">
                                         Send Message
                                     </Button>
 

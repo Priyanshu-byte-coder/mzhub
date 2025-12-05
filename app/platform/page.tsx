@@ -366,7 +366,7 @@ export default function Platform() {
                         Schedule a personalized demo to see how MZhub can serve your institution.
                     </p>
                     <Link href="/contact">
-                        <Button variant="primary" size="lg">
+                        <Button variant="secondary" size="lg">
                             Schedule Demo
                         </Button>
                     </Link>

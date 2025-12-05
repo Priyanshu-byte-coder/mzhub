@@ -2,18 +2,34 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import dynamic from 'next/dynamic'
+import { useEffect, useRef, useState } from 'react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { Button } from '@/components/ui/button'
 import { getTestimonials } from '@/lib/testimonials'
-import AnimatedCanvas from '@/components/ui/AnimatedCanvas'
+
+const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
+    ssr: false,
+})
 
 export default function Home() {
     const testimonials = getTestimonials()
     const videoRef = useRef<HTMLVideoElement>(null)
+    const [allowMotion, setAllowMotion] = useState(true)
 
     useEffect(() => {
+        // Respect users who prefer reduced motion
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        if (prefersReduced) {
+            setAllowMotion(false)
+            const vid = videoRef.current
+            if (vid) {
+                vid.pause()
+            }
+            return
+        }
+
         const video = videoRef.current
         if (!video) return
 
@@ -30,22 +46,27 @@ export default function Home() {
         <div className="pt-16 md:pt-20">
             {/* Hero Section with Background Video */}
             <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden">
-                {/* Background Video */}
-                <video
-                    ref={videoRef}
-                    muted
-                    playsInline
-                    preload="auto"
-                    className="absolute inset-0 w-full h-full object-cover"
-                >
-                    <source src="/videos/hero-bg5.mp4" type="video/mp4" />
-                </video>
+                {/* Background Video (respects reduced motion) */}
+                {allowMotion ? (
+                    <video
+                        ref={videoRef}
+                        muted
+                        autoPlay
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 w-full h-full object-cover"
+                    >
+                        <source src="/videos/hero-bg5c.mp4" type="video/mp4" />
+                    </video>
+                ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-dark via-neutral-dark to-black" aria-hidden="true" />
+                )}
 
                 {/* Dark Overlay (35% opacity) */}
                 <div className="absolute inset-0 bg-black/35"></div>
 
-                {/* Animated Canvas */}
-                <AnimatedCanvas />
+                {/* Animated Canvas (skipped if reduced motion) */}
+                {allowMotion && <AnimatedCanvas />}
 
                 <div className="container-custom relative z-20 text-center text-white py-8 px-4 md:py-20">
                     <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 font-serif leading-tight">

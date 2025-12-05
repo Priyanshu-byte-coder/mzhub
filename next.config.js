@@ -2,7 +2,20 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['images.unsplash.com', 'via.placeholder.com', 'api.dicebear.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'via.placeholder.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.dicebear.com',
+            },
+        ],
     },
 }
 
