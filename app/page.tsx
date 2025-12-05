@@ -106,7 +106,7 @@ export default function Home() {
             </section>
 
             {/* How It Works */}
-            <SectionWrapper id="how-it-works" className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+            <SectionWrapper id="how-it-works" className="bg-white dark:bg-gray-900">
                 <div className="text-center mb-16">
                     <h2 className="section-heading dark:text-accent-gold">How MZhub Works</h2>
                     <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -146,7 +146,7 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Key Features */}
-            <SectionWrapper id="features" className="bg-gradient-to-br from-primary-light to-white dark:from-gray-800 dark:to-gray-900">
+            <SectionWrapper id="features" className="bg-white dark:bg-gray-900">
                 <div className="text-center mb-16">
                     <h2 className="section-heading dark:text-accent-gold">Platform Features</h2>
                     <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -197,7 +197,7 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Philosophy & Trust */}
-            <SectionWrapper id="philosophy" className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+            <SectionWrapper id="philosophy" className="bg-white dark:bg-gray-900">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="section-heading dark:text-accent-gold mb-8">Our Philosophy: Technology in Service of Faith</h2>
 
@@ -255,43 +255,22 @@ export default function Home() {
                         { title: 'Gurudwaras', icon: '🏛️', description: 'Sikh temples and community centers' },
                         { title: 'Spiritual Centers', icon: '🕉️', description: 'Multi-faith and interfaith spiritual organizations' }
                     ].map((audience, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            whileHover={{ 
-                                y: -10, 
-                                scale: 1.05,
-                                backgroundColor: "rgba(215, 180, 106, 0.3)",
-                                borderColor: "rgba(215, 180, 106, 0.8)",
-                                boxShadow: "0 25px 50px -12px rgba(215, 180, 106, 0.4)",
-                                transition: { duration: 0.3 }
-                            }}
-                            transition={{ delay: index * 0.1, duration: 0.3 }}
-                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-accent-gold/30 transition-all duration-300"
-                            style={{ cursor: 'pointer' }}
+                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-white/20 transition-colors"
                         >
-                            <motion.div 
-                                className="text-5xl mb-3"
-                                whileHover={{ 
-                                    scale: 1.3, 
-                                    rotate: 10,
-                                    transition: { duration: 0.3 }
-                                }}
-                                transition={{ duration: 0.3 }}
-                            >
+                            <div className="text-5xl mb-3">
                                 {audience.icon}
-                            </motion.div>
+                            </div>
                             <h3 className="font-bold text-xl mb-2">{audience.title}</h3>
                             <p className="text-primary-light text-sm">{audience.description}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </SectionWrapper>
 
             {/* Testimonials */}
-            <SectionWrapper id="testimonials" className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+            <SectionWrapper id="testimonials" className="bg-white dark:bg-gray-900">
                 <div className="text-center mb-16">
                     <h2 className="section-heading dark:text-accent-gold">What Spiritual Leaders Say</h2>
                     <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -316,13 +295,7 @@ export default function Home() {
 
             {/* Final CTA */}
             <SectionWrapper className="bg-gradient-to-r from-primary-dark to-neutral-dark text-white text-center">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-4xl mx-auto"
-                >
+                <div className="max-w-4xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-accent-gold">
                         Ready to Extend Your Spiritual Reach?
                     </h2>
@@ -339,7 +312,7 @@ export default function Home() {
                             href="/platform"
                         />
                     </div>
-                </motion.div>
+                </div>
             </SectionWrapper>
         </div>
     )
