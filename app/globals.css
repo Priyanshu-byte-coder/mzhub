@@ -232,31 +232,39 @@ html {
     --color-3: #F5E6D3;
     --color-4: #FFD700;
   }
+  
   .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 62.8% 30.6%;
+    /* Black-Blue-Golden Dark Theme */
+    --background: 222 47% 11%;
+    --foreground: 45 100% 85%;
+    --card: 220 40% 15%;
+    --card-foreground: 45 100% 85%;
+    --popover: 220 40% 15%;
+    --popover-foreground: 45 100% 85%;
+    --primary: 45 90% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 220 30% 25%;
+    --secondary-foreground: 45 100% 85%;
+    --muted: 220 30% 20%;
+    --muted-foreground: 45 50% 70%;
+    --accent: 45 90% 60%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
+    --border: 220 30% 25%;
+    --input: 220 30% 25%;
+    --ring: 45 90% 60%;
     --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
+    --chart-2: 45 80% 55%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    
+    /* Dark theme particle colors */
+    --color-1: #FFD700;
+    --color-2: #4A5A8A;
+    --color-3: #D7B46A;
+    --color-4: #FFA500;
   }
 }
 
@@ -268,10 +276,18 @@ html {
     box-sizing: border-box;
   }
   body {
-    @apply bg-gradient-to-br from-slate-50 via-white to-primary-light text-gray-900;
+    @apply bg-background text-foreground;
     font-feature-settings: 'kern' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body:not(.dark) {
+    @apply bg-gradient-to-br from-slate-50 via-white to-primary-light;
+  }
+  
+  body.dark {
+    @apply bg-gradient-to-br from-[#0a0e1a] via-[#1a1f3a] to-[#0f1729];
   }
 }
 

@@ -22,7 +22,7 @@ export default function Card({ children, className = '', hover = true }: CardPro
                 transition: { duration: 0.3, ease: "easeOut" }
             } : {}}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className={`bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8 ${className}`}
+            className={`bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 dark:border dark:border-gray-700 rounded-xl shadow-lg p-6 md:p-8 ${className}`}
             style={{ cursor: 'pointer' }}
         >
             {children}

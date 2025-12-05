@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { Button } from '@/components/ui/button'
+import { SneakyButton } from '@/components/ui/sneaky-button'
 import { getTestimonials } from '@/lib/testimonials'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
@@ -92,25 +93,23 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
-                        <Link href="/contact" className="w-full sm:w-auto">
-                            <Button variant="secondary" size="lg" className="w-full sm:w-auto">
-                                Request Demo
-                            </Button>
-                        </Link>
-                        <Link href="/platform" className="w-full sm:w-auto">
-                            <Button variant="outline" size="lg" className="w-full sm:w-auto bg-white/10 backdrop-blur-md border-white text-white hover:bg-white/20">
-                                Explore Platform
-                            </Button>
-                        </Link>
+                        <SneakyButton 
+                            text="Request Demo" 
+                            href="/contact"
+                        />
+                        <SneakyButton 
+                            text="Explore Platform" 
+                            href="/platform"
+                        />
                     </div>
                 </div>
             </section>
 
             {/* How It Works */}
-            <SectionWrapper id="how-it-works" className="bg-white">
+            <SectionWrapper id="how-it-works" className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading">How MZhub Works</h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <h2 className="section-heading dark:text-accent-gold">How MZhub Works</h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                         A simple, three-step process to transform your spiritual institution's digital presence
                     </p>
                 </div>
@@ -138,19 +137,19 @@ export default function Home() {
                     ].map((item, index) => (
                         <Card key={index} className="text-center">
                             <div className="text-6xl mb-4">{item.icon}</div>
-                            <div className="text-primary-dark font-bold text-lg mb-2">Step {item.step}</div>
-                            <h3 className="text-2xl font-bold mb-4 text-primary-dark">{item.title}</h3>
-                            <p className="text-gray-600">{item.description}</p>
+                            <div className="text-primary-dark dark:text-accent-gold font-bold text-lg mb-2">Step {item.step}</div>
+                            <h3 className="text-2xl font-bold mb-4 text-primary-dark dark:text-accent-gold">{item.title}</h3>
+                            <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
                         </Card>
                     ))}
                 </div>
             </SectionWrapper>
 
             {/* Key Features */}
-            <SectionWrapper id="features" className="bg-gradient-to-br from-primary-light to-white">
+            <SectionWrapper id="features" className="bg-gradient-to-br from-primary-light to-white dark:from-gray-800 dark:to-gray-900">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading">Platform Features</h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <h2 className="section-heading dark:text-accent-gold">Platform Features</h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                         Everything you need to digitally transform your spiritual institution
                     </p>
                 </div>
@@ -190,31 +189,31 @@ export default function Home() {
                     ].map((feature, index) => (
                         <Card key={index}>
                             <div className="text-5xl mb-4">{feature.icon}</div>
-                            <h3 className="text-xl font-bold mb-3 text-primary-dark">{feature.title}</h3>
-                            <p className="text-gray-600">{feature.description}</p>
+                            <h3 className="text-xl font-bold mb-3 text-primary-dark dark:text-accent-gold">{feature.title}</h3>
+                            <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
                         </Card>
                     ))}
                 </div>
             </SectionWrapper>
 
             {/* Philosophy & Trust */}
-            <SectionWrapper id="philosophy" className="bg-white">
+            <SectionWrapper id="philosophy" className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="section-heading mb-8">Our Philosophy: Technology in Service of Faith</h2>
+                    <h2 className="section-heading dark:text-accent-gold mb-8">Our Philosophy: Technology in Service of Faith</h2>
 
-                    <div className="space-y-6 text-lg text-gray-700 text-left">
+                    <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300 text-left">
                         <p>
                             We understand that faith is deeply personal and sacred. The introduction of artificial intelligence into spiritual contexts requires extraordinary care, respect, and ethical consideration.
                         </p>
 
-                        <p className="text-xl font-semibold text-primary-dark bg-accent-beige p-6 rounded-lg border-l-4 border-accent-gold">
+                        <p className="text-xl font-semibold text-primary-dark dark:text-accent-gold bg-accent-beige dark:bg-gray-800 p-6 rounded-lg border-l-4 border-accent-gold">
                             MZhub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-6 mt-8">
-                            <div className="bg-primary-light p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-3 text-primary-dark">What We Believe</h3>
-                                <ul className="space-y-2 text-gray-700">
+                            <div className="bg-primary-light dark:bg-gray-800 p-6 rounded-lg">
+                                <h3 className="font-bold text-xl mb-3 text-primary-dark dark:text-accent-gold">What We Believe</h3>
+                                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                                     <li>✓ Human spiritual leadership is irreplaceable</li>
                                     <li>✓ Institutions must maintain doctrinal control</li>
                                     <li>✓ Privacy and sanctity must be protected</li>
@@ -222,9 +221,9 @@ export default function Home() {
                                 </ul>
                             </div>
 
-                            <div className="bg-accent-beige p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-3 text-primary-dark">What We Promise</h3>
-                                <ul className="space-y-2 text-gray-700">
+                            <div className="bg-accent-beige dark:bg-gray-800 p-6 rounded-lg">
+                                <h3 className="font-bold text-xl mb-3 text-primary-dark dark:text-accent-gold">What We Promise</h3>
+                                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                                     <li>✓ Complete institutional oversight</li>
                                     <li>✓ Rigorous doctrinal alignment</li>
                                     <li>✓ Bank-level security and privacy</li>
@@ -239,8 +238,8 @@ export default function Home() {
             {/* Target Audience */}
             <SectionWrapper id="audience" className="bg-gradient-to-br from-primary-dark to-neutral-dark text-white">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">Who We Serve</h2>
-                    <p className="text-xl text-primary-light max-w-3xl mx-auto">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 dark:text-accent-gold">Who We Serve</h2>
+                    <p className="text-xl text-primary-light dark:text-gray-300 max-w-3xl mx-auto">
                         MZhub is purpose-built for religious institutions seeking to expand their digital presence
                     </p>
                 </div>
@@ -292,10 +291,10 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Testimonials */}
-            <SectionWrapper id="testimonials" className="bg-white">
+            <SectionWrapper id="testimonials" className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading">What Spiritual Leaders Say</h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <h2 className="section-heading dark:text-accent-gold">What Spiritual Leaders Say</h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                         Trusted by religious institutions across traditions
                     </p>
                 </div>
@@ -304,11 +303,11 @@ export default function Home() {
                     {testimonials.map((testimonial, index) => (
                         <Card key={index} className="flex flex-col">
                             <div className="text-accent-gold text-4xl mb-4">"</div>
-                            <p className="text-gray-700 mb-6 flex-grow italic">{testimonial.content}</p>
-                            <div className="border-t pt-4">
-                                <p className="font-bold text-primary-dark">{testimonial.name}</p>
-                                <p className="text-sm text-gray-600">{testimonial.role}</p>
-                                <p className="text-sm text-primary-dark">{testimonial.institution}</p>
+                            <p className="text-gray-700 dark:text-gray-300 mb-6 flex-grow italic">{testimonial.content}</p>
+                            <div className="border-t dark:border-gray-700 pt-4">
+                                <p className="font-bold text-primary-dark dark:text-accent-gold">{testimonial.name}</p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</p>
+                                <p className="text-sm text-primary-dark dark:text-accent-gold">{testimonial.institution}</p>
                             </div>
                         </Card>
                     ))}
@@ -324,23 +323,21 @@ export default function Home() {
                     transition={{ duration: 0.6 }}
                     className="max-w-4xl mx-auto"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-accent-gold">
                         Ready to Extend Your Spiritual Reach?
                     </h2>
-                    <p className="text-xl mb-8 text-primary-light">
+                    <p className="text-xl mb-8 text-primary-light dark:text-gray-300">
                         Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/contact">
-                            <Button variant="secondary" size="lg">
-                                Schedule a Demo
-                            </Button>
-                        </Link>
-                        <Link href="/platform">
-                            <Button variant="outline" size="lg" className="bg-white/10 backdrop-blur-md border-white text-white hover:bg-white/20">
-                                Learn More
-                            </Button>
-                        </Link>
+                        <SneakyButton 
+                            text="Schedule a Demo" 
+                            href="/contact"
+                        />
+                        <SneakyButton 
+                            text="Learn More" 
+                            href="/platform"
+                        />
                     </div>
                 </motion.div>
             </SectionWrapper>

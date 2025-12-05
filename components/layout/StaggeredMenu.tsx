@@ -2,6 +2,7 @@
 
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import { useTheme } from 'next-themes'
 
 interface MenuItem {
   label: string
@@ -31,6 +32,7 @@ interface StaggeredMenuProps {
   closeOnClickAway?: boolean
   onMenuOpen?: () => void
   onMenuClose?: () => void
+  onMenuStateChange?: (isOpen: boolean) => void
 }
 
 export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
@@ -49,8 +51,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   isFixed = false,
   closeOnClickAway = true,
   onMenuOpen,
-  onMenuClose
+  onMenuClose,
+  onMenuStateChange
 }) => {
+  const { theme } = useTheme()
   const [open, setOpen] = useState(false)
   const openRef = useRef(false)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -368,6 +372,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     const target = !openRef.current
     openRef.current = target
     setOpen(target)
+    onMenuStateChange?.(target)
     if (target) {
       onMenuOpen?.()
       playOpen()
@@ -378,7 +383,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     animateIcon(target)
     animateColor(target)
     animateText(target)
-  }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose])
+  }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose, onMenuStateChange])
 
   const closeMenu = useCallback(() => {
     if (openRef.current) {
@@ -436,39 +441,58 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
-        <div className="sm-logo" aria-label="Logo">
+        <div className="sm-logo" aria-label="Logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <img
-            src={logoUrl}
+            src={theme === 'dark' ? '/mzhub-logo_w.svg' : logoUrl}
             alt="Logo"
             className="sm-logo-img"
             draggable={false}
             width={110}
             height={24}
           />
+          <span style={{
+            fontSize: '1.5rem',
+            fontWeight: '700',
+            background: 'linear-gradient(135deg, #39457E 0%, #D7B46A 50%, #FFD700 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            letterSpacing: '0.05em'
+          }}>
+            MZHUB
+          </span>
         </div>
-        <button
-          ref={toggleBtnRef}
-          className="sm-toggle"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          aria-controls="staggered-menu-panel"
-          onClick={toggleMenu}
-          type="button"
-        >
-          <span ref={textWrapRef} className="sm-toggle-textWrap" aria-hidden="true">
-            <span ref={textInnerRef} className="sm-toggle-textInner">
-              {textLines.map((l, i) => (
-                <span className="sm-toggle-line" key={i}>
-                  {l}
-                </span>
-              ))}
+        <div className="sm-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="sm-theme-toggle-wrapper">
+            {/* Theme toggle will be injected here */}
+          </div>
+          <button
+            ref={toggleBtnRef}
+            className="sm-toggle"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="staggered-menu-panel"
+            onClick={toggleMenu}
+            type="button"
+            style={{
+              color: theme === 'dark' ? '#FFD700' : '#1a202c'
+            }}
+          >
+            <span ref={textWrapRef} className="sm-toggle-textWrap" aria-hidden="true">
+              <span ref={textInnerRef} className="sm-toggle-textInner">
+                {textLines.map((l, i) => (
+                  <span className="sm-toggle-line" key={i}>
+                    {l}
+                  </span>
+                ))}
+              </span>
             </span>
-          </span>
-          <span ref={iconRef} className="sm-icon" aria-hidden="true">
-            <span ref={plusHRef} className="sm-icon-line" />
-            <span ref={plusVRef} className="sm-icon-line sm-icon-line-v" />
-          </span>
-        </button>
+            <span ref={iconRef} className="sm-icon" aria-hidden="true">
+              <span ref={plusHRef} className="sm-icon-line" />
+              <span ref={plusVRef} className="sm-icon-line sm-icon-line-v" />
+            </span>
+          </button>
+        </div>
       </header>
 
       <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open}>
