@@ -12,10 +12,18 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react"
-import { ToggleTheme } from "@/components/toggle-theme"
+import { useTheme } from "next-themes"
+import "@theme-toggles/react/css/Classic.css"
+import { Classic } from "@theme-toggles/react"
 
 export default function FooterNew() {
   const currentYear = new Date().getFullYear()
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const footerLinks = {
     quickLinks: [
@@ -40,10 +48,10 @@ export default function FooterNew() {
           {/* Brand Section with Newsletter */}
           <div className="relative lg:col-span-1">
             <Link href="/" className="flex items-center space-x-3 mb-4">
-              <Image 
-                src="/mzhub-logo.png" 
-                alt="MZhub Logo" 
-                width={40} 
+              <Image
+                src="/mzhub-logo.png"
+                alt="MZhub Logo"
+                width={40}
                 height={40}
                 className="w-10 h-10 object-contain"
               />
@@ -105,9 +113,9 @@ export default function FooterNew() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button 
-                      variant="outline" 
-                      size="icon" 
+                    <Button
+                      variant="outline"
+                      size="icon"
                       className="rounded-full"
                       asChild
                     >
@@ -122,13 +130,13 @@ export default function FooterNew() {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              
+
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button 
-                      variant="outline" 
-                      size="icon" 
+                    <Button
+                      variant="outline"
+                      size="icon"
                       className="rounded-full"
                       asChild
                     >
@@ -143,13 +151,13 @@ export default function FooterNew() {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              
+
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button 
-                      variant="outline" 
-                      size="icon" 
+                    <Button
+                      variant="outline"
+                      size="icon"
                       className="rounded-full"
                       asChild
                     >
@@ -164,13 +172,13 @@ export default function FooterNew() {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              
+
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button 
-                      variant="outline" 
-                      size="icon" 
+                    <Button
+                      variant="outline"
+                      size="icon"
                       className="rounded-full"
                       asChild
                     >
@@ -190,7 +198,15 @@ export default function FooterNew() {
             {/* Theme Toggle */}
             <div className="mt-4">
               <h4 className="text-sm font-semibold mb-3">Theme</h4>
-              <ToggleTheme />
+              {mounted && (
+                <div className="scale-150 origin-left">
+                  <Classic
+                    duration={750}
+                    toggled={theme === 'dark'}
+                    toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
-import { useEffect, useRef, useState } from 'react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { Button } from '@/components/ui/button'
@@ -16,60 +15,15 @@ const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
 
 export default function Home() {
     const testimonials = getTestimonials()
-    const videoRef = useRef<HTMLVideoElement>(null)
-    const [allowMotion, setAllowMotion] = useState(true)
-
-    useEffect(() => {
-        // Respect users who prefer reduced motion
-        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        if (prefersReduced) {
-            setAllowMotion(false)
-            const vid = videoRef.current
-            if (vid) {
-                vid.pause()
-            }
-            return
-        }
-
-        const video = videoRef.current
-        if (!video) return
-
-        // Play the video once when component mounts
-        const playPromise = video.play()
-        if (playPromise !== undefined) {
-            playPromise.catch(err => {
-                console.log('Video autoplay prevented:', err)
-            })
-        }
-    }, [])
 
     return (
-        <div className="pt-16 md:pt-20">
+        <div>
             {/* Hero Section with Background Video */}
-            <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden">
-                {/* Background Video (respects reduced motion) */}
-                {allowMotion ? (
-                    <video
-                        ref={videoRef}
-                        muted
-                        autoPlay
-                        playsInline
-                        preload="metadata"
-                        className="absolute inset-0 w-full h-full object-cover"
-                    >
-                        <source src="/videos/hero-bg5c.mp4" type="video/mp4" />
-                    </video>
-                ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-dark via-neutral-dark to-black" aria-hidden="true" />
-                )}
+            <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-[rgba(15,23,42,0.95)]">
+                {/* Animated Canvas */}
+                <AnimatedCanvas />
 
-                {/* Dark Overlay (35% opacity) */}
-                <div className="absolute inset-0 bg-black/35"></div>
-
-                {/* Animated Canvas (skipped if reduced motion) */}
-                {allowMotion && <AnimatedCanvas />}
-
-                <div className="container-custom relative z-20 text-center text-white py-8 px-4 md:py-20">
+                <div className="container-custom relative z-20 text-center text-gray-900 dark:text-white py-8 px-4 md:py-20">
                     <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 font-serif leading-tight">
                         Extend Your Spiritual Reach
                         <br />
@@ -78,14 +32,13 @@ export default function Home() {
                         </span>
                     </h1>
 
-                    {/* Hide paragraph on mobile, show on md and up */}
-                    <p className="hidden md:block text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
+                    <p className="hidden md:block text-xl md:text-2xl mb-8 text-gray-700 dark:text-white/90 max-w-3xl mx-auto">
                         Empower your religious institution with AI that preserves sacred teachings while delivering personalized guidance to your global community.
                     </p>
 
                     {/* Highlighted Guru Line */}
-                    <div className="mb-6 md:mb-12 py-4 md:py-8 px-4 md:px-6 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-accent-gold/40 max-w-4xl mx-auto">
-                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif italic text-white animate-glow">
+                    <div className="mb-6 md:mb-12 py-4 md:py-8 px-4 md:px-6 bg-accent-beige/50 dark:bg-white/10 backdrop-blur-md rounded-2xl border-2 border-accent-gold max-w-4xl mx-auto">
+                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif italic text-gray-900 dark:text-white">
                             "You are not replacing the guru.
                             <br />
                             <span className="text-accent-gold font-bold">You are extending their reach."</span>
@@ -93,12 +46,12 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
-                        <SneakyButton 
-                            text="Request Demo" 
+                        <SneakyButton
+                            text="Request Demo"
                             href="/contact"
                         />
-                        <SneakyButton 
-                            text="Explore Platform" 
+                        <SneakyButton
+                            text="Explore Platform"
                             href="/platform"
                         />
                     </div>
@@ -303,12 +256,12 @@ export default function Home() {
                         Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <SneakyButton 
-                            text="Schedule a Demo" 
+                        <SneakyButton
+                            text="Schedule a Demo"
                             href="/contact"
                         />
-                        <SneakyButton 
-                            text="Learn More" 
+                        <SneakyButton
+                            text="Learn More"
                             href="/platform"
                         />
                     </div>

@@ -6,9 +6,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import GooeyNav from '../GooeyNav'
 import StaggeredMenu from './StaggeredMenu'
-import { ToggleTheme } from '../toggle-theme'
 
 export default function Navbar() {
     const pathname = usePathname()
@@ -73,23 +71,6 @@ export default function Navbar() {
                 onMenuClose={() => console.log('Menu closed')}
                 onMenuStateChange={setIsMenuOpen}
             />
-            {/* Theme Toggle - only visible when menu is open */}
-            {isMenuOpen && (
-                <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ 
-                        position: 'fixed', 
-                        top: '2rem', 
-                        right: '8rem', 
-                        zIndex: 50 
-                    }}
-                >
-                    <ToggleTheme />
-                </motion.div>
-            )}
         </>
     )
 }
