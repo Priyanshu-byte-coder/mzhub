@@ -56,7 +56,7 @@ export default function Navbar() {
                 items={navLinks}
                 socialItems={socialItems}
                 displaySocials={true}
-                displayItemNumbering={true}
+                displayItemNumbering={false}
                 logoUrl="/mzhub-logo.png"
                 menuButtonColor="#1a202c"
                 openMenuButtonColor="#1a202c"

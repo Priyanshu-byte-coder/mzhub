@@ -17,6 +17,18 @@ body {
   height: 100vh;
   z-index: 40;
   overflow: hidden;
+  pointer-events: none;
+}
+
+/* Enable interactivity only when the menu is open */
+.staggered-menu-wrapper.fixed-wrapper[data-open] {
+  pointer-events: auto;
+}
+
+/* Ensure header and panel remain clickable even when wrapper is non-interactive */
+.staggered-menu-header,
+.staggered-menu-panel {
+  pointer-events: auto;
 }
 
 .staggered-menu-header {

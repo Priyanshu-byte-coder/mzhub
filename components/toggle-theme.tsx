@@ -44,7 +44,7 @@ export function ToggleTheme() {
 			role="radiogroup"
 		>
 			{THEME_OPTIONS.map((option) => (
-				<button
+				<motion.button
 					key={option.value}
 					className={cn(
 						'relative flex size-7 cursor-pointer items-center justify-center rounded-md transition-all',
@@ -56,6 +56,9 @@ export function ToggleTheme() {
 					aria-checked={theme === option.value}
 					aria-label={`Switch to ${option.value} theme`}
 					onClick={() => setTheme(option.value)}
+					whileHover={{ scale: 1.1 }}
+					whileTap={{ scale: 0.95 }}
+					transition={{ duration: 0.2 }}
 				>
 					{theme === option.value && (
 						<motion.div
@@ -65,7 +68,7 @@ export function ToggleTheme() {
 						/>
 					)}
 					<option.icon className="size-3.5" />
-				</button>
+				</motion.button>
 			))}
 		</motion.div>
 	);

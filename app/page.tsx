@@ -261,10 +261,29 @@ export default function Home() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-accent-gold/30 hover:bg-accent-gold/20 transition-colors"
+                            whileHover={{ 
+                                y: -10, 
+                                scale: 1.05,
+                                backgroundColor: "rgba(215, 180, 106, 0.3)",
+                                borderColor: "rgba(215, 180, 106, 0.8)",
+                                boxShadow: "0 25px 50px -12px rgba(215, 180, 106, 0.4)",
+                                transition: { duration: 0.3 }
+                            }}
+                            transition={{ delay: index * 0.1, duration: 0.3 }}
+                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center border border-accent-gold/30 transition-all duration-300"
+                            style={{ cursor: 'pointer' }}
                         >
-                            <div className="text-5xl mb-3">{audience.icon}</div>
+                            <motion.div 
+                                className="text-5xl mb-3"
+                                whileHover={{ 
+                                    scale: 1.3, 
+                                    rotate: 10,
+                                    transition: { duration: 0.3 }
+                                }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                {audience.icon}
+                            </motion.div>
                             <h3 className="font-bold text-xl mb-2">{audience.title}</h3>
                             <p className="text-primary-light text-sm">{audience.description}</p>
                         </motion.div>
