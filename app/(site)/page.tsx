@@ -4,21 +4,23 @@ import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import SectionWrapper from '@/components/ui/SectionWrapper'
-import Card from '@/components/ui/Card'
 import { BlobButton } from '@/components/ui/BlobButton'
-import { getTestimonials } from '@/lib/testimonials'
+import { getAnimatedTestimonials } from '@/lib/testimonials'
+import { AnimatedTestimonials } from '@/components/ui/animated-testimonials'
 import RotatingText from '@/components/RotatingText'
 import { BackgroundPathsOnly } from '@/components/ui/background-paths'
 import HoverCard from '@/components/ui/HoverCard'
 import { PlatformFeatures } from '@/components/ui/PlatformFeatures'
 import { BookOpen, Bot, Users } from 'lucide-react'
+import ScrollReveal from '@/components/ui/scroll-reveal'
+import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
     ssr: false,
 })
 
 export default function Home() {
-    const testimonials = getTestimonials()
+    const animatedTestimonials = getAnimatedTestimonials()
 
     return (
         <div>
@@ -26,7 +28,7 @@ export default function Home() {
                 <AnimatedCanvas />
                 <BackgroundPathsOnly />
                 <div className="container-custom relative z-20 text-center text-secondary-light dark:text-text-mist py-8 px-4 md:py-20">
-                    <div className="flex items-center justify-center mb-8 md:mb-12">
+                    <div className="flex items-center justify-center mb-6 md:mb-8">
                         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-serif flex items-center gap-4">
                             <span className="text-2xl sm:text-2xl md:text-4xl lg:text-6xl text-secondary-light dark:text-text-mist">Spiritual</span>
                             <RotatingText
@@ -43,6 +45,14 @@ export default function Home() {
                             />
                         </h1>
                     </div>
+
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={3} blurStrength={8}>
+                        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-8 md:mb-12 text-secondary-light/90 dark:text-accent-gold/90 italic max-w-4xl mx-auto px-4">
+                            "You are not replacing the guru.
+                            <br />
+                            You are extending their reach."
+                        </p>
+                    </ScrollReveal>
 
                     <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center px-4">
                         <Link href="/contact">
@@ -62,7 +72,9 @@ export default function Home() {
             {/* How It Works */}
             <SectionWrapper id="how-it-works" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading text-secondary-light dark:text-accent-gold">How MZhub Works</h2>
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">How MZhub Works</h2>
+                    </ScrollReveal>
                     <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
                         A simple, three-step process to transform your spiritual institution's digital presence
                     </p>
@@ -112,7 +124,9 @@ export default function Home() {
             {/* Key Features */}
             <SectionWrapper id="features" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-12">
-                    <h2 className="section-heading text-secondary-light dark:text-accent-gold">Platform Features</h2>
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">Platform Features</h2>
+                    </ScrollReveal>
                     <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
                         Everything you need to digitally transform your spiritual institution
                     </p>
@@ -123,47 +137,87 @@ export default function Home() {
 
             {/* Philosophy & Trust */}
             <SectionWrapper id="philosophy" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="section-heading text-secondary-light dark:text-accent-gold mb-8">Our Philosophy: Technology in Service of Faith</h2>
+                <div className="flex flex-col overflow-hidden">
+                    <ContainerScroll
+                        titleComponent={
+                            <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                                <h2 className="text-3xl md:text-5xl font-bold text-secondary-light dark:text-accent-gold">
+                                    Our Philosophy: Technology in Service of Faith
+                                </h2>
+                            </ScrollReveal>
+                        }
+                    >
+                        <div className="h-full w-full p-6 md:p-10 overflow-auto">
+                            {/* Introduction Text */}
+                            <div className="space-y-6 text-base md:text-lg text-secondary-light dark:text-text-mist mb-8">
+                                <p>
+                                    We understand that faith is deeply personal and sacred. The introduction of artificial intelligence into spiritual contexts requires extraordinary care, respect, and ethical consideration.
+                                </p>
 
-                    <div className="space-y-6 text-lg text-secondary-light dark:text-text-mist text-left">
-                        <p>
-                            We understand that faith is deeply personal and sacred. The introduction of artificial intelligence into spiritual contexts requires extraordinary care, respect, and ethical consideration.
-                        </p>
-
-                        <p className="text-xl font-semibold text-secondary-light dark:text-accent-gold bg-primary-light/20 dark:bg-secondary-dark p-6 rounded-lg border-l-4 border-accent-gold">
-                            MZhub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
-                        </p>
-
-                        <div className="grid md:grid-cols-2 gap-6 mt-8">
-                            <div className="bg-primary-light/30 dark:bg-primary-dark p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-3 text-secondary-light dark:text-accent-gold">What We Believe</h3>
-                                <ul className="space-y-2 text-secondary-light dark:text-text-mist">
-                                    <li>✓ Human spiritual leadership is irreplaceable</li>
-                                    <li>✓ Institutions must maintain doctrinal control</li>
-                                    <li>✓ Privacy and sanctity must be protected</li>
-                                    <li>✓ Technology should be transparent and trustworthy</li>
-                                </ul>
+                                <p className="text-lg md:text-xl font-semibold text-secondary-light dark:text-accent-gold bg-primary-light/20 dark:bg-secondary-dark p-6 rounded-lg border-l-4 border-accent-gold">
+                                    MZhub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
+                                </p>
                             </div>
 
-                            <div className="bg-accent-gold/20 dark:bg-primary-dark p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-3 text-secondary-light dark:text-accent-gold">What We Promise</h3>
-                                <ul className="space-y-2 text-secondary-light dark:text-text-mist">
-                                    <li>✓ Complete institutional oversight</li>
-                                    <li>✓ Rigorous doctrinal alignment</li>
-                                    <li>✓ Bank-level security and privacy</li>
-                                    <li>✓ Continuous ethical review</li>
-                                </ul>
+                            {/* Core Principles Grid */}
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {/* What We Believe */}
+                                <div className="bg-primary-light/30 dark:bg-primary-dark p-6 rounded-lg">
+                                    <h4 className="font-bold text-xl mb-4 text-secondary-light dark:text-accent-gold">What We Believe</h4>
+                                    <ul className="space-y-3 text-secondary-light dark:text-text-mist">
+                                        <li className="flex items-start">
+                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
+                                            <span>Human spiritual leadership is irreplaceable</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
+                                            <span>Institutions must maintain doctrinal control</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
+                                            <span>Privacy and sanctity must be protected</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
+                                            <span>Technology should be transparent and trustworthy</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                {/* What We Promise */}
+                                <div className="bg-accent-gold/20 dark:bg-primary-dark p-6 rounded-lg">
+                                    <h4 className="font-bold text-xl mb-4 text-secondary-light dark:text-accent-gold">What We Promise</h4>
+                                    <ul className="space-y-3 text-secondary-light dark:text-text-mist">
+                                        <li className="flex items-start">
+                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
+                                            <span>Complete institutional oversight</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
+                                            <span>Rigorous doctrinal alignment</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
+                                            <span>Bank-level security and privacy</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
+                                            <span>Continuous ethical review</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </ContainerScroll>
                 </div>
             </SectionWrapper>
 
             {/* Target Audience */}
             <SectionWrapper id="audience" className="bg-white text-secondary-light dark:bg-primary-dark dark:text-white">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-light dark:text-accent-gold">Who We Serve</h2>
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-light dark:text-accent-gold">Who We Serve</h2>
+                    </ScrollReveal>
                     <p className="text-xl text-secondary-light/80 dark:text-text-mist max-w-3xl mx-auto">
                         MZhub is purpose-built for religious institutions seeking to expand their digital presence
                     </p>
@@ -196,34 +250,25 @@ export default function Home() {
 
             {/* Testimonials */}
             <SectionWrapper id="testimonials" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-16">
-                    <h2 className="section-heading text-secondary-light dark:text-accent-gold">What Spiritual Leaders Say</h2>
+                <div className="text-center mb-8">
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">What Spiritual Leaders Say</h2>
+                    </ScrollReveal>
                     <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
                         Trusted by religious institutions across traditions
                     </p>
                 </div>
-
-                <div className="grid md:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial, index) => (
-                        <Card key={index} className="flex flex-col">
-                            <div className="text-accent-gold text-4xl mb-4">"</div>
-                            <p className="text-secondary-light dark:text-text-mist mb-6 flex-grow italic">{testimonial.content}</p>
-                            <div className="border-t border-primary-light dark:border-secondary-dark pt-4">
-                                <p className="font-bold text-secondary-light dark:text-accent-gold">{testimonial.name}</p>
-                                <p className="text-sm text-secondary-light/70 dark:text-text-mist/70">{testimonial.role}</p>
-                                <p className="text-sm text-secondary-light dark:text-accent-gold">{testimonial.institution}</p>
-                            </div>
-                        </Card>
-                    ))}
-                </div>
+                <AnimatedTestimonials testimonials={animatedTestimonials} autoplay={true} />
             </SectionWrapper>
 
             {/* Final CTA */}
             <SectionWrapper className="bg-white text-secondary-light text-center dark:bg-primary-dark dark:text-white">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-secondary-light dark:text-accent-gold">
-                        Ready to Extend Your Spiritual Reach?
-                    </h2>
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-secondary-light dark:text-accent-gold">
+                            Ready to Extend Your Spiritual Reach?
+                        </h2>
+                    </ScrollReveal>
                     <p className="text-xl mb-8 text-secondary-light/80 dark:text-text-mist">
                         Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
                     </p>

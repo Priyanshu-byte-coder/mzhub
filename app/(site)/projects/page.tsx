@@ -3,6 +3,7 @@ import Link from 'next/link'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
+import ScrollReveal from '@/components/ui/scroll-reveal'
 
 export const metadata: Metadata = {
     title: 'Platform',
@@ -29,7 +30,9 @@ export default function Platform() {
             {/* Platform Overview */}
             <SectionWrapper className="bg-white">
                 <div className="max-w-4xl mx-auto text-center mb-16">
-                    <h2 className="section-heading mb-8">Comprehensive Digital Infrastructure</h2>
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="section-heading mb-8">Comprehensive Digital Infrastructure</h2>
+                    </ScrollReveal>
                     <p className="text-xl text-gray-700 leading-relaxed">
                         MZhub isn't just a chatbot or an archive—it's a complete ecosystem designed specifically for religious institutions. From content ingestion to community insights, every feature is built with spiritual contexts in mind.
                     </p>
@@ -81,7 +84,9 @@ export default function Platform() {
             {/* Core Modules */}
             <SectionWrapper className="bg-gradient-to-br from-spiritual-indigo-50 to-white">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading">Core Platform Modules</h2>
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="section-heading">Core Platform Modules</h2>
+                    </ScrollReveal>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                         Four integrated modules that work together to serve your community
                     </p>
@@ -283,7 +288,9 @@ export default function Platform() {
             {/* Institutional Control */}
             <SectionWrapper id="control" className="bg-white">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="section-heading text-center mb-12">You're Always in Control</h2>
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="section-heading text-center mb-12">You're Always in Control</h2>
+                    </ScrollReveal>
 
                     <div className="grid md:grid-cols-2 gap-8">
                         <Card>

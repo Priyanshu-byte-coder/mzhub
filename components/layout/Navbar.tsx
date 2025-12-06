@@ -100,9 +100,9 @@ export default function Navbar() {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+        <header className="fixed top-0 left-0 right-0 z-50 py-4">
             {/* Mobile Layout */}
-            <div className="md:hidden flex items-center justify-between">
+            <div className="md:hidden flex items-center justify-between px-4">
                 {/* Logo and Brand Name */}
                 <Link href="/" className="flex items-center gap-2 group">
                     <div className="relative w-8 h-8">
@@ -150,9 +150,9 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden md:flex max-w-7xl mx-auto items-center justify-between gap-4">
-                {/* Logo and Brand Name - Left */}
-                <Link href="/" className="flex items-center gap-3 group">
+            <div className="hidden md:flex items-center justify-between w-full px-4">
+                {/* Logo and Brand Name - Extreme Left */}
+                <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
                     <div className="relative w-10 h-10">
                         {mounted && (
                             <Image
@@ -170,7 +170,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Navigation Menu - Center */}
-                <div className="flex-1 flex justify-center">
+                <div className="flex-1 flex justify-center mx-8">
                     <MenuBar
                         items={menuItems}
                         activeItem={activeItem}
@@ -178,19 +178,21 @@ export default function Navbar() {
                     />
                 </div>
 
-                {/* Theme Toggle - Right */}
-                {mounted && (
-                    <ThemeToggleButton
-                        theme={theme as 'light' | 'dark'}
-                        variant="circle"
-                        start="top-right"
-                        onClick={() => {
-                            startTransition(() => {
-                                setTheme(theme === 'dark' ? 'light' : 'dark')
-                            })
-                        }}
-                    />
-                )}
+                {/* Theme Toggle - Extreme Right */}
+                <div className="flex-shrink-0">
+                    {mounted && (
+                        <ThemeToggleButton
+                            theme={theme as 'light' | 'dark'}
+                            variant="circle"
+                            start="top-right"
+                            onClick={() => {
+                                startTransition(() => {
+                                    setTheme(theme === 'dark' ? 'light' : 'dark')
+                                })
+                            }}
+                        />
+                    )}
+                </div>
             </div>
 
             {/* Mobile Menu Drawer */}
