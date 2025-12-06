@@ -121,18 +121,34 @@ export default function Navbar() {
                     </span>
                 </Link>
 
-                {/* Hamburger Menu Button */}
-                <button
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="p-2 rounded-lg hover:bg-foreground/10 transition-colors"
-                    aria-label="Toggle menu"
-                >
-                    {isMobileMenuOpen ? (
-                        <X className="w-6 h-6 text-foreground" />
-                    ) : (
-                        <Menu className="w-6 h-6 text-foreground" />
+                {/* Theme Toggle & Hamburger Menu */}
+                <div className="flex items-center gap-2">
+                    {mounted && (
+                        <button
+                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            className="p-2 rounded-lg hover:bg-foreground/10 transition-colors"
+                            aria-label="Toggle theme"
+                        >
+                            <Classic
+                                duration={750}
+                                toggled={theme === 'dark'}
+                                toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                                {...({} as any)}
+                            />
+                        </button>
                     )}
-                </button>
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="p-2 rounded-lg hover:bg-foreground/10 transition-colors"
+                        aria-label="Toggle menu"
+                    >
+                        {isMobileMenuOpen ? (
+                            <X className="w-6 h-6 text-foreground" />
+                        ) : (
+                            <Menu className="w-6 h-6 text-foreground" />
+                        )}
+                    </button>
+                </div>
             </div>
 
             {/* Desktop Layout */}
@@ -165,18 +181,16 @@ export default function Navbar() {
                 </div>
 
                 {/* Theme Toggle - Right */}
-                <div className="flex items-center">
-                    {mounted && (
-                        <div className="scale-125">
-                            <Classic
-                                duration={750}
-                                toggled={theme === 'dark'}
-                                toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                {...({} as any)}
-                            />
-                        </div>
-                    )}
-                </div>
+                {mounted && (
+                    <div className="scale-125">
+                        <Classic
+                            duration={750}
+                            toggled={theme === 'dark'}
+                            toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            {...({} as any)}
+                        />
+                    </div>
+                )}
             </div>
 
             {/* Mobile Menu Drawer */}
@@ -230,7 +244,7 @@ export default function Navbar() {
                                 </div>
 
                                 {/* Navigation Links */}
-                                <nav className="flex-1 flex flex-col gap-2">
+                                <nav className="flex flex-col gap-2">
                                     {menuItems.map((item) => {
                                         const Icon = item.icon
                                         const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
@@ -250,23 +264,6 @@ export default function Navbar() {
                                         )
                                     })}
                                 </nav>
-
-                                {/* Theme Toggle */}
-                                <div className="pt-6 border-t border-border">
-                                    <div className="flex items-center justify-between p-4">
-                                        <span className="text-sm font-medium text-foreground">Theme</span>
-                                        {mounted && (
-                                            <div className="scale-125">
-                                                <Classic
-                                                    duration={750}
-                                                    toggled={theme === 'dark'}
-                                                    toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                                    {...({} as any)}
-                                                />
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
                             </div>
                         </motion.div>
                     </>

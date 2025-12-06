@@ -1,12 +1,16 @@
-'use client'
+"use client"
 
 import Link from 'next/link'
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { BlobButton } from '@/components/ui/BlobButton'
 import { getTestimonials } from '@/lib/testimonials'
 import RotatingText from '@/components/RotatingText'
+import { BackgroundPathsOnly } from '@/components/ui/background-paths'
+import HoverCard from '@/components/ui/HoverCard'
+import { PlatformFeatures } from '@/components/ui/PlatformFeatures'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
     ssr: false,
@@ -19,6 +23,7 @@ export default function Home() {
         <div>
             <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-neutral-light dark:bg-primary-dark">
                 <AnimatedCanvas />
+                <BackgroundPathsOnly />
                 <div className="container-custom relative z-20 text-center text-secondary-light dark:text-text-mist py-8 px-4 md:py-20">
                     <div className="flex items-center justify-center mb-8 md:mb-12">
                         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-serif flex items-center gap-4">
@@ -62,86 +67,75 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto px-4">
                     {[
                         {
                             step: '01',
                             title: 'Ingest Your Content',
-                            description: 'Upload scriptures, discourses, Q&A sessions, media archives, and institutional teachings. Our secure platform handles all formats.',
-                            icon: '📚'
+                            description:
+                                'Upload scriptures, discourses, Q&A sessions, media archives, and institutional teachings. Our secure platform handles all formats.',
+                            icon: (
+                                <Image
+                                    src="/icons/books.svg"
+                                    alt="Books icon"
+                                    width={80}
+                                    height={80}
+                                    className="w-16 h-16 sm:w-20 sm:h-20"
+                                />
+                            ),
                         },
                         {
                             step: '02',
                             title: 'Train & Align AI',
-                            description: 'Our AI models learn from your content while maintaining strict alignment with your doctrine. You maintain complete control.',
-                            icon: '🤖'
+                            description:
+                                'Our AI models learn from your content while maintaining strict alignment with your doctrine. You maintain complete control.',
+                            icon: (
+                                <Image
+                                    src="/icons/ai.svg"
+                                    alt="AI icon"
+                                    width={80}
+                                    height={80}
+                                    className="w-16 h-16 sm:w-20 sm:h-20"
+                                />
+                            ),
                         },
                         {
                             step: '03',
                             title: 'Serve Your Community',
-                            description: 'Deploy personalized guidance, automated engagement, searchable archives, and community insights—all true to your teachings.',
-                            icon: '🙏'
-                        }
+                            description:
+                                'Deploy personalized guidance, automated engagement, searchable archives, and community insights—all true to your teachings.',
+                            icon: (
+                                <Image
+                                    src="/icons/community.svg"
+                                    alt="Community icon"
+                                    width={80}
+                                    height={80}
+                                    className="w-16 h-16 sm:w-20 sm:h-20"
+                                />
+                            ),
+                        },
                     ].map((item, index) => (
-                        <Card key={index} className="text-center">
-                            <div className="text-6xl mb-4">{item.icon}</div>
-                            <div className="text-secondary-light dark:text-accent-gold font-bold text-lg mb-2">Step {item.step}</div>
-                            <h3 className="text-2xl font-bold mb-4 text-secondary-light dark:text-accent-gold">{item.title}</h3>
-                            <p className="text-secondary-light/80 dark:text-text-mist/80">{item.description}</p>
-                        </Card>
+                        <HoverCard
+                            key={index}
+                            icon={item.icon}
+                            title={item.title}
+                            description={item.description}
+                            step={item.step}
+                        />
                     ))}
                 </div>
             </SectionWrapper>
 
             {/* Key Features */}
             <SectionWrapper id="features" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-16">
+                <div className="text-center mb-12">
                     <h2 className="section-heading text-secondary-light dark:text-accent-gold">Platform Features</h2>
                     <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
                         Everything you need to digitally transform your spiritual institution
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {[
-                        {
-                            title: 'AI-Powered Guidance',
-                            description: 'Provide 24/7 personalized spiritual guidance aligned with your teachings using advanced natural language AI.',
-                            icon: '🧘'
-                        },
-                        {
-                            title: 'Digital Archives',
-                            description: 'Searchable library of all your content—sermons, texts, videos, Q&As—preserved and accessible forever.',
-                            icon: '🗄️'
-                        },
-                        {
-                            title: 'Automated Engagement',
-                            description: 'Schedule reminders, send personalized messages, and maintain continuous connection with your devotees.',
-                            icon: '💌'
-                        },
-                        {
-                            title: 'Community Analytics',
-                            description: 'Understand your community\'s needs through insights on engagement, popular topics, and spiritual journeys.',
-                            icon: '📊'
-                        },
-                        {
-                            title: 'Institutional Control',
-                            description: 'Complete oversight of AI responses, content curation, and platform behavior. Your doctrine, your rules.',
-                            icon: '🔐'
-                        },
-                        {
-                            title: 'Multi-Language Support',
-                            description: 'Serve devotees in their native languages while preserving the nuance of original teachings.',
-                            icon: '🌍'
-                        }
-                    ].map((feature, index) => (
-                        <Card key={index}>
-                            <div className="text-5xl mb-4">{feature.icon}</div>
-                            <h3 className="text-xl font-bold mb-3 text-secondary-light dark:text-accent-gold">{feature.title}</h3>
-                            <p className="text-secondary-light/80 dark:text-text-mist/80">{feature.description}</p>
-                        </Card>
-                    ))}
-                </div>
+                <PlatformFeatures />
             </SectionWrapper>
 
             {/* Philosophy & Trust */}

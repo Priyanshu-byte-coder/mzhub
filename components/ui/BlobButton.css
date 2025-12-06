@@ -1,12 +1,12 @@
 .blob-btn {
   z-index: 1;
   position: relative;
-  padding: 20px 46px;
+  padding: 14px 32px;
   margin-bottom: 30px;
   text-align: center;
   text-transform: uppercase;
   color: #6366f1;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: bold;
   background-color: transparent;
   outline: none;
@@ -14,6 +14,22 @@
   transition: color 0.5s;
   cursor: pointer;
   border-radius: 30px;
+}
+
+/* Tablet and larger */
+@media (min-width: 640px) {
+  .blob-btn {
+    padding: 16px 38px;
+    font-size: 14px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .blob-btn {
+    padding: 20px 46px;
+    font-size: 16px;
+  }
 }
 
 .blob-btn:before {
