@@ -7,9 +7,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Home, Info, FolderOpen, BookOpen, Mail, Menu, X } from 'lucide-react'
 import { MenuBar } from '@/components/ui/glow-menu'
-import { Classic } from '@theme-toggles/react'
+import { ThemeToggleButton, useThemeTransition } from '@/components/ui/theme-toggle-button'
 import { motion, AnimatePresence } from 'framer-motion'
-import '@theme-toggles/react/css/Classic.css'
 
 export default function Navbar() {
     const pathname = usePathname()
@@ -18,6 +17,7 @@ export default function Navbar() {
     const [activeItem, setActiveItem] = useState<string>('Home')
     const [mounted, setMounted] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const { startTransition } = useThemeTransition()
 
     useEffect(() => {
         setMounted(true)
@@ -124,18 +124,16 @@ export default function Navbar() {
                 {/* Theme Toggle & Hamburger Menu */}
                 <div className="flex items-center gap-2">
                     {mounted && (
-                        <button
-                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className="p-2 rounded-lg hover:bg-foreground/10 transition-colors"
-                            aria-label="Toggle theme"
-                        >
-                            <Classic
-                                duration={750}
-                                toggled={theme === 'dark'}
-                                toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                {...({} as any)}
-                            />
-                        </button>
+                        <ThemeToggleButton
+                            theme={theme as 'light' | 'dark'}
+                            variant="circle"
+                            start="top-right"
+                            onClick={() => {
+                                startTransition(() => {
+                                    setTheme(theme === 'dark' ? 'light' : 'dark')
+                                })
+                            }}
+                        />
                     )}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -182,14 +180,16 @@ export default function Navbar() {
 
                 {/* Theme Toggle - Right */}
                 {mounted && (
-                    <div className="scale-125">
-                        <Classic
-                            duration={750}
-                            toggled={theme === 'dark'}
-                            toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            {...({} as any)}
-                        />
-                    </div>
+                    <ThemeToggleButton
+                        theme={theme as 'light' | 'dark'}
+                        variant="circle"
+                        start="top-right"
+                        onClick={() => {
+                            startTransition(() => {
+                                setTheme(theme === 'dark' ? 'light' : 'dark')
+                            })
+                        }}
+                    />
                 )}
             </div>
 
