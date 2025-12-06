@@ -11,6 +11,7 @@ import RotatingText from '@/components/RotatingText'
 import { BackgroundPathsOnly } from '@/components/ui/background-paths'
 import HoverCard from '@/components/ui/HoverCard'
 import { PlatformFeatures } from '@/components/ui/PlatformFeatures'
+import { BookOpen, Bot, Users } from 'lucide-react'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
     ssr: false,
@@ -75,13 +76,7 @@ export default function Home() {
                             description:
                                 'Upload scriptures, discourses, Q&A sessions, media archives, and institutional teachings. Our secure platform handles all formats.',
                             icon: (
-                                <Image
-                                    src="/icons/books.svg"
-                                    alt="Books icon"
-                                    width={80}
-                                    height={80}
-                                    className="w-16 h-16 sm:w-20 sm:h-20"
-                                />
+                                <BookOpen className="w-16 h-16 sm:w-20 sm:h-20 text-secondary-light dark:text-accent-gold" />
                             ),
                         },
                         {
@@ -90,13 +85,7 @@ export default function Home() {
                             description:
                                 'Our AI models learn from your content while maintaining strict alignment with your doctrine. You maintain complete control.',
                             icon: (
-                                <Image
-                                    src="/icons/ai.svg"
-                                    alt="AI icon"
-                                    width={80}
-                                    height={80}
-                                    className="w-16 h-16 sm:w-20 sm:h-20"
-                                />
+                                <Bot className="w-16 h-16 sm:w-20 sm:h-20 text-secondary-light dark:text-accent-gold" />
                             ),
                         },
                         {
@@ -105,13 +94,7 @@ export default function Home() {
                             description:
                                 'Deploy personalized guidance, automated engagement, searchable archives, and community insights—all true to your teachings.',
                             icon: (
-                                <Image
-                                    src="/icons/community.svg"
-                                    alt="Community icon"
-                                    width={80}
-                                    height={80}
-                                    className="w-16 h-16 sm:w-20 sm:h-20"
-                                />
+                                <Users className="w-16 h-16 sm:w-20 sm:h-20 text-secondary-light dark:text-accent-gold" />
                             ),
                         },
                     ].map((item, index) => (
