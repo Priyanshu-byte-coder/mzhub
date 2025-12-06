@@ -3,6 +3,8 @@ import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { getTeamMembers } from '@/lib/teamMembers'
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
+import { AnimatedTestimonials } from '@/components/ui/animated-testimonials'
+import { getAnimatedTestimonials } from '@/lib/testimonials'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 
 export default function About() {
     const team = getTeamMembers()
+    const animatedTestimonials = getAnimatedTestimonials()
 
     return (
         <div className="pt-20">
@@ -175,6 +178,17 @@ export default function About() {
                         </Card>
                     ))}
                 </div>
+            </SectionWrapper>
+
+            {/* Testimonials */}
+            <SectionWrapper className="bg-white dark:bg-gray-900">
+                <div className="text-center mb-8">
+                    <h2 className="section-heading dark:text-accent-gold">What Spiritual Leaders Say</h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        Trusted by religious institutions across traditions
+                    </p>
+                </div>
+                <AnimatedTestimonials testimonials={animatedTestimonials} autoplay={true} />
             </SectionWrapper>
         </div>
     )

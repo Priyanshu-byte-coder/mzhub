@@ -3,6 +3,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { useTheme } from 'next-themes'
+import { usePathname } from 'next/navigation'
 import '@theme-toggles/react/css/Classic.css'
 import { Classic } from '@theme-toggles/react'
 
@@ -57,6 +58,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   onMenuStateChange
 }) => {
   const { theme, setTheme } = useTheme()
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const openRef = useRef(false)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -425,6 +427,13 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       animateText(false)
     }
   }, [playClose, animateIcon, animateColor, animateText, onMenuClose])
+
+  // Close menu when pathname changes (navigation)
+  React.useEffect(() => {
+    if (open) {
+      closeMenu()
+    }
+  }, [pathname])
 
   React.useEffect(() => {
     if (!closeOnClickAway || !open) return
