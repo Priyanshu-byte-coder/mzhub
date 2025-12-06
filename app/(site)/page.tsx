@@ -22,10 +22,10 @@ export default function Home() {
                 <div className="container-custom relative z-20 text-center text-secondary-light dark:text-text-mist py-8 px-4 md:py-20">
                     <div className="flex items-center justify-center mb-8 md:mb-12">
                         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-serif flex items-center gap-4">
-                            <span className="text-2xl sm:text-2xl md:text-4xl lg:text-6xl text-secondary-light dark:text-text-mist">Spiritual</span>
+                            <span className="text-secondary-light dark:text-text-mist">Spiritual</span>
                             <RotatingText
                                 texts={['Guru', 'AI']}
-                                mainClassName="text-2xl sm:text-2xl md:text-4xl lg:text-6xl px-3 sm:px-4 md:px-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-xl"
+                                mainClassName="px-3 sm:px-4 md:px-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-xl"
                                 staggerFrom="last"
                                 initial={{ y: "100%" }}
                                 animate={{ y: 0 }}

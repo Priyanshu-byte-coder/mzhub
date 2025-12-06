@@ -16,9 +16,20 @@ export default function Navbar() {
     const { theme, setTheme } = useTheme()
     const [activeItem, setActiveItem] = useState<string>('Home')
     const [mounted, setMounted] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
         setMounted(true)
+        
+        // Check if mobile on mount
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768)
+        }
+        
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        
+        return () => window.removeEventListener('resize', checkMobile)
     }, [])
 
     const menuItems = [
@@ -81,39 +92,39 @@ export default function Navbar() {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
-            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-                {/* Logo and Brand Name - Left */}
-                <Link href="/" className="flex items-center gap-3 group">
-                    <div className="relative w-10 h-10">
-                        {mounted && (
-                            <Image
-                                src={theme === 'dark' ? '/mzhub-logo_w.svg' : '/mzhub-logo.svg'}
-                                alt="MZhub Logo"
-                                width={40}
-                                height={40}
-                                className="w-full h-full object-contain transition-transform group-hover:scale-110"
+        <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 py-3 sm:py-4">
+            <div className="max-w-7xl mx-auto">
+                {/* Desktop Layout */}
+                {mounted && !isMobile && (
+                    <div className="flex items-center justify-between gap-4">
+                        {/* Logo - Left */}
+                        <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
+                            <div className="relative w-10 h-10">
+                                <Image
+                                    src={theme === 'dark' ? '/mzhub-logo_w.svg' : '/mzhub-logo.svg'}
+                                    alt="MZhub Logo"
+                                    width={40}
+                                    height={40}
+                                    className="w-full h-full object-contain transition-transform group-hover:scale-110"
+                                />
+                            </div>
+                            <span className="text-2xl font-bold font-serif bg-gradient-to-r from-secondary-light to-accent-gold dark:from-text-mist dark:to-accent-gold bg-clip-text text-transparent">
+                                MZhub
+                            </span>
+                        </Link>
+
+                        {/* Menu - Center */}
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <MenuBar
+                                items={menuItems}
+                                activeItem={activeItem}
+                                onItemClick={handleItemClick}
+                                isMobile={false}
                             />
-                        )}
-                    </div>
-                    <span className="text-2xl font-bold font-serif bg-gradient-to-r from-secondary-light to-accent-gold dark:from-text-mist dark:to-accent-gold bg-clip-text text-transparent">
-                        MZhub
-                    </span>
-                </Link>
+                        </div>
 
-                {/* Navigation Menu - Center */}
-                <div className="flex-1 flex justify-center">
-                    <MenuBar
-                        items={menuItems}
-                        activeItem={activeItem}
-                        onItemClick={handleItemClick}
-                    />
-                </div>
-
-                {/* Theme Toggle - Right */}
-                <div className="flex items-center">
-                    {mounted && (
-                        <div className="scale-125">
+                        {/* Theme Toggle - Right */}
+                        <div className="scale-125 flex-shrink-0">
                             <Classic
                                 duration={750}
                                 toggled={theme === 'dark'}
@@ -121,8 +132,47 @@ export default function Navbar() {
                                 {...({} as any)}
                             />
                         </div>
-                    )}
-                </div>
+                    </div>
+                )}
+
+                {/* Mobile Layout */}
+                {mounted && isMobile && (
+                    <div className="flex items-center justify-between gap-2">
+                        {/* Logo - Left */}
+                        <Link href="/" className="flex items-center gap-1.5 group flex-shrink-0 min-w-0">
+                            <div className="relative w-7 h-7 flex-shrink-0">
+                                <Image
+                                    src={theme === 'dark' ? '/mzhub-logo_w.svg' : '/mzhub-logo.svg'}
+                                    alt="MZhub Logo"
+                                    width={40}
+                                    height={40}
+                                    className="w-full h-full object-contain transition-transform group-hover:scale-110"
+                                />
+                            </div>
+                            <span className="text-lg font-bold font-serif bg-gradient-to-r from-secondary-light to-accent-gold dark:from-text-mist dark:to-accent-gold bg-clip-text text-transparent whitespace-nowrap">
+                                MZhub
+                            </span>
+                        </Link>
+
+                        {/* Theme Toggle & Menu - Right */}
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                            <div className="scale-100">
+                                <Classic
+                                    duration={750}
+                                    toggled={theme === 'dark'}
+                                    toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                                    {...({} as any)}
+                                />
+                            </div>
+                            <MenuBar
+                                items={menuItems}
+                                activeItem={activeItem}
+                                onItemClick={handleItemClick}
+                                isMobile={true}
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
         </header>
     )
