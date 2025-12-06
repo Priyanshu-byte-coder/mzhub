@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
@@ -20,11 +19,8 @@ export default function Home() {
 
     return (
         <div>
-            {/* Hero Section with Background Video */}
             <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-neutral-light dark:bg-primary-dark">
-                {/* Animated Canvas */}
                 <AnimatedCanvas />
-                {/* Animated Lines */}
                 <AnimatedLines />
 
                 <div className="container-custom relative z-20 text-center text-secondary-light dark:text-text-mist py-8 px-4 md:py-20">
@@ -62,7 +58,7 @@ export default function Home() {
             </section>
 
             {/* How It Works */}
-            <SectionWrapper id="how-it-works" className="bg-neutral-light dark:bg-secondary-dark">
+            <SectionWrapper id="how-it-works" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-16">
                     <h2 className="section-heading text-secondary-light dark:text-accent-gold">How MZhub Works</h2>
                     <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
@@ -153,7 +149,7 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Philosophy & Trust */}
-            <SectionWrapper id="philosophy" className="bg-neutral-light dark:bg-secondary-dark">
+            <SectionWrapper id="philosophy" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="section-heading text-secondary-light dark:text-accent-gold mb-8">Our Philosophy: Technology in Service of Faith</h2>
 
@@ -192,10 +188,10 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Target Audience */}
-            <SectionWrapper id="audience" className="bg-gradient-to-br from-secondary-light to-accent-blue text-white">
+            <SectionWrapper id="audience" className="bg-white text-secondary-light dark:bg-primary-dark dark:text-white">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-accent-gold">Who We Serve</h2>
-                    <p className="text-xl text-neutral-light dark:text-text-mist max-w-3xl mx-auto">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-light dark:text-accent-gold">Who We Serve</h2>
+                    <p className="text-xl text-secondary-light/80 dark:text-text-mist max-w-3xl mx-auto">
                         MZhub is purpose-built for religious institutions seeking to expand their digital presence
                     </p>
                 </div>
@@ -213,13 +209,13 @@ export default function Home() {
                     ].map((audience, index) => (
                         <div
                             key={index}
-                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-white/20 transition-colors"
+                            className="bg-secondary-light/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-secondary-light/20 transition-colors dark:bg-white/10 dark:hover:bg-white/20"
                         >
                             <div className="text-5xl mb-3">
                                 {audience.icon}
                             </div>
-                            <h3 className="font-bold text-xl mb-2">{audience.title}</h3>
-                            <p className="text-neutral-light text-sm">{audience.description}</p>
+                            <h3 className="font-bold text-xl mb-2 text-secondary-light dark:text-white">{audience.title}</h3>
+                            <p className="text-secondary-light/70 dark:text-neutral-light text-sm">{audience.description}</p>
                         </div>
                     ))}
                 </div>
@@ -250,12 +246,12 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Final CTA */}
-            <SectionWrapper className="bg-gradient-to-r from-secondary-light to-accent-blue text-white text-center">
+            <SectionWrapper className="bg-white text-secondary-light text-center dark:bg-primary-dark dark:text-white">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white dark:text-accent-gold">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-secondary-light dark:text-accent-gold">
                         Ready to Extend Your Spiritual Reach?
                     </h2>
-                    <p className="text-xl mb-8 text-neutral-light dark:text-text-mist">
+                    <p className="text-xl mb-8 text-secondary-light/80 dark:text-text-mist">
                         Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
