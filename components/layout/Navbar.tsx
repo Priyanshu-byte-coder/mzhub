@@ -1,74 +1,129 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { usePathname } from 'next/navigation'
-import { useTheme } from 'next-themes'
-import StaggeredMenu from './StaggeredMenu'
+import { Home, Info, FolderOpen, BookOpen, Mail } from 'lucide-react'
+import { MenuBar } from '@/components/ui/glow-menu'
+import { Classic } from '@theme-toggles/react'
+import '@theme-toggles/react/css/Classic.css'
 
 export default function Navbar() {
     const pathname = usePathname()
-    const { theme } = useTheme()
-    const [activeIndex, setActiveIndex] = useState(0)
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const router = useRouter()
+    const { theme, setTheme } = useTheme()
+    const [activeItem, setActiveItem] = useState<string>('Home')
+    const [mounted, setMounted] = useState(false)
 
-    const navLinks = [
-        { label: 'Home', link: '/', ariaLabel: 'Go to home page' },
-        { label: 'About', link: '/about', ariaLabel: 'Learn about us' },
-        { label: 'Projects', link: '/projects', ariaLabel: 'View our projects' },
-        { label: 'Blog', link: '/blog', ariaLabel: 'Read our blog' },
-        { label: 'Contact', link: '/contact', ariaLabel: 'Get in touch' },
-    ]
-
-    const socialItems = [
-        { label: 'GitHub', link: 'https://github.com' },
-        { label: 'Twitter', link: 'https://twitter.com' },
-        { label: 'LinkedIn', link: 'https://linkedin.com' },
-        { label: 'Email', link: 'mailto:contact@mzhub.com' },
-    ]
-
-    const gooeyItems = useMemo(() => ([
-        { label: 'Home', href: '/' },
-        { label: 'About', href: '/about' },
-        { label: 'Projects', href: '/projects' },
-        { label: 'Blog', href: '/blog' },
-        { label: 'Contact', href: '/contact' },
-    ]), [])
-
-    // Update active index based on current pathname
     useEffect(() => {
-        const index = gooeyItems.findIndex(item => {
+        setMounted(true)
+    }, [])
+
+    const menuItems = [
+        {
+            icon: Home,
+            label: 'Home',
+            href: '/',
+            gradient: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.5) 0%, transparent 70%)',
+            iconColor: 'text-blue-500'
+        },
+        {
+            icon: Info,
+            label: 'About',
+            href: '/about',
+            gradient: 'radial-gradient(circle at center, rgba(168, 85, 247, 0.5) 0%, transparent 70%)',
+            iconColor: 'text-purple-500'
+        },
+        {
+            icon: FolderOpen,
+            label: 'Projects',
+            href: '/projects',
+            gradient: 'radial-gradient(circle at center, rgba(236, 72, 153, 0.5) 0%, transparent 70%)',
+            iconColor: 'text-pink-500'
+        },
+        {
+            icon: BookOpen,
+            label: 'Blog',
+            href: '/blog',
+            gradient: 'radial-gradient(circle at center, rgba(34, 197, 94, 0.5) 0%, transparent 70%)',
+            iconColor: 'text-green-500'
+        },
+        {
+            icon: Mail,
+            label: 'Contact',
+            href: '/contact',
+            gradient: 'radial-gradient(circle at center, rgba(251, 191, 36, 0.5) 0%, transparent 70%)',
+            iconColor: 'text-amber-500'
+        }
+    ]
+
+    // Update active item based on current pathname
+    useEffect(() => {
+        const currentItem = menuItems.find(item => {
             if (item.href === '/') {
                 return pathname === '/'
             }
             return pathname.startsWith(item.href)
         })
-        setActiveIndex(index >= 0 ? index : 0)
-    }, [pathname, gooeyItems])
+        if (currentItem) {
+            setActiveItem(currentItem.label)
+        }
+    }, [pathname])
+
+    const handleItemClick = (label: string) => {
+        const item = menuItems.find(i => i.label === label)
+        if (item) {
+            router.push(item.href)
+            setActiveItem(label)
+        }
+    }
 
     return (
-        <>
-            {/* StaggeredMenu - Full viewport overlay with integrated header */}
-            <StaggeredMenu
-                position="right"
-                items={navLinks}
-                socialItems={socialItems}
-                displaySocials={true}
-                displayItemNumbering={false}
-                logoUrl="/mzhub-logo.svg"
-                menuButtonColor={theme === 'dark' ? '#FFD700' : '#1a202c'}
-                openMenuButtonColor={theme === 'dark' ? '#FFD700' : '#1a202c'}
-                changeMenuColorOnOpen={false}
-                colors={['rgba(57, 69, 126, 0.15)', 'rgba(215, 180, 106, 0.12)']}
-                accentColor="#D7B46A"
-                isFixed={true}
-                closeOnClickAway={true}
-                onMenuOpen={() => console.log('Menu opened')}
-                onMenuClose={() => console.log('Menu closed')}
-                onMenuStateChange={setIsMenuOpen}
-            />
-        </>
+        <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+                {/* Logo and Brand Name - Left */}
+                <Link href="/" className="flex items-center gap-3 group">
+                    <div className="relative w-10 h-10">
+                        {mounted && (
+                            <Image
+                                src={theme === 'dark' ? '/mzhub-logo_w.svg' : '/mzhub-logo.svg'}
+                                alt="MZhub Logo"
+                                width={40}
+                                height={40}
+                                className="w-full h-full object-contain transition-transform group-hover:scale-110"
+                            />
+                        )}
+                    </div>
+                    <span className="text-2xl font-bold font-serif bg-gradient-to-r from-secondary-light to-accent-gold dark:from-text-mist dark:to-accent-gold bg-clip-text text-transparent">
+                        MZhub
+                    </span>
+                </Link>
+
+                {/* Navigation Menu - Center */}
+                <div className="flex-1 flex justify-center">
+                    <MenuBar
+                        items={menuItems}
+                        activeItem={activeItem}
+                        onItemClick={handleItemClick}
+                    />
+                </div>
+
+                {/* Theme Toggle - Right */}
+                <div className="flex items-center">
+                    {mounted && (
+                        <div className="scale-125">
+                            <Classic
+                                duration={750}
+                                toggled={theme === 'dark'}
+                                toggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                                {...({} as any)}
+                            />
+                        </div>
+                    )}
+                </div>
+            </div>
+        </header>
     )
 }

@@ -6,8 +6,6 @@
 @import '../styles/variables.css';
 @import '../styles/typography.css';
 
-/* Import StaggeredMenu styles */
-@import '../components/layout/StaggeredMenu.css';
 
 html {
   scroll-behavior: smooth;

@@ -4,11 +4,9 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
-import { Button } from '@/components/ui/button'
 import { BlobButton } from '@/components/ui/BlobButton'
 import { getTestimonials } from '@/lib/testimonials'
 import RotatingText from '@/components/RotatingText'
-import { AnimatedLines } from '@/components/ui/AnimatedLines'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
     ssr: false,
@@ -21,15 +19,13 @@ export default function Home() {
         <div>
             <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-neutral-light dark:bg-primary-dark">
                 <AnimatedCanvas />
-                <AnimatedLines />
-
                 <div className="container-custom relative z-20 text-center text-secondary-light dark:text-text-mist py-8 px-4 md:py-20">
                     <div className="flex items-center justify-center mb-8 md:mb-12">
                         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-serif flex items-center gap-4">
-                            <span className="text-secondary-light dark:text-text-mist">Spiritual</span>
+                            <span className="text-2xl sm:text-2xl md:text-4xl lg:text-6xl text-secondary-light dark:text-text-mist">Spiritual</span>
                             <RotatingText
                                 texts={['Guru', 'AI']}
-                                mainClassName="px-3 sm:px-4 md:px-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-xl"
+                                mainClassName="text-2xl sm:text-2xl md:text-4xl lg:text-6xl px-3 sm:px-4 md:px-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-xl"
                                 staggerFrom="last"
                                 initial={{ y: "100%" }}
                                 animate={{ y: 0 }}
