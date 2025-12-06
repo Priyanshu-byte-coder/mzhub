@@ -240,8 +240,8 @@ export default function Navbar() {
                                                 key={item.href}
                                                 onClick={() => handleMobileNavClick(item.href)}
                                                 className={`flex items-center gap-4 p-4 rounded-xl transition-all ${isActive
-                                                        ? 'bg-primary/10 text-primary'
-                                                        : 'hover:bg-foreground/5 text-foreground'
+                                                    ? 'bg-primary/10 text-primary'
+                                                    : 'hover:bg-foreground/5 text-foreground'
                                                     }`}
                                             >
                                                 <Icon className={`w-5 h-5 ${isActive ? item.iconColor : ''}`} />
