@@ -14,6 +14,7 @@ import { PlatformFeatures } from '@/components/ui/PlatformFeatures'
 import { BookOpen, Bot, Users } from 'lucide-react'
 import ScrollReveal from '@/components/ui/scroll-reveal'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
+import { StaggerTestimonials } from '@/components/stagger-testimonials'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
     ssr: false,
@@ -69,56 +70,18 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* How It Works */}
-            <SectionWrapper id="how-it-works" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-16">
+            {/* Social Proof */}
+            <SectionWrapper id="social-proof" className="bg-neutral-light dark:bg-primary-dark">
+                <div className="text-center mb-12">
                     <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">How MZhub Works</h2>
+                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">Trusted by Spiritual Leaders Worldwide</h2>
                     </ScrollReveal>
                     <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
-                        A simple, three-step process to transform your spiritual institution's digital presence
+                        See what religious institutions and spiritual communities are saying about MZhub
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto px-4">
-                    {[
-                        {
-                            step: '01',
-                            title: 'Ingest Your Content',
-                            description:
-                                'Upload scriptures, discourses, Q&A sessions, media archives, and institutional teachings. Our secure platform handles all formats.',
-                            icon: (
-                                <BookOpen className="w-16 h-16 sm:w-20 sm:h-20 text-secondary-light dark:text-accent-gold" />
-                            ),
-                        },
-                        {
-                            step: '02',
-                            title: 'Train & Align AI',
-                            description:
-                                'Our AI models learn from your content while maintaining strict alignment with your doctrine. You maintain complete control.',
-                            icon: (
-                                <Bot className="w-16 h-16 sm:w-20 sm:h-20 text-secondary-light dark:text-accent-gold" />
-                            ),
-                        },
-                        {
-                            step: '03',
-                            title: 'Serve Your Community',
-                            description:
-                                'Deploy personalized guidance, automated engagement, searchable archives, and community insights—all true to your teachings.',
-                            icon: (
-                                <Users className="w-16 h-16 sm:w-20 sm:h-20 text-secondary-light dark:text-accent-gold" />
-                            ),
-                        },
-                    ].map((item, index) => (
-                        <HoverCard
-                            key={index}
-                            icon={item.icon}
-                            title={item.title}
-                            description={item.description}
-                            step={item.step}
-                        />
-                    ))}
-                </div>
+                <StaggerTestimonials />
             </SectionWrapper>
 
             {/* Key Features */}
