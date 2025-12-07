@@ -5,8 +5,6 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { BlobButton } from '@/components/ui/BlobButton'
-import { getAnimatedTestimonials } from '@/lib/testimonials'
-import { AnimatedTestimonials } from '@/components/ui/animated-testimonials'
 import RotatingText from '@/components/RotatingText'
 import { BackgroundPathsOnly } from '@/components/ui/background-paths'
 import HoverCard from '@/components/ui/HoverCard'
@@ -15,13 +13,13 @@ import { BookOpen, Bot, Users } from 'lucide-react'
 import ScrollReveal from '@/components/ui/scroll-reveal'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { StaggerTestimonials } from '@/components/stagger-testimonials'
+import VideoShowcase from '@/components/video-component'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
     ssr: false,
 })
 
 export default function Home() {
-    const animatedTestimonials = getAnimatedTestimonials()
 
     return (
         <div>
@@ -82,6 +80,22 @@ export default function Home() {
                 </div>
 
                 <StaggerTestimonials />
+            </SectionWrapper>
+
+            {/* Video Showcase */}
+            <SectionWrapper id="showcase" className="bg-neutral-light dark:bg-primary-dark">
+                <div className="text-center mb-12">
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">Experience MZhub in Action</h2>
+                    </ScrollReveal>
+                    <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
+                        See how we're helping spiritual institutions transform their digital presence
+                    </p>
+                </div>
+
+                <VideoShowcase
+                    caption="Empowering faith communities through technology"
+                />
             </SectionWrapper>
 
             {/* Key Features */}
@@ -209,19 +223,6 @@ export default function Home() {
                         </div>
                     ))}
                 </div>
-            </SectionWrapper>
-
-            {/* Testimonials */}
-            <SectionWrapper id="testimonials" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-8">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">What Spiritual Leaders Say</h2>
-                    </ScrollReveal>
-                    <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
-                        Trusted by religious institutions across traditions
-                    </p>
-                </div>
-                <AnimatedTestimonials testimonials={animatedTestimonials} autoplay={true} />
             </SectionWrapper>
 
             {/* Final CTA */}
