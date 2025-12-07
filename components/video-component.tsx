@@ -22,7 +22,7 @@ export default function VideoShowcase({
     const [isPlaying, setIsPlaying] = useState(false);
     const [showCursor, setShowCursor] = useState(false);
 
-    // Optimized cursor tracking
+    // Cursor/touch tracking with bounds constraints
     const cursorX = useMotionValue(0);
     const cursorY = useMotionValue(0);
 
@@ -30,17 +30,59 @@ export default function VideoShowcase({
     const cursorXSpring = useSpring(cursorX, springConfig);
     const cursorYSpring = useSpring(cursorY, springConfig);
 
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Constrain position within section bounds
+    const constrainPosition = (clientX: number, clientY: number) => {
         const section = sectionRef.current;
-        if (!section) return;
+        if (!section) return { x: 0, y: 0 };
 
         const rect = section.getBoundingClientRect();
-        cursorX.set(e.clientX - rect.left);
-        cursorY.set(e.clientY - rect.top);
+        let x = clientX - rect.left;
+        let y = clientY - rect.top;
+
+        // Button radius (half of button size: 80px/2 = 40px for desktop, 64px/2 = 32px for mobile)
+        // Using 40px as safe constraint for both
+        const buttonRadius = 40;
+        x = Math.max(buttonRadius, Math.min(x, rect.width - buttonRadius));
+        y = Math.max(buttonRadius, Math.min(y, rect.height - buttonRadius));
+
+        return { x, y };
+    };
+
+    // Mouse move handler
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const { x, y } = constrainPosition(e.clientX, e.clientY);
+        cursorX.set(x);
+        cursorY.set(y);
         setShowCursor(true);
     };
 
+    // Touch move handler for mobile
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (e.touches.length > 0) {
+            const touch = e.touches[0];
+            const { x, y } = constrainPosition(touch.clientX, touch.clientY);
+            cursorX.set(x);
+            cursorY.set(y);
+            setShowCursor(true);
+        }
+    };
+
+    // Touch start handler
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (e.touches.length > 0) {
+            const touch = e.touches[0];
+            const { x, y } = constrainPosition(touch.clientX, touch.clientY);
+            cursorX.set(x);
+            cursorY.set(y);
+            setShowCursor(true);
+        }
+    };
+
     const handleMouseLeave = () => {
+        setShowCursor(false);
+    };
+
+    const handleTouchEnd = () => {
         setShowCursor(false);
     };
 
@@ -60,26 +102,25 @@ export default function VideoShowcase({
     return (
         <div
             ref={sectionRef}
-            className={`relative w-full min-h-[450px] cursor-none ${className}`}
+            className={`relative w-full min-h-[500px] md:min-h-[600px] md:cursor-none ${className}`}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
         >
-            {/* Video positioned bottom-left, shifted further left */}
-            <div className="absolute bottom-8 -left-12 w-full max-w-2xl">
+            {/* Video - responsive positioning */}
+            <div className="absolute bottom-2 md:bottom-6 w-full px-4 md:px-0 flex justify-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
                     viewport={{ once: true }}
-                    className="relative rounded-2xl overflow-hidden bg-background/50 dark:bg-background/30 border-2 border-border/50 dark:border-border/30 shadow-2xl"
+                    className="relative rounded-xl md:rounded-2xl overflow-hidden bg-background/50 dark:bg-background/30 border-2 border-border/50 dark:border-border/30 shadow-2xl w-full md:max-w-5xl"
                     style={{ aspectRatio: '16/10' }}
                 >
                     <video
                         ref={videoRef}
                         className="w-full h-full object-cover"
                         loop
-                        muted
                         playsInline
                         poster={posterUrl}
                     >
@@ -90,10 +131,10 @@ export default function VideoShowcase({
                     {/* Theme-aware gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 dark:from-black/50 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Caption */}
+                    {/* Caption - responsive text size */}
                     {caption && (
-                        <div className="absolute bottom-4 left-4 right-4">
-                            <p className="text-white dark:text-text-mist text-sm font-medium drop-shadow-lg">
+                        <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 right-3 md:right-4">
+                            <p className="text-white dark:text-text-mist text-xs md:text-sm font-medium drop-shadow-lg">
                                 {caption}
                             </p>
                         </div>
@@ -101,10 +142,10 @@ export default function VideoShowcase({
                 </motion.div>
             </div>
 
-            {/* Cursor-following play button */}
+            {/* Floating play button - desktop only */}
             {showCursor && (
                 <motion.div
-                    className="fixed pointer-events-none z-50 will-change-transform"
+                    className="hidden md:block fixed pointer-events-none z-50 will-change-transform"
                     style={{
                         left: 0,
                         top: 0,
@@ -117,15 +158,16 @@ export default function VideoShowcase({
                     transition={{ duration: 0.15 }}
                 >
                     <div className="relative" style={{ transform: 'translate(-50%, -50%)' }}>
-                        <div className="w-20 h-20 rounded-full bg-accent-gold flex items-center justify-center shadow-2xl">
+                        {/* Responsive button size */}
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent-gold flex items-center justify-center shadow-2xl">
                             {isPlaying ? (
-                                <div className="flex gap-1.5">
-                                    <div className="w-1.5 h-7 bg-secondary-dark dark:bg-primary-dark rounded-full" />
-                                    <div className="w-1.5 h-7 bg-secondary-dark dark:bg-primary-dark rounded-full" />
+                                <div className="flex gap-1 md:gap-1.5">
+                                    <div className="w-1 md:w-1.5 h-5 md:h-7 bg-secondary-dark dark:bg-primary-dark rounded-full" />
+                                    <div className="w-1 md:w-1.5 h-5 md:h-7 bg-secondary-dark dark:bg-primary-dark rounded-full" />
                                 </div>
                             ) : (
                                 <Play
-                                    className="w-8 h-8 text-secondary-dark dark:text-primary-dark ml-0.5"
+                                    className="w-6 h-6 md:w-8 md:h-8 text-secondary-dark dark:text-primary-dark ml-0.5"
                                     fill="currentColor"
                                     strokeWidth={0}
                                 />

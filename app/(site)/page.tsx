@@ -84,15 +84,6 @@ export default function Home() {
 
             {/* Video Showcase */}
             <SectionWrapper id="showcase" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-12">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">Experience MZhub in Action</h2>
-                    </ScrollReveal>
-                    <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
-                        See how we're helping spiritual institutions transform their digital presence
-                    </p>
-                </div>
-
                 <VideoShowcase
                     caption="Empowering faith communities through technology"
                 />

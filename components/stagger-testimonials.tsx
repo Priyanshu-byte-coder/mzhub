@@ -9,49 +9,49 @@ const SQRT_5000 = Math.sqrt(5000);
 const testimonials = [
   {
     tempId: 0,
-    testimonial: "MZhub has helped us reach devotees worldwide. We serve 5x more seekers with personalized guidance.",
+    testimonial: "MZHub has helped us reach devotees worldwide. We serve 5x more seekers with personalized guidance.",
     by: "Swami Prakash, Spiritual Director at Vedanta Center",
     imgSrc: "https://i.pravatar.cc/150?img=1"
   },
-  {
+  { 
     tempId: 1,
-    testimonial: "I'm confident our sacred teachings are protected with MZhub. The doctrinal alignment is unmatched.",
+    testimonial: "I'm confident our sacred teachings are protected with MZHub. The doctrinal alignment is unmatched.",
     by: "Rabbi David Cohen, Head Rabbi at Temple Beth Shalom",
     imgSrc: "https://i.pravatar.cc/150?img=2"
   },
   {
     tempId: 2,
-    testimonial: "Before MZhub, we struggled to preserve our guru's teachings digitally. Now they reach thousands!",
+    testimonial: "Before MZHub, we struggled to preserve our guru's teachings digitally. Now they reach thousands!",
     by: "Sister Maria Santos, Abbess at Sacred Heart Monastery",
     imgSrc: "https://i.pravatar.cc/150?img=3"
   },
   {
     tempId: 3,
-    testimonial: "MZhub makes managing our spiritual community seamless. Our congregation engagement has tripled!",
+    testimonial: "MZHub makes managing our spiritual community seamless. Our congregation engagement has tripled!",
     by: "Pastor Michael Thompson, Senior Pastor at Grace Fellowship",
     imgSrc: "https://i.pravatar.cc/150?img=4"
   },
   {
     tempId: 4,
-    testimonial: "If I could give 11 stars, I'd give 12. MZhub perfectly serves our temple's mission.",
+    testimonial: "If I could give 11 stars, I'd give 12. MZHub perfectly serves our temple's mission.",
     by: "Pandit Rajesh Kumar, Head Priest at Shiva Mandir",
     imgSrc: "https://i.pravatar.cc/150?img=5"
   },
   {
     tempId: 5,
-    testimonial: "SO HAPPY WE FOUND MZHUB! It's saved me 100+ hours organizing our scripture archives.",
+    testimonial: "SO HAPPY WE FOUND MZHub! It's saved me 100+ hours organizing our scripture archives.",
     by: "Imam Hassan Al-Rashid, Imam at Al-Noor Islamic Center",
     imgSrc: "https://i.pravatar.cc/150?img=6"
   },
   {
     tempId: 6,
-    testimonial: "We were hesitant about AI in faith contexts, but MZhub's ethical approach won us over completely.",
+    testimonial: "We were hesitant about AI in faith contexts, but MZHub's ethical approach won us over completely.",
     by: "Reverend Sarah Johnson, Minister at First United Church",
     imgSrc: "https://i.pravatar.cc/150?img=7"
   },
   {
     tempId: 7,
-    testimonial: "The community insights from MZhub are invaluable. We understand our sangha's needs like never before.",
+    testimonial: "The community insights from MZHub are invaluable. We understand our sangha's needs like never before.",
     by: "Bhante Sujato, Abbot at Lotus Buddhist Monastery",
     imgSrc: "https://i.pravatar.cc/150?img=8"
   },
@@ -63,67 +63,67 @@ const testimonials = [
   },
   {
     tempId: 9,
-    testimonial: "We adopted MZhub three years ago and it's been transformative for our ministry.",
+    testimonial: "We adopted MZHub three years ago and it's been transformative for our ministry.",
     by: "Father Gabriel Ortiz, Parish Priest at St. Augustine Cathedral",
     imgSrc: "https://i.pravatar.cc/150?img=10"
   },
   {
     tempId: 10,
-    testimonial: "I've been searching for a solution like MZhub for YEARS. Finally, technology that respects tradition!",
+    testimonial: "I've been searching for a solution like MZHub for YEARS. Finally, technology that respects tradition!",
     by: "Dr. Priya Sharma, Director at Interfaith Spiritual Center",
     imgSrc: "https://i.pravatar.cc/150?img=11"
   },
   {
     tempId: 11,
-    testimonial: "So intuitive! Our entire administrative team was trained on MZhub in under 15 minutes.",
+    testimonial: "So intuitive! Our entire administrative team was trained on MZHub in under 15 minutes.",
     by: "Deacon James Miller, Operations Manager at Holy Cross Church",
     imgSrc: "https://i.pravatar.cc/150?img=12"
   },
   {
     tempId: 12,
-    testimonial: "MZhub's support team understands our spiritual mission. They're always there when needed.",
+    testimonial: "MZHub's support team understands our spiritual mission. They're always there when needed.",
     by: "Sister Aisha Rahman, Community Coordinator at Masjid Al-Falah",
     imgSrc: "https://i.pravatar.cc/150?img=13"
   },
   {
     tempId: 13,
-    testimonial: "Our operational efficiency has skyrocketed since implementing MZhub. More time for spiritual work!",
+    testimonial: "Our operational efficiency has skyrocketed since implementing MZHub. More time for spiritual work!",
     by: "Roshi Kenji Tanaka, Zen Master at Mountain Gate Temple",
     imgSrc: "https://i.pravatar.cc/150?img=14"
   },
   {
     tempId: 14,
-    testimonial: "MZhub revolutionized how we share the Dharma. It's truly a game-changer for our ashram!",
+    testimonial: "MZHub revolutionized how we share the Dharma. It's truly a game-changer for our ashram!",
     by: "Acharya Deepak Verma, Spiritual Teacher at Yoga Ashram",
     imgSrc: "https://i.pravatar.cc/150?img=15"
   },
   {
     tempId: 15,
-    testimonial: "As our congregation grows, MZhub scales effortlessly. It grows with our spiritual community.",
+    testimonial: "As our congregation grows, MZHub scales effortlessly. It grows with our spiritual community.",
     by: "Bishop Martin Wesley, Episcopal Bishop at Trinity Cathedral",
     imgSrc: "https://i.pravatar.cc/150?img=16"
   },
   {
     tempId: 16,
-    testimonial: "I appreciate how MZhub respects our traditions while embracing innovation. Perfect balance!",
+    testimonial: "I appreciate how MZHub respects our traditions while embracing innovation. Perfect balance!",
     by: "Cantor Rebecca Goldstein, Cantor at Beth Israel Synagogue",
     imgSrc: "https://i.pravatar.cc/150?img=17"
   },
   {
     tempId: 17,
-    testimonial: "The return on investment is incredible. MZhub paid for itself within the first quarter!",
+    testimonial: "The return on investment is incredible. MZHub paid for itself within the first quarter!",
     by: "Dr. Ahmed Hassan, Director at Islamic Studies Institute",
     imgSrc: "https://i.pravatar.cc/150?img=18"
   },
   {
     tempId: 18,
-    testimonial: "MZhub is powerful yet simple. It's the perfect tool for our digital ministry initiatives.",
+    testimonial: "MZHub is powerful yet simple. It's the perfect tool for our digital ministry initiatives.",
     by: "Minister Grace Chen, Youth Minister at Community Fellowship",
     imgSrc: "https://i.pravatar.cc/150?img=19"
   },
   {
     tempId: 19,
-    testimonial: "We evaluated many platforms, but MZhub stands out for reliability and doctrinal integrity.",
+    testimonial: "We evaluated many platforms, but MZHub stands out for reliability and doctrinal integrity.",
     by: "Satguru Baba Nirmal, Spiritual Guide at Divine Light Mission",
     imgSrc: "https://i.pravatar.cc/150?img=20"
   }

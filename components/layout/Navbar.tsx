@@ -162,14 +162,8 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Layout */}
-            <motion.div
-                className="hidden md:flex items-center justify-between w-full px-4"
-                initial={{ opacity: 1 }}
-                animate={{ opacity: scrollY > 80 ? 0 : 1 }}
-                transition={{ duration: 0.3 }}
-                style={{ pointerEvents: scrollY > 80 ? 'none' : 'auto' }}
-            >
-                {/* Logo and Brand Name - Extreme Left */}
+            <div className="hidden md:flex items-center justify-between w-full px-4">
+                {/* Logo and Brand Name - Always Visible */}
                 <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
                     <div className="relative w-10 h-10">
                         {mounted && (
@@ -183,21 +177,33 @@ export default function Navbar() {
                         )}
                     </div>
                     <span className="text-2xl font-bold font-serif bg-gradient-to-r from-secondary-light to-accent-gold dark:from-text-mist dark:to-accent-gold bg-clip-text text-transparent">
-                        MZhub
+                        MZHub
                     </span>
                 </Link>
 
-                {/* Navigation Menu - Center */}
-                <div className="flex-1 flex justify-center mx-8">
+                {/* Navigation Menu - Center (Fades on scroll) */}
+                <motion.div
+                    className="flex-1 flex justify-center mx-8"
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: scrollY > 80 ? 0 : 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ pointerEvents: scrollY > 80 ? 'none' : 'auto' }}
+                >
                     <MenuBar
                         items={menuItems}
                         activeItem={activeItem}
                         onItemClick={handleItemClick}
                     />
-                </div>
+                </motion.div>
 
-                {/* Theme Toggle - Extreme Right */}
-                <div className="flex-shrink-0">
+                {/* Theme Toggle - Extreme Right (Fades on scroll) */}
+                <motion.div
+                    className="flex-shrink-0"
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: scrollY > 80 ? 0 : 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ pointerEvents: scrollY > 80 ? 'none' : 'auto' }}
+                >
                     {mounted && (
                         <ThemeToggleButton
                             theme={theme as 'light' | 'dark'}
@@ -210,8 +216,8 @@ export default function Navbar() {
                             }}
                         />
                     )}
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
 
             {/* Floating Hamburger Menu (Desktop Only - Appears on Scroll) */}
             <AnimatePresence>
