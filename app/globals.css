@@ -27,7 +27,6 @@ html {
   .btn-secondary {
     @apply bg-accent-gold hover:bg-accent-gold/90 text-neutral-dark font-medium px-6 py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105;
   }
-
   .section-heading {
     @apply text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark mb-4;
   }
@@ -48,155 +47,6 @@ html {
 
   .animate-glow {
     animation: glow-pulse 3s ease-in-out infinite;
-  }
-
-  /* Fix GooeyNav black shadow overflow */
-  .effect.filter::before {
-    display: none !important;
-  }
-
-  /* GooeyNav Styles */
-  .gooey-nav-container :root {
-    --linear-ease: linear(0, 0.068, 0.19 2.7%, 0.804 8.1%, 1.037, 1.199 13.2%, 1.245, 1.27 15.8%, 1.274, 1.272 17.4%, 1.249 19.1%, 0.996 28%, 0.949, 0.928 33.3%, 0.926, 0.933 36.8%, 1.001 45.6%, 1.013, 1.019 50.8%, 1.018 54.4%, 1 63.1%, 0.995 68%, 1.001 85%, 1);
-  }
-
-  .effect {
-    position: absolute;
-    opacity: 1;
-    pointer-events: none;
-    display: grid;
-    place-items: center;
-    z-index: 1;
-  }
-
-  .effect.text {
-    color: white;
-    transition: color 0.3s ease;
-  }
-
-  .effect.text.active {
-    color: black;
-  }
-
-  .effect.filter {
-    filter: blur(7px) contrast(100) blur(0);
-    mix-blend-mode: lighten;
-  }
-
-  .effect.filter::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: white;
-    transform: scale(0);
-    opacity: 0;
-    z-index: -1;
-    border-radius: 9999px;
-  }
-
-  .effect.active::after {
-    animation: pill 0.3s ease both;
-  }
-
-  @keyframes pill {
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-
-  .particle,
-  .point {
-    display: block;
-    opacity: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 9999px;
-    transform-origin: center;
-  }
-
-  .particle {
-    --time: 5s;
-    position: absolute;
-    top: calc(50% - 8px);
-    left: calc(50% - 8px);
-    animation: particle calc(var(--time)) ease 1 -350ms;
-  }
-
-  .point {
-    background: var(--color);
-    opacity: 1;
-    animation: point calc(var(--time)) ease 1 -350ms;
-  }
-
-  @keyframes particle {
-    0% {
-      transform: rotate(0deg) translate(calc(var(--start-x)), calc(var(--start-y)));
-      opacity: 1;
-      animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
-    }
-    70% {
-      transform: rotate(calc(var(--rotate) * 0.5)) translate(calc(var(--end-x) * 1.2), calc(var(--end-y) * 1.2));
-      opacity: 1;
-      animation-timing-function: ease;
-    }
-    85% {
-      transform: rotate(calc(var(--rotate) * 0.66)) translate(calc(var(--end-x)), calc(var(--end-y)));
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(calc(var(--rotate) * 1.2)) translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5));
-      opacity: 1;
-    }
-  }
-
-  @keyframes point {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-      animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
-    }
-    25% {
-      transform: scale(calc(var(--scale) * 0.25));
-    }
-    38% {
-      opacity: 1;
-    }
-    65% {
-      transform: scale(var(--scale));
-      opacity: 1;
-      animation-timing-function: ease;
-    }
-    85% {
-      transform: scale(var(--scale));
-      opacity: 1;
-    }
-    100% {
-      transform: scale(0);
-      opacity: 0;
-    }
-  }
-
-  .gooey-nav-container li.active {
-    color: black;
-    text-shadow: none;
-  }
-
-  .gooey-nav-container li.active::after {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .gooey-nav-container li::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    background: white;
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.3s ease;
-    z-index: -1;
   }
 }
 
@@ -228,13 +78,6 @@ html {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-
-    /* GooeyNav particle colors */
-    --color-1: #D4B46A;
-    --color-2: #A9B7D1;
-    --color-3: #5A6FA8;
-    --color-4: #F6F8FC;
-    --button-ripple-color: oklch(0.145 0 0 / 0.3);
   }
   
   .dark {
@@ -263,13 +106,6 @@ html {
     --chart-3: 40 70% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    
-    /* Dark theme particle colors */
-    --color-1: #5A6FA8;
-    --color-2: #AFC3EA;
-    --color-3: #D4B46A;
-    --color-4: #303A55;
-    --button-ripple-color: oklch(0.985 0 0 / 0.5);
   }
   .theme {
     --radius-sm: 0.25rem;
@@ -306,51 +142,5 @@ html {
   
   body.dark {
     @apply bg-gradient-to-br from-[#0a0e1a] via-[#1a1f3a] to-[#0f1729];
-  }
-}
-
-@theme inline {
-  @keyframes ball {
-  from {
-    transform: rotate(0) translateY(-6.5em);
-    }
-  50% {
-    transform: rotate(180deg) translateY(-6em);
-    }
-  to {
-    transform: rotate(360deg) translateY(-6.5em);
-    }
-  }
-  @keyframes ballInnerShadow {
-  from {
-    transform: rotate(0);
-    }
-  to {
-    transform: rotate(-360deg);
-    }
-  }
-  @keyframes ballOuterShadow {
-  from {
-    transform: rotate(20deg);
-    }
-  to {
-    transform: rotate(-340deg);
-    }
-  }
-  @keyframes ballTexture {
-  from {
-    transform: translateX(0);
-    }
-  to {
-    transform: translateX(50%);
-    }
-  }
-  @keyframes trackCover {
-  from {
-    transform: rotate(0);
-    }
-  to {
-    transform: rotate(360deg);
-    }
   }
 }
