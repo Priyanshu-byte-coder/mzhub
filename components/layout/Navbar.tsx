@@ -129,7 +129,7 @@ export default function Navbar() {
                         )}
                     </div>
                     <span className="text-xl font-bold font-serif bg-gradient-to-r from-secondary-light to-accent-gold dark:from-text-mist dark:to-accent-gold bg-clip-text text-transparent">
-                        MZhub
+                        MZHub
                     </span>
                 </Link>
 
@@ -278,7 +278,7 @@ export default function Navbar() {
                                             )}
                                         </div>
                                         <span className="text-2xl font-bold font-serif bg-gradient-to-r from-secondary-light to-accent-gold dark:from-text-mist dark:to-accent-gold bg-clip-text text-transparent">
-                                            MZhub
+                                            MZHub
                                         </span>
                                     </div>
                                     <button
@@ -377,7 +377,7 @@ export default function Navbar() {
                                             )}
                                         </div>
                                         <span className="text-xl font-bold font-serif bg-gradient-to-r from-secondary-light to-accent-gold dark:from-text-mist dark:to-accent-gold bg-clip-text text-transparent">
-                                            MZhub
+                                            MZHub
                                         </span>
                                     </div>
                                     <button

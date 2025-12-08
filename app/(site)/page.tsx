@@ -68,27 +68,13 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Social Proof */}
-            <SectionWrapper id="social-proof" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-12">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">Trusted by Spiritual Leaders Worldwide</h2>
-                    </ScrollReveal>
-                    <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
-                        See what religious institutions and spiritual communities are saying about MZhub
-                    </p>
-                </div>
-
-                <StaggerTestimonials />
-            </SectionWrapper>
-
             {/* Video Showcase */}
             <SectionWrapper id="showcase" className="bg-neutral-light dark:bg-primary-dark">
                 <VideoShowcase
                     caption="Empowering faith communities through technology"
                 />
             </SectionWrapper>
-
+            
             {/* Key Features */}
             <SectionWrapper id="features" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-12">
@@ -214,6 +200,19 @@ export default function Home() {
                         </div>
                     ))}
                 </div>
+            </SectionWrapper>
+
+            {/* Social Proof */}
+            <SectionWrapper id="social-proof" className="bg-neutral-light dark:bg-primary-dark">
+                <div className="text-center mb-12">
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">Trusted by Spiritual Leaders Worldwide</h2>
+                    </ScrollReveal>
+                    <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
+                        See what religious institutions and spiritual communities are saying about MZhub
+                    </p>
+                </div>
+                <StaggerTestimonials />
             </SectionWrapper>
 
             {/* Final CTA */}
