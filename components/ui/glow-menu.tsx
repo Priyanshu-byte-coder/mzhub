@@ -66,14 +66,12 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
     const isDarkTheme = theme === "dark"
 
     return (
-      <motion.nav
+      <nav
         ref={ref}
         className={cn(
           "p-2 rounded-2xl bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border border-border/40 shadow-lg relative overflow-hidden",
           className,
         )}
-        initial="initial"
-        whileHover="hover"
         {...props}
       >
         <motion.div
@@ -168,7 +166,7 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
             )
           })}
         </ul>
-      </motion.nav>
+      </nav>
     )
   },
 )

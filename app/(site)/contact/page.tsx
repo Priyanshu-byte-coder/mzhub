@@ -18,6 +18,8 @@ export default function Contact() {
 
     const [errors, setErrors] = useState<Record<string, string>>({})
     const [submitted, setSubmitted] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitError, setSubmitError] = useState<string | null>(null)
 
     const validateForm = () => {
         const newErrors: Record<string, string> = {}
@@ -46,26 +48,53 @@ export default function Contact() {
         return Object.keys(newErrors).length === 0
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        setSubmitError(null)
 
         if (validateForm()) {
-            // In production, this would send to your backend
-            console.log('Form submitted:', formData)
-            setSubmitted(true)
-
-            // Reset form
-            setTimeout(() => {
-                setFormData({
-                    name: '',
-                    email: '',
-                    institution: '',
-                    phone: '',
-                    role: '',
-                    message: '',
+            setIsSubmitting(true)
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        message: formData.message,
+                        institution: formData.institution,
+                        phone: formData.phone,
+                        role: formData.role,
+                    }),
                 })
-                setSubmitted(false)
-            }, 3000)
+
+                const data = await response.json()
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to send message')
+                }
+
+                setSubmitted(true)
+
+                // Reset form after success
+                setTimeout(() => {
+                    setFormData({
+                        name: '',
+                        email: '',
+                        institution: '',
+                        phone: '',
+                        role: '',
+                        message: '',
+                    })
+                    setSubmitted(false)
+                }, 5000)
+            } catch (error) {
+                setSubmitError(error instanceof Error ? error.message : 'Failed to send message. Please try again.')
+            } finally {
+                setIsSubmitting(false)
+            }
         }
     }
 
@@ -103,6 +132,22 @@ export default function Contact() {
                             <p className="text-secondary-light/90 dark:text-text-mist mb-8">
                                 Fill out the form below and we'll get back to you within 24 hours to schedule a personalized demo of the MZhub platform.
                             </p>
+
+                            {submitError && (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg mb-6"
+                                >
+                                    <div className="flex items-center">
+                                        <span className="text-4xl mr-4">⚠️</span>
+                                        <div>
+                                            <h3 className="font-bold text-red-900 text-xl mb-1">Error</h3>
+                                            <p className="text-red-800">{submitError}</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
 
                             {submitted ? (
                                 <motion.div
@@ -230,8 +275,8 @@ export default function Contact() {
                                         {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
                                     </div>
 
-                                    <Button type="submit" variant="secondary" size="lg" className="w-full">
-                                        Send Message
+                                    <Button type="submit" variant="secondary" size="lg" className="w-full" disabled={isSubmitting}>
+                                        {isSubmitting ? 'Sending...' : 'Send Message'}
                                     </Button>
 
                                     <p className="text-sm text-secondary-light/60 dark:text-text-mist/60 text-center">

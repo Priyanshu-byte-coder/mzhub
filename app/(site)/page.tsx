@@ -54,16 +54,12 @@ export default function Home() {
                     </ScrollReveal>
 
                     <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center px-4">
-                        <Link href="/contact">
-                            <BlobButton>
-                                Request Demo
-                            </BlobButton>
-                        </Link>
-                        <Link href="/projects">
-                            <BlobButton>
-                                Explore Projects
-                            </BlobButton>
-                        </Link>
+                        <BlobButton as={Link} href="/contact">
+                            Request Demo
+                        </BlobButton>
+                        <BlobButton as={Link} href="/projects">
+                            Explore Projects
+                        </BlobButton>
                     </div>
                 </div>
             </section>
@@ -244,16 +240,12 @@ export default function Home() {
                         Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/contact">
-                            <BlobButton>
-                                Schedule Demo
-                            </BlobButton>
-                        </Link>
-                        <Link href="/projects">
-                            <BlobButton>
-                                Learn More
-                            </BlobButton>
-                        </Link>
+                        <BlobButton as={Link} href="/contact">
+                            Schedule Demo
+                        </BlobButton>
+                        <BlobButton as={Link} href="/projects">
+                            Learn More
+                        </BlobButton>
                     </div>
                 </div>
             </SectionWrapper>

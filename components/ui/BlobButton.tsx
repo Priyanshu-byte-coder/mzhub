@@ -1,18 +1,26 @@
 "use client"
 
-import { ReactNode } from "react"
+import { ReactNode, ElementType } from "react"
 import "./BlobButton.css"
 
 interface BlobButtonProps {
   children: ReactNode
   onClick?: () => void
   className?: string
+  as?: ElementType
+  href?: string
 }
 
-export const BlobButton = ({ children, onClick, className = "" }: BlobButtonProps) => {
+export const BlobButton = ({ 
+  children, 
+  onClick, 
+  className = "", 
+  as: Component = "button",
+  ...props 
+}: BlobButtonProps) => {
   return (
     <>
-      <button className={`blob-btn ${className}`} onClick={onClick}>
+      <Component className={`blob-btn ${className}`} onClick={onClick} {...props}>
         {children}
         <span className="blob-btn__inner">
           <span className="blob-btn__blobs">
@@ -22,7 +30,7 @@ export const BlobButton = ({ children, onClick, className = "" }: BlobButtonProp
             <span className="blob-btn__blob"></span>
           </span>
         </span>
-      </button>
+      </Component>
 
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style={{ display: 'none' }}>
         <defs>
