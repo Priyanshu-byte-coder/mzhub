@@ -18,7 +18,7 @@ export default function VideoShowcase({
     className = ''
 }: VideoShowcaseProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const videoContainerRef = useRef<HTMLDivElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [showCursor, setShowCursor] = useState(false);
 
@@ -32,7 +32,7 @@ export default function VideoShowcase({
 
     // Constrain position within section bounds
     const constrainPosition = (clientX: number, clientY: number) => {
-        const section = sectionRef.current;
+        const section = videoContainerRef.current;
         if (!section) return { x: 0, y: 0 };
 
         const rect = section.getBoundingClientRect();
@@ -101,21 +101,24 @@ export default function VideoShowcase({
 
     return (
         <div
-            ref={sectionRef}
-            className={`relative w-full min-h-[500px] md:min-h-[600px] md:cursor-none ${className}`}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            onClick={handleClick}
+            className={`relative w-full min-h-[500px] md:min-h-[600px] ${className}`}
         >
             {/* Video - responsive positioning */}
             <div className="absolute bottom-2 md:bottom-6 w-full px-4 md:px-0 flex justify-center">
                 <motion.div
+                    ref={videoContainerRef}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
                     viewport={{ once: true }}
-                    className="relative rounded-xl md:rounded-2xl overflow-hidden bg-background/50 dark:bg-background/30 border-2 border-border/50 dark:border-border/30 shadow-2xl w-full md:max-w-5xl"
+                    className="relative rounded-xl md:rounded-2xl overflow-hidden bg-background/50 dark:bg-background/30 border-2 border-border/50 dark:border-border/30 shadow-2xl w-full md:max-w-5xl md:cursor-none"
                     style={{ aspectRatio: '16/10' }}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    onTouchMove={handleTouchMove}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onClick={handleClick}
                 >
                     <video
                         ref={videoRef}
@@ -139,43 +142,43 @@ export default function VideoShowcase({
                             </p>
                         </div>
                     )}
+
+                    {/* Floating play button - desktop only */}
+                    {showCursor && (
+                        <motion.div
+                            className="hidden md:block absolute pointer-events-none z-50 will-change-transform"
+                            style={{
+                                left: 0,
+                                top: 0,
+                                x: cursorXSpring,
+                                y: cursorYSpring,
+                            }}
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0, opacity: 0 }}
+                            transition={{ duration: 0.15 }}
+                        >
+                            <div className="relative" style={{ transform: 'translate(-50%, -50%)' }}>
+                                {/* Responsive button size */}
+                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent-gold flex items-center justify-center shadow-2xl">
+                                    {isPlaying ? (
+                                        <div className="flex gap-1 md:gap-1.5">
+                                            <div className="w-1 md:w-1.5 h-5 md:h-7 bg-secondary-dark dark:bg-primary-dark rounded-full" />
+                                            <div className="w-1 md:w-1.5 h-5 md:h-7 bg-secondary-dark dark:bg-primary-dark rounded-full" />
+                                        </div>
+                                    ) : (
+                                        <Play
+                                            className="w-6 h-6 md:w-8 md:h-8 text-secondary-dark dark:text-primary-dark ml-0.5"
+                                            fill="currentColor"
+                                            strokeWidth={0}
+                                        />
+                                    )}
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
                 </motion.div>
             </div>
-
-            {/* Floating play button - desktop only */}
-            {showCursor && (
-                <motion.div
-                    className="hidden md:block fixed pointer-events-none z-50 will-change-transform"
-                    style={{
-                        left: 0,
-                        top: 0,
-                        x: cursorXSpring,
-                        y: cursorYSpring,
-                    }}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0, opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                >
-                    <div className="relative" style={{ transform: 'translate(-50%, -50%)' }}>
-                        {/* Responsive button size */}
-                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent-gold flex items-center justify-center shadow-2xl">
-                            {isPlaying ? (
-                                <div className="flex gap-1 md:gap-1.5">
-                                    <div className="w-1 md:w-1.5 h-5 md:h-7 bg-secondary-dark dark:bg-primary-dark rounded-full" />
-                                    <div className="w-1 md:w-1.5 h-5 md:h-7 bg-secondary-dark dark:bg-primary-dark rounded-full" />
-                                </div>
-                            ) : (
-                                <Play
-                                    className="w-6 h-6 md:w-8 md:h-8 text-secondary-dark dark:text-primary-dark ml-0.5"
-                                    fill="currentColor"
-                                    strokeWidth={0}
-                                />
-                            )}
-                        </div>
-                    </div>
-                </motion.div>
-            )}
         </div>
     );
 }

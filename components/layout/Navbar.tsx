@@ -47,40 +47,42 @@ export default function Navbar() {
         }
     }, [isMobileMenuOpen, isDesktopMenuOpen])
 
+    const sharedGlowGradient = 'radial-gradient(circle at center, rgba(59, 130, 246, 0.5) 0%, transparent 70%)'
+
     const menuItems = [
         {
             icon: Home,
             label: 'Home',
             href: '/',
-            gradient: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.5) 0%, transparent 70%)',
+            gradient: sharedGlowGradient,
             iconColor: 'text-blue-500'
         },
         {
             icon: Info,
             label: 'About',
             href: '/about',
-            gradient: 'radial-gradient(circle at center, rgba(168, 85, 247, 0.5) 0%, transparent 70%)',
+            gradient: sharedGlowGradient,
             iconColor: 'text-purple-500'
         },
         {
             icon: FolderOpen,
             label: 'Projects',
             href: '/projects',
-            gradient: 'radial-gradient(circle at center, rgba(236, 72, 153, 0.5) 0%, transparent 70%)',
+            gradient: sharedGlowGradient,
             iconColor: 'text-pink-500'
         },
         {
             icon: BookOpen,
             label: 'Blog',
             href: '/blog',
-            gradient: 'radial-gradient(circle at center, rgba(34, 197, 94, 0.5) 0%, transparent 70%)',
+            gradient: sharedGlowGradient,
             iconColor: 'text-green-500'
         },
         {
             icon: Mail,
             label: 'Contact',
             href: '/contact',
-            gradient: 'radial-gradient(circle at center, rgba(251, 191, 36, 0.5) 0%, transparent 70%)',
+            gradient: sharedGlowGradient,
             iconColor: 'text-amber-500'
         }
     ]
@@ -112,7 +114,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 py-4">
+        <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-white/90 dark:bg-[#050a16]/95 backdrop-blur-xl border-b border-border/40 shadow-sm transition-colors">
             {/* Mobile Layout */}
             <div className="md:hidden flex items-center justify-between px-4">
                 {/* Logo and Brand Name */}
@@ -228,7 +230,7 @@ export default function Navbar() {
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.3 }}
                         onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-                        className="hidden md:flex fixed top-6 right-6 z-[60] items-center justify-center w-14 h-14 rounded-full bg-background/80 backdrop-blur-md border-2 border-border hover:border-primary/50 shadow-lg transition-colors"
+                        className="hidden md:flex fixed top-6 right-6 z-[60] items-center justify-center w-14 h-14 rounded-full bg-white/80 dark:bg-[#0f172a]/95 backdrop-blur-md border-2 border-border hover:border-primary/50 shadow-lg transition-colors"
                         aria-label="Toggle menu"
                     >
                         {isDesktopMenuOpen ? (
@@ -260,7 +262,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="hidden md:block fixed top-0 right-0 bottom-0 w-[400px] bg-background border-l border-border shadow-2xl z-[60]"
+                            className="hidden md:block fixed top-0 right-0 bottom-0 w-[400px] bg-neutral-light dark:bg-[#0f172a] border-l border-border shadow-2xl z-[60]"
                         >
                             <div className="flex flex-col h-full p-8">
                                 {/* Header */}
@@ -359,7 +361,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-background border-l border-border shadow-2xl md:hidden"
+                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-neutral-light dark:bg-[#0f172a] border-l border-border shadow-2xl md:hidden"
                         >
                             <div className="flex flex-col h-full p-6">
                                 {/* Header */}
