@@ -94,13 +94,13 @@ export default function Contact() {
             </section>
 
             {/* Contact Form Section */}
-            <SectionWrapper className="bg-white">
+            <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12">
                         {/* Form */}
                         <div>
-                            <h2 className="text-3xl font-bold text-spiritual-indigo-900 mb-6">Request a Demo</h2>
-                            <p className="text-gray-700 mb-8">
+                            <h2 className="text-3xl font-bold text-secondary-light dark:text-accent-gold mb-6">Request a Demo</h2>
+                            <p className="text-secondary-light/90 dark:text-text-mist mb-8">
                                 Fill out the form below and we'll get back to you within 24 hours to schedule a personalized demo of the MZhub platform.
                             </p>
 
@@ -122,7 +122,7 @@ export default function Contact() {
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     {/* Name */}
                                     <div>
-                                        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label htmlFor="name" className="block text-sm font-semibold text-secondary-light dark:text-text-mist mb-2">
                                             Full Name *
                                         </label>
                                         <input
@@ -131,8 +131,8 @@ export default function Contact() {
                                             name="name"
                                             value={formData.name}
                                             onChange={handleChange}
-                                            className={`w-full px-4 py-3 rounded-lg border ${errors.name ? 'border-red-500' : 'border-gray-300'
-                                                } focus:outline-none focus:ring-2 focus:ring-spiritual-indigo-500`}
+                                            className={`w-full px-4 py-3 rounded-lg border ${errors.name ? 'border-red-500' : 'border-gray-300'}
+                                                } focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-accent-gold`}
                                             placeholder="Swami Krishna / Father John / Rabbi Cohen"
                                         />
                                         {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
@@ -140,7 +140,7 @@ export default function Contact() {
 
                                     {/* Email */}
                                     <div>
-                                        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label htmlFor="email" className="block text-sm font-semibold text-secondary-light dark:text-text-mist mb-2">
                                             Email Address *
                                         </label>
                                         <input
@@ -150,7 +150,7 @@ export default function Contact() {
                                             value={formData.email}
                                             onChange={handleChange}
                                             className={`w-full px-4 py-3 rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'
-                                                } focus:outline-none focus:ring-2 focus:ring-spiritual-indigo-500`}
+                                                } focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-accent-gold`}
                                             placeholder="your@email.com"
                                         />
                                         {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
@@ -158,7 +158,7 @@ export default function Contact() {
 
                                     {/* Institution */}
                                     <div>
-                                        <label htmlFor="institution" className="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label htmlFor="institution" className="block text-sm font-semibold text-secondary-light dark:text-text-mist mb-2">
                                             Institution Name *
                                         </label>
                                         <input
@@ -168,7 +168,7 @@ export default function Contact() {
                                             value={formData.institution}
                                             onChange={handleChange}
                                             className={`w-full px-4 py-3 rounded-lg border ${errors.institution ? 'border-red-500' : 'border-gray-300'
-                                                } focus:outline-none focus:ring-2 focus:ring-spiritual-indigo-500`}
+                                                } focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-accent-gold`}
                                             placeholder="Temple / Church / Mosque / Ashram / Synagogue"
                                         />
                                         {errors.institution && <p className="mt-1 text-sm text-red-600">{errors.institution}</p>}
@@ -176,7 +176,7 @@ export default function Contact() {
 
                                     {/* Phone (Optional) */}
                                     <div>
-                                        <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label htmlFor="phone" className="block text-sm font-semibold text-secondary-light dark:text-text-mist mb-2">
                                             Phone Number (Optional)
                                         </label>
                                         <input
@@ -185,14 +185,14 @@ export default function Contact() {
                                             name="phone"
                                             value={formData.phone}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-spiritual-indigo-500"
+                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-accent-gold"
                                             placeholder="+1 (555) 123-4567"
                                         />
                                     </div>
 
                                     {/* Role */}
                                     <div>
-                                        <label htmlFor="role" className="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label htmlFor="role" className="block text-sm font-semibold text-secondary-light dark:text-text-mist mb-2">
                                             Your Role (Optional)
                                         </label>
                                         <select
@@ -200,7 +200,7 @@ export default function Contact() {
                                             name="role"
                                             value={formData.role}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-spiritual-indigo-500"
+                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-accent-gold"
                                         >
                                             <option value="">Select your role</option>
                                             <option value="spiritual-leader">Spiritual Leader / Guru</option>
@@ -214,7 +214,7 @@ export default function Contact() {
 
                                     {/* Message */}
                                     <div>
-                                        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label htmlFor="message" className="block text-sm font-semibold text-secondary-light dark:text-text-mist mb-2">
                                             How can we help? *
                                         </label>
                                         <textarea
@@ -224,7 +224,7 @@ export default function Contact() {
                                             onChange={handleChange}
                                             rows={5}
                                             className={`w-full px-4 py-3 rounded-lg border ${errors.message ? 'border-red-500' : 'border-gray-300'
-                                                } focus:outline-none focus:ring-2 focus:ring-spiritual-indigo-500`}
+                                                } focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-accent-gold`}
                                             placeholder="Tell us about your institution, community size, current challenges, and what you're hoping to achieve with MZhub..."
                                         />
                                         {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
@@ -234,7 +234,7 @@ export default function Contact() {
                                         Send Message
                                     </Button>
 
-                                    <p className="text-sm text-gray-500 text-center">
+                                    <p className="text-sm text-secondary-light/60 dark:text-text-mist/60 text-center">
                                         By submitting this form, you agree to our privacy policy. We'll never share your information.
                                     </p>
                                 </form>
@@ -244,13 +244,13 @@ export default function Contact() {
                         {/* Contact Info & Additional Details */}
                         <div className="space-y-8">
                             <Card>
-                                <h3 className="text-2xl font-bold text-spiritual-indigo-900 mb-4">Other Ways to Reach Us</h3>
+                                <h3 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">Other Ways to Reach Us</h3>
                                 <div className="space-y-4">
                                     <div className="flex items-start space-x-3">
                                         <span className="text-2xl">📧</span>
                                         <div>
-                                            <p className="font-semibold text-gray-900">Email</p>
-                                            <a href="mailto:contact@mzhub.com" className="text-spiritual-indigo-600 hover:underline">
+                                            <p className="font-semibold text-secondary-light dark:text-accent-gold">Email</p>
+                                            <a href="mailto:contact@mzhub.com" className="text-accent-blue dark:text-accent-gold hover:underline">
                                                 contact@mzhub.com
                                             </a>
                                         </div>
@@ -258,47 +258,47 @@ export default function Contact() {
                                     <div className="flex items-start space-x-3">
                                         <span className="text-2xl">📞</span>
                                         <div>
-                                            <p className="font-semibold text-gray-900">Phone</p>
-                                            <a href="tel:+15551234567" className="text-spiritual-indigo-600 hover:underline">
+                                            <p className="font-semibold text-secondary-light dark:text-accent-gold">Phone</p>
+                                            <a href="tel:+15551234567" className="text-accent-blue dark:text-accent-gold hover:underline">
                                                 +1 (555) 123-4567
                                             </a>
-                                            <p className="text-sm text-gray-600">Mon-Fri, 9am-6pm PST</p>
+                                            <p className="text-sm text-secondary-light/70 dark:text-text-mist/70">Mon-Fri, 9am-6pm PST</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start space-x-3">
                                         <span className="text-2xl">💬</span>
                                         <div>
-                                            <p className="font-semibold text-gray-900">Live Chat</p>
-                                            <p className="text-gray-600">Available on our website</p>
-                                            <p className="text-sm text-gray-600">Mon-Fri, 9am-6pm PST</p>
+                                            <p className="font-semibold text-secondary-light dark:text-accent-gold">Live Chat</p>
+                                            <p className="text-secondary-light/90 dark:text-text-mist">Available on our website</p>
+                                            <p className="text-sm text-secondary-light/70 dark:text-text-mist/70">Mon-Fri, 9am-6pm PST</p>
                                         </div>
                                     </div>
                                 </div>
                             </Card>
 
-                            <Card className="bg-gradient-to-br from-spiritual-indigo-50 to-spiritual-gold-50">
-                                <h3 className="text-xl font-bold text-spiritual-indigo-900 mb-4">What to Expect</h3>
-                                <ul className="space-y-3">
+                            <Card className="bg-primary-light/30 dark:bg-secondary-dark/30">
+                                <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-4">What to Expect</h3>
+                                <ul className="space-y-3 text-secondary-light/90 dark:text-text-mist">
                                     <li className="flex items-start">
-                                        <span className="text-spiritual-indigo-600 mr-2">1.</span>
+                                        <span className="text-accent-blue dark:text-accent-gold mr-2">1.</span>
                                         <div>
                                             <strong>Quick Response:</strong> We'll reply within 24 hours to schedule your demo
                                         </div>
                                     </li>
                                     <li className="flex items-start">
-                                        <span className="text-spiritual-indigo-600 mr-2">2.</span>
+                                        <span className="text-accent-blue dark:text-accent-gold mr-2">2.</span>
                                         <div>
                                             <strong>Personalized Demo:</strong> 45-minute walkthrough customized to your needs
                                         </div>
                                     </li>
                                     <li className="flex items-start">
-                                        <span className="text-spiritual-indigo-600 mr-2">3.</span>
+                                        <span className="text-accent-blue dark:text-accent-gold mr-2">3.</span>
                                         <div>
                                             <strong>Q&A Session:</strong> All your questions answered by our experts
                                         </div>
                                     </li>
                                     <li className="flex items-start">
-                                        <span className="text-spiritual-indigo-600 mr-2">4.</span>
+                                        <span className="text-accent-blue dark:text-accent-gold mr-2">4.</span>
                                         <div>
                                             <strong>Custom Proposal:</strong> Tailored implementation plan and pricing
                                         </div>
@@ -307,19 +307,19 @@ export default function Contact() {
                             </Card>
 
                             <Card>
-                                <h3 className="text-xl font-bold text-spiritual-indigo-900 mb-4">Frequently Asked Questions</h3>
+                                <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-4">Frequently Asked Questions</h3>
                                 <div className="space-y-4">
                                     <div>
-                                        <p className="font-semibold text-gray-900">How long does implementation take?</p>
-                                        <p className="text-gray-600 text-sm">Typically 2-4 weeks from contract signing to launch, depending on content volume.</p>
+                                        <p className="font-semibold text-secondary-light dark:text-accent-gold">How long does implementation take?</p>
+                                        <p className="text-secondary-light/80 dark:text-text-mist text-sm">Typically 2-4 weeks from contract signing to launch, depending on content volume.</p>
                                     </div>
                                     <div>
-                                        <p className="font-semibold text-gray-900">Is training provided?</p>
-                                        <p className="text-gray-600 text-sm">Yes! We provide comprehensive training for your team and ongoing support.</p>
+                                        <p className="font-semibold text-secondary-light dark:text-accent-gold">Is training provided?</p>
+                                        <p className="text-secondary-light/80 dark:text-text-mist text-sm">Yes! We provide comprehensive training for your team and ongoing support.</p>
                                     </div>
                                     <div>
-                                        <p className="font-semibold text-gray-900">What are the pricing options?</p>
-                                        <p className="text-gray-600 text-sm">Pricing varies by community size and features. We'll create a custom quote for you.</p>
+                                        <p className="font-semibold text-secondary-light dark:text-accent-gold">What are the pricing options?</p>
+                                        <p className="text-secondary-light/80 dark:text-text-mist text-sm">Pricing varies by community size and features. We'll create a custom quote for you.</p>
                                     </div>
                                 </div>
                             </Card>
