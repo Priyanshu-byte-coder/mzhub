@@ -91,78 +91,95 @@ export default function Home() {
 
             {/* Philosophy & Trust */}
             <SectionWrapper id="philosophy" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="flex flex-col overflow-hidden">
-                    <ContainerScroll
-                        titleComponent={
-                            <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                                <h2 className="text-3xl md:text-5xl font-bold text-secondary-light dark:text-accent-gold">
-                                    Our Philosophy: Technology in Service of Faith
-                                </h2>
-                            </ScrollReveal>
-                        }
-                    >
-                        <div className="h-full w-full p-6 md:p-10 overflow-auto">
-                            {/* Introduction Text */}
-                            <div className="space-y-6 text-base md:text-lg text-secondary-light dark:text-text-mist mb-8">
-                                <p>
-                                    We understand that faith is deeply personal and sacred. The introduction of artificial intelligence into spiritual contexts requires extraordinary care, respect, and ethical consideration.
-                                </p>
+                <div className="max-w-7xl mx-auto">
+                    {/* Section Header */}
+                    <div className="text-center mb-12 md:mb-16">
+                        <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-secondary-light dark:text-accent-gold mb-6">
+                                Our Philosophy: Technology in Service of Faith
+                            </h2>
+                        </ScrollReveal>
+                        <p className="text-lg md:text-xl text-secondary-light/80 dark:text-text-mist max-w-4xl mx-auto px-4">
+                            We understand that faith is deeply personal and sacred. The introduction of artificial intelligence into spiritual contexts requires extraordinary care, respect, and ethical consideration.
+                        </p>
+                    </div>
 
-                                <p className="text-lg md:text-xl font-semibold text-secondary-light dark:text-accent-gold bg-primary-light/20 dark:bg-secondary-dark p-6 rounded-lg border-l-4 border-accent-gold">
-                                    MZhub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
-                                </p>
-                            </div>
-
-                            {/* Core Principles Grid */}
-                            <div className="grid md:grid-cols-2 gap-6">
-                                {/* What We Believe */}
-                                <div className="bg-primary-light/30 dark:bg-primary-dark p-6 rounded-lg">
-                                    <h4 className="font-bold text-xl mb-4 text-secondary-light dark:text-accent-gold">What We Believe</h4>
-                                    <ul className="space-y-3 text-secondary-light dark:text-text-mist">
-                                        <li className="flex items-start">
-                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
-                                            <span>Human spiritual leadership is irreplaceable</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
-                                            <span>Institutions must maintain doctrinal control</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
-                                            <span>Privacy and sanctity must be protected</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
-                                            <span>Technology should be transparent and trustworthy</span>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                {/* What We Promise */}
-                                <div className="bg-accent-gold/20 dark:bg-primary-dark p-6 rounded-lg">
-                                    <h4 className="font-bold text-xl mb-4 text-secondary-light dark:text-accent-gold">What We Promise</h4>
-                                    <ul className="space-y-3 text-secondary-light dark:text-text-mist">
-                                        <li className="flex items-start">
-                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
-                                            <span>Complete institutional oversight</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
-                                            <span>Rigorous doctrinal alignment</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
-                                            <span>Bank-level security and privacy</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <span className="text-accent-gold mr-2 text-xl">✓</span>
-                                            <span>Continuous ethical review</span>
-                                        </li>
-                                    </ul>
+                    {/* Core Principle Highlight */}
+                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={2} blurStrength={6}>
+                        <div className="mb-12 md:mb-16 mx-auto max-w-5xl px-4">
+                            <div className="relative group">
+                                <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/20 to-accent-gold/20 dark:from-accent-blue/10 dark:to-accent-gold/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                                <div className="relative bg-white/80 dark:bg-card/80 backdrop-blur-sm p-6 md:p-10 rounded-2xl border-l-4 border-accent-gold shadow-lg hover:shadow-2xl transition-all duration-300">
+                                    <p className="text-xl md:text-2xl lg:text-3xl font-bold text-secondary-light dark:text-accent-gold leading-relaxed">
+                                        MZhub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </ContainerScroll>
+                    </ScrollReveal>
+
+                    {/* Beliefs and Promises Grid */}
+                    <div className="grid md:grid-cols-2 gap-6 md:gap-8 px-4">
+                        {/* What We Believe */}
+                        <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={-3} blurStrength={8}>
+                            <div className="group h-full">
+                                <div className="relative h-full">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-secondary-light/20 to-accent-blue/20 dark:from-secondary-dark/40 dark:to-accent-blue/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-500"></div>
+                                    <div className="relative bg-white/90 dark:bg-card/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-secondary-light/10 dark:border-accent-gold/10 h-full shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                                        <div className="flex items-center mb-6">
+                                            <div className="w-12 h-12 bg-gradient-to-br from-accent-blue to-secondary-light dark:from-accent-gold dark:to-accent-gold/60 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                                                <span className="text-2xl text-white">💡</span>
+                                            </div>
+                                            <h4 className="font-bold text-2xl md:text-3xl text-secondary-light dark:text-accent-gold">What We Believe</h4>
+                                        </div>
+                                        <ul className="space-y-4">
+                                            {[
+                                                'Human spiritual leadership is irreplaceable',
+                                                'Institutions must maintain doctrinal control',
+                                                'Privacy and sanctity must be protected',
+                                                'Technology should be transparent and trustworthy'
+                                            ].map((item, index) => (
+                                                <li key={index} className="flex items-start group/item">
+                                                    <span className="text-accent-gold dark:text-accent-gold mr-3 text-xl mt-1 group-hover/item:scale-125 transition-transform duration-300">✓</span>
+                                                    <span className="text-secondary-light/90 dark:text-text-mist text-base md:text-lg group-hover/item:text-secondary-light dark:group-hover/item:text-white transition-colors duration-300">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </ScrollReveal>
+
+                        {/* What We Promise */}
+                        <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={3} blurStrength={8}>
+                            <div className="group h-full">
+                                <div className="relative h-full">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/30 to-accent-beige/30 dark:from-accent-gold/20 dark:to-accent-gold/10 rounded-2xl transform group-hover:scale-105 transition-transform duration-500"></div>
+                                    <div className="relative bg-accent-beige/30 dark:bg-card/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-accent-gold/20 dark:border-accent-gold/10 h-full shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                                        <div className="flex items-center mb-6">
+                                            <div className="w-12 h-12 bg-gradient-to-br from-accent-gold to-accent-gold/60 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                                                <span className="text-2xl text-white">🤝</span>
+                                            </div>
+                                            <h4 className="font-bold text-2xl md:text-3xl text-secondary-light dark:text-accent-gold">What We Promise</h4>
+                                        </div>
+                                        <ul className="space-y-4">
+                                            {[
+                                                'Complete institutional oversight',
+                                                'Rigorous doctrinal alignment',
+                                                'Bank-level security and privacy',
+                                                'Continuous ethical review'
+                                            ].map((item, index) => (
+                                                <li key={index} className="flex items-start group/item">
+                                                    <span className="text-accent-gold dark:text-accent-gold mr-3 text-xl mt-1 group-hover/item:scale-125 transition-transform duration-300">✓</span>
+                                                    <span className="text-secondary-light/90 dark:text-text-mist text-base md:text-lg group-hover/item:text-secondary-light dark:group-hover/item:text-white transition-colors duration-300">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </ScrollReveal>
+                    </div>
                 </div>
             </SectionWrapper>
 
