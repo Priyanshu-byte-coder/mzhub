@@ -16,6 +16,7 @@ import { LiaSynagogueSolid } from 'react-icons/lia'
 import { FaKhanda } from 'react-icons/fa6'
 import ScrollReveal from '@/components/ui/scroll-reveal'
 import ScrollSlideReveal from '@/components/ui/scroll-slide-reveal'
+import InfiniteCarousel from '@/components/ui/infinite-carousel'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { StaggerTestimonials } from '@/components/stagger-testimonials'
 import VideoShowcase from '@/components/video-component'
@@ -195,31 +196,27 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {[
-                        { title: 'Temples', icon: MdOutlineTempleHindu, description: 'Hindu temples and mandirs serving local and global communities' },
-                        { title: 'Ashrams', icon: Flower2, description: 'Spiritual retreat centers and meditation communities' },
-                        { title: 'Churches', icon: Church, description: 'Christian congregations and ministries of all denominations' },
-                        { title: 'Mosques', icon: FaMosque, description: 'Islamic centers and Muslim community organizations' },
-                        { title: 'Synagogues', icon: LiaSynagogueSolid, description: 'Jewish congregations and study centers' },
-                        { title: 'Monasteries', icon: HomeIcon, description: 'Buddhist and contemplative religious communities' },
-                        { title: 'Gurudwaras', icon: FaKhanda, description: 'Sikh temples and community centers' },
-                        { title: 'Spiritual Centers', icon: Flower2, description: 'Multi-faith and interfaith spiritual organizations' }
-                    ].map((audience, index) => {
-                        const IconComponent = audience.icon;
-                        return (
-                            <div
-                                key={index}
-                                className="bg-secondary-light/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-secondary-light/20 transition-colors dark:bg-white/10 dark:hover:bg-white/20"
-                            >
-                                <div className="flex justify-center mb-3">
-                                    <IconComponent className="w-12 h-12 text-secondary-light dark:text-accent-gold" />
-                                </div>
-                                <h3 className="font-bold text-xl mb-2 text-secondary-light dark:text-white">{audience.title}</h3>
-                                <p className="text-secondary-light/70 dark:text-neutral-light text-sm">{audience.description}</p>
-                            </div>
-                        );
-                    })}
+                <div className="space-y-4">
+                    <InfiniteCarousel
+                        items={[
+                            { title: 'Temples', icon: MdOutlineTempleHindu, description: 'Hindu temples and mandirs serving local and global communities' },
+                            { title: 'Ashrams', icon: Flower2, description: 'Spiritual retreat centers and meditation communities' },
+                            { title: 'Churches', icon: Church, description: 'Christian congregations and ministries of all denominations' },
+                            { title: 'Mosques', icon: FaMosque, description: 'Islamic centers and Muslim community organizations' },
+                        ]}
+                        speed={5}
+                        direction="left"
+                    />
+                    <InfiniteCarousel
+                        items={[
+                            { title: 'Synagogues', icon: LiaSynagogueSolid, description: 'Jewish congregations and study centers' },
+                            { title: 'Monasteries', icon: HomeIcon, description: 'Buddhist and contemplative religious communities' },
+                            { title: 'Gurudwaras', icon: FaKhanda, description: 'Sikh temples and community centers' },
+                            { title: 'Spiritual Centers', icon: Flower2, description: 'Multi-faith and interfaith spiritual organizations' }
+                        ]}
+                        speed={5}
+                        direction="right"
+                    />
                 </div>
             </SectionWrapper>
 
