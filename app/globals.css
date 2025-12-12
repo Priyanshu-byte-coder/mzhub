@@ -48,6 +48,15 @@ html {
   .animate-glow {
     animation: glow-pulse 3s ease-in-out infinite;
   }
+
+  .team-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .team-scroll::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer base {

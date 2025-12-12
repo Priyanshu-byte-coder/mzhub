@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { getTeamMembers } from '@/lib/teamMembers'
-import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
 import ScrollReveal from '@/components/ui/scroll-reveal'
 
 export const metadata: Metadata = {
@@ -152,38 +151,43 @@ export default function About() {
 
             {/* Team */}
             <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-16">
+                <div className="text-center mb-12">
                     <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">Meet Our Team</h2>
+                        <p className="text-sm uppercase tracking-[0.4em] text-secondary-light/70 dark:text-text-mist/70">Meet Our Team</p>
+                        <h2 className="mt-4 text-4xl font-bold text-secondary-light dark:text-accent-gold">Faces behind the mission</h2>
                     </ScrollReveal>
-                    <p className="text-xl text-secondary-light/80 dark:text-text-mist max-w-3xl mx-auto mb-8">
-                        A diverse group united by a passion for ethical technology and spiritual wisdom
-                    </p>
-                    <p className="text-sm text-secondary-light/60 dark:text-text-mist/60 mb-8">
-                        Hover over team members to see their details
+                    <p className="mt-4 text-base text-secondary-light/80 dark:text-text-mist/80">
+                        Every partnership blends rigorous AI craft with reverence for sacred wisdom. Hover to bring each story from archival grayscale to living color.
                     </p>
                 </div>
 
-                <div className="flex justify-center mb-12">
-                    <AnimatedTooltip
-                        items={team.map((member, index) => ({
-                            id: index + 1,
-                            name: member.name,
-                            designation: member.role,
-                            image: member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}`
-                        }))}
-                    />
-                </div>
+                    <div className="team-scroll overflow-x-auto pb-4">
+                        <div className="flex gap-10 min-w-max pr-8 snap-x snap-mandatory">
+                            {team.map((member, index) => {
+                                const imageSrc = member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}`
+                                const offsetClass = index % 2 === 1 ? 'md:translate-y-10' : ''
 
-                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    {team.map((member, index) => (
-                        <Card key={index}>
-                            <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">{member.name}</h3>
-                            <p className="text-accent-gold dark:text-accent-gold/80 font-semibold mb-3">{member.role}</p>
-                            <p className="text-secondary-light/80 dark:text-text-mist text-sm">{member.bio}</p>
-                        </Card>
-                    ))}
-                </div>
+                                return (
+                                    <figure
+                                        key={member.name}
+                                        className={`group snap-start w-[320px] shrink-0 space-y-5 ${offsetClass}`}
+                                    >
+                                        <div className="relative aspect-square w-full overflow-hidden rounded-[32px] bg-black/20">
+                                            <img
+                                                src={imageSrc}
+                                                alt={member.name}
+                                                className="h-full w-full object-cover transition duration-500 grayscale group-hover:scale-105 group-hover:grayscale-0"
+                                            />
+                                        </div>
+                                        <div>
+                                            <p className="text-2xl font-semibold text-secondary-light dark:text-white">{member.name}</p>
+                                            <p className="text-base text-secondary-light/70 dark:text-text-mist/70">{member.role}</p>
+                                        </div>
+                                    </figure>
+                                )
+                            })}
+                        </div>
+                    </div>
             </SectionWrapper>
 
         </div>
