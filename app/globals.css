@@ -152,4 +152,15 @@ html {
   body.dark {
     @apply bg-gradient-to-br from-[#0a0e1a] via-[#1a1f3a] to-[#0f1729];
   }
+
+  main,
+  footer {
+    transition: filter 0.3s ease;
+  }
+
+  body[data-nav-open='true'] main,
+  body[data-nav-open='true'] footer {
+    filter: blur(4px);
+    pointer-events: none;
+  }
 }

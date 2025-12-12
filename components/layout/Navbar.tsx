@@ -35,15 +35,20 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    // Prevent body scroll when mobile or desktop menu is open
+    // Prevent body scroll + blur page when any menu is open
     useEffect(() => {
-        if (isMobileMenuOpen || isDesktopMenuOpen) {
+        const anyMenuOpen = isMobileMenuOpen || isDesktopMenuOpen
+        if (anyMenuOpen) {
             document.body.style.overflow = 'hidden'
+            document.body.dataset.navOpen = 'true'
         } else {
             document.body.style.overflow = ''
+            delete document.body.dataset.navOpen
         }
+
         return () => {
             document.body.style.overflow = ''
+            delete document.body.dataset.navOpen
         }
     }, [isMobileMenuOpen, isDesktopMenuOpen])
 
@@ -114,7 +119,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-white/90 dark:bg-[#050a16]/95 backdrop-blur-xl border-b border-border/40 shadow-sm transition-colors">
+        <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-white dark:bg-[#050a16] border-b border-border/40 shadow-sm transition-colors">
             {/* Mobile Layout */}
             <div className="md:hidden flex items-center justify-between px-4">
                 {/* Logo and Brand Name */}
@@ -262,7 +267,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="hidden md:block fixed top-0 right-0 bottom-0 w-[400px] bg-neutral-light dark:bg-[#0f172a] border-l border-border shadow-2xl z-[60]"
+                            className="hidden md:block fixed top-0 right-0 bottom-0 w-[400px] bg-white dark:bg-[#0f172a] border-l border-border shadow-2xl z-[60]"
                         >
                             <div className="flex flex-col h-full p-8">
                                 {/* Header */}
@@ -361,7 +366,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-neutral-light dark:bg-[#0f172a] border-l border-border shadow-2xl md:hidden"
+                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-white dark:bg-[#0f172a] border-l border-border shadow-2xl md:hidden"
                         >
                             <div className="flex flex-col h-full p-6">
                                 {/* Header */}
