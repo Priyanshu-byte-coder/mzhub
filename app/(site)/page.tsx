@@ -15,6 +15,7 @@ import { FaMosque } from 'react-icons/fa'
 import { LiaSynagogueSolid } from 'react-icons/lia'
 import { FaKhanda } from 'react-icons/fa6'
 import ScrollReveal from '@/components/ui/scroll-reveal'
+import ScrollSlideReveal from '@/components/ui/scroll-slide-reveal'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { StaggerTestimonials } from '@/components/stagger-testimonials'
 import VideoShowcase from '@/components/video-component'
@@ -121,7 +122,7 @@ export default function Home() {
                     {/* Beliefs and Promises Grid */}
                     <div className="grid md:grid-cols-2 gap-6 md:gap-8 px-4">
                         {/* What We Believe */}
-                        <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={-3} blurStrength={8}>
+                        <ScrollSlideReveal direction="left">
                             <div className="group h-full">
                                 <div className="relative h-full">
                                     <div className="absolute inset-0 bg-gradient-to-br from-secondary-light/20 to-accent-blue/20 dark:from-secondary-dark/40 dark:to-accent-blue/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-500"></div>
@@ -148,10 +149,10 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
-                        </ScrollReveal>
+                        </ScrollSlideReveal>
 
                         {/* What We Promise */}
-                        <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={3} blurStrength={8}>
+                        <ScrollSlideReveal direction="right">
                             <div className="group h-full">
                                 <div className="relative h-full">
                                     <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/30 to-accent-beige/30 dark:from-accent-gold/20 dark:to-accent-gold/10 rounded-2xl transform group-hover:scale-105 transition-transform duration-500"></div>
@@ -178,7 +179,7 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
-                        </ScrollReveal>
+                        </ScrollSlideReveal>
                     </div>
                 </div>
             </SectionWrapper>
