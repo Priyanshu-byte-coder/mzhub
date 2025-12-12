@@ -3,6 +3,7 @@ import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
 import { getTeamMembers } from '@/lib/teamMembers'
 import ScrollReveal from '@/components/ui/scroll-reveal'
+import TeamCarousel from '@/components/team-carousel'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -161,33 +162,7 @@ export default function About() {
                     </p>
                 </div>
 
-                    <div className="team-scroll overflow-x-auto pb-4">
-                        <div className="flex gap-10 min-w-max pr-8 snap-x snap-mandatory">
-                            {team.map((member, index) => {
-                                const imageSrc = member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}`
-                                const offsetClass = index % 2 === 1 ? 'md:translate-y-10' : ''
-
-                                return (
-                                    <figure
-                                        key={member.name}
-                                        className={`group snap-start w-[320px] shrink-0 space-y-5 ${offsetClass}`}
-                                    >
-                                        <div className="relative aspect-square w-full overflow-hidden rounded-[32px] bg-black/20">
-                                            <img
-                                                src={imageSrc}
-                                                alt={member.name}
-                                                className="h-full w-full object-cover transition duration-500 grayscale group-hover:scale-105 group-hover:grayscale-0"
-                                            />
-                                        </div>
-                                        <div>
-                                            <p className="text-2xl font-semibold text-secondary-light dark:text-white">{member.name}</p>
-                                            <p className="text-base text-secondary-light/70 dark:text-text-mist/70">{member.role}</p>
-                                        </div>
-                                    </figure>
-                                )
-                            })}
-                        </div>
-                    </div>
+                <TeamCarousel team={team} />
             </SectionWrapper>
 
         </div>
