@@ -9,7 +9,11 @@ import RotatingText from '@/components/RotatingText'
 import { BackgroundPathsOnly } from '@/components/ui/background-paths'
 import HoverCard from '@/components/ui/HoverCard'
 import { PlatformFeatures } from '@/components/ui/PlatformFeatures'
-import { BookOpen, Bot, Users } from 'lucide-react'
+import { BookOpen, Bot, Users, Church, Home as HomeIcon, Flower2, Lightbulb, Handshake } from 'lucide-react'
+import { MdOutlineTempleHindu } from 'react-icons/md'
+import { FaMosque } from 'react-icons/fa'
+import { LiaSynagogueSolid } from 'react-icons/lia'
+import { FaKhanda } from 'react-icons/fa6'
 import ScrollReveal from '@/components/ui/scroll-reveal'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { StaggerTestimonials } from '@/components/stagger-testimonials'
@@ -124,7 +128,7 @@ export default function Home() {
                                     <div className="relative bg-white/90 dark:bg-card/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-secondary-light/10 dark:border-accent-gold/10 h-full shadow-lg group-hover:shadow-2xl transition-all duration-300">
                                         <div className="flex items-center mb-6">
                                             <div className="w-12 h-12 bg-gradient-to-br from-accent-blue to-secondary-light dark:from-accent-gold dark:to-accent-gold/60 rounded-xl flex items-center justify-center mr-4 shadow-lg">
-                                                <span className="text-2xl text-white">💡</span>
+                                                <Lightbulb className="w-6 h-6 text-white" />
                                             </div>
                                             <h4 className="font-bold text-2xl md:text-3xl text-secondary-light dark:text-accent-gold">What We Believe</h4>
                                         </div>
@@ -154,7 +158,7 @@ export default function Home() {
                                     <div className="relative bg-accent-beige/30 dark:bg-card/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-accent-gold/20 dark:border-accent-gold/10 h-full shadow-lg group-hover:shadow-2xl transition-all duration-300">
                                         <div className="flex items-center mb-6">
                                             <div className="w-12 h-12 bg-gradient-to-br from-accent-gold to-accent-gold/60 rounded-xl flex items-center justify-center mr-4 shadow-lg">
-                                                <span className="text-2xl text-white">🤝</span>
+                                                <Handshake className="w-6 h-6 text-white" />
                                             </div>
                                             <h4 className="font-bold text-2xl md:text-3xl text-secondary-light dark:text-accent-gold">What We Promise</h4>
                                         </div>
@@ -192,26 +196,29 @@ export default function Home() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {[
-                        { title: 'Temples', icon: '🛕', description: 'Hindu temples and mandirs serving local and global communities' },
-                        { title: 'Ashrams', icon: '🧘‍♂️', description: 'Spiritual retreat centers and meditation communities' },
-                        { title: 'Churches', icon: '⛪', description: 'Christian congregations and ministries of all denominations' },
-                        { title: 'Mosques', icon: '🕌', description: 'Islamic centers and Muslim community organizations' },
-                        { title: 'Synagogues', icon: '✡️', description: 'Jewish congregations and study centers' },
-                        { title: 'Monasteries', icon: '🙏', description: 'Buddhist and contemplative religious communities' },
-                        { title: 'Gurudwaras', icon: '🏛️', description: 'Sikh temples and community centers' },
-                        { title: 'Spiritual Centers', icon: '🕉️', description: 'Multi-faith and interfaith spiritual organizations' }
-                    ].map((audience, index) => (
-                        <div
-                            key={index}
-                            className="bg-secondary-light/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-secondary-light/20 transition-colors dark:bg-white/10 dark:hover:bg-white/20"
-                        >
-                            <div className="text-5xl mb-3">
-                                {audience.icon}
+                        { title: 'Temples', icon: MdOutlineTempleHindu, description: 'Hindu temples and mandirs serving local and global communities' },
+                        { title: 'Ashrams', icon: Flower2, description: 'Spiritual retreat centers and meditation communities' },
+                        { title: 'Churches', icon: Church, description: 'Christian congregations and ministries of all denominations' },
+                        { title: 'Mosques', icon: FaMosque, description: 'Islamic centers and Muslim community organizations' },
+                        { title: 'Synagogues', icon: LiaSynagogueSolid, description: 'Jewish congregations and study centers' },
+                        { title: 'Monasteries', icon: HomeIcon, description: 'Buddhist and contemplative religious communities' },
+                        { title: 'Gurudwaras', icon: FaKhanda, description: 'Sikh temples and community centers' },
+                        { title: 'Spiritual Centers', icon: Flower2, description: 'Multi-faith and interfaith spiritual organizations' }
+                    ].map((audience, index) => {
+                        const IconComponent = audience.icon;
+                        return (
+                            <div
+                                key={index}
+                                className="bg-secondary-light/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-secondary-light/20 transition-colors dark:bg-white/10 dark:hover:bg-white/20"
+                            >
+                                <div className="flex justify-center mb-3">
+                                    <IconComponent className="w-12 h-12 text-secondary-light dark:text-accent-gold" />
+                                </div>
+                                <h3 className="font-bold text-xl mb-2 text-secondary-light dark:text-white">{audience.title}</h3>
+                                <p className="text-secondary-light/70 dark:text-neutral-light text-sm">{audience.description}</p>
                             </div>
-                            <h3 className="font-bold text-xl mb-2 text-secondary-light dark:text-white">{audience.title}</h3>
-                            <p className="text-secondary-light/70 dark:text-neutral-light text-sm">{audience.description}</p>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </SectionWrapper>
 
