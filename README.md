@@ -9,10 +9,10 @@
 ### ⚠️ **TO-DO LIST**
 
 - [ ] **Fill site with real information** (team, testimonials, content)
-- [ ] **Projects page** (add real project MDX files and images)
+- [ ] **Projects page** (add real project files and images)
 - [ ] **Landing page optimization** (social proof, CTAs, demo video)
-- [ ] **Blog page** (write production articles, author profiles)
-- [ ] **Contact automation** (email integration, CRM, spam protection)
+- [ ] **Blog page** (write production articles)
+- [ ] **Contact automation** (email integration)
 - [ ] **SEO optimization** (structured data, analytics, alt text, Core Web Vitals)
 
 ### ✅ **COMPLETED FEATURES**
