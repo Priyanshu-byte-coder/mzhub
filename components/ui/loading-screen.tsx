@@ -59,7 +59,7 @@ export function LoadingScreen() {
                 className="absolute top-12 left-8 md:left-16"
                 style={{ color: textColor }}
               >
-                <span className="text-2xl md:text-1xl lg:text-5xl font-light italic">
+                <span className="text-2xl md:text-3xl lg:text-4xl font-light italic">
                   {count} - 100
                 </span>
               </motion.div>
