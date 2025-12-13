@@ -193,11 +193,11 @@ function onMousemove(e: MouseEvent | TouchEvent) {
 
   document.removeEventListener("mousemove", onMousemove);
   document.removeEventListener("touchstart", onMousemove);
-
+  
   document.addEventListener("mousemove", handleMove);
   document.addEventListener("touchmove", handleMove);
   document.addEventListener("touchstart", handleTouchStart);
-
+  
   handleMove(e);
   createLines();
   render();
@@ -257,7 +257,7 @@ export const renderCanvas = (): void => {
 
   document.addEventListener("mousemove", onMousemove);
   document.addEventListener("touchstart", onMousemove);
-
+  
   document.body.addEventListener("orientationchange", resizeCanvas);
   window.addEventListener("resize", resizeCanvas);
 
@@ -269,7 +269,7 @@ export const renderCanvas = (): void => {
   });
 
   window.addEventListener("blur", () => {
-    if (ctx) ctx.running = false; // probably what you wanted
+    if (ctx) ctx.running = false;
   });
 
   resizeCanvas();

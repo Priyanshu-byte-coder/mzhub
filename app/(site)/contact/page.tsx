@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Card from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
+import { BlobButton } from '@/components/ui/BlobButton'
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -275,9 +275,9 @@ export default function Contact() {
                                         {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
                                     </div>
 
-                                    <Button type="submit" variant="secondary" size="lg" className="w-full" disabled={isSubmitting}>
+                                    <BlobButton as="button" type="submit" className="w-full" disabled={isSubmitting}>
                                         {isSubmitting ? 'Sending...' : 'Send Message'}
-                                    </Button>
+                                    </BlobButton>
 
                                     <p className="text-sm text-secondary-light/60 dark:text-text-mist/60 text-center">
                                         By submitting this form, you agree to our privacy policy. We'll never share your information.

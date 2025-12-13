@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, ElementType } from "react"
+import { ReactNode, ElementType, ComponentPropsWithoutRef } from "react"
 import "./BlobButton.css"
 
 interface BlobButtonProps {
@@ -9,6 +9,7 @@ interface BlobButtonProps {
   className?: string
   as?: ElementType
   href?: string
+  [key: string]: any
 }
 
 export const BlobButton = ({ 

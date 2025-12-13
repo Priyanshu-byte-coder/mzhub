@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar'
 import FooterNew from '@/components/layout/FooterNew'
 import { ThemeProvider } from '@/components/theme-provider'
 import { TransitionProvider } from '@/components/transition-provider'
+import { LoadingScreen } from '@/components/ui/loading-screen'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -66,6 +67,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
+                    <LoadingScreen />
                     <TransitionProvider>
                         <Navbar />
                         <main className="min-h-screen">
