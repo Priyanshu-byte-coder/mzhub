@@ -34,10 +34,10 @@ export function LoadingScreen() {
     }
   }, [count])
 
-  const isDark = resolvedTheme === 'dark'
-  const bgColor = isDark ? '#050a16' : '#ffffff'
-  const textColor = isDark ? '#ffffff' : '#1e293b'
-  const mutedColor = isDark ? 'rgba(255, 255, 255, 0.6)' : 'rgba(30, 41, 59, 0.6)'
+  const isDark = mounted && resolvedTheme === 'dark'
+  const bgColor = isDark ? '#0f172a' : '#f8fafc'
+  const textColor = isDark ? '#ffffff' : '#0f172a'
+  const mutedColor = isDark ? 'rgba(255, 255, 255, 0.6)' : 'rgba(15, 23, 42, 0.6)'
 
   return (
     <AnimatePresence mode="wait">
@@ -59,7 +59,7 @@ export function LoadingScreen() {
                 className="absolute top-12 left-8 md:left-16"
                 style={{ color: textColor }}
               >
-                <span className="text-2xl md:text-3xl font-light italic">
+                <span className="text-2xl md:text-1xl lg:text-5xl font-light italic">
                   {count} - 100
                 </span>
               </motion.div>

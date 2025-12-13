@@ -74,7 +74,7 @@ export function PageTransition() {
       animate="animate"
       variants={blackBox}
       style={{
-        backgroundColor: isDark ? '#050a16' : '#ffffff',
+        backgroundColor: isDark ? '#0f172a' : '#f1f5f9',
       }}
     >
       <motion.svg
@@ -91,12 +91,12 @@ export function PageTransition() {
           >
             <rect 
               className="w-full h-full" 
-              fill={isDark ? '#050a16' : '#ffffff'} 
+              fill={isDark ? '#0f172a' : '#f1f5f9'} 
             />
             <motion.rect
               variants={text}
               className="w-full h-full"
-              fill={isDark ? '#1e293b' : '#e2e8f0'}
+              fill={isDark ? '#334155' : '#cbd5e1'}
             />
           </pattern>
         </defs>
