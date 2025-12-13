@@ -10,10 +10,20 @@ interface TeamCarouselProps {
 
 export default function TeamCarousel({ team }: TeamCarouselProps) {
     const totalCards = team.length
-    const indicatorCount = totalCards ? Math.min(2, totalCards) : 0
+    // Responsive indicator count: desktop shows 2 dots, mobile shows up to 4
+    const getInitialIndicatorCount = () => {
+        if (typeof window !== 'undefined') {
+            const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+            return totalCards ? Math.min(isDesktop ? 2 : 4, totalCards) : 0
+        }
+        // SSR fallback
+        return totalCards ? Math.min(2, totalCards) : 0
+    }
+    const [indicatorCount, setIndicatorCount] = useState<number>(getInitialIndicatorCount())
     const chunkSize = indicatorCount ? Math.ceil(totalCards / indicatorCount) : 0
     const scrollRef = useRef<HTMLDivElement>(null)
     const [activeIndex, setActiveIndex] = useState(0)
+    const [isPaused, setIsPaused] = useState(false)
 
     const getCardWidth = useCallback(() => {
         const container = scrollRef.current
@@ -73,18 +83,51 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
         return () => container.removeEventListener('scroll', updateActiveIndex)
     }, [getCardWidth, totalCards])
 
+    // Update indicator count on viewport resize (mobile: 4 dots, desktop: 2 dots)
+    useEffect(() => {
+        const updateIndicators = () => {
+            const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+            const next = totalCards ? Math.min(isDesktop ? 2 : 4, totalCards) : 0
+            setIndicatorCount(next)
+        }
+
+        updateIndicators()
+        window.addEventListener('resize', updateIndicators)
+        return () => window.removeEventListener('resize', updateIndicators)
+    }, [totalCards])
+
+    // Autoplay: advance cards in a loop, pause on hover/focus
+    useEffect(() => {
+        if (!totalCards) return
+        if (isPaused) return
+
+        const interval = setInterval(() => {
+            // Advance to next card; wraps via scrollToIndex normalization
+            scrollToIndex(activeIndex + 1)
+        }, 3000) // 3s per card; adjust as needed
+
+        return () => clearInterval(interval)
+    }, [activeIndex, isPaused, totalCards])
+
     return (
         <div className="relative space-y-6">
-            <div ref={scrollRef} className="team-scroll overflow-x-auto pb-6 snap-x snap-mandatory">
+            <div
+                ref={scrollRef}
+                className="team-scroll overflow-x-auto pb-12 snap-x snap-mandatory"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onFocus={() => setIsPaused(true)}
+                onBlur={() => setIsPaused(false)}
+            >
                 <div className="flex gap-10 min-w-max pr-8">
                     {team.map((member, index) => {
                         const imageSrc = member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}`
-                        const offsetClass = index % 2 === 1 ? 'md:translate-y-10' : ''
+                        const offsetClass = index % 2 === 1 ? 'md:translate-y-4' : ''
 
                         return (
                             <figure
                                 key={member.name}
-                                className={`group snap-start w-[360px] shrink-0 space-y-5 ${offsetClass}`}
+                                className={`group snap-start w-[420px] shrink-0 space-y-6 ${offsetClass}`}
                             >
                                 <div className="relative aspect-square w-full overflow-hidden rounded-[40px] bg-black/20">
                                     <img
