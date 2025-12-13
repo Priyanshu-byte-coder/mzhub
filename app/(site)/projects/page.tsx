@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function Platform() {
     return (
-        <div className="pt-20">
+        <div>
             {/* Hero */}
             <section className="bg-gradient-to-br from-spiritual-indigo-900 to-spiritual-indigo-800 text-white py-20 md:py-32">
                 <div className="container-custom text-center">
