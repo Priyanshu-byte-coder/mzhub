@@ -311,7 +311,7 @@ export default function Navbar() {
                                                     setIsDesktopMenuOpen(false)
                                                 }}
                                                 className={`flex items-center gap-4 p-4 rounded-xl transition-all ${isActive
-                                                    ? 'bg-primary/10 text-primary'
+                                                    ? 'bg-accent-gold/10 text-accent-gold dark:text-accent-gold'
                                                     : 'hover:bg-foreground/5 text-foreground'
                                                     }`}
                                             >
@@ -407,7 +407,7 @@ export default function Navbar() {
                                                 key={item.href}
                                                 onClick={() => handleMobileNavClick(item.href)}
                                                 className={`flex items-center gap-4 p-4 rounded-xl transition-all ${isActive
-                                                    ? 'bg-primary/10 text-primary'
+                                                    ? 'bg-accent-gold/10 text-accent-gold dark:text-accent-gold'
                                                     : 'hover:bg-foreground/5 text-foreground'
                                                     }`}
                                             >

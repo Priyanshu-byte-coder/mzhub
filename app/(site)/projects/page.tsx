@@ -1,384 +1,194 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
+import { ProjectCard } from '@/components/ui/project-card'
+import { projects } from '@/lib/projectsData'
 import Link from 'next/link'
-import SectionWrapper from '@/components/ui/SectionWrapper'
-import Card from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
-import ScrollReveal from '@/components/ui/scroll-reveal'
+import { ArrowRight } from 'lucide-react'
 
-export const metadata: Metadata = {
-    title: 'Platform',
-    description: 'Explore MZhub\'s AI-powered platform features: intelligent guidance, digital archives, automation, analytics, and institutional control for religious organizations.',
-}
+export default function ProjectsPage() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start']
+  })
 
-export default function Platform() {
-    return (
-        <div>
-            {/* Hero */}
-            <section className="bg-gradient-to-br from-spiritual-indigo-900 to-spiritual-indigo-800 text-white py-20 md:py-32">
-                <div className="container-custom text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 font-serif">
-                        A Complete Platform for
-                        <br />
-                        <span className="text-spiritual-gold-300">Digital Spiritual Engagement</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-spiritual-indigo-200 max-w-4xl mx-auto">
-                        Everything you need to preserve teachings, serve devotees, and build community—all in one place.
-                    </p>
-                </div>
-            </section>
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
-            {/* Platform Overview */}
-            <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">
-                <div className="max-w-4xl mx-auto text-center mb-16">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="section-heading text-secondary-light dark:text-accent-gold mb-8">Comprehensive Digital Infrastructure</h2>
-                    </ScrollReveal>
-                    <p className="text-xl text-secondary-light/90 dark:text-text-mist leading-relaxed">
-                        MZhub isn't just a chatbot or an archive—it's a complete ecosystem designed specifically for religious institutions. From content ingestion to community insights, every feature is built with spiritual contexts in mind.
-                    </p>
-                </div>
+  return (
+    <div ref={containerRef} className="bg-white dark:bg-primary-dark">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <motion.div
+          style={{ y, opacity }}
+          className="container-custom text-center z-10 px-4"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-8"
+          >
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-sm md:text-base uppercase tracking-[0.3em] text-accent-gold font-medium"
+            >
+              Our Work
+            </motion.p>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-secondary-light dark:text-text-mist leading-[0.9] font-serif">
+              Transforming
+              <br />
+              <span className="text-accent-gold">Faith</span> Through
+              <br />
+              Technology
+            </h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-lg md:text-xl lg:text-2xl text-secondary-light/70 dark:text-text-mist/70 max-w-3xl mx-auto leading-relaxed"
+            >
+              Discover how we're helping religious institutions worldwide
+              preserve their sacred teachings and connect with communities
+              in the digital age.
+            </motion.p>
 
-                <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-                    <div>
-                        <h3 className="text-3xl font-bold text-secondary-light dark:text-accent-gold mb-4">Built for Scale, Designed for Sanctity</h3>
-                        <p className="text-secondary-light/90 dark:text-text-mist mb-4">
-                            Whether you serve 100 devotees or 100,000, MZhub scales to meet your needs. Our cloud infrastructure handles millions of queries while maintaining institutional control and data privacy.
-                        </p>
-                        <p className="text-secondary-light/90 dark:text-text-mist">
-                            Every interaction, every piece of content, every AI response is subject to your oversight. Technology serves your mission, not the other way around.
-                        </p>
-                    </div>
-                    <div className="bg-primary-light/40 dark:bg-secondary-dark/40 rounded-2xl p-8 space-y-4">
-                        <div className="flex items-start space-x-3">
-                            <span className="text-2xl">✓</span>
-                            <div>
-                                <h4 className="font-bold text-secondary-light dark:text-accent-gold">Cloud-Native Architecture</h4>
-                                <p className="text-secondary-light/80 dark:text-text-mist text-sm">Reliable, secure, and infinitely scalable</p>
-                            </div>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                            <span className="text-2xl">✓</span>
-                            <div>
-                                <h4 className="font-bold text-secondary-light dark:text-accent-gold">Mobile-First Design</h4>
-                                <p className="text-secondary-light/80 dark:text-text-mist text-sm">Beautiful experience on every device</p>
-                            </div>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                            <span className="text-2xl">✓</span>
-                            <div>
-                                <h4 className="font-bold text-secondary-light dark:text-accent-gold">Enterprise Security</h4>
-                                <p className="text-secondary-light/80 dark:text-text-mist text-sm">Bank-level encryption and compliance</p>
-                            </div>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                            <span className="text-2xl">✓</span>
-                            <div>
-                                <h4 className="font-bold text-secondary-light dark:text-accent-gold">White-Label Options</h4>
-                                <p className="text-secondary-light/80 dark:text-text-mist text-sm">Brand the platform as your own</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </SectionWrapper>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="pt-8"
+            >
+              <Link
+                href="#projects"
+                className="inline-flex items-center gap-2 text-accent-gold hover:gap-4 transition-all duration-300 text-lg font-medium group"
+              >
+                Explore Projects
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-            {/* Core Modules */}
-            <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-16">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="section-heading text-secondary-light dark:text-accent-gold">Core Platform Modules</h2>
-                    </ScrollReveal>
-                    <p className="text-xl text-secondary-light/80 dark:text-text-mist max-w-3xl mx-auto">
-                        Four integrated modules that work together to serve your community
-                    </p>
-                </div>
-
-                <div className="space-y-12 max-w-6xl mx-auto">
-                    {/* Module 1: AI Assistant */}
-                    <Card className="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <div className="inline-block bg-accent-blue/20 dark:bg-accent-blue/10 text-accent-blue dark:text-accent-gold px-3 py-1 rounded-full text-sm font-semibold mb-4">
-                                Module 1
-                            </div>
-                            <h3 className="text-3xl font-bold text-secondary-light dark:text-accent-gold mb-4">🧘 AI Spiritual Assistant</h3>
-                            <p className="text-secondary-light/90 dark:text-text-mist mb-4">
-                                Provide 24/7 personalized guidance to devotees using AI trained exclusively on your institutional teachings. The assistant can:
-                            </p>
-                            <ul className="space-y-2 text-secondary-light/90 dark:text-text-mist">
-                                <li>• Answer questions about practices, rituals, and beliefs</li>
-                                <li>• Recommend relevant scriptures and teachings</li>
-                                <li>• Provide daily inspiration and reminders</li>
-                                <li>• Guide users to human support when needed</li>
-                            </ul>
-                            <div className="mt-6 p-4 bg-accent-beige/20 dark:bg-secondary-dark/30 rounded-lg border-l-4 border-accent-gold">
-                                <p className="text-sm font-semibold text-secondary-light dark:text-accent-gold">
-                                    Complete Control: You review and approve all AI responses before they go live. The assistant learns your doctrine, not the internet's.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="bg-gradient-to-br from-secondary-light to-secondary-dark dark:from-secondary-dark dark:to-primary-dark rounded-xl p-8 text-white">
-                            <div className="text-sm font-semibold mb-2 text-accent-gold">Example Interaction</div>
-                            <div className="space-y-4">
-                                <div className="bg-white/10 rounded-lg p-3">
-                                    <p className="text-sm font-semibold mb-1">Devotee:</p>
-                                    <p className="text-white/90">"How should I prepare for morning meditation?"</p>
-                                </div>
-                                <div className="bg-accent-gold/30 rounded-lg p-3">
-                                    <p className="text-sm font-semibold mb-1">AI Assistant:</p>
-                                    <p className="text-white">
-                                        "In our tradition, morning meditation preparation involves three steps: 1) Light purification with water, 2) Create sacred space with incense, 3) Begin with the opening prayer from our scriptures. Guruji emphasized this in his discourse on March 12, 2019 [link to recording]."
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </Card>
-
-                    {/* Module 2: Media Hub */}
-                    <Card className="grid md:grid-cols-2 gap-8 items-center">
-                        <div className="order-2 md:order-1 bg-gradient-to-br from-accent-gold/80 to-accent-gold rounded-xl p-8 text-white">
-                            <h4 className="text-2xl font-bold mb-4">Features Include:</h4>
-                            <ul className="space-y-3">
-                                <li className="flex items-start">
-                                    <span className="mr-2">🔍</span>
-                                    <div>
-                                        <strong>Semantic Search</strong>
-                                        <p className="text-sm text-white/90">Find content by meaning, not just keywords</p>
-                                    </div>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="mr-2">📝</span>
-                                    <div>
-                                        <strong>Auto-Transcription</strong>
-                                        <p className="text-sm text-white/90">Convert audio/video to searchable text</p>
-                                    </div>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="mr-2">🌐</span>
-                                    <div>
-                                        <strong>Multi-Language</strong>
-                                        <p className="text-sm text-white/90">Translate content to serve global communities</p>
-                                    </div>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="mr-2">📱</span>
-                                    <div>
-                                        <strong>Mobile Apps</strong>
-                                        <p className="text-sm text-white/90">iOS and Android native applications</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="order-1 md:order-2">
-                            <div className="inline-block bg-accent-gold/20 dark:bg-accent-gold/10 text-accent-gold px-3 py-1 rounded-full text-sm font-semibold mb-4">
-                                Module 2
-                            </div>
-                            <h3 className="text-3xl font-bold text-secondary-light dark:text-accent-gold mb-4">🗄️ Digital Media Hub</h3>
-                            <p className="text-secondary-light/90 dark:text-text-mist mb-4">
-                                Transform decades of teachings into a searchable, accessible digital library. Upload any format—audio, video, text, PDFs— and we'll organize it beautifully.
-                            </p>
-                            <p className="text-secondary-light/90 dark:text-text-mist">
-                                Devotees can search through thousands of hours of content to find exactly the teaching they need, when they need it. Every search brings them closer to your wisdom.
-                            </p>
-                        </div>
-                    </Card>
-
-                    {/* Module 3: Automation */}
-                    <Card className="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <div className="inline-block bg-accent-blue/20 dark:bg-accent-blue/10 text-accent-blue dark:text-accent-gold px-3 py-1 rounded-full text-sm font-semibold mb-4">
-                                Module 3
-                            </div>
-                            <h3 className="text-3xl font-bold text-secondary-light dark:text-accent-gold mb-4">💌 Engagement Automation</h3>
-                            <p className="text-secondary-light/90 dark:text-text-mist mb-4">
-                                Stay connected with your community at scale. Automated engagement that feels personal:
-                            </p>
-                            <ul className="space-y-3 text-secondary-light/90 dark:text-text-mist">
-                                <li className="flex items-start">
-                                    <span className="mr-2 text-accent-blue dark:text-accent-gold">•</span>
-                                    <div>
-                                        <strong>Personalized Reminders:</strong> Festival dates, meditation times, prayer schedules
-                                    </div>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="mr-2 text-accent-blue dark:text-accent-gold">•</span>
-                                    <div>
-                                        <strong>Daily Inspiration:</strong> Share quotes, teachings, and wisdom automatically
-                                    </div>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="mr-2 text-accent-blue dark:text-accent-gold">•</span>
-                                    <div>
-                                        <strong>Milestone Recognition:</strong> Birthdays, membership anniversaries, spiritual journeys
-                                    </div>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="mr-2 text-accent-blue dark:text-accent-gold">•</span>
-                                    <div>
-                                        <strong>Event Notifications:</strong> Upcoming programs, special ceremonies, guest speakers
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="bg-primary-light/40 dark:bg-secondary-dark/40 rounded-xl p-8">
-                            <div className="bg-white dark:bg-card rounded-lg shadow-lg p-6 mb-4">
-                                <div className="flex items-center mb-3">
-                                    <div className="w-10 h-10 rounded-full bg-accent-blue dark:bg-accent-gold flex items-center justify-center text-white font-bold mr-3">
-                                        MZ
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold text-sm">Daily Wisdom</p>
-                                        <p className="text-xs text-gray-500">7:00 AM</p>
-                                    </div>
-                                </div>
-                                <p className="text-secondary-light/90 dark:text-text-mist text-sm">
-                                    "The mind is restless and difficult to restrain, but it is subdued by practice." - Today's teaching for your meditation practice 🙏
-                                </p>
-                            </div>
-                            <p className="text-sm text-secondary-light/70 dark:text-text-mist/70 italic">
-                                Automated messages based on user preferences and spiritual journey stage
-                            </p>
-                        </div>
-                    </Card>
-
-                    {/* Module 4: Analytics */}
-                    <Card className="grid md:grid-cols-2 gap-8 items-center">
-                        <div className="order-2 md:order-1 bg-gradient-to-br from-secondary-light to-secondary-dark dark:from-secondary-dark dark:to-primary-dark rounded-xl p-8 text-white">
-                            <h4 className="text-2xl font-bold mb-6">Insights Dashboard</h4>
-                            <div className="space-y-4">
-                                <div className="bg-white/10 rounded-lg p-4">
-                                    <p className="text-accent-gold text-sm font-semibold">Most Searched Topics</p>
-                                    <div className="mt-2 space-y-2">
-                                        <div className="flex justify-between">
-                                            <span>Meditation Techniques</span>
-                                            <span className="text-accent-gold">1,247</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span>Festival Observances</span>
-                                            <span className="text-accent-gold">892</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="bg-white/10 rounded-lg p-4">
-                                    <p className="text-accent-gold text-sm font-semibold">Engagement Growth</p>
-                                    <p className="text-3xl font-bold mt-2">+34% <span className="text-lg font-normal">this month</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="order-1 md:order-2">
-                            <div className="inline-block bg-accent-gold/20 dark:bg-accent-gold/10 text-accent-gold px-3 py-1 rounded-full text-sm font-semibold mb-4">
-                                Module 4
-                            </div>
-                            <h3 className="text-3xl font-bold text-secondary-light dark:text-accent-gold mb-4">📊 Community Analytics</h3>
-                            <p className="text-secondary-light/90 dark:text-text-mist mb-4">
-                                Understanding your community's needs and spiritual journeys through compassionate analytics:
-                            </p>
-                            <ul className="space-y-2 text-secondary-light/90 dark:text-text-mist">
-                                <li>• What teachings resonate most?</li>
-                                <li>• Which topics are devotees searching for?</li>
-                                <li>• How is engagement growing over time?</li>
-                                <li>• Who might benefit from outreach?</li>
-                            </ul>
-                            <p className="text-secondary-light/90 dark:text-text-mist mt-4">
-                                All analytics are aggregated and anonymous, respecting individual privacy while revealing community patterns.
-                            </p>
-                        </div>
-                    </Card>
-                </div>
-            </SectionWrapper>
-
-            {/* Institutional Control */}
-            <SectionWrapper id="control" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="max-w-4xl mx-auto">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="section-heading text-secondary-light dark:text-accent-gold text-center mb-12">You're Always in Control</h2>
-                    </ScrollReveal>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <Card>
-                            <h3 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">🎛️ Content Curation</h3>
-                            <ul className="space-y-3 text-secondary-light/90 dark:text-text-mist">
-                                <li>✓ Approve all content before it's accessible</li>
-                                <li>✓ Edit or remove any archived material</li>
-                                <li>✓ Categorize and organize as you see fit</li>
-                                <li>✓ Feature important teachings prominently</li>
-                            </ul>
-                        </Card>
-
-                        <Card>
-                            <h3 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">🤖 AI Oversight</h3>
-                            <ul className="space-y-3 text-secondary-light/90 dark:text-text-mist">
-                                <li>✓ Review AI responses before deployment</li>
-                                <li>✓ Set boundaries on what AI can discuss</li>
-                                <li>✓ Train AI on your approved content only</li>
-                                <li>✓ Override or correct AI at any time</li>
-                            </ul>
-                        </Card>
-
-                        <Card>
-                            <h3 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">👥 User Management</h3>
-                            <ul className="space-y-3 text-secondary-light/90 dark:text-text-mist">
-                                <li>✓ Define user roles and permissions</li>
-                                <li>✓ Moderate community discussions</li>
-                                <li>✓ Manage membership tiers</li>
-                                <li>✓ Export user data anytime</li>
-                            </ul>
-                        </Card>
-
-                        <Card>
-                            <h3 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">🔐 Data Ownership</h3>
-                            <ul className="space-y-3 text-secondary-light/90 dark:text-text-mist">
-                                <li>✓ Your data stays yours, always</li>
-                                <li>✓ Export everything at any time</li>
-                                <li>✓ Delete your data completely</li>
-                                <li>✓ No vendor lock-in</li>
-                            </ul>
-                        </Card>
-                    </div>
-                </div>
-            </SectionWrapper>
-
-            {/* Security */}
-            <SectionWrapper id="security" className="bg-gradient-to-br from-secondary-light to-secondary-dark dark:from-secondary-dark dark:to-primary-dark text-white">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Enterprise-Grade Security</h2>
-                    <p className="text-xl text-white/80 mb-12">
-                        Protecting your community's spiritual journey is our highest priority
-                    </p>
-
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {[
-                            { icon: '🔐', title: 'End-to-End Encryption', description: 'All data encrypted in transit and at rest' },
-                            { icon: '☁️', title: 'Cloud Security', description: 'AWS/GCP infrastructure with 99.99% uptime' },
-                            { icon: '✅', title: 'Compliance Ready', description: 'GDPR, CCPA, and religious privacy standards' },
-                            { icon: '🔄', title: 'Regular Backups', description: 'Daily automated backups with instant restore' },
-                            { icon: '👁️', title: 'Access Logs', description: 'Complete audit trails of all system access' },
-                            { icon: '🛡️', title: 'DDoS Protection', description: 'Advanced protection against cyber attacks' }
-                        ].map((item, index) => (
-                            <div key={index} className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-                                <div className="text-4xl mb-3">{item.icon}</div>
-                                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                                <p className="text-white/80 text-sm">{item.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </SectionWrapper>
-
-            {/* CTA */}
-            <SectionWrapper className="bg-neutral-light dark:bg-primary-dark text-center">
-                <div className="max-w-3xl mx-auto">
-                    <h2 className="text-4xl font-bold text-secondary-light dark:text-accent-gold mb-6">
-                        Ready to Transform Your Digital Presence?
-                    </h2>
-                    <p className="text-xl text-secondary-light/90 dark:text-text-mist mb-8">
-                        Schedule a personalized demo to see how MZhub can serve your institution.
-                    </p>
-                    <Link href="/contact">
-                        <Button variant="secondary" size="lg">
-                            Schedule Demo
-                        </Button>
-                    </Link>
-                </div>
-            </SectionWrapper>
+        {/* Animated Background */}
+        <div className="absolute inset-0 -z-10">
+          <motion.div
+            animate={{
+              backgroundPosition: ['0% 0%', '100% 100%'],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              repeatType: 'reverse',
+              ease: 'linear',
+            }}
+            className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+            style={{
+              backgroundImage: 'radial-gradient(circle at center, currentColor 1px, transparent 1px)',
+              backgroundSize: '50px 50px',
+            }}
+          />
         </div>
-    )
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-6 h-10 border-2 border-accent-gold/30 rounded-full flex items-start justify-center p-2"
+          >
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-1.5 h-1.5 bg-accent-gold rounded-full"
+            />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Projects Grid */}
+      <section id="projects" className="py-20 md:py-32">
+        <div className="container-custom px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-16 md:mb-24"
+          >
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+              <div>
+                <p className="text-sm uppercase tracking-[0.3em] text-accent-gold font-medium mb-4">
+                  Featured Projects
+                </p>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-light dark:text-text-mist font-serif">
+                  Case Studies
+                </h2>
+              </div>
+              <p className="text-lg text-secondary-light/70 dark:text-text-mist/70 max-w-xl">
+                Each project represents a unique partnership, blending cutting-edge
+                technology with timeless spiritual wisdom.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-spiritual-indigo-900 to-spiritual-indigo-800 text-white">
+        <div className="container-custom px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-4xl mx-auto space-y-8"
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-serif">
+              Ready to Start Your
+              <br />
+              <span className="text-spiritual-gold-300">Digital Journey?</span>
+            </h2>
+            
+            <p className="text-xl text-spiritual-indigo-200 max-w-2xl mx-auto">
+              Join religious institutions worldwide who trust MZhub to preserve
+              their teachings and serve their communities.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 bg-accent-gold text-secondary-dark font-semibold rounded-full hover:bg-accent-gold/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Schedule a Demo
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300 border border-white/20"
+              >
+                Learn More
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  )
 }
