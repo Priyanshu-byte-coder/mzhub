@@ -1,0 +1,22 @@
+Add your blog images here with these exact names:
+
+blog1.jpg
+blog2.jpg
+blog3.jpg
+blog4.jpg
+blog5.jpg
+blog6.jpg
+blog7.jpg
+blog8.jpg
+blog9.jpg
+blog10.jpg
+blog11.jpg
+
+Each image should be:
+- Format: JPG, PNG, or WebP
+- Recommended size: 1200x630px (or similar 16:9 aspect ratio)
+- File size: Under 500KB for optimal loading
+
+These images will appear as:
+1. Blog card thumbnails on the /blog page
+2. Hero background images on individual blog post pages

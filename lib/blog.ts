@@ -29,6 +29,7 @@ export function getAllBlogPosts(): BlogMetadata[] {
           category: data.category || '',
           tags: data.tags || [],
           image: data.image,
+          readTime: data.readTime,
         } as BlogMetadata
       })
 

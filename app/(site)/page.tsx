@@ -38,7 +38,7 @@ export default function Home() {
                             <span className="text-2xl sm:text-2xl md:text-4xl lg:text-6xl text-secondary-light dark:text-text-mist">Spiritual</span>
                             <RotatingText
                                 texts={['Guru', 'AI']}
-                                mainClassName="text-2xl sm:text-2xl md:text-4xl lg:text-6xl px-3 sm:px-4 md:px-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-xl"
+                                mainClassName="text-3xl sm:text-4xl md:text-4xl lg:text-6xl px-3 sm:px-4 md:px-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-xl"
                                 staggerFrom="last"
                                 initial={{ y: "100%" }}
                                 animate={{ y: 0 }}
@@ -71,7 +71,7 @@ export default function Home() {
             </section>
 
             {/* Video Showcase */}
-            <SectionWrapper id="showcase" className="bg-neutral-light dark:bg-primary-dark">
+            <SectionWrapper id="showcase" className="bg-neutral-light dark:bg-primary-dark -mt-32 md:-mt-0">
                 <VideoShowcase
                     caption="Empowering faith communities through technology"
                 />

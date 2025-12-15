@@ -20,4 +20,5 @@ export interface BlogMetadata {
   category: string
   tags: string[]
   image?: string
+  readTime?: string
 }
