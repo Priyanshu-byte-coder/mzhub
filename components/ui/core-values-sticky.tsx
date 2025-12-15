@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 type CardItem = {
   title: string
@@ -25,11 +25,11 @@ export default function CoreValuesSticky({
   headingTitle,
   headingSubtitle,
 }: CoreValuesStickyProps) {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
   const cardScrollRef = useRef<HTMLDivElement | null>(null)
   const touchStartY = useRef<number | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
   const lockedScrollY = useRef<number | null>(null)
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
   const cards = useMemo(() => (
     items.length
       ? items
@@ -79,7 +79,22 @@ export default function CoreValuesSticky({
         ]
   ), [items])
 
-        const videoHeightStyle = { height: `calc(100vh - ${topOffset}px)` }
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const mediaQuery = window.matchMedia('(min-width: 1024px)')
+    const updateMatch = () => setIsLargeScreen(mediaQuery.matches)
+
+    updateMatch()
+    mediaQuery.addEventListener('change', updateMatch)
+
+    return () => mediaQuery.removeEventListener('change', updateMatch)
+  }, [])
+
+  const videoHeightStyle = useMemo(
+    () => ({ height: `calc(100vh - ${topOffset}px)` }),
+    [topOffset]
+  )
 
   const applyScrollToCard = (deltaY: number) => {
     const card = cardScrollRef.current
@@ -98,7 +113,7 @@ export default function CoreValuesSticky({
   }
 
   const shouldTrapScroll = () => {
-    if (typeof window === 'undefined') return false
+    if (typeof window === 'undefined' || !isLargeScreen) return false
     const section = sectionRef.current
     if (!section) return false
     const rect = section.getBoundingClientRect()
@@ -122,8 +137,7 @@ export default function CoreValuesSticky({
     return clampPageScroll(window.scrollY + rect.top - clampTop)
   }
 
-  const handleVideoClick = () => {
-    const video = videoRef.current
+  const toggleVideoPlayback = (video?: HTMLVideoElement | null) => {
     if (!video) return
     if (video.paused) {
       video.play().catch(() => {
@@ -135,7 +149,7 @@ export default function CoreValuesSticky({
   }
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined' || !isLargeScreen) return
 
     const onWheel = (event: WheelEvent) => {
       const trapActive = shouldTrapScroll()
@@ -200,28 +214,40 @@ export default function CoreValuesSticky({
       window.removeEventListener('touchend', resetTouch)
       window.removeEventListener('touchcancel', resetTouch)
     }
-  }, [topOffset])
+  }, [topOffset, isLargeScreen])
 
   return (
     <section
       ref={sectionRef}
       className="relative w-full"
     >
+      {(headingTitle || headingSubtitle) && (
+        <div className="text-center flex flex-col items-center pb-4">
+          {headingTitle && (
+            <h2 className="section-heading text-secondary-light dark:text-accent-gold">{headingTitle}</h2>
+          )}
+          {headingSubtitle && (
+            <p className="mt-2 text-lg text-secondary-light/80 dark:text-text-mist max-w-2xl">
+              {headingSubtitle}
+            </p>
+          )}
+        </div>
+      )}
       <div className="grid grid-cols-1 lg:grid-cols-5 w-full gap-8 lg:gap-0">
         {/* Scrollable card column */}
         <div className="lg:col-span-2">
           <div className="lg:sticky" style={{ top: topOffset }}>
-            <div className="px-2 sm:px-4 lg:px-0" style={videoHeightStyle}>
-              <div className="relative h-full bg-transparent dark:bg-transparent overflow-hidden">
+            <div className="px-2 sm:px-4 lg:px-0" style={isLargeScreen ? videoHeightStyle : undefined}>
+              <div className="relative lg:h-full bg-transparent dark:bg-transparent overflow-visible lg:overflow-hidden">
                 <div
                   ref={cardScrollRef}
-                  className="relative h-full overflow-y-auto px-6 py-10 team-scroll"
+                  className="relative lg:h-full overflow-visible lg:overflow-y-auto px-6 py-10 team-scroll"
                 >
                   <div className="relative pl-12 space-y-16">
                     <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent-gold/70 via-accent-blue/30 to-transparent" aria-hidden />
                     {cards.map((card, idx) => (
                       <article key={idx} className="relative border border-white/60 dark:border-white/10 bg-white/85 dark:bg-card/85 p-7 shadow-[0_35px_95px_-55px_rgba(15,23,42,0.9)] backdrop-blur">
-                        <span className="absolute -left-12 top-7 flex h-10 w-10 items-center justify-center border border-accent-gold bg-white dark:bg-card text-primary-dark font-semibold text-sm shadow-lg">
+                        <span className="absolute -left-12 top-7 flex h-10 w-10 items-center justify-center border border-accent-gold bg-white dark:bg-card text-primary-dark dark:text-white font-semibold text-sm shadow-lg">
                           {String(idx + 1).padStart(2, '0')}
                         </span>
                         <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-[0.4em] text-secondary-light/60 dark:text-text-mist/60">
@@ -260,35 +286,38 @@ export default function CoreValuesSticky({
         </div>
 
         {/* Sticky video on the right */}
-        <div className="lg:col-span-3 lg:sticky" style={{ top: topOffset }}>
+        <div className="hidden lg:block lg:col-span-3 lg:sticky" style={{ top: topOffset }}>
           <div className="flex flex-col gap-4">
-            {(headingTitle || headingSubtitle) && (
-              <div className="text-center flex flex-col items-center pb-2">
-                {headingTitle && (
-                  <h2 className="section-heading text-secondary-light dark:text-accent-gold">{headingTitle}</h2>
-                )}
-                {headingSubtitle && (
-                  <p className="mt-2 text-lg text-secondary-light/80 dark:text-text-mist max-w-2xl">
-                    {headingSubtitle}
-                  </p>
-                )}
-              </div>
-            )}
             <div className="w-full flex items-start justify-center overflow-hidden rounded-3xl shadow-sm" style={videoHeightStyle}>
               <video
-                ref={videoRef}
                 src={videoSrc}
-                className="w-full h-full max-h-full min-h-[320px] object-contain object-top cursor-pointer"
+                className="w-full h-full min-h-[320px] object-cover cursor-pointer"
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="auto"
-                onClick={handleVideoClick}
+                onClick={(event) => toggleVideoPlayback(event.currentTarget)}
                 title="Toggle video playback"
               />
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="lg:hidden mt-10">
+        <div className="w-full flex items-start justify-center overflow-hidden rounded-3xl shadow-sm">
+          <video
+            src={videoSrc}
+            className="w-full h-full min-h-[240px] object-cover cursor-pointer"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onClick={(event) => toggleVideoPlayback(event.currentTarget)}
+            title="Toggle video playback"
+          />
         </div>
       </div>
     </section>
