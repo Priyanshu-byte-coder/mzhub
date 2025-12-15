@@ -52,19 +52,19 @@ export default function MZHubIntro() {
                                     <Shimmer />
                                 </div>
                                 <p className="relative">
-                                    They connect an API, generate responses, and move on — a pattern that fails when the goal is to preserve meaning, context, and responsibility across faith, culture, and community leadership.
+                                    Most AI systems connect to an API, generate answers, and move on.This method fails when meaning, context, and responsibility are important, especially in faith, culture, and community leadership. 
                                     <Shimmer subtle />
                                 </p>
                                 <p className="relative">
-                                    MZHub is built differently. A multi-agent intelligence architecture brings specialized roles together — knowledge grounding, contextual reasoning, ethical validation, and engagement delivery — so guidance remains accountable at every step.
+                                   MZHub is different. It uses a multi-agent intelligence system, where each agent has a clear role: grounding knowledge, understanding context, validating ethics, and providing responses responsibly. This layered design ensures consistency across changing knowledge. 
                                     <Shimmer subtle delay={0.2} />
                                 </p>
                                 <p className="relative">
-                                    This layered approach keeps consistency across evolving archives, respects doctrinal and organizational boundaries, adapts to individual journeys without losing authenticity, and scales across languages, regions, and communities with confidence.
+                                    It respects doctrinal and organizational boundaries, meets individual needs without losing authenticity, and works across languages and communities. 
                                     <Shimmer subtle delay={0.35} />
                                 </p>
                                 <p className="relative">
-                                    In practice, MZHub understands where knowledge comes from, how it should be interpreted, and when human oversight is essential — delivering intelligent guidance with accountability, transparency, and trust built in by design.
+                                   MZHub knows where knowledge comes from, how to interpret it, and when human oversight is necessary. It offers AI guidance that is transparent, accountable, and trustworthy by design.
                                     <Shimmer subtle delay={0.5} />
                                 </p>
                             </div>
