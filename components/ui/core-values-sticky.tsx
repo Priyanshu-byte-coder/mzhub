@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react'
 import ExpandableCardDemo from './expandable-cards'
 
 
@@ -32,6 +32,7 @@ export default function CoreValuesSticky({
   const sectionRef = useRef<HTMLElement | null>(null)
   const lockedScrollY = useRef<number | null>(null)
   const [isLargeScreen, setIsLargeScreen] = useState(false)
+  const [videoAspectRatio, setVideoAspectRatio] = useState(16 / 9)
   const cards = useMemo(() => (
     items.length
       ? items
@@ -79,8 +80,13 @@ export default function CoreValuesSticky({
     return () => mediaQuery.removeEventListener('change', updateMatch)
   }, [])
 
-  const videoHeightStyle = {
-    height: `calc((100vh - ${topOffset}px) * 0.8)`
+  const videoMaxHeight = `calc((100vh - ${topOffset}px) * 0.8)`
+
+  const handleVideoMetadata = (event: SyntheticEvent<HTMLVideoElement>) => {
+    const video = event.currentTarget
+    if (video.videoWidth && video.videoHeight) {
+      setVideoAspectRatio(video.videoWidth / video.videoHeight)
+    }
   }
 
 
@@ -123,17 +129,6 @@ export default function CoreValuesSticky({
     const rect = section.getBoundingClientRect()
     const clampTop = Math.min(topOffset, window.innerHeight - 1)
     return clampPageScroll(window.scrollY + rect.top - clampTop)
-  }
-
-  const toggleVideoPlayback = (video?: HTMLVideoElement | null) => {
-    if (!video) return
-    if (video.paused) {
-      video.play().catch(() => {
-        video.setAttribute('controls', 'true')
-      })
-    } else {
-      video.pause()
-    }
   }
 
   useEffect(() => {
@@ -232,19 +227,20 @@ export default function CoreValuesSticky({
         <div className="hidden lg:block lg:col-span-4 lg:sticky" style={{ top: topOffset }}>
           <div className="flex flex-col gap-4 items-end justify-end">
             <div
-              className="relative w-full overflow-hidden rounded-3xl shadow-sm"
-              style={videoHeightStyle}
+              className="relative w-full overflow-hidden rounded-3xl"
+              style={{ aspectRatio: videoAspectRatio, maxHeight: videoMaxHeight }}
             >
               <video
                 src={videoSrc}
-                className="absolute inset-0 w-full h-full object-cover cursor-pointer"
-                autoPlay
+                className="absolute inset-0 w-full h-full object-cover border-0 outline-none bg-transparent"
+                controls
                 loop
                 playsInline
                 preload="auto"
-                onClick={(event) => toggleVideoPlayback(event.currentTarget)}
-                title="Toggle video playback"
+                onLoadedMetadata={handleVideoMetadata}
               />
+              <span className="pointer-events-none absolute left-0 top-0 h-full w-1.5 bg-neutral-100 dark:bg-primary-dark" />
+              <span className="pointer-events-none absolute right-0 top-0 h-full w-1.5 bg-neutral-100 dark:bg-primary-dark" />
             </div>
 
           </div>
@@ -252,18 +248,22 @@ export default function CoreValuesSticky({
       </div>
 
       <div className="lg:hidden mt-8 px-4">
-        <div className="relative w-full max-w-[640px] mx-auto aspect-[4/5] overflow-hidden rounded-2xl shadow-md">
+        <div
+          className="relative w-full max-w-[640px] mx-auto overflow-hidden rounded-2xl"
+          style={{ aspectRatio: videoAspectRatio }}
+        >
           <video
             src={videoSrc}
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay
-            muted
+            className="absolute inset-0 w-full h-full object-cover border-0 outline-none bg-transparent"
+            controls
             loop
             playsInline
             preload="metadata"
             poster="/video/mzhub-poster.jpg"
-            onClick={(e) => toggleVideoPlayback(e.currentTarget)}
+            onLoadedMetadata={handleVideoMetadata}
           />
+          <span className="pointer-events-none absolute left-0 top-0 h-full w-1.5 bg-neutral-100 dark:bg-primary-dark" />
+          <span className="pointer-events-none absolute right-0 top-0 h-full w-1.5 bg-neutral-100 dark:bg-primary-dark" />
         </div>
       </div>
     </section>
