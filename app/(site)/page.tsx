@@ -220,7 +220,7 @@ export default function Home() {
                 </div>
             </SectionWrapper>
 
-            {/*
+            {/* Testimonial */}
             <SectionWrapper id="social-proof" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-12">
                     <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
@@ -231,7 +231,7 @@ export default function Home() {
                     </p>
                 </div>
                 <StaggerTestimonials />
-            </SectionWrapper> */}
+            </SectionWrapper>
 
             {/* Final CTA */}
             <section 

@@ -218,13 +218,13 @@ export default function CoreValuesSticky({
       )}
       <div className="grid grid-cols-1 lg:grid-cols-7 w-full gap-8 lg:gap-0 lg:items-center">
         {/* Expandable Cards Section */}
-        <div className="lg:col-span-2 px-4 lg:px-4 lg:pr-8 flex flex-col justify-center">
+        <div className="lg:col-span-2 px-4 lg:px-4 lg:pr-8 flex flex-col justify-center relative z-10">
           <ExpandableCardDemo />
         </div>
         <div className="hidden lg:block lg:col-span-1" aria-hidden />
 
         {/* Sticky video on the right */}
-        <div className="hidden lg:block lg:col-span-4 lg:sticky" style={{ top: topOffset }}>
+        <div className="hidden lg:block lg:col-span-4 lg:sticky relative z-0" style={{ top: topOffset }}>
           <div className="flex flex-col gap-4 items-end justify-end">
             <div
               className="relative w-full overflow-hidden rounded-3xl"
