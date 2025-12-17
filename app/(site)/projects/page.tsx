@@ -1,121 +1,33 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { ProjectCard } from '@/components/ui/projects/project-card'
 import { projects } from '@/lib/projects/projectsData'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import ParallaxHero from '@/components/layout/shared/ParallaxHero'
 
 export default function ProjectsPage() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start']
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   return (
     <div ref={containerRef} className="bg-white dark:bg-primary-dark">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <motion.div
-          style={{ y, opacity }}
-          className="container-custom text-center z-10 px-4"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-8"
-          >
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-sm md:text-base uppercase tracking-[0.3em] text-accent-gold font-medium"
-            >
-              Our Work
-            </motion.p>
-            
-            <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-secondary-light dark:text-text-mist leading-[0.9] font-serif">
-              Transforming
-              <br />
-              <span className="text-accent-gold">Faith</span> Through
-              <br />
-              Technology
-            </h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl lg:text-2xl text-secondary-light/70 dark:text-text-mist/70 max-w-3xl mx-auto leading-relaxed"
-            >
-              Discover how we're helping religious institutions worldwide
-              preserve their sacred teachings and connect with communities
-              in the digital age.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="pt-8"
-            >
-              <Link
-                href="#projects"
-                className="inline-flex items-center gap-2 text-accent-gold hover:gap-4 transition-all duration-300 text-lg font-medium group"
-              >
-                Explore Projects
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* Animated Background */}
-        <div className="absolute inset-0 -z-10">
-          <motion.div
-            animate={{
-              backgroundPosition: ['0% 0%', '100% 100%'],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              repeatType: 'reverse',
-              ease: 'linear',
-            }}
-            className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-            style={{
-              backgroundImage: 'radial-gradient(circle at center, currentColor 1px, transparent 1px)',
-              backgroundSize: '50px 50px',
-            }}
-          />
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-6 h-10 border-2 border-accent-gold/30 rounded-full flex items-start justify-center p-2"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="w-1.5 h-1.5 bg-accent-gold rounded-full"
-            />
-          </motion.div>
-        </motion.div>
-      </section>
+      <ParallaxHero
+        scrollTarget={containerRef}
+        eyebrow="Our Work"
+        title={
+          <>
+            Transforming
+            <br />
+            <span className="text-accent-gold">Faith</span> Through
+            <br />
+            Technology
+          </>
+        }
+        description="Discover how we're helping religious institutions worldwide preserve their sacred teachings and connect with communities in the digital age."
+        cta={{ label: 'Explore Projects', href: '#projects' }}
+      />
 
       {/* Projects Grid */}
       <section id="projects" className="py-20 md:py-32">
