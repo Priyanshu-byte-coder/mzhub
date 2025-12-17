@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function MZHubIntro() {
     return (
-        <SectionWrapper fullWidth className="bg-gradient-to-b from-neutral-light via-white to-neutral-light dark:from-primary-dark dark:via-primary-dark/90 dark:to-primary-dark">
+        <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
             <div className="relative overflow-hidden w-full px-4 md:px-8 lg:px-12 text-secondary-light dark:text-text-mist">
                 <motion.div
                     aria-hidden="true"

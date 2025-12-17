@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import Card from '@/components/ui/shared/Card'
 import { BlobButton } from '@/components/ui/shared/BlobButton'
+import ContactHero from '@/components/layout/contact/ContactHero'
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -109,18 +110,9 @@ export default function Contact() {
     }
 
     return (
-        <div>
+        <div className="bg-white dark:bg-primary-dark">
             {/* Hero */}
-            <section className="bg-gradient-to-br from-spiritual-indigo-900 to-spiritual-indigo-800 text-white py-20 md:py-32">
-                <div className="container-custom text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 font-serif">
-                        Let's <span className="text-spiritual-gold-300">Connect</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-spiritual-indigo-200 max-w-4xl mx-auto">
-                        Ready to explore how MZhub can serve your spiritual institution? We'd love to hear from you.
-                    </p>
-                </div>
-            </section>
+            <ContactHero />
 
             {/* Contact Form Section */}
             <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">

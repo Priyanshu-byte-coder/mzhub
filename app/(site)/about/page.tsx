@@ -6,6 +6,7 @@ import ScrollReveal from '@/components/ui/shared/scroll-reveal'
 import TeamCarousel from '@/components/layout/about/team-carousel'
 import MZHubIntro from '@/components/layout/about/MZHubIntro'
 import CoreValuesSticky from '@/components/ui/about/core-values-sticky'
+import AboutHero from '@/components/layout/about/AboutHero'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -16,20 +17,9 @@ export default function About() {
     const team = getTeamMembers()
 
     return (
-        <div>
+        <div className="bg-white dark:bg-primary-dark">
             {/* Hero */}
-            <section className="bg-gradient-to-br from-spiritual-indigo-900 to-spiritual-indigo-800 text-white py-20 md:py-32">
-                <div className="container-custom text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 font-serif">
-                        Bridging <span className="text-spiritual-gold-300">Ancient Wisdom</span>
-                        <br />
-                        with Modern Technology
-                    </h1>
-                    <p className="text-xl md:text-2xl text-spiritual-indigo-200 max-w-4xl mx-auto">
-                        MZhub exists to help religious institutions preserve their sacred teachings while reaching devotees in the digital age.
-                    </p>
-                </div>
-            </section>
+            <AboutHero />
 
             {/* Mission */}
             <MZHubIntro />
