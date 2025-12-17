@@ -220,7 +220,7 @@ export default function Home() {
                 </div>
             </SectionWrapper>
 
-            {/* Social Proof */}
+            {/*
             <SectionWrapper id="social-proof" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-12">
                     <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
@@ -231,29 +231,42 @@ export default function Home() {
                     </p>
                 </div>
                 <StaggerTestimonials />
-            </SectionWrapper>
+            </SectionWrapper> */}
 
             {/* Final CTA */}
-            <SectionWrapper className="bg-white text-secondary-light text-center dark:bg-primary-dark dark:text-white">
-                <div className="max-w-4xl mx-auto">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-secondary-light dark:text-accent-gold">
-                            Ready to Extend Your Spiritual Reach?
-                        </h2>
-                    </ScrollReveal>
-                    <p className="text-xl mb-8 text-secondary-light/80 dark:text-text-mist">
-                        Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <BlobButton as={Link} href="/contact">
-                            Schedule Demo
-                        </BlobButton>
-                        <BlobButton as={Link} href="/projects">
-                            Learn More
-                        </BlobButton>
+            <section 
+                className="py-20 md:py-32 relative overflow-hidden"
+                style={{
+                    backgroundImage: 'url(/projects/community-bg.jpeg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                }}
+            >
+                {/* Light overlay to make background lighter */}
+                <div className="absolute inset-0 bg-white/85 dark:bg-primary-dark/85"></div>
+                
+                <div className="container-custom px-4 text-center relative z-10">
+                    <div className="max-w-4xl mx-auto">
+                        <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-secondary-light dark:text-accent-gold">
+                                Ready to Extend Your Spiritual Reach?
+                            </h2>
+                        </ScrollReveal>
+                        <p className="text-xl mb-8 text-secondary-light/80 dark:text-text-mist">
+                            Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <BlobButton as={Link} href="/contact">
+                                Schedule Demo
+                            </BlobButton>
+                            <BlobButton as={Link} href="/projects">
+                                Learn More
+                            </BlobButton>
+                        </div>
                     </div>
                 </div>
-            </SectionWrapper>
+            </section>
         </div>
     )
 }
