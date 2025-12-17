@@ -119,7 +119,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-white dark:bg-[#050a16] border-b border-border/40 shadow-sm transition-colors">
+        <header className="fixed top-0 left-0 right-0 z-50 py-4 transition-colors">
             {/* Mobile Layout */}
             <div className="md:hidden flex items-center justify-between px-4">
                 {/* Logo and Brand Name */}
@@ -235,7 +235,7 @@ export default function Navbar() {
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.3 }}
                         onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-                        className="hidden md:flex fixed top-6 right-6 z-[60] items-center justify-center w-14 h-14 rounded-full bg-white/80 dark:bg-[#0f172a]/95 backdrop-blur-md border-2 border-border hover:border-primary/50 shadow-lg transition-colors"
+                        className="hidden md:flex fixed top-6 right-6 z-[60] items-center justify-center w-14 h-14 rounded-full bg-white/80 dark:bg-primary-dark/95 backdrop-blur-md border-2 border-border hover:border-primary/50 shadow-lg transition-colors"
                         aria-label="Toggle menu"
                     >
                         {isDesktopMenuOpen ? (
@@ -267,7 +267,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="hidden md:block fixed top-0 right-0 bottom-0 w-[400px] bg-white dark:bg-[#0f172a] border-l border-border shadow-2xl z-[60]"
+                            className="hidden md:block fixed top-0 right-0 bottom-0 w-[400px] bg-white dark:bg-primary-dark border-l border-border shadow-2xl z-[60]"
                         >
                             <div className="flex flex-col h-full p-8">
                                 {/* Header */}
@@ -366,7 +366,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-white dark:bg-[#0f172a] border-l border-border shadow-2xl md:hidden"
+                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-white dark:bg-primary-dark border-l border-border shadow-2xl md:hidden"
                         >
                             <div className="flex flex-col h-full p-6">
                                 {/* Header */}
