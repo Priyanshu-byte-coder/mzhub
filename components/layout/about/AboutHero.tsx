@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import { AnimatedHeroBackdrop } from "@/components/ui/shared/AnimatedHeroBackdrop"
 
 export default function AboutHero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -47,25 +48,7 @@ export default function AboutHero() {
         </motion.div>
       </motion.div>
 
-      <div className="absolute inset-0 -z-10">
-        <motion.div
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "linear",
-          }}
-          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at center, currentColor 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
+      <AnimatedHeroBackdrop variant="about" />
 
       <motion.div
         initial={{ opacity: 0 }}

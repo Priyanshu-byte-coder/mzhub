@@ -27,6 +27,7 @@ export default function ProjectsPage() {
         }
         description="Discover how we're helping religious institutions worldwide preserve their sacred teachings and connect with communities in the digital age."
         cta={{ label: 'Explore Projects', href: '#projects' }}
+        backgroundVariant="projects"
       />
 
       {/* Projects Grid */}

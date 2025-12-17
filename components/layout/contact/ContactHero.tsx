@@ -12,6 +12,7 @@ export default function ContactHero() {
       }
       description="Ready to explore how MZhub can serve your spiritual institution? We'd love to hear from you."
       sectionClassName="relative min-h-screen flex items-center justify-center overflow-hidden"
+      backgroundVariant="contact"
     />
   )
 }

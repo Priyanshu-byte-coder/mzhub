@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { useRef } from "react"
 import type { ReactNode, RefObject } from "react"
+import { AnimatedHeroBackdrop, type HeroBackdropVariant } from "@/components/ui/shared/AnimatedHeroBackdrop"
 
 interface HeroCTA {
   label: string
@@ -21,6 +22,7 @@ interface ParallaxHeroProps {
   titleClassName?: string
   descriptionClassName?: string
   showIndicator?: boolean
+  backgroundVariant?: HeroBackdropVariant
 }
 
 const combineClasses = (...classes: Array<string | undefined>) =>
@@ -36,6 +38,7 @@ export default function ParallaxHero({
   titleClassName,
   descriptionClassName,
   showIndicator = true,
+  backgroundVariant = "projects",
 }: ParallaxHeroProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const targetRef = scrollTarget ?? sectionRef
@@ -122,25 +125,7 @@ export default function ParallaxHero({
         </motion.div>
       </motion.div>
 
-      <div className="absolute inset-0 -z-10">
-        <motion.div
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "linear",
-          }}
-          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at center, currentColor 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
+      <AnimatedHeroBackdrop variant={backgroundVariant} />
 
       {showIndicator && (
         <motion.div
