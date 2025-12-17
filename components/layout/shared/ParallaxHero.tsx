@@ -52,7 +52,7 @@ export default function ParallaxHero({
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   const sectionClasses = combineClasses(
-    "relative min-h-screen flex items-center justify-center overflow-hidden",
+    "relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24",
     sectionClassName,
   )
 

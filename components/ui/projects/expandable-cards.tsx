@@ -3,6 +3,7 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/shared/use-outside-click";
+import Link from "next/link";
 
 export default function ExpandableCardDemo() {
     const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
@@ -44,7 +45,7 @@ export default function ExpandableCardDemo() {
             </AnimatePresence>
             <AnimatePresence>
                 {active && typeof active === "object" ? (
-                    <div className="fixed inset-0  grid place-items-center z-[100]">
+                    <div className="fixed inset-0 grid place-items-center z-[100] p-4">
                         <motion.button
                             key={`button-${active.title}-${id}`}
                             layout
@@ -60,7 +61,7 @@ export default function ExpandableCardDemo() {
                                     duration: 0.05,
                                 },
                             }}
-                            className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white dark:bg-neutral-800 rounded-full h-6 w-6"
+                            className="flex absolute top-6 right-6 lg:hidden items-center justify-center bg-white dark:bg-neutral-800 rounded-full h-8 w-8 shadow-lg z-10"
                             onClick={() => setActive(null)}
                         >
                             <CloseIcon />
@@ -68,7 +69,7 @@ export default function ExpandableCardDemo() {
                         <motion.div
                             layoutId={`card-${active.title}-${id}`}
                             ref={ref}
-                            className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-primary-dark sm:rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800"
+                            className="w-full max-w-[500px] max-h-[85vh] md:max-h-[90%] flex flex-col bg-white dark:bg-primary-dark rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-2xl"
                         >
                             <div>
                                 <div className="flex justify-between items-start p-4">
@@ -81,14 +82,15 @@ export default function ExpandableCardDemo() {
                                         </motion.h3>
                                     </div>
 
-                                    <motion.a
-                                        layoutId={`button-${active.title}-${id}`}
-                                        href={active.ctaLink}
-                                        target="_blank"
-                                        className="px-4 py-3 text-sm rounded-full font-bold bg-spiritual-indigo-600 hover:bg-spiritual-indigo-700 dark:bg-accent-blue dark:hover:bg-spiritual-indigo-500 text-white transition-colors"
-                                    >
-                                        {active.ctaText}
-                                    </motion.a>
+                                    <Link href={active.ctaLink}>
+                                        <motion.button
+                                            layoutId={`button-${active.title}-${id}`}
+                                            className="px-4 py-3 text-sm rounded-full font-bold text-white transition-colors shadow-md"
+                                            style={{ backgroundColor: active.color }}
+                                        >
+                                            {active.ctaText}
+                                        </motion.button>
+                                    </Link>
                                 </div>
                                 <div className="pt-4 relative px-4">
                                     <motion.div
@@ -114,7 +116,11 @@ export default function ExpandableCardDemo() {
                         layoutId={`card-${card.title}-${id}`}
                         key={`card-${card.title}-${id}`}
                         onClick={() => setActive(card)}
-                        className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-primary-light/30 dark:hover:bg-primary-dark/50 rounded-xl cursor-pointer transition-colors"
+                        className="p-4 flex flex-col md:flex-row justify-between items-center rounded-xl cursor-pointer transition-all duration-300 border-l-4 hover:shadow-lg hover:scale-[1.02]"
+                        style={{ 
+                            borderLeftColor: card.color,
+                            backgroundColor: `${card.color}08`
+                        }}
                     >
                         <div className="flex gap-4 flex-col md:flex-row ">
                             <div className="">
@@ -128,7 +134,8 @@ export default function ExpandableCardDemo() {
                         </div>
                         <motion.button
                             layoutId={`button-${card.title}-${id}`}
-                            className="px-4 py-2 text-sm rounded-full font-bold bg-muted hover:bg-spiritual-indigo-600 dark:hover:bg-accent-blue hover:text-white text-foreground transition-colors mt-4 md:mt-0"
+                            className="px-4 py-2 text-sm rounded-full font-bold text-white transition-all duration-300 mt-4 md:mt-0 shadow-md hover:shadow-lg"
+                            style={{ backgroundColor: card.color }}
                         >
                             {card.ctaText}
                         </motion.button>
@@ -174,101 +181,101 @@ export const CloseIcon = () => {
 
 const cards = [
     {
-        title: "AI Hai?",
-        ctaText: "Read More",
-        ctaLink: "https://ui.aceternity.com/templates",
+        title: "AI-Powered Spiritual Guidance",
+        ctaText: "Learn More",
+        ctaLink: "/blog",
+        color: "#6366f1",
         content: () => {
             return (
-                <p>
-                    Can AI Replace Human Values? <br /> <br /> AI has the potential to
-                    replace human values, but it is important to recognize that AI is a
-                    tool that can be used to enhance human values, not replace them. AI
-                    can be used to automate tasks, improve efficiency, and provide
-                    insights, but it cannot replace the values that humans hold dear.
+                <p className="leading-relaxed">
+                    <strong className="text-lg block mb-3">Conversational AI for Faith Communities</strong>
+                    MZHub leverages advanced AI technology to create knowledge-grounded conversational agents that provide accurate, contextual spiritual guidance. Our RAG (Retrieval-Augmented Generation) architecture ensures responses are grounded in verified doctrinal knowledge.
+                    <br /><br />
+                    <strong>Key Features:</strong>
+                    <br />• Enterprise-grade security with Azure OpenAI
+                    <br />• Multilingual support for diverse communities
+                    <br />• Real-time, contextually accurate spiritual answers
+                    <br />• Scalable infrastructure for global reach
                 </p>
             );
         },
     },
     {
-        title: "rvjsnvn",
-        src: "https://assets.aceternity.com/demos/babbu-maan.jpeg",
-        ctaText: "Read More",
-        ctaLink: "https://ui.aceternity.com/templates",
+        title: "Cultural Heritage Preservation",
+        ctaText: "Learn More",
+        ctaLink: "/blog",
+        color: "#6366f1",
         content: () => {
             return (
-                <p>
-                    Babu Maan, a legendary Punjabi singer, is renowned for his soulful
-                    voice and profound lyrics that resonate deeply with his audience. Born
-                    in the village of Khant Maanpur in Punjab, India, he has become a
-                    cultural icon in the Punjabi music industry. <br /> <br /> His songs
-                    often reflect the struggles and triumphs of everyday life, capturing
-                    the essence of Punjabi culture and traditions. With a career spanning
-                    over two decades, Babu Maan has released numerous hit albums and
-                    singles that have garnered him a massive fan following both in India
-                    and abroad.
-                </p>
-            );
-        },
-    },
-
-    {
-        title: "CIhUUHO",
-        src: "https://assets.aceternity.com/demos/metallica.jpeg",
-        ctaText: "Read More",
-        ctaLink: "https://ui.aceternity.com/templates",
-        content: () => {
-            return (
-                <p>
-                    Metallica, an iconic American heavy metal band, is renowned for their
-                    powerful sound and intense performances that resonate deeply with
-                    their audience. Formed in Los Angeles, California, they have become a
-                    cultural icon in the heavy metal music industry. <br /> <br /> Their
-                    songs often reflect themes of aggression, social issues, and personal
-                    struggles, capturing the essence of the heavy metal genre. With a
-                    career spanning over four decades, Metallica has released numerous hit
-                    albums and singles that have garnered them a massive fan following
-                    both in the United States and abroad.
+                <p className="leading-relaxed">
+                    <strong className="text-lg block mb-3">Digital Archiving & Transcription</strong>
+                    We help preserve endangered cultural and religious manuscripts through AI-powered OCR and transcription services. Our Azure Document Intelligence models are specially trained to handle historical typography and non-standard scripts.
+                    <br /><br />
+                    <strong>Our Approach:</strong>
+                    <br />• High-fidelity manuscript digitization
+                    <br />• Custom neural models for ancient scripts
+                    <br />• Secure cloud storage and backup
+                    <br />• Accessible digital archives for future generations
                 </p>
             );
         },
     },
     {
-        title: "Stairway To Heaven",
-        src: "https://assets.aceternity.com/demos/led-zeppelin.jpeg",
-        ctaText: "Read More",
-        ctaLink: "https://ui.aceternity.com/templates",
+        title: "Personalized Spiritual Wellness",
+        ctaText: "Learn More",
+        ctaLink: "/blog",
+        color: "#6366f1",
         content: () => {
             return (
-                <p>
-                    Led Zeppelin, a legendary British rock band, is renowned for their
-                    innovative sound and profound impact on the music industry. Formed in
-                    London in 1968, they have become a cultural icon in the rock music
-                    world. <br /> <br /> Their songs often reflect a blend of blues, hard
-                    rock, and folk music, capturing the essence of the 1970s rock era.
-                    With a career spanning over a decade, Led Zeppelin has released
-                    numerous hit albums and singles that have garnered them a massive fan
-                    following both in the United Kingdom and abroad.
+                <p className="leading-relaxed">
+                    <strong className="text-lg block mb-3">Ritual & Therapy Recommendations</strong>
+                    Our Personalized Ritual and Therapy Recommendation Engine (PRTRE) blends ancient spiritual wisdom with evidence-based therapeutic methods. Using GraphRAG technology, we deliver hyper-personalized guidance tailored to individual needs.
+                    <br /><br />
+                    <strong>Benefits:</strong>
+                    <br />• Culturally sensitive mental wellness support
+                    <br />• Integration of spiritual practices with therapy
+                    <br />• Data-driven personalization
+                    <br />• Privacy-first architecture
                 </p>
             );
         },
     },
     {
-        title: "Toh Phir Aao",
-        src: "https://assets.aceternity.com/demos/toh-phir-aao.jpeg",
-        ctaText: "Read More",
-        ctaLink: "https://ui.aceternity.com/templates",
+        title: "Multi-Agent CX Automation",
+        ctaText: "Learn More",
+        ctaLink: "/blog",
+        color: "#6366f1",
         content: () => {
             return (
-                <p>
-                    &quot;Aawarapan&quot;, a Bollywood movie starring Emraan Hashmi, is
-                    renowned for its intense storyline and powerful performances. Directed
-                    by Mohit Suri, the film has become a significant work in the Indian
-                    film industry. <br /> <br /> The movie explores themes of love,
-                    redemption, and sacrifice, capturing the essence of human emotions and
-                    relationships. With a gripping narrative and memorable music,
-                    &quot;Aawarapan&quot; has garnered a massive fan following both in
-                    India and abroad, solidifying Emraan Hashmi&apos;s status as a
-                    versatile actor.
+                <p className="leading-relaxed">
+                    <strong className="text-lg block mb-3">Intelligent Customer Experience</strong>
+                    Transform your faith organization's operations with our Agentic AI platform. Our multi-agent systems handle complex workflows autonomously while maintaining the highest ethical standards for sensitive spiritual interactions.
+                    <br /><br />
+                    <strong>Capabilities:</strong>
+                    <br />• Autonomous workflow execution
+                    <br />• 24/7 personalized support
+                    <br />• Seamless integration with existing systems
+                    <br />• Ethical AI governance framework
+                </p>
+            );
+        },
+    },
+    {
+        title: "Ethical AI Framework",
+        ctaText: "Learn More",
+        ctaLink: "/blog",
+        color: "#6366f1",
+        content: () => {
+            return (
+                <p className="leading-relaxed">
+                    <strong className="text-lg block mb-3">Responsible AI Governance</strong>
+                    Our comprehensive AI Governance Framework (RAIOps) ensures all AI deployments meet the highest ethical standards. We implement robust guardrails to protect sensitive religious content and maintain institutional sovereignty.
+                    <br /><br />
+                    <strong>Safeguards:</strong>
+                    <br />• Content filtering and moderation
+                    <br />• Bias detection and mitigation
+                    <br />• Transparent AI decision-making
+                    <br />• Compliance with religious doctrine
                 </p>
             );
         },

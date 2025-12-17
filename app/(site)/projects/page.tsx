@@ -6,6 +6,7 @@ import { ProjectCard } from '@/components/ui/projects/project-card'
 import { projects } from '@/lib/projects/projectsData'
 import Link from 'next/link'
 import ParallaxHero from '@/components/layout/shared/ParallaxHero'
+import { BlobButton } from '@/components/ui/shared/BlobButton'
 
 export default function ProjectsPage() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -65,8 +66,19 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-spiritual-indigo-900 to-spiritual-indigo-800 text-white">
-        <div className="container-custom px-4 text-center">
+      <section 
+        className="py-20 md:py-32 relative overflow-hidden"
+        style={{
+          backgroundImage: 'url(/projects/community-bg.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Light overlay to make background lighter */}
+        <div className="absolute inset-0 bg-white/85 dark:bg-primary-dark/85"></div>
+        
+        <div className="container-custom px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -74,30 +86,24 @@ export default function ProjectsPage() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-4xl mx-auto space-y-8"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-serif">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-serif text-secondary-light dark:text-text-mist">
               Ready to Start Your
               <br />
-              <span className="text-spiritual-gold-300">Digital Journey?</span>
+              <span className="text-accent-gold">Digital Journey?</span>
             </h2>
             
-            <p className="text-xl text-spiritual-indigo-200 max-w-2xl mx-auto">
+            <p className="text-xl text-secondary-light/80 dark:text-text-mist/80 max-w-2xl mx-auto">
               Join religious institutions worldwide who trust MZhub to preserve
               their teachings and serve their communities.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-accent-gold text-secondary-dark font-semibold rounded-full hover:bg-accent-gold/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-              >
+              <BlobButton as={Link} href="/contact">
                 Schedule a Demo
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300 border border-white/20"
-              >
+              </BlobButton>
+              <BlobButton as={Link} href="/about">
                 Learn More
-              </Link>
+              </BlobButton>
             </div>
           </motion.div>
         </div>

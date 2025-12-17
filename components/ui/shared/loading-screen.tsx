@@ -22,13 +22,13 @@ export function LoadingScreen() {
           const next = prev + 1
           return next > 100 ? 100 : next
         })
-      }, 20)
+      }, 20) // Increased from 20ms to 35ms for slower animation
 
       return () => clearTimeout(timer)
     } else if (count === 100) {
       const hideTimer = setTimeout(() => {
         setIsLoading(false)
-      }, 800)
+      }, 800) // Increased from 800ms to 1200ms to hold at 100% longer
       
       return () => clearTimeout(hideTimer)
     }
