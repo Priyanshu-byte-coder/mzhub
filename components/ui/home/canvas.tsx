@@ -231,8 +231,15 @@ function render() {
 
 function resizeCanvas() {
   if (!ctx) return;
-  ctx.canvas.width = window.innerWidth - 20;
-  ctx.canvas.height = window.innerHeight;
+  const canvas = ctx.canvas;
+  const parent = canvas.parentElement;
+  const width = parent?.clientWidth ?? window.innerWidth;
+  const height = parent?.clientHeight ?? window.innerHeight;
+
+  canvas.width = width;
+  canvas.height = height;
+  canvas.style.width = "100%";
+  canvas.style.height = "100%";
 }
 
 // ---------- Public entry ----------

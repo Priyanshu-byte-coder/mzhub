@@ -9,6 +9,11 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  min-height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: hsl(var(--background, 220 50% 98%));
 }
 
 @layer components {
@@ -143,6 +148,19 @@ html {
     font-feature-settings: 'kern' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    min-height: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: hsl(var(--background, 220 50% 98%));
+  }
+
+  main,
+  header,
+  section,
+  footer {
+    max-width: 100vw;
+    overflow-x: hidden;
   }
   
   body:not(.dark) {
