@@ -20,15 +20,31 @@ import InfiniteCarousel from '@/components/ui/home/infinite-carousel'
 import { ContainerScroll } from '@/components/ui/home/container-scroll-animation'
 import { StaggerTestimonials } from '@/components/layout/home/stagger-testimonials'
 import VideoShowcase from '@/components/layout/home/video-component'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateOrganizationSchema, generateWebSiteSchema, generateVideoSchema } from '@/lib/seo/schemas'
 
 const AnimatedCanvas = dynamic(() => import('@/components/ui/home/AnimatedCanvas'), {
     ssr: false,
 })
 
 export default function Home() {
+    // Generate structured data schemas
+    const organizationSchema = generateOrganizationSchema()
+    const websiteSchema = generateWebSiteSchema()
+    const videoSchema = generateVideoSchema({
+        name: 'MZhub Platform Demo',
+        description: 'Empowering faith communities through AI-powered spiritual technology',
+        thumbnailUrl: 'https://mzhub.com/og-image-home.png',
+        uploadDate: '2024-12-01',
+        contentUrl: '/home/video/mzhub.mp4',
+    })
 
     return (
         <div>
+            {/* Structured Data */}
+            <JsonLd data={organizationSchema} />
+            <JsonLd data={websiteSchema} />
+            <JsonLd data={videoSchema} />
             <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-neutral-light dark:bg-primary-dark">
                 <AnimatedCanvas />
                 <BackgroundPathsOnly />
@@ -76,7 +92,7 @@ export default function Home() {
                     caption="Empowering faith communities through technology"
                 />
             </SectionWrapper>
-            
+
             {/* Key Features */}
             <SectionWrapper id="features" className="bg-neutral-light dark:bg-primary-dark">
                 <div className="text-center mb-12">

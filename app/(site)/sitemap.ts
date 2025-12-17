@@ -1,7 +1,19 @@
 import { MetadataRoute } from 'next'
+import { getAllBlogPosts } from '@/lib/blog/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mzhub.com'
+
+  // Fetch all blog posts
+  const blogPosts = getAllBlogPosts()
+
+  // Generate blog post URLs
+  const blogUrls: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.date ? new Date(post.date) : new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }))
 
   return [
     {
@@ -34,5 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    ...blogUrls,
   ]
 }

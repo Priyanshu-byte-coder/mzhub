@@ -10,6 +10,28 @@ import CoreValuesSticky from '@/components/ui/about/core-values-sticky'
 export const metadata: Metadata = {
     title: 'About Us',
     description: 'Learn about MZhub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
+    keywords: ['about mzhub', 'spiritual AI mission', 'religious technology team', 'faith tech values'],
+    alternates: {
+        canonical: 'https://mzhub.com/about',
+    },
+    openGraph: {
+        title: 'About MZhub - Bridging Ancient Wisdom with Modern Technology',
+        description: 'Learn about MZhub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
+        url: 'https://mzhub.com/about',
+        type: 'website',
+        images: [{
+            url: 'https://mzhub.com/og-image-about.png',
+            width: 1200,
+            height: 630,
+            alt: 'About MZhub - Bridging Ancient Wisdom with Modern Technology'
+        }]
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'About MZhub - Bridging Ancient Wisdom with Modern Technology',
+        description: 'Learn about MZhub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
+        images: ['https://mzhub.com/og-image-about.png'],
+    },
 }
 
 export default function About() {

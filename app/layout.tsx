@@ -37,11 +37,18 @@ export const metadata: Metadata = {
         title: 'MZhub - AI-Powered Spiritual Platforms',
         description: 'Extend your spiritual reach with AI. Preserve sacred teachings while scaling personalized guidance.',
         siteName: 'MZhub',
+        images: [{
+            url: 'https://mzhub.com/og-image-home.png',
+            width: 1200,
+            height: 630,
+            alt: 'MZhub - AI-Powered Spiritual Platforms for Religious Institutions'
+        }]
     },
     twitter: {
         card: 'summary_large_image',
         title: 'MZhub - AI-Powered Spiritual Platforms',
         description: 'Extend your spiritual reach with AI. Preserve sacred teachings while scaling personalized guidance.',
+        images: ['https://mzhub.com/og-image-home.png'],
     },
     robots: {
         index: true,
@@ -51,7 +58,15 @@ export const metadata: Metadata = {
             follow: true,
         },
     },
+    verification: {
+        google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || '',
+    },
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#e0e7ff' },
+        { media: '(prefers-color-scheme: dark)', color: '#0f172a' }
+    ],
 }
+
 
 export default function RootLayout({
     children,
