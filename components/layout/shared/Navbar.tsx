@@ -119,7 +119,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-white dark:bg-[#050a16] border-b border-border/40 shadow-sm transition-colors">
+        <header className="fixed top-0 left-0 right-0 z-50 py-4 transition-colors">
             {/* Mobile Layout */}
             <div className="md:hidden flex items-center justify-between px-4">
                 {/* Logo and Brand Name */}
