@@ -3,25 +3,25 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import SectionWrapper from '@/components/ui/SectionWrapper'
-import { BlobButton } from '@/components/ui/BlobButton'
-import RotatingText from '@/components/RotatingText'
-import { BackgroundPathsOnly } from '@/components/ui/background-paths'
-import HoverCard from '@/components/ui/HoverCard'
-import { PlatformFeatures } from '@/components/ui/PlatformFeatures'
+import SectionWrapper from '@/components/ui/shared/SectionWrapper'
+import { BlobButton } from '@/components/ui/shared/BlobButton'
+import RotatingText from '@/components/layout/home/RotatingText'
+import { BackgroundPathsOnly } from '@/components/ui/home/background-paths'
+import HoverCard from '@/components/ui/shared/HoverCard'
+import { PlatformFeatures } from '@/components/ui/home/PlatformFeatures'
 import { BookOpen, Bot, Users, Church, Home as HomeIcon, Flower2, Lightbulb, Handshake } from 'lucide-react'
 import { MdOutlineTempleHindu } from 'react-icons/md'
 import { FaMosque } from 'react-icons/fa'
 import { LiaSynagogueSolid } from 'react-icons/lia'
 import { FaKhanda } from 'react-icons/fa6'
-import ScrollReveal from '@/components/ui/scroll-reveal'
-import ScrollSlideReveal from '@/components/ui/scroll-slide-reveal'
-import InfiniteCarousel from '@/components/ui/infinite-carousel'
-import { ContainerScroll } from '@/components/ui/container-scroll-animation'
-import { StaggerTestimonials } from '@/components/stagger-testimonials'
-import VideoShowcase from '@/components/video-component'
+import ScrollReveal from '@/components/ui/shared/scroll-reveal'
+import ScrollSlideReveal from '@/components/ui/shared/scroll-slide-reveal'
+import InfiniteCarousel from '@/components/ui/home/infinite-carousel'
+import { ContainerScroll } from '@/components/ui/home/container-scroll-animation'
+import { StaggerTestimonials } from '@/components/layout/home/stagger-testimonials'
+import VideoShowcase from '@/components/layout/home/video-component'
 
-const AnimatedCanvas = dynamic(() => import('@/components/ui/AnimatedCanvas'), {
+const AnimatedCanvas = dynamic(() => import('@/components/ui/home/AnimatedCanvas'), {
     ssr: false,
 })
 

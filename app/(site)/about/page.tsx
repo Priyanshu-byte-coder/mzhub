@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import SectionWrapper from '@/components/ui/SectionWrapper'
-import Card from '@/components/ui/Card'
-import { getTeamMembers } from '@/lib/teamMembers'
-import ScrollReveal from '@/components/ui/scroll-reveal'
-import TeamCarousel from '@/components/team-carousel'
-import MZHubIntro from '@/components/about/MZHubIntro'
-import CoreValuesSticky from '@/components/ui/core-values-sticky'
+import SectionWrapper from '@/components/ui/shared/SectionWrapper'
+import Card from '@/components/ui/shared/Card'
+import { getTeamMembers } from '@/lib/about/teamMembers'
+import ScrollReveal from '@/components/ui/shared/scroll-reveal'
+import TeamCarousel from '@/components/layout/about/team-carousel'
+import MZHubIntro from '@/components/layout/about/MZHubIntro'
+import CoreValuesSticky from '@/components/ui/about/core-values-sticky'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -39,7 +39,7 @@ export default function About() {
                 <div className="w-full px-4 sm:px-8 lg:px-12">
                     <div className="w-full">
                         <CoreValuesSticky
-                            videoSrc="/video/mzhub.mp4"
+                            videoSrc="/home/video/mzhub.mp4"
                             topOffset={112}
                             headingTitle="Our Core Values"
                             headingSubtitle="These principles guide every decision we make"

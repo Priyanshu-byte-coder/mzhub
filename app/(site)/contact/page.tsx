@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import SectionWrapper from '@/components/ui/SectionWrapper'
-import Card from '@/components/ui/Card'
-import { BlobButton } from '@/components/ui/BlobButton'
+import SectionWrapper from '@/components/ui/shared/SectionWrapper'
+import Card from '@/components/ui/shared/Card'
+import { BlobButton } from '@/components/ui/shared/BlobButton'
 
 export default function Contact() {
     const [formData, setFormData] = useState({

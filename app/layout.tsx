@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/layout/Navbar'
-import FooterNew from '@/components/layout/FooterNew'
-import { ThemeProvider } from '@/components/theme-provider'
-import { TransitionProvider } from '@/components/transition-provider'
-import { LoadingScreen } from '@/components/ui/loading-screen'
+import Navbar from '@/components/layout/shared/Navbar'
+import FooterNew from '@/components/layout/shared/FooterNew'
+import { ThemeProvider } from '@/components/layout/shared/theme-provider'
+import { TransitionProvider } from '@/components/layout/shared/transition-provider'
+import { LoadingScreen } from '@/components/ui/shared/loading-screen'
 
 const inter = Inter({
     subsets: ['latin'],

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import { getAllBlogPosts } from '@/lib/blog'
-import { BlogCard } from '@/components/blog/BlogCard'
-import { BlogHero } from '@/components/blog/BlogHero'
+import { getAllBlogPosts } from '@/lib/blog/blog'
+import { BlogCard } from '@/components/layout/blog/BlogCard'
+import { BlogHero } from '@/components/layout/blog/BlogHero'
 
 export const metadata: Metadata = {
     title: 'Blog | MZHub',

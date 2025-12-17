@@ -2,8 +2,8 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { ProjectCard } from '@/components/ui/project-card'
-import { projects } from '@/lib/projectsData'
+import { ProjectCard } from '@/components/ui/projects/project-card'
+import { projects } from '@/lib/projects/projectsData'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 

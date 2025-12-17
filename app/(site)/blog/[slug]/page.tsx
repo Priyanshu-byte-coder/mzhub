@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getBlogPost, getAllBlogPosts } from '@/lib/blog'
-import { BlogPostHeader } from '@/components/blog/BlogPostHeader'
-import { BlogPostContent } from '@/components/blog/BlogPostContent'
-import { TableOfContents } from '@/components/blog/TableOfContents'
-import { RelatedPosts } from '@/components/blog/RelatedPosts'
-import { RecentPosts } from '@/components/blog/RecentPosts'
+import { getBlogPost, getAllBlogPosts } from '@/lib/blog/blog'
+import { BlogPostHeader } from '@/components/layout/blog/BlogPostHeader'
+import { BlogPostContent } from '@/components/layout/blog/BlogPostContent'
+import { TableOfContents } from '@/components/layout/blog/TableOfContents'
+import { RelatedPosts } from '@/components/layout/blog/RelatedPosts'
+import { RecentPosts } from '@/components/layout/blog/RecentPosts'
 
 export async function generateStaticParams() {
     const posts = getAllBlogPosts()
