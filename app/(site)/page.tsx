@@ -1,5 +1,5 @@
 import { JsonLd } from '@/components/seo/JsonLd'
-import { generateOrganizationSchema, generateWebSiteSchema, generateVideoSchema } from '@/lib/seo/schemas'
+import { generateOrganizationSchema, generateWebSiteSchema, generateVideoSchema, generateServiceSchema } from '@/lib/seo/schemas'
 import { Metadata } from 'next'
 import HomeClient from '@/components/layout/home/HomeClient'
 
@@ -32,6 +32,32 @@ export default function Home() {
         uploadDate: '2024-12-01',
         contentUrl: '/home/video/mzhub.mp4',
     })
+    const serviceSchema = generateServiceSchema([
+        {
+            name: 'AI Spiritual Chatbot Platform',
+            description: 'Custom AI-powered chatbots trained on sacred texts and teachings to provide personalized spiritual guidance to devotees 24/7.',
+            serviceType: 'Software Application',
+            areaServed: 'Worldwide',
+        },
+        {
+            name: 'Content Management System for Religious Institutions',
+            description: 'Comprehensive CMS for managing sacred teachings, sermons, events, and community content with multilingual support.',
+            serviceType: 'Software Application',
+            areaServed: 'Worldwide',
+        },
+        {
+            name: 'Community Engagement Tools',
+            description: 'Digital tools for religious institutions to connect with and serve their communities through prayer requests, donations, and event management.',
+            serviceType: 'Software Application',
+            areaServed: 'Worldwide',
+        },
+        {
+            name: 'Analytics & Insights Dashboard',
+            description: 'Real-time analytics and insights on community engagement, spiritual inquiries, and content performance for religious leaders.',
+            serviceType: 'Software Application',
+            areaServed: 'Worldwide',
+        },
+    ])
 
     return (
         <div>
@@ -39,6 +65,7 @@ export default function Home() {
             <JsonLd data={organizationSchema} />
             <JsonLd data={websiteSchema} />
             <JsonLd data={videoSchema} />
+            <JsonLd data={serviceSchema} />
 
             {/* Client-side interactive content */}
             <HomeClient />

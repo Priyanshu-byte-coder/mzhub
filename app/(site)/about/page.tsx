@@ -6,6 +6,8 @@ import ScrollReveal from '@/components/ui/shared/scroll-reveal'
 import TeamCarousel from '@/components/layout/about/team-carousel'
 import MZHubIntro from '@/components/layout/about/MZHubIntro'
 import CoreValuesSticky from '@/components/ui/about/core-values-sticky'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateServiceSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -30,8 +32,32 @@ export const metadata: Metadata = {
 export default function About() {
     const team = getTeamMembers()
 
+    // Generate service schema for company-level services
+    const serviceSchema = generateServiceSchema([
+        {
+            name: 'Digital Transformation for Religious Institutions',
+            description: 'End-to-end digital transformation services helping temples, churches, mosques, and spiritual centers modernize while preserving sacred traditions.',
+            serviceType: 'Consulting Service',
+            areaServed: 'Worldwide',
+        },
+        {
+            name: 'AI Implementation & Training',
+            description: 'Comprehensive AI platform implementation with dedicated training for religious leaders and staff to manage their spiritual technology effectively.',
+            serviceType: 'Professional Service',
+            areaServed: 'Worldwide',
+        },
+        {
+            name: 'Custom Spiritual Content Development',
+            description: 'Expert content curation and digitization of sacred teachings, sermons, and spiritual guidance tailored to each institution\'s unique tradition.',
+            serviceType: 'Professional Service',
+            areaServed: 'Worldwide',
+        },
+    ])
+
     return (
         <div>
+            {/* Structured Data - Server-rendered */}
+            <JsonLd data={serviceSchema} />
             {/* Hero */}
             <section className="bg-gradient-to-br from-spiritual-indigo-900 to-spiritual-indigo-800 text-white py-20 md:py-32">
                 <div className="container-custom text-center">

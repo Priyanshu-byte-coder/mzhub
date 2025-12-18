@@ -157,6 +157,60 @@ export function generateVideoSchema(props: VideoSchemaProps) {
 }
 
 /**
+ * Generate Service schema
+ */
+interface ServiceSchemaProps {
+    name: string
+    description: string
+    serviceType?: string
+    areaServed?: string
+}
+
+export function generateServiceSchema(services: ServiceSchemaProps | ServiceSchemaProps[]) {
+    const serviceArray = Array.isArray(services) ? services : [services]
+
+    // If single service, return single Service object
+    if (serviceArray.length === 1) {
+        const service = serviceArray[0]
+        return {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: service.name,
+            description: service.description,
+            provider: {
+                '@type': 'Organization',
+                name: SITE_NAME,
+                url: SITE_URL,
+            },
+            ...(service.serviceType && { serviceType: service.serviceType }),
+            ...(service.areaServed && { areaServed: service.areaServed }),
+        }
+    }
+
+    // If multiple services, return ItemList of Services
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: serviceArray.map((service, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+                '@type': 'Service',
+                name: service.name,
+                description: service.description,
+                provider: {
+                    '@type': 'Organization',
+                    name: SITE_NAME,
+                    url: SITE_URL,
+                },
+                ...(service.serviceType && { serviceType: service.serviceType }),
+                ...(service.areaServed && { areaServed: service.areaServed }),
+            },
+        })),
+    }
+}
+
+/**
  * Generate FAQPage schema
  */
 interface FAQItem {

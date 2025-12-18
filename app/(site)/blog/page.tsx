@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { getAllBlogPosts } from '@/lib/blog/blog'
 import { BlogCard } from '@/components/layout/blog/BlogCard'
 import { BlogHero } from '@/components/layout/blog/BlogHero'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateServiceSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
     title: 'Blog',
@@ -26,8 +28,19 @@ export const metadata: Metadata = {
 export default function Blog() {
     const posts = getAllBlogPosts()
 
+    // Generate service schema for educational/advisory services
+    const serviceSchema = generateServiceSchema({
+        name: 'Spiritual Technology Consulting & Education',
+        description: 'Expert insights, tutorials, and consulting on integrating AI and modern technology with religious institutions while maintaining spiritual authenticity and tradition.',
+        serviceType: 'Educational Service',
+        areaServed: 'Worldwide',
+    })
+
     return (
         <div className="min-h-screen bg-neutral-light dark:bg-primary-dark">
+            {/* Structured Data - Server-rendered */}
+            <JsonLd data={serviceSchema} />
+
             <BlogHero />
 
             <section className="container mx-auto px-4 py-16">
