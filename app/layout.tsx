@@ -4,7 +4,6 @@ import './globals.css'
 import Navbar from '@/components/layout/shared/Navbar'
 import FooterNew from '@/components/layout/shared/FooterNew'
 import { ThemeProvider } from '@/components/layout/shared/theme-provider'
-import { TransitionProvider } from '@/components/layout/shared/transition-provider'
 import { LoadingScreen } from '@/components/ui/shared/loading-screen'
 
 const inter = Inter({
@@ -68,13 +67,11 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <LoadingScreen />
-                    <TransitionProvider>
-                        <Navbar />
-                        <main className="min-h-screen">
-                            {children}
-                        </main>
-                        <FooterNew />
-                    </TransitionProvider>
+                    <Navbar />
+                    <main className="min-h-screen">
+                        {children}
+                    </main>
+                    <FooterNew />
                 </ThemeProvider>
             </body>
         </html>
