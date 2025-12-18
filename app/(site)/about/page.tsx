@@ -24,6 +24,7 @@ export default function About() {
             <MZHubIntro />
 
             {/* Core Values replaced with Sticky Scroll */}
+            {/**
             <SectionWrapper className="bg-neutral-light dark:bg-primary-dark" fullWidth>
                 <div className="w-full px-4 sm:px-8 lg:px-12">
                     <div className="w-full">
@@ -80,6 +81,7 @@ export default function About() {
                     </div>
                 </div>
             </SectionWrapper>
+            **/}
 
             {/* Team */}
             <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">
