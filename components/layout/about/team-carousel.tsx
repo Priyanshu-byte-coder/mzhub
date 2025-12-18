@@ -123,22 +123,49 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
                     {team.map((member, index) => {
                         const imageSrc = member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}`
                         const offsetClass = index % 2 === 1 ? 'md:translate-y-4' : ''
+                        const infoBlocks = [
+                            {
+                                label: 'Theological credentials (if any)',
+                                value: member.theologicalCredentials || 'Bachelor of Divinity, studied under [lineage]',
+                            },
+                            {
+                                label: 'Technical credentials',
+                                value: member.technicalCredentials || 'AWS Certified AI Practitioner, 10 years NLP experience',
+                            },
+                            {
+                                label: 'Faith background',
+                                value: member.faithBackground || 'Raised in [tradition], practicing member of [institution]',
+                            },
+                        ]
 
                         return (
                             <figure
                                 key={member.name}
-                                className={`group snap-start w-[420px] shrink-0 space-y-6 ${offsetClass}`}
+                                className={`group snap-start w-[420px] shrink-0 ${offsetClass}`}
                             >
-                                <div className="relative aspect-square w-full overflow-hidden rounded-[40px] bg-black/20">
-                                    <img
-                                        src={imageSrc}
-                                        alt={member.name}
-                                        className="h-full w-full object-cover transition duration-500 grayscale group-hover:scale-105 group-hover:grayscale-0"
-                                    />
-                                </div>
-                                <div>
-                                    <p className="text-2xl font-semibold text-secondary-light dark:text-white">{member.name}</p>
-                                    <p className="text-base text-secondary-light/70 dark:text-text-mist/70">{member.role}</p>
+                                <div className="flex h-full flex-col rounded-[48px] border border-white/10 bg-white/80 p-6 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.8)] backdrop-blur-lg dark:bg-black/40">
+                                    <div className="relative aspect-square w-full overflow-hidden rounded-[32px] bg-black/20">
+                                        <img
+                                            src={imageSrc}
+                                            alt={member.name}
+                                            className="h-full w-full object-cover transition duration-500 grayscale group-hover:scale-105 group-hover:grayscale-0"
+                                        />
+                                    </div>
+                                    <div className="mt-6">
+                                        <p className="text-2xl font-semibold text-secondary-light dark:text-white">{member.name}</p>
+                                        <p className="text-base text-secondary-light/70 dark:text-text-mist/70">{member.role}</p>
+                                    </div>
+                                    <dl className="mt-6 space-y-4 text-base text-secondary-light/80 dark:text-text-mist">
+                                        {infoBlocks.map((info, infoIndex) => (
+                                            <div
+                                                key={`${member.name}-${info.label}`}
+                                                className={infoIndex === 0 ? 'border-none pt-0' : 'border-t border-white/20 pt-4 dark:border-white/10'}
+                                            >
+                                                <dt className="text-xs font-semibold uppercase tracking-wide text-secondary-light/60 dark:text-text-mist/60">{info.label}</dt>
+                                                <dd className="mt-1 leading-relaxed text-secondary-light dark:text-white">{info.value}</dd>
+                                            </div>
+                                        ))}
+                                    </dl>
                                 </div>
                             </figure>
                         )

@@ -10,7 +10,7 @@ export default function ContactHero() {
           Let's <span className="text-accent-gold">Connect</span>
         </>
       }
-      description="Ready to explore how MZhub can serve your spiritual institution? We'd love to hear from you."
+      description="Ready to explore how MZHub can serve your spiritual institution? We'd love to hear from you."
       sectionClassName="relative min-h-screen flex items-center justify-center overflow-hidden"
       backgroundVariant="contact"
     />

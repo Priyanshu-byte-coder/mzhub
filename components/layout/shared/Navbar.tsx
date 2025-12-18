@@ -127,8 +127,8 @@ export default function Navbar() {
                     <div className="relative w-8 h-8">
                         {mounted && (
                             <Image
-                                src={theme === 'dark' ? '/shared/mzhub-logo_w.svg' : '/shared/mzhub-logo.svg'}
-                                alt="MZhub Logo"
+                                src={theme === 'dark' ? '/shared/MZHub-logo_w.svg' : '/shared/MZHub-logo.svg'}
+                                alt="MZHub Logo"
                                 width={32}
                                 height={32}
                                 className="w-full h-full object-contain transition-transform group-hover:scale-110"
@@ -175,8 +175,8 @@ export default function Navbar() {
                     <div className="relative w-10 h-10">
                         {mounted && (
                             <Image
-                                src={theme === 'dark' ? '/shared/mzhub-logo_w.svg' : '/shared/mzhub-logo.svg'}
-                                alt="MZhub Logo"
+                                src={theme === 'dark' ? '/shared/MZHub-logo_w.svg' : '/shared/MZHub-logo.svg'}
+                                alt="MZHub Logo"
                                 width={40}
                                 height={40}
                                 className="w-full h-full object-contain transition-transform group-hover:scale-110"
@@ -276,8 +276,8 @@ export default function Navbar() {
                                         <div className="relative w-10 h-10">
                                             {mounted && (
                                                 <Image
-                                                    src={theme === 'dark' ? '/shared/mzhub-logo_w.svg' : '/shared/mzhub-logo.svg'}
-                                                    alt="MZhub Logo"
+                                                    src={theme === 'dark' ? '/shared/MZHub-logo_w.svg' : '/shared/MZHub-logo.svg'}
+                                                    alt="MZHub Logo"
                                                     width={40}
                                                     height={40}
                                                     className="w-full h-full object-contain"
@@ -375,8 +375,8 @@ export default function Navbar() {
                                         <div className="relative w-8 h-8">
                                             {mounted && (
                                                 <Image
-                                                    src={theme === 'dark' ? '/shared/mzhub-logo_w.svg' : '/shared/mzhub-logo.svg'}
-                                                    alt="MZhub Logo"
+                                                    src={theme === 'dark' ? '/shared/MZHub-logo_w.svg' : '/shared/MZHub-logo.svg'}
+                                                    alt="MZHub Logo"
                                                     width={32}
                                                     height={32}
                                                     className="w-full h-full object-contain"

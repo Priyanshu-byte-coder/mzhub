@@ -21,7 +21,7 @@ type CoreValuesStickyProps = {
 }
 
 export default function CoreValuesSticky({
-  videoSrc = "/home/video/mzhub.mp4",
+  videoSrc = "/home/video/MZHub.mp4",
   items = [],
   topOffset = 96, // sticky offset in px (e.g., navbar height)
   headingTitle,
@@ -259,7 +259,7 @@ export default function CoreValuesSticky({
             loop
             playsInline
             preload="metadata"
-            poster="/video/mzhub-poster.jpg"
+            poster="/video/MZHub-poster.jpg"
             onLoadedMetadata={handleVideoMetadata}
           />
           <span className="pointer-events-none absolute left-0 top-0 h-full w-1.5 bg-neutral-100 dark:bg-primary-dark" />

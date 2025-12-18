@@ -74,8 +74,8 @@ export function LoadingScreen() {
                 >
                   <div className="relative w-12 h-12 md:w-16 md:h-16">
                     <Image
-                      src={isDark ? '/shared/mzhub-logo_w.svg' : '/shared/mzhub-logo.svg'}
-                      alt="MZhub Logo"
+                      src={isDark ? '/shared/MZHub-logo_w.svg' : '/shared/MZHub-logo.svg'}
+                      alt="MZHub Logo"
                       fill
                       className="object-contain"
                       priority
@@ -95,7 +95,7 @@ export function LoadingScreen() {
                   className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] mb-8"
                   style={{ color: textColor }}
                 >
-                  MZHUB
+                  MZHub
                   <br />
                   <span className="text-accent-gold">SPIRITUAL</span> PLATFORM
                   <br />

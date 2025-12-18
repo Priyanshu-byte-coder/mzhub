@@ -70,8 +70,8 @@ All import paths have been updated throughout the codebase:
 - `@/hooks/useTheme` → `@/hooks/shared/useTheme`
 
 ### Public Assets
-- `/mzhub-logo.svg` → `/shared/mzhub-logo.svg`
-- `/video/mzhub.mp4` → `/home/video/mzhub.mp4`
+- `/MZHub-logo.svg` → `/shared/MZHub-logo.svg`
+- `/video/MZHub.mp4` → `/home/video/MZHub.mp4`
 
 ## Files Updated
 

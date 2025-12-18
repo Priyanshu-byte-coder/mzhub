@@ -10,7 +10,7 @@ export const size = {
 export const contentType = 'image/png'
  
 export default async function Icon() {
-  const imageData = await readFile(join(process.cwd(), 'public', 'shared', 'mzhub-logo.png'))
+  const imageData = await readFile(join(process.cwd(), 'public', 'shared', 'MZHub-logo.png'))
   
   return new Response(imageData, {
     headers: {

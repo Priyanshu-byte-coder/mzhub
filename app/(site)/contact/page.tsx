@@ -122,7 +122,7 @@ export default function Contact() {
                         <div>
                             <h2 className="text-3xl font-bold text-secondary-light dark:text-accent-gold mb-6">Request a Demo</h2>
                             <p className="text-secondary-light/90 dark:text-text-mist mb-8">
-                                Fill out the form below and we'll get back to you within 24 hours to schedule a personalized demo of the MZhub platform.
+                                Fill out the form below and we'll get back to you within 24 hours to schedule a personalized demo of the MZHub platform.
                             </p>
 
                             {submitError && (
@@ -262,7 +262,7 @@ export default function Contact() {
                                             rows={5}
                                             className={`w-full px-4 py-3 rounded-lg border ${errors.message ? 'border-red-500' : 'border-gray-300'
                                                 } focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-accent-gold`}
-                                            placeholder="Tell us about your institution, community size, current challenges, and what you're hoping to achieve with MZhub..."
+                                            placeholder="Tell us about your institution, community size, current challenges, and what you're hoping to achieve with MZHub..."
                                         />
                                         {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
                                     </div>
@@ -287,8 +287,8 @@ export default function Contact() {
                                         <span className="text-2xl">📧</span>
                                         <div>
                                             <p className="font-semibold text-secondary-light dark:text-accent-gold">Email</p>
-                                            <a href="mailto:contact@mzhub.com" className="text-accent-blue dark:text-accent-gold hover:underline">
-                                                contact@mzhub.com
+                                            <a href="mailto:contact@MZHub.com" className="text-accent-blue dark:text-accent-gold hover:underline">
+                                                contact@MZHub.com
                                             </a>
                                         </div>
                                     </div>

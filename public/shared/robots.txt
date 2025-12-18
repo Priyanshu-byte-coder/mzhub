@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mzhub.com/sitemap.xml
+Sitemap: https://MZHub.com/sitemap.xml

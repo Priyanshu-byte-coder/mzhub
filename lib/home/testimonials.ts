@@ -18,7 +18,7 @@ export const testimonials: Testimonial[] = [
         name: 'Swami Krishnananda',
         role: 'Spiritual Director',
         institution: 'Vedanta Ashram',
-        content: 'MZhub has transformed how we engage with our global community. The AI assistant answers common questions accurately while preserving our teachings\' essence. It truly extends our reach without replacing the personal touch.',
+        content: 'MZHub has transformed how we engage with our global community. The AI assistant answers common questions accurately while preserving our teachings\' essence. It truly extends our reach without replacing the personal touch.',
     },
     {
         name: 'Sister Maria D\'Souza',
@@ -30,7 +30,7 @@ export const testimonials: Testimonial[] = [
         name: 'Pandit Ramesh Sharma',
         role: 'Head Priest',
         institution: 'Ganesh Temple Trust',
-        content: 'We were initially skeptical about using AI in our spiritual work. But MZhub\'s commitment to institutional control and doctrinal alignment won our trust. The platform serves our community while honoring our traditions.',
+        content: 'We were initially skeptical about using AI in our spiritual work. But MZHub\'s commitment to institutional control and doctrinal alignment won our trust. The platform serves our community while honoring our traditions.',
     },
 ]
 
@@ -41,7 +41,7 @@ export function getTestimonials(): Testimonial[] {
 export function getAnimatedTestimonials(): AnimatedTestimonial[] {
     return [
         {
-            quote: "MZhub has transformed how we engage with our global community. The AI assistant answers common questions accurately while preserving our teachings' essence. It truly extends our reach without replacing the personal touch.",
+            quote: "MZHub has transformed how we engage with our global community. The AI assistant answers common questions accurately while preserving our teachings' essence. It truly extends our reach without replacing the personal touch.",
             name: "Swami Krishnananda",
             designation: "Spiritual Director, Vedanta Ashram",
             src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop"
@@ -53,7 +53,7 @@ export function getAnimatedTestimonials(): AnimatedTestimonial[] {
             src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=500&fit=crop"
         },
         {
-            quote: "We were initially skeptical about using AI in our spiritual work. But MZhub's commitment to institutional control and doctrinal alignment won our trust. The platform serves our community while honoring our traditions.",
+            quote: "We were initially skeptical about using AI in our spiritual work. But MZHub's commitment to institutional control and doctrinal alignment won our trust. The platform serves our community while honoring our traditions.",
             name: "Pandit Ramesh Sharma",
             designation: "Head Priest, Ganesh Temple Trust",
             src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop"
