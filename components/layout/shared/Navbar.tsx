@@ -102,6 +102,9 @@ export default function Navbar() {
         })
         if (currentItem) {
             setActiveItem(currentItem.label)
+        } else {
+            // Clear active state if on a page not in the menu (e.g., privacy, terms)
+            setActiveItem('')
         }
     }, [pathname])
 

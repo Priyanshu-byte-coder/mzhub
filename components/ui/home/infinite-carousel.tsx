@@ -28,7 +28,7 @@ export default function InfiniteCarousel({
   const [seqWidth, setSeqWidth] = useState(0);
   const [copyCount, setCopyCount] = useState(3);
 
-  const velocity = direction === "left" ? speed * 10 : -speed * 10;
+  const velocity = direction === "left" ? speed * 20 : -speed * 20;
 
   const updateDimensions = useCallback(() => {
     if (!seqRef.current) return;
@@ -90,15 +90,15 @@ export default function InfiniteCarousel({
         return (
           <div
             key={`${copyIndex}-${index}`}
-            className="flex-shrink-0 w-[280px] sm:w-[300px] bg-secondary-light/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-secondary-light/20 transition-colors dark:bg-white/10 dark:hover:bg-white/20"
+            className="flex-shrink-0 w-[350px] sm:w-[380px] bg-secondary-light/10 backdrop-blur-md rounded-xl p-8 text-center hover:bg-secondary-light/20 transition-colors dark:bg-white/10 dark:hover:bg-white/20"
           >
-            <div className="flex justify-center mb-3">
-              <IconComponent className="w-12 h-12 text-secondary-light dark:text-accent-gold" />
+            <div className="flex justify-center mb-4">
+              <IconComponent className="w-16 h-16 text-secondary-light dark:text-accent-gold" />
             </div>
-            <h3 className="font-bold text-xl mb-2 text-secondary-light dark:text-white">
+            <h3 className="font-bold text-2xl mb-3 text-secondary-light dark:text-white">
               {item.title}
             </h3>
-            <p className="text-secondary-light/70 dark:text-neutral-light text-sm">
+            <p className="text-secondary-light/70 dark:text-neutral-light text-base">
               {item.description}
             </p>
           </div>

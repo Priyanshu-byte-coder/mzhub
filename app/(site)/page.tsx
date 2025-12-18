@@ -196,28 +196,20 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div className="space-y-4">
-                    <InfiniteCarousel
-                        items={[
-                            { title: 'Temples', icon: MdOutlineTempleHindu, description: 'Hindu temples and mandirs serving local and global communities' },
-                            { title: 'Ashrams', icon: Flower2, description: 'Spiritual retreat centers and meditation communities' },
-                            { title: 'Churches', icon: Church, description: 'Christian congregations and ministries of all denominations' },
-                            { title: 'Mosques', icon: FaMosque, description: 'Islamic centers and Muslim community organizations' },
-                        ]}
-                        speed={5}
-                        direction="left"
-                    />
-                    <InfiniteCarousel
-                        items={[
-                            { title: 'Synagogues', icon: LiaSynagogueSolid, description: 'Jewish congregations and study centers' },
-                            { title: 'Monasteries', icon: HomeIcon, description: 'Buddhist and contemplative religious communities' },
-                            { title: 'Gurudwaras', icon: FaKhanda, description: 'Sikh temples and community centers' },
-                            { title: 'Spiritual Centers', icon: Flower2, description: 'Multi-faith and interfaith spiritual organizations' }
-                        ]}
-                        speed={5}
-                        direction="right"
-                    />
-                </div>
+                <InfiniteCarousel
+                    items={[
+                        { title: 'Temples', icon: MdOutlineTempleHindu, description: 'Hindu temples and mandirs serving local and global communities' },
+                        { title: 'Ashrams', icon: Flower2, description: 'Spiritual retreat centers and meditation communities' },
+                        { title: 'Churches', icon: Church, description: 'Christian congregations and ministries of all denominations' },
+                        { title: 'Mosques', icon: FaMosque, description: 'Islamic centers and Muslim community organizations' },
+                        { title: 'Synagogues', icon: LiaSynagogueSolid, description: 'Jewish congregations and study centers' },
+                        { title: 'Monasteries', icon: HomeIcon, description: 'Buddhist and contemplative religious communities' },
+                        { title: 'Gurudwaras', icon: FaKhanda, description: 'Sikh temples and community centers' },
+                        { title: 'Spiritual Centers', icon: Flower2, description: 'Multi-faith and interfaith spiritual organizations' }
+                    ]}
+                    speed={5}
+                    direction="left"
+                />
             </SectionWrapper>
 
             {/* Testimonial */}
