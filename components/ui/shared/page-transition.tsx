@@ -109,7 +109,7 @@ export function PageTransition() {
           y="45%"
           style={{ fill: "url(#pattern)" }}
         >
-          MZHUB
+          MZHub
         </text>
         
         {/* Quote */}

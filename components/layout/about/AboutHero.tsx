@@ -43,7 +43,7 @@ export default function AboutHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl lg:text-2xl text-secondary-light/70 dark:text-text-mist/70 max-w-3xl mx-auto leading-relaxed"
           >
-            MZhub exists to help religious institutions preserve their sacred teachings while reaching devotees in the digital age.
+            MZHub exists to help religious institutions preserve their sacred teachings while reaching devotees in the digital age.
           </motion.p>
         </motion.div>
       </motion.div>

@@ -49,13 +49,13 @@ export default function FooterNew() {
           <div className="relative lg:col-span-1">
             <Link href="/" className="flex items-center space-x-3 mb-4">
               <Image
-                src="/shared/mzhub-logo.png"
-                alt="MZhub Logo"
+                src="/shared/MZHub-logo.png"
+                alt="MZHub Logo"
                 width={40}
                 height={40}
                 className="w-10 h-10 object-contain"
               />
-              <span className="text-2xl font-bold">MZhub</span>
+              <span className="text-2xl font-bold">MZHub</span>
             </Link>
             <h2 className="mb-4 text-2xl font-bold tracking-tight">Stay Connected</h2>
             <p className="mb-6 text-muted-foreground">
@@ -101,8 +101,8 @@ export default function FooterNew() {
             <address className="space-y-2 text-sm not-italic text-muted-foreground">
               <p>Empowering spiritual institutions</p>
               <p>with AI-driven platforms</p>
-              <p className="pt-2">Email: hello@mzhub.com</p>
-              <p>Support: support@mzhub.com</p>
+              <p className="pt-2">Email: hello@MZHub.com</p>
+              <p>Support: support@MZHub.com</p>
             </address>
           </div>
 
@@ -209,7 +209,7 @@ export default function FooterNew() {
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} MZhub. All rights reserved. Empowering spiritual institutions with technology.
+            © {currentYear} MZHub. All rights reserved. Empowering spiritual institutions with technology.
           </p>
           <nav className="flex gap-4 text-sm">
             {footerLinks.legal.map((link) => (

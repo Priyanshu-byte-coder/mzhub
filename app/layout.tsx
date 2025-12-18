@@ -20,27 +20,27 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://mzhub.com'),
+    metadataBase: new URL('https://MZHub.com'),
     title: {
-        default: 'MZhub - AI-Powered Spiritual Platforms for Religious Institutions',
-        template: '%s | MZhub'
+        default: 'MZHub - AI-Powered Spiritual Platforms for Religious Institutions',
+        template: '%s | MZHub'
     },
-    description: 'Extend your spiritual reach with AI. MZhub helps religious institutions, temples, and ashrams deliver personalized guidance while preserving their sacred teachings.',
+    description: 'Extend your spiritual reach with AI. MZHub helps religious institutions, temples, and ashrams deliver personalized guidance while preserving their sacred teachings.',
     keywords: ['spiritual technology', 'AI for religious institutions', 'temple technology', 'ashram platform', 'spiritual guidance AI', 'faith tech'],
-    authors: [{ name: 'MZhub' }],
-    creator: 'MZhub',
-    publisher: 'MZhub',
+    authors: [{ name: 'MZHub' }],
+    creator: 'MZHub',
+    publisher: 'MZHub',
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://mzhub.com',
-        title: 'MZhub - AI-Powered Spiritual Platforms',
+        url: 'https://MZHub.com',
+        title: 'MZHub - AI-Powered Spiritual Platforms',
         description: 'Extend your spiritual reach with AI. Preserve sacred teachings while scaling personalized guidance.',
-        siteName: 'MZhub',
+        siteName: 'MZHub',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'MZhub - AI-Powered Spiritual Platforms',
+        title: 'MZHub - AI-Powered Spiritual Platforms',
         description: 'Extend your spiritual reach with AI. Preserve sacred teachings while scaling personalized guidance.',
     },
     robots: {

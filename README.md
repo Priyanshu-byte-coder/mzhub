@@ -1,6 +1,6 @@
-# MZhub Marketing Website
+# MZHub Marketing Website
 
-> **A modern, enterprise-grade marketing platform for MZhub** — An AI-powered spiritual technology platform designed for religious institutions, temples, ashrams, and faith communities worldwide.
+> **A modern, enterprise-grade marketing platform for MZHub** — An AI-powered spiritual technology platform designed for religious institutions, temples, ashrams, and faith communities worldwide.
 
 ---
 
@@ -54,7 +54,7 @@
 
 ## 🌟 Overview
 
-MZhub is a comprehensive marketing website built to showcase an AI-powered spiritual platform for religious institutions. The platform enables temples, ashrams, churches, mosques, and other faith communities to extend their spiritual reach through technology while preserving their sacred teachings.
+MZHub is a comprehensive marketing website built to showcase an AI-powered spiritual platform for religious institutions. The platform enables temples, ashrams, churches, mosques, and other faith communities to extend their spiritual reach through technology while preserving their sacred teachings.
 
 ### **Key Brand Message**
 > *"You are not replacing the guru. You are extending their reach."*
@@ -149,8 +149,8 @@ This core philosophy is emphasized throughout the site, ensuring that technology
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/mzhub.git
-cd mzhub
+git clone https://github.com/your-org/MZHub.git
+cd MZHub
 
 # Install dependencies
 npm install
@@ -203,7 +203,7 @@ npm run lint -- --fix
 ## 📂 Project Structure
 
 ```
-mzhub/
+MZHub/
 ├── app/                          # Next.js App Router
 │   ├── (site)/                   # Site route group
 │   │   ├── about/                # About page
@@ -289,9 +289,9 @@ mzhub/
 │   ├── projects/                 # Project images
 │   ├── team/                     # Team photos
 │   ├── video/                    # Video files
-│   ├── mzhub-logo.png            # Logo (PNG)
-│   ├── mzhub-logo.svg            # Logo (SVG)
-│   ├── mzhub-logo_w.svg          # Logo white variant
+│   ├── MZHub-logo.png            # Logo (PNG)
+│   ├── MZHub-logo.svg            # Logo (SVG)
+│   ├── MZHub-logo_w.svg          # Logo white variant
 │   └── robots.txt                # Robots file
 │
 ├── styles/                       # Additional styles
@@ -591,9 +591,9 @@ interface Testimonial {
 
 ## 📄 License
 
-This project is proprietary software developed for MZhub. All rights reserved.
+This project is proprietary software developed for MZHub. All rights reserved.
 
-**Copyright © 2024 MZhub. All rights reserved.**
+**Copyright © 2024 MZHub. All rights reserved.**
 
 ---
 

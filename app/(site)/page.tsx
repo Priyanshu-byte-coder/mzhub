@@ -113,7 +113,7 @@ export default function Home() {
                                 <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/20 to-accent-gold/20 dark:from-accent-blue/10 dark:to-accent-gold/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                                 <div className="relative bg-white/80 dark:bg-card/80 backdrop-blur-sm p-6 md:p-10 rounded-2xl border-l-4 border-accent-gold shadow-lg hover:shadow-2xl transition-all duration-300">
                                     <p className="text-xl md:text-2xl lg:text-3xl font-bold text-secondary-light dark:text-accent-gold leading-relaxed">
-                                        MZhub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
+                                        MZHub was built on a fundamental principle: AI should amplify spiritual wisdom, never replace it. Technology serves tradition, not the other way around.
                                     </p>
                                 </div>
                             </div>
@@ -192,7 +192,7 @@ export default function Home() {
                         <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-light dark:text-accent-gold">Who We Serve</h2>
                     </ScrollReveal>
                     <p className="text-xl text-secondary-light/80 dark:text-text-mist max-w-3xl mx-auto">
-                        MZhub is purpose-built for religious institutions seeking to expand their digital presence
+                        MZHub is purpose-built for religious institutions seeking to expand their digital presence
                     </p>
                 </div>
 
@@ -227,7 +227,7 @@ export default function Home() {
                         <h2 className="section-heading text-secondary-light dark:text-accent-gold">Trusted by Spiritual Leaders Worldwide</h2>
                     </ScrollReveal>
                     <p className="text-xl text-secondary-light dark:text-text-mist max-w-3xl mx-auto">
-                        See what religious institutions and spiritual communities are saying about MZhub
+                        See what religious institutions and spiritual communities are saying about MZHub
                     </p>
                 </div>
                 <StaggerTestimonials />
@@ -254,7 +254,7 @@ export default function Home() {
                             </h2>
                         </ScrollReveal>
                         <p className="text-xl mb-8 text-secondary-light/80 dark:text-text-mist">
-                            Join religious institutions worldwide who are using MZhub to preserve their teachings and serve their communities better.
+                            Join religious institutions worldwide who are using MZHub to preserve their teachings and serve their communities better.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <BlobButton as={Link} href="/contact">

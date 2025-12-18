@@ -9,7 +9,7 @@ type CardItem = {
 }
 
 export default function StickyScroll({
-  videoSrc = "/home/video/mzhub.mp4",
+  videoSrc = "/home/video/MZHub.mp4",
   items = [],
 }: {
   videoSrc?: string

@@ -93,7 +93,7 @@ export default function ProjectsPage() {
             </h2>
             
             <p className="text-xl text-secondary-light/80 dark:text-text-mist/80 max-w-2xl mx-auto">
-              Join religious institutions worldwide who trust MZhub to preserve
+              Join religious institutions worldwide who trust MZHub to preserve
               their teachings and serve their communities.
             </p>
 
