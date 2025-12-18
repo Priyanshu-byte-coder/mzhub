@@ -21,9 +21,9 @@ const components = {
     const text = children?.toString() || ''
     const id = slugify(text)
     return (
-      <h1 
+      <h1
         id={id}
-        className="text-4xl font-bold mb-6 mt-8 scroll-mt-20 text-foreground border-b border-border pb-3"
+        className="text-4xl font-bold mb-6 mt-8 scroll-mt-28 text-foreground border-b border-border pb-3"
         {...props}
       >
         {children}
@@ -34,9 +34,9 @@ const components = {
     const text = children?.toString() || ''
     const id = slugify(text)
     return (
-      <h2 
+      <h2
         id={id}
-        className="text-3xl font-bold mb-4 mt-8 scroll-mt-20 text-foreground border-b border-border pb-2"
+        className="text-3xl font-bold mb-4 mt-8 scroll-mt-28 text-foreground border-b border-border pb-2"
         {...props}
       >
         {children}
@@ -47,9 +47,9 @@ const components = {
     const text = children?.toString() || ''
     const id = slugify(text)
     return (
-      <h3 
+      <h3
         id={id}
-        className="text-2xl font-bold mb-3 mt-6 scroll-mt-20 text-foreground"
+        className="text-2xl font-bold mb-3 mt-6 scroll-mt-28 text-foreground"
         {...props}
       >
         {children}
@@ -60,9 +60,9 @@ const components = {
     const text = children?.toString() || ''
     const id = slugify(text)
     return (
-      <h4 
+      <h4
         id={id}
-        className="text-xl font-semibold mb-2 mt-4 scroll-mt-20 text-foreground"
+        className="text-xl font-semibold mb-2 mt-4 scroll-mt-28 text-foreground"
         {...props}
       >
         {children}
@@ -82,27 +82,27 @@ const components = {
     <li className="text-muted-foreground" {...props} />
   ),
   a: (props: any) => (
-    <a 
-      className="text-primary hover:underline font-medium" 
+    <a
+      className="text-primary hover:underline font-medium"
       target="_blank"
       rel="noopener noreferrer"
-      {...props} 
+      {...props}
     />
   ),
   blockquote: (props: any) => (
-    <blockquote 
+    <blockquote
       className="border-l-4 border-primary pl-4 italic text-muted-foreground my-4 bg-muted/50 py-2 rounded-r"
       {...props}
     />
   ),
   code: (props: any) => (
-    <code 
+    <code
       className="text-primary bg-primary/10 px-1.5 py-0.5 rounded text-sm font-mono"
       {...props}
     />
   ),
   pre: (props: any) => (
-    <pre 
+    <pre
       className="bg-muted border border-border rounded-lg p-4 overflow-x-auto mb-4"
       {...props}
     />
@@ -113,7 +113,7 @@ const components = {
     </div>
   ),
   th: (props: any) => (
-    <th 
+    <th
       className="border border-border bg-muted p-2 text-left font-semibold"
       {...props}
     />
@@ -136,7 +136,7 @@ const components = {
 export function MDXContent({ content }: MDXContentProps) {
   return (
     <article className="prose prose-lg dark:prose-invert max-w-none">
-      <ReactMarkdown 
+      <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={components}
       >

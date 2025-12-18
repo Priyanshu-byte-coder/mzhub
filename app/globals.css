@@ -32,6 +32,7 @@ html {
   .btn-secondary {
     @apply bg-accent-gold hover:bg-accent-gold/90 text-neutral-dark font-medium px-6 py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105;
   }
+
   .section-heading {
     @apply text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark mb-4;
   }
@@ -39,14 +40,17 @@ html {
 
 @layer utilities {
   @keyframes glow-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
       text-shadow: 0 0 10px rgba(215, 180, 106, 0.3),
-                   0 0 20px rgba(215, 180, 106, 0.2);
+        0 0 20px rgba(215, 180, 106, 0.2);
     }
+
     50% {
       text-shadow: 0 0 20px rgba(215, 180, 106, 0.5),
-                   0 0 30px rgba(215, 180, 106, 0.3),
-                   0 0 40px rgba(215, 180, 106, 0.2);
+        0 0 30px rgba(215, 180, 106, 0.3),
+        0 0 40px rgba(215, 180, 106, 0.2);
     }
   }
 
@@ -93,7 +97,7 @@ html {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
-  
+
   .dark {
     /* Dark Mode - Deep Navy */
     --background: 220 60% 7%;
@@ -121,6 +125,7 @@ html {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
   .theme {
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
@@ -143,6 +148,7 @@ html {
     padding: 0;
     box-sizing: border-box;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'kern' 1;
@@ -162,11 +168,11 @@ html {
     max-width: 100vw;
     overflow-x: hidden;
   }
-  
+
   body:not(.dark) {
     @apply bg-slate-50;
   }
-  
+
   body.dark {
     @apply bg-gradient-to-br from-[#0a0e1a] via-[#1a1f3a] to-[#0f1729];
   }
