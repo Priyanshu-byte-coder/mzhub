@@ -12,18 +12,11 @@ export const metadata: Metadata = {
         description: 'Explore our case studies of AI-powered spiritual platforms transforming religious institutions worldwide.',
         url: 'https://mzhub.com/projects',
         type: 'website',
-        images: [{
-            url: 'https://mzhub.com/og-image-projects.png',
-            width: 1200,
-            height: 630,
-            alt: 'MZhub Projects - Religious Technology Case Studies'
-        }]
     },
     twitter: {
         card: 'summary_large_image',
         title: 'MZhub Projects - Transforming Faith Through Technology',
         description: 'Explore our case studies of AI-powered spiritual platforms transforming religious institutions worldwide.',
-        images: ['https://mzhub.com/og-image-projects.png'],
     },
 }
 

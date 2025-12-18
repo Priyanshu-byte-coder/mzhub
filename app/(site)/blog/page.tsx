@@ -15,18 +15,11 @@ export const metadata: Metadata = {
         description: 'Insights on AI, spirituality, technology, and building digital communities for religious institutions. Expert perspectives on faith-tech integration.',
         url: 'https://mzhub.com/blog',
         type: 'website',
-        images: [{
-            url: 'https://mzhub.com/og-image-blog.png',
-            width: 1200,
-            height: 630,
-            alt: 'MZhub Blog - Insights on Spiritual Technology'
-        }]
     },
     twitter: {
         card: 'summary_large_image',
         title: 'MZhub Blog - Spiritual Technology Insights',
         description: 'Insights on AI, spirituality, technology, and building digital communities for religious institutions.',
-        images: ['https://mzhub.com/og-image-blog.png'],
     },
 }
 
