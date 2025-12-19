@@ -33,11 +33,6 @@ export function BlogCard({ post, index }: BlogCardProps) {
                 target.src = '/placeholder-blog.jpg'
               }}
             />
-            <div className="absolute top-4 right-4 z-20">
-              <span className="px-3 py-1 bg-transparent border-2 border-accent-blue dark:border-accent-gold text-accent-blue dark:text-accent-gold text-xs font-semibold rounded-full backdrop-blur-sm">
-                {post.category}
-              </span>
-            </div>
           </div>
 
           {/* Content */}
@@ -60,18 +55,6 @@ export function BlogCard({ post, index }: BlogCardProps) {
             <p className="text-secondary-light/70 dark:text-text-mist text-sm mb-4 line-clamp-3 flex-1">
               {post.description}
             </p>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {post.tags.slice(0, 3).map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-1 bg-accent-blue/10 dark:bg-accent-gold/10 text-accent-blue dark:text-accent-gold text-xs rounded-md"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
 
             {/* Read More */}
             <div className="flex items-center text-accent-blue dark:text-accent-gold font-semibold text-sm group-hover:gap-2 transition-all">
