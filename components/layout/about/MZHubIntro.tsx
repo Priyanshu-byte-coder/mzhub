@@ -3,9 +3,12 @@
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import ScrollReveal from '@/components/ui/shared/scroll-reveal'
 import { motion } from 'framer-motion'
+import HorizontalAgentScroll from './HorizontalAgentScroll'
+import Image from 'next/image'
 
 export default function MZHubIntro() {
     return (
+        <>
         <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
             <div className="relative overflow-hidden w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
                 <div className="relative space-y-20 md:space-y-28">
@@ -169,7 +172,7 @@ export default function MZHubIntro() {
                    
 
                     {/* WHY DIFFERENT */}
-                    <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0} className="pt-8 md:pt-16">
+                    {/* <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0} className="pt-8 md:pt-16">
                         <div className="space-y-10 rounded-[36px] bg-white dark:bg-secondary-dark/65 border border-secondary-light/10 dark:border-secondary-dark/40 shadow-[0_25px_60px_-25px_rgba(15,23,42,0.25)] px-4 md:px-10 py-10">
                             <div className="text-center space-y-2">
                                 <h3 className="text-2xl md:text-4xl font-semibold text-secondary-light dark:text-white">
@@ -237,6 +240,46 @@ export default function MZHubIntro() {
                                 <p className="text-base md:text-lg font-semibold text-secondary-light dark:text-accent-gold">
                                     This architecture creates the "aha" moment — faithful guidance delivered with built-in oversight.
                                 </p>
+                            </div>
+                        </div>
+                    </ScrollReveal> */}
+
+                </div>
+            </div>
+        </SectionWrapper>
+
+        {/* Why MZHub Is Different - Horizontal Scroll Section */}
+        <HorizontalAgentScroll />
+
+        <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
+            <div className="relative overflow-hidden w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
+                <div className="relative space-y-20 md:space-y-28">
+                    {/* CALM PAUSE */}
+                    <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
+                        <div className="py-20 md:py-28 overflow-hidden relative">
+                            <div className="flex whitespace-nowrap">
+                                <motion.div
+                                    className="flex"
+                                    initial={{ x: 0 }}
+                                    animate={{
+                                        x: '-50%',
+                                    }}
+                                    transition={{
+                                        x: {
+                                            repeat: Infinity,
+                                            repeatType: "loop",
+                                            duration: 20,
+                                            ease: "linear",
+                                        },
+                                    }}
+                                >
+                                    <span className="text-4xl md:text-5xl lg:text-6xl font-semibold text-secondary-light/90 dark:text-text-mist px-8 block">
+                                        Technology should never rush what is sacred.
+                                    </span>
+                                    <span className="text-4xl md:text-5xl lg:text-6xl font-semibold text-secondary-light/90 dark:text-text-mist px-8 block">
+                                        Technology should never rush what is sacred.
+                                    </span>
+                                </motion.div>
                             </div>
                         </div>
                     </ScrollReveal>
@@ -331,7 +374,7 @@ export default function MZHubIntro() {
                         </div>
                     </ScrollReveal>
 
-                    {/* IMPACT + VISION + MISSION */}
+                    {/* IMPACT */}
                     <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
                         <div className="space-y-10">
                             <div className="text-center space-y-3">
@@ -346,7 +389,7 @@ export default function MZHubIntro() {
                                 </p>
                             </div>
 
-                            <div className="grid gap-6 md:grid-cols-2">
+                            <div className="grid gap-8 md:gap-10 md:grid-cols-2">
                                 {[{
                                     heading: 'For Institutions',
                                     icon: (
@@ -369,67 +412,52 @@ export default function MZHubIntro() {
                                     ),
                                     points: [
                                         'Receive guidance anytime with reverence',
-                                        'See the “why” behind rituals and teachings',
+                                        'See the "why" behind rituals and teachings',
                                         'Learn in their own language and pace'
                                     ]
-                                }].map((impact) => (
-                                    <div
+                                }].map((impact, index) => (
+                                    <motion.div
                                         key={impact.heading}
-                                        className="rounded-[28px] border border-secondary-light/12 dark:border-secondary-dark/50 bg-white/85 dark:bg-secondary-dark/65 shadow-sm px-6 py-6 space-y-4"
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, amount: 0.3 }}
+                                        transition={{ duration: 0.6, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] }}
+                                        whileHover={{ scale: 1.02, y: -5 }}
+                                        className="rounded-[32px] border border-secondary-light/12 dark:border-secondary-dark/50 bg-white/85 dark:bg-secondary-dark/65 shadow-lg hover:shadow-xl transition-shadow duration-300 px-10 py-10 md:px-14 md:py-14 space-y-8 min-h-[550px] md:min-h-[650px] flex flex-col"
                                     >
-                                        <div className="flex items-center gap-3">
-                                            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-beige/60 dark:bg-secondary-dark/70">
+                                        <div className="flex items-center gap-4">
+                                            <span className="inline-flex h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-accent-beige/60 dark:bg-secondary-dark/70">
                                                 {impact.icon}
                                             </span>
-                                            <h4 className="text-lg md:text-xl font-semibold text-secondary-light dark:text-white">
+                                            <h4 className="text-2xl md:text-3xl font-semibold text-secondary-light dark:text-white">
                                                 {impact.heading}
                                             </h4>
                                         </div>
-                                        <ul className="space-y-2 text-sm md:text-base text-secondary-light/85 dark:text-text-mist leading-relaxed">
+                                        <ul className="space-y-4 text-lg md:text-xl text-secondary-light/85 dark:text-text-mist leading-relaxed flex-1">
                                             {impact.points.map((point) => (
-                                                <li key={point} className="flex items-start gap-2">
-                                                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent-gold/80"></span>
+                                                <li key={point} className="flex items-start gap-4">
+                                                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-accent-gold/80 flex-shrink-0"></span>
                                                     <span>{point}</span>
                                                 </li>
                                             ))}
                                         </ul>
-                                    </div>
+                                        <div className="relative w-full h-48 md:h-64 lg:h-72 rounded-2xl overflow-hidden mt-6">
+                                            <Image
+                                                src="/shared/MZHub-logo.png"
+                                                alt="MZHub Logo"
+                                                fill
+                                                className="object-contain p-6 md:p-8"
+                                                sizes="(max-width: 768px) 100vw, 50vw"
+                                            />
+                                        </div>
+                                    </motion.div>
                                 ))}
                             </div>
-
-                            <div className="rounded-[32px] border border-accent-gold/25 bg-gradient-to-r from-accent-beige/70 via-white to-accent-gold/25 dark:from-secondary-dark/70 dark:via-primary-dark/55 dark:to-secondary-dark/65 shadow-lg px-6 md:px-12 py-8">
-                                <div className="grid md:grid-cols-2 divide-y divide-secondary-light/10 dark:divide-secondary-dark/40 md:divide-y-0 md:divide-x">
-                                    {[{
-                                        label: 'Vision',
-                                        copy: 'Sacred wisdom remains living, accessible, and protected through responsible innovation.'
-                                    }, {
-                                        label: 'Mission',
-                                        copy: 'Equip faith institutions with stewardship-first AI systems they fully govern.'
-                                    }].map((item) => (
-                                        <div key={item.label} className="px-4 md:px-8 py-6 text-center space-y-3">
-                                            <p className="uppercase text-xs tracking-[0.45em] text-secondary-light/70 dark:text-accent-gold/80">
-                                                {item.label}
-                                            </p>
-                                            <p className="text-base md:text-lg text-secondary-light/90 dark:text-text-mist leading-relaxed">
-                                                {item.copy}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </ScrollReveal>
-
-                    {/* CALM PAUSE */}
-                    <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
-                        <div className="py-20 md:py-28 text-center">
-                            <p className="text-2xl md:text-3xl font-semibold text-secondary-light/90 dark:text-text-mist">
-                                Technology should never rush what is sacred.
-                            </p>
                         </div>
                     </ScrollReveal>
                 </div>
             </div>
         </SectionWrapper>
+        </>
     )
 }
