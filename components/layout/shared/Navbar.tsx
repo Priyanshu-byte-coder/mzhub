@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Home, Info, FolderOpen, BookOpen, Mail, Menu, X } from 'lucide-react'
+import { Home, Info, FolderOpen, BookOpen, Mail, Menu, X, Vault } from 'lucide-react'
 import { MenuBar } from '@/components/ui/shared/glow-menu'
 import { ThemeToggleButton, useThemeTransition } from '@/components/ui/shared/theme-toggle-button'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -89,6 +89,13 @@ export default function Navbar() {
             href: '/contact',
             gradient: sharedGlowGradient,
             iconColor: 'text-amber-500'
+        },
+        {
+            icon: Vault,
+            label: 'Vault',
+            href: '/vault',
+            gradient: sharedGlowGradient,
+            iconColor: 'text-yellow-500'
         }
     ]
 
