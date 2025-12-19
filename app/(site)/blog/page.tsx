@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getAllBlogPosts } from '@/lib/blog/blog'
 import { BlogCard } from '@/components/layout/blog/BlogCard'
 import { BlogHero } from '@/components/layout/blog/BlogHero'
+import { ContactUsCard } from '@/components/layout/blog/ContactUsCard'
 
 export const metadata: Metadata = {
     title: 'Blog | MZHub',
@@ -23,11 +24,14 @@ export default function Blog() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="flex flex-col gap-12 mb-16">
                     {posts.map((post, index) => (
                         <BlogCard key={post.slug} post={post} index={index} />
                     ))}
                 </div>
+
+                {/* Contact Us Card */}
+                <ContactUsCard />
             </section>
         </div>
     )
