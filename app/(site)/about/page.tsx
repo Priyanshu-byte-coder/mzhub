@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import { getTeamMembers } from '@/lib/about/teamMembers'
 import ScrollReveal from '@/components/ui/shared/scroll-reveal'
@@ -6,6 +7,7 @@ import TeamCarousel from '@/components/layout/about/team-carousel'
 import MZHubIntro from '@/components/layout/about/MZHubIntro'
 import CoreValuesSticky from '@/components/ui/about/core-values-sticky'
 import AboutHero from '@/components/layout/about/AboutHero'
+import WhyThisMatters from '@/components/layout/about/WhyThisMatters'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -19,6 +21,8 @@ export default function About() {
         <div className="bg-white dark:bg-primary-dark">
             {/* Hero */}
             <AboutHero />
+
+            <WhyThisMatters />
 
             {/* Mission */}
             <MZHubIntro />
@@ -96,6 +100,20 @@ export default function About() {
                 </div>
 
                 <TeamCarousel team={team} />
+            </SectionWrapper>
+
+            <SectionWrapper className="bg-white dark:bg-primary-dark">
+                <div className="py-16 md:py-20 text-center space-y-5">
+                    <p className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist">
+                        When stewardship-first AI feels right for your community, let us walk with you.
+                    </p>
+                    <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center rounded-full border border-secondary-light/40 dark:border-accent-gold/50 text-secondary-light dark:text-accent-gold px-8 py-3 text-sm md:text-base font-semibold"
+                    >
+                        Partner with MZHub
+                    </Link>
+                </div>
             </SectionWrapper>
 
         </div>
