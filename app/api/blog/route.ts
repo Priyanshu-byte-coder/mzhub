@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server'
-import { getAllBlogPosts } from '@/lib/blog/blog'
 
 export async function GET() {
   try {
-    const posts = getAllBlogPosts()
+    // TODO: Implement blog fetching logic
     return NextResponse.json(
-      { posts },
+      { posts: [] },
       { status: 200 }
     )
   } catch (error) {
