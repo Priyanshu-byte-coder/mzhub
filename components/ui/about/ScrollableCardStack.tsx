@@ -403,7 +403,7 @@ const ScrollableCardStack: React.FC<ScrollableCardStackProps> = ({
                 x: "-50%",
               }}
               aria-hidden={!isActive}
-              className="absolute top-1/2 left-1/2 w-[calc(100%-2rem)] md:w-full max-w-3xl overflow-hidden rounded-2xl md:rounded-[32px] border border-secondary-light/20 dark:border-secondary-dark/60 bg-white dark:bg-secondary-dark/90 shadow-lg"
+              className="absolute top-1/2 left-1/2 w-[98vw] max-w-xs sm:max-w-sm md:w-full md:max-w-3xl overflow-hidden rounded-2xl md:rounded-[32px] border border-secondary-light/20 dark:border-secondary-dark/60 bg-white dark:bg-secondary-dark/90 shadow-lg"
               data-active={isActive}
               initial={false}
               key={`scrollable-card-${item.id}`}
@@ -448,7 +448,7 @@ const ScrollableCardStack: React.FC<ScrollableCardStackProps> = ({
               {/* Card Content */}
               <div
                 className={cn(
-                  "flex flex-col w-full h-full rounded-2xl md:rounded-[32px] p-6 md:p-8 lg:p-10 bg-white dark:bg-secondary-dark/90 transition-all duration-200",
+                  "flex flex-col w-full h-full rounded-2xl md:rounded-[32px] p-4 sm:p-6 md:p-8 lg:p-10 bg-white dark:bg-secondary-dark/90 transition-all duration-200",
                   isHovered && "shadow-xl"
                 )}
               >
@@ -457,25 +457,25 @@ const ScrollableCardStack: React.FC<ScrollableCardStackProps> = ({
                   <div className="-top-1 -translate-x-1/2 absolute left-1/2 h-1 w-8 rounded-full bg-spiritual-indigo-600 dark:bg-spiritual-indigo-400 opacity-75" />
                 )}
 
-                <div className="flex justify-between items-start mb-4 md:mb-6">
-                  <div className="h-10 w-10 md:h-12 md:w-12 rounded-lg md:rounded-xl bg-spiritual-indigo-100 dark:bg-spiritual-indigo-900/30 flex items-center justify-center">
-                    <svg className="w-5 h-5 md:w-6 md:h-6 text-spiritual-indigo-600 dark:text-spiritual-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="flex justify-between items-start mb-3 md:mb-6">
+                  <div className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-lg md:rounded-xl bg-spiritual-indigo-100 dark:bg-spiritual-indigo-900/30 flex items-center justify-center">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-spiritual-indigo-600 dark:text-spiritual-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
-                  <span className="text-xl md:text-2xl lg:text-3xl font-bold text-secondary-light/40 dark:text-text-mist/40">{item.number}</span>
+                  <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-secondary-light/40 dark:text-text-mist/40">{item.number}</span>
                 </div>
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold text-secondary-light dark:text-white mb-3 md:mb-4">
+                <h3 className="text-base sm:text-xl md:text-2xl lg:text-3xl font-semibold text-secondary-light dark:text-white mb-2 md:mb-4">
                   {item.title}
                 </h3>
-                <p className="text-base md:text-lg lg:text-xl font-medium text-spiritual-indigo-600 dark:text-spiritual-indigo-400 mb-3 md:mb-4">
+                <p className="text-xs sm:text-base md:text-lg lg:text-xl font-medium text-spiritual-indigo-600 dark:text-spiritual-indigo-400 mb-2 md:mb-4">
                   {item.subtitle}
                 </p>
-                <p className="text-sm md:text-base lg:text-lg text-secondary-light/80 dark:text-text-mist/80 leading-relaxed mb-4 md:mb-6">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-secondary-light/80 dark:text-text-mist/80 leading-relaxed mb-3 md:mb-6">
                   {item.description}
                 </p>
-                <div className="pt-4 md:pt-6 border-t border-secondary-light/20 dark:border-secondary-dark/40 mt-auto">
-                  <p className="text-[10px] md:text-xs lg:text-sm text-secondary-light/60 dark:text-text-mist/60 uppercase tracking-wider">
+                <div className="pt-2 md:pt-6 border-t border-secondary-light/20 dark:border-secondary-dark/40 mt-auto">
+                  <p className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm text-secondary-light/60 dark:text-text-mist/60 uppercase tracking-wider">
                     {item.footer}
                   </p>
                 </div>

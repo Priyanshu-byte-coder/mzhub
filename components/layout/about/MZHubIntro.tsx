@@ -82,7 +82,7 @@ export default function MZHubIntro() {
                             <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
                                 <div className="w-full flex flex-row items-start justify-start px-6 md:px-12">
                                     <div className="flex flex-col items-end pr-6 min-w-[60px]">
-                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(02)</span>
+                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(01)</span>
                                     </div>
                                     <div className="flex flex-col items-start">
                                         <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none text-spiritual-indigo-600 dark:text-white mb-6">Vision</h3>
@@ -99,7 +99,7 @@ export default function MZHubIntro() {
                             <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
                                 <div className="w-full flex flex-row items-start justify-end px-6 md:px-12">
                                     <div className="flex flex-col items-end pr-6 min-w-[60px]">
-                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(03)</span>
+                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(02)</span>
                                     </div>
                                     <div className="flex flex-col items-start text-left">
                                         <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none text-spiritual-indigo-600 dark:text-white mb-6">Mission</h3>
@@ -250,19 +250,23 @@ export default function MZHubIntro() {
             </SectionWrapper>
 
             {/* Why MZHub Is Different - ScrollableCardStack Section */}
-            <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark py-20 md:py-32 overflow-visible">
-                <div className="text-center mb-16 px-4 md:px-8">
-                    <h2 className="text-3xl md:text-5xl font-semibold text-secondary-light dark:text-white mb-4">
+            <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark py-2 md:py-4 overflow-visible">
+                <div className="text-center mb-0 md:mb-0 px-4 md:px-8 relative">
+                    {/* Decorative accent */}
+                    <div className="flex justify-center mb-1 md:mb-2">
+                        <span className="inline-block h-1.5 w-12 md:w-16 rounded-full bg-gradient-to-r from-accent-gold via-spiritual-indigo-400 to-accent-gold opacity-80"></span>
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-spiritual-indigo-600 dark:text-accent-gold mb-1 md:mb-2 drop-shadow-sm">
                         Why MZHub Is Different
                     </h2>
-                    <p className="text-lg md:text-xl text-secondary-light/70 dark:text-text-mist/80 mb-8 font-light">
-                        Typical AI tools answer questions. MZHub stewards meaning.
+                    <p className="text-base md:text-xl text-secondary-light/80 dark:text-text-mist/80 mb-1 md:mb-2 font-normal md:font-light max-w-2xl mx-auto">
+                        Typical AI tools answer questions. <span className="font-semibold text-spiritual-indigo-500 dark:text-accent-gold">MZHub stewards meaning.</span>
                     </p>
-                    <div className="space-y-2">
-                        <p className="text-xl md:text-2xl font-medium text-secondary-light dark:text-accent-gold">
+                    <div className="space-y-0.5 md:space-y-1">
+                        <p className="text-lg md:text-xl font-semibold text-spiritual-indigo-600 dark:text-accent-gold">
                             Stewarding Guidance the Right Way
                         </p>
-                        <p className="text-sm md:text-base text-secondary-light/60 dark:text-text-mist/60">
+                        <p className="text-sm md:text-base text-secondary-light/70 dark:text-text-mist/70 max-w-xl mx-auto">
                             Every response follows a deliberate, accountable journey — from knowledge to care.
                         </p>
                     </div>
@@ -304,8 +308,8 @@ export default function MZHubIntro() {
                                 number: "04"
                             }
                         ]}
-                        cardHeight={500}
-                        className="w-full"
+                        cardHeight={380} // Reduced height for mobile
+                        className="w-full px-1"
                     />
                 </div>
 
@@ -352,7 +356,7 @@ export default function MZHubIntro() {
             <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
                 <div className="relative overflow-hidden w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
                     <div className="relative space-y-20 md:space-y-28">
-                        {/* CALM PAUSE */}
+                        {/* CALM PAUSE
                         <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
                             <div className="py-20 md:py-28 overflow-hidden relative">
                                 <div className="flex whitespace-nowrap">
@@ -380,7 +384,7 @@ export default function MZHubIntro() {
                                     </motion.div>
                                 </div>
                             </div>
-                        </ScrollReveal>
+                        </ScrollReveal> */}
 
 
                         {/* TRUST & GOVERNANCE - Redesigned */}
