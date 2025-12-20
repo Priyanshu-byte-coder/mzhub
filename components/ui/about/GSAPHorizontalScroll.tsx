@@ -22,6 +22,10 @@ const GSAPHorizontalScroll: React.FC<GSAPHorizontalScrollProps> = ({ items }) =>
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Only initialize GSAP on desktop (768px and above)
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     gsap.registerPlugin(ScrollTrigger);
 
     const slides = gsap.utils.toArray(".slide");

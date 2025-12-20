@@ -42,7 +42,8 @@ const ScrollableCardStack: React.FC<ScrollableCardStackProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollY = useMotionValue(0);
   const lastScrollTime = useRef(0);
@@ -92,18 +93,6 @@ const ScrollableCardStack: React.FC<ScrollableCardStackProps> = ({
     },
     [currentIndex, maxIndex, scrollY, isScrolling, transitionDuration, clamp]
   );
-
-  // Detect mobile device
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Handle scroll events with improved responsiveness
   const handleScroll = useCallback(
@@ -322,6 +311,19 @@ const ScrollableCardStack: React.FC<ScrollableCardStackProps> = ({
     }
   }, [currentIndex, isDragging, scrollY]);
 
+  // Detect mobile device
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Calculate transform for each card based on the reference code
   const getCardTransform = useCallback(
     (index: number) => {
@@ -358,6 +360,11 @@ const ScrollableCardStack: React.FC<ScrollableCardStackProps> = ({
     },
     [currentIndex, items.length, clamp]
   );
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <section
