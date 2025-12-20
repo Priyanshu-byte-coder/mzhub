@@ -284,98 +284,57 @@ export default function MZHubIntro() {
                         </div>
                     </ScrollReveal>
 
-                    {/* TRUST & GOVERNANCE */}
+
+                    {/* TRUST & GOVERNANCE - Redesigned */}
                     <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
-                        <div className="space-y-10">
-                            <div className="text-center space-y-2">
-                                <h3 className="text-2xl md:text-4xl font-semibold tracking-tight text-secondary-light dark:text-white">
-                                    Trust & Governance
-                                </h3>
-                                <p className="text-sm md:text-base text-secondary-light/70 dark:text-text-mist">
-                                    Built for stewardship, accountability, and care.
-                                </p>
-                            </div>
-
-                            <div className="relative overflow-hidden rounded-[32px] border border-accent-gold/35 bg-gradient-to-br from-accent-beige/55 via-white to-accent-gold/20 dark:from-secondary-dark/70 dark:via-primary-dark/55 dark:to-secondary-dark/65 shadow-xl px-6 md:px-12 py-9 text-center max-w-4xl mx-auto">
-                                <div className="absolute inset-4 rounded-[28px] border border-white/30 dark:border-secondary-dark/40 opacity-60" aria-hidden="true"></div>
-                                <div className="absolute -left-10 top-6 h-40 w-40 rounded-full bg-accent-gold/25 blur-3xl opacity-60" aria-hidden="true"></div>
-                                <div className="absolute -right-6 bottom-0 h-32 w-32 rounded-full bg-accent-beige/40 blur-3xl opacity-60" aria-hidden="true"></div>
-
-                                <div className="relative space-y-4">
-                                    <span className="inline-flex items-center justify-center rounded-full border border-accent-gold/40 bg-white/60 dark:bg-secondary-dark/60 px-4 py-1 text-xs font-semibold tracking-[0.5em] text-secondary-light/70 dark:text-accent-gold/80 uppercase">
-                                        Principle
-                                    </span>
-                                    <p className="text-2xl md:text-[2rem] font-semibold text-secondary-light dark:text-accent-gold leading-tight">
-                                        Human leadership leads. Technology supports.
+                        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-20 py-12 md:py-20 px-4 md:px-12">
+                            {/* Left: Text Content */}
+                            <div className="flex-1 max-w-xl text-left">
+                                <div className="flex flex-col justify-start h-full md:items-start md:text-left mt-16">
+                                    <h3 className="text-[clamp(3.5rem,8vw,6rem)] font-bold leading-tight text-secondary-light dark:text-white mb-6" style={{fontFamily:'inherit'}}>
+                                        Innovation<br />Purpose<br />Functionality
+                                    </h3>
+                                    <p className="text-lg md:text-xl text-secondary-light/80 dark:text-text-mist mb-4">
+                                        A captivating design sparks connection. We ignite impact by merging originality, purpose, and practicality.
                                     </p>
-                                    <p className="text-sm md:text-base text-secondary-light/70 dark:text-text-mist">
-                                        Every workflow is governed by human authority — AI amplifies, never replaces.
+                                    <p className="text-lg md:text-xl text-secondary-light/80 dark:text-text-mist mb-6">
+                                        At <span className="font-bold">MZHub</span>, our diverse team of experts co-creates innovative solutions, driven by collaboration, inclusivity, and creative excellence.
                                     </p>
                                 </div>
                             </div>
-
-                            <div className="grid gap-6 md:grid-cols-3">
-                                {[{
-                                    title: 'Institutional Control',
-                                    body: 'Leaders approve sources, guardrails, and escalation before anything launches.',
-                                    icon: (
-                                        <svg viewBox="0 0 24 24" className="h-5 w-5 text-secondary-light" aria-hidden="true">
-                                            <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="1.4" />
-                                            <path d="M12 6v12M6 12h12" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                                            <circle cx="12" cy="12" r="2" fill="currentColor" />
-                                        </svg>
-                                    )
-                                }, {
-                                    title: 'Ethical Guardrails',
-                                    body: 'Doctrine, culture, and pastoral tone are encoded directly into every flow.',
-                                    icon: (
-                                        <svg viewBox="0 0 24 24" className="h-5 w-5 text-secondary-light" aria-hidden="true">
-                                            <path d="M12 3l8 4v5.5c0 4.5-3.2 8.6-8 9.5-4.8-.9-8-5-8-9.5V7z" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    )
-                                }, {
-                                    title: 'Privacy & Security',
-                                    body: 'Encrypted data, audited logs, and limited access protect every conversation.',
-                                    icon: (
-                                        <svg viewBox="0 0 24 24" className="h-5 w-5 text-secondary-light" aria-hidden="true">
-                                            <rect x="5" y="11" width="14" height="9" rx="2" ry="2" fill="none" stroke="currentColor" strokeWidth="1.4" />
-                                            <path d="M9 11V7a3 3 0 0 1 6 0v4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                                        </svg>
-                                    )
-                                }].map((pillar, idx) => (
-                                    <div
-                                        key={pillar.title}
-                                        className="rounded-3xl border border-secondary-light/15 dark:border-secondary-dark/50 bg-white/90 dark:bg-secondary-dark/65 shadow-sm px-6 py-7 transition duration-300 hover:-translate-y-1 hover:border-accent-gold/60"
-                                        style={{ marginTop: idx === 1 ? '1.25rem' : 0 }}
-                                    >
-                                        <div className="flex items-center justify-between mb-4">
-                                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent-beige/60 dark:bg-secondary-dark/70 text-secondary-light">
-                                                {pillar.icon}
-                                            </span>
-                                            <span className="inline-flex items-center justify-center rounded-full bg-accent-beige/50 dark:bg-secondary-dark/60 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.35em] text-secondary-light">
-                                                0{idx + 1}
-                                            </span>
-                                        </div>
-                                        <h5 className="text-lg font-semibold text-secondary-light dark:text-white mb-2">{pillar.title}</h5>
-                                        <p className="text-sm md:text-base text-secondary-light/80 dark:text-text-mist leading-relaxed">{pillar.body}</p>
+                            {/* Right: Images Column */}
+                            <div className="flex-1 flex flex-col items-center gap-8 w-full max-w-md">
+                                <div className="flex flex-col gap-12 w-full relative">
+                                    {/* Top Image - left aligned */}
+                                    <div className="flex w-full justify-start mb-8">
+                                        <Image
+                                            src="/shared/MZHub-logo.png"
+                                            alt="MZHub Top"
+                                            width={320}
+                                            height={200}
+                                            className="rounded-xl shadow-lg object-contain bg-white dark:bg-secondary-dark p-2"
+                                            style={{ marginLeft: '0' }}
+                                        />
                                     </div>
-                                ))}
-                            </div>
-
-                            <div className="text-center space-y-2">
-                                <span className="inline-flex items-center justify-center rounded-full border border-secondary-light/20 dark:border-accent-gold/40 px-4 py-1 text-[0.65rem] font-semibold tracking-[0.4em] uppercase text-secondary-light/70 dark:text-accent-gold/80">
-                                    Human Oversight
-                                </span>
-                                <p className="text-sm md:text-base text-secondary-light/75 dark:text-accent-gold">
-                                    Human shepherds sign off on sensitive moments — AI simply prepares the ground.
-                                </p>
+                                    {/* Main Logo Image - right aligned, more offset */}
+                                    <div className="flex w-full justify-end mb-8">
+                                        <Image
+                                            src="/shared/MZHub-logo.png"
+                                            alt="MZHub Logo"
+                                            width={480}
+                                            height={320}
+                                            className="rounded-2xl shadow-xl object-contain bg-white dark:bg-secondary-dark p-4"
+                                            priority
+                                            style={{ marginRight: '0' }}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </ScrollReveal>
 
                     {/* IMPACT */}
-                    <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
+                    {/* <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
                         <div className="space-y-10">
                             <div className="text-center space-y-3">
                                 <span className="inline-flex items-center justify-center rounded-full border border-secondary-light/20 dark:border-accent-gold/40 px-4 py-1 text-xs font-semibold tracking-[0.45em] uppercase text-secondary-light/70 dark:text-accent-gold/80">
@@ -454,7 +413,7 @@ export default function MZHubIntro() {
                                 ))}
                             </div>
                         </div>
-                    </ScrollReveal>
+                    </ScrollReveal> */}
                 </div>
             </div>
         </SectionWrapper>
