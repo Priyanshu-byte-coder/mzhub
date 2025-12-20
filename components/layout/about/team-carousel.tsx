@@ -113,13 +113,13 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
         <div className="relative space-y-6">
             <div
                 ref={scrollRef}
-                className="team-scroll overflow-x-auto pb-12 snap-x snap-mandatory"
+                className="team-scroll overflow-x-auto pb-8 snap-x snap-mandatory"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
                 onFocus={() => setIsPaused(true)}
                 onBlur={() => setIsPaused(false)}
             >
-                <div className="flex gap-10 min-w-max pr-8">
+                <div className="flex gap-4 sm:gap-6 md:gap-10 min-w-max pr-4 sm:pr-8">
                     {team.map((member, index) => {
                         const imageSrc = member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}`
                         const offsetClass = index % 2 === 1 ? 'md:translate-y-4' : ''
@@ -141,27 +141,27 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
                         return (
                             <figure
                                 key={member.name}
-                                className={`group snap-start w-[420px] shrink-0 ${offsetClass}`}
+                                className={`group snap-start w-[85vw] max-w-[340px] sm:w-[320px] md:w-[420px] shrink-0 ${offsetClass}`}
                             >
-                                <div className="flex h-full flex-col rounded-[48px] border border-white/10 bg-white/80 p-6 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.8)] backdrop-blur-lg dark:bg-black/40">
-                                    <div className="relative aspect-square w-full overflow-hidden rounded-[32px] bg-black/20">
+                                <div className="flex h-full flex-col rounded-[32px] md:rounded-[48px] border border-white/10 bg-white/80 p-4 sm:p-6 shadow-[0_12px_40px_-20px_rgba(0,0,0,0.8)] md:shadow-[0_25px_80px_-40px_rgba(0,0,0,0.8)] backdrop-blur-lg dark:bg-black/40">
+                                    <div className="relative aspect-square w-full overflow-hidden rounded-[24px] md:rounded-[32px] bg-black/20">
                                         <img
                                             src={imageSrc}
                                             alt={member.name}
                                             className="h-full w-full object-cover transition duration-500 grayscale group-hover:scale-105 group-hover:grayscale-0"
                                         />
                                     </div>
-                                    <div className="mt-6">
-                                        <p className="text-2xl font-semibold text-secondary-light dark:text-white">{member.name}</p>
-                                        <p className="text-base text-secondary-light/70 dark:text-text-mist/70">{member.role}</p>
+                                    <div className="mt-4 md:mt-6">
+                                        <p className="text-lg sm:text-xl md:text-2xl font-semibold text-secondary-light dark:text-white">{member.name}</p>
+                                        <p className="text-xs sm:text-sm md:text-base text-secondary-light/70 dark:text-text-mist/70">{member.role}</p>
                                     </div>
-                                    <dl className="mt-6 space-y-4 text-base text-secondary-light/80 dark:text-text-mist">
+                                    <dl className="mt-4 md:mt-6 space-y-2 md:space-y-4 text-xs sm:text-sm md:text-base text-secondary-light/80 dark:text-text-mist">
                                         {infoBlocks.map((info, infoIndex) => (
                                             <div
                                                 key={`${member.name}-${info.label}`}
-                                                className={infoIndex === 0 ? 'border-none pt-0' : 'border-t border-white/20 pt-4 dark:border-white/10'}
+                                                className={infoIndex === 0 ? 'border-none pt-0' : 'border-t border-white/20 pt-2 md:pt-4 dark:border-white/10'}
                                             >
-                                                <dt className="text-xs font-semibold uppercase tracking-wide text-secondary-light/60 dark:text-text-mist/60">{info.label}</dt>
+                                                <dt className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-secondary-light/60 dark:text-text-mist/60">{info.label}</dt>
                                                 <dd className="mt-1 leading-relaxed text-secondary-light dark:text-white">{info.value}</dd>
                                             </div>
                                         ))}
@@ -185,7 +185,7 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
                                 type="button"
                                 onClick={() => scrollToIndex(targetIndex)}
                                 aria-label={`Go to team group ${index + 1}`}
-                                className={`h-3 w-3 rounded-full transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary-light dark:focus-visible:ring-accent-gold ${isActive ? 'bg-secondary-light dark:bg-accent-gold' : 'bg-neutral-400/60 dark:bg-text-mist/50 hover:bg-neutral-500/70 dark:hover:bg-text-mist/80'}`}
+                                className={`h-2.5 w-2.5 md:h-3 md:w-3 rounded-full transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary-light dark:focus-visible:ring-accent-gold ${isActive ? 'bg-secondary-light dark:bg-accent-gold' : 'bg-neutral-400/60 dark:bg-text-mist/50 hover:bg-neutral-500/70 dark:hover:bg-text-mist/80'}`}
                             />
                         )
                     })}

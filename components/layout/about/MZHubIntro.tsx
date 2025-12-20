@@ -81,7 +81,7 @@ export default function MZHubIntro() {
                                             <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
                                                 <div className="w-full flex flex-row items-start justify-start px-6 md:px-12">
                                                     <div className="flex flex-col items-end pr-6 min-w-[60px]">
-                                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(02)</span>
+                                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(01)</span>
                                                     </div>
                                                     <div className="flex flex-col items-start">
                                                         <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none text-spiritual-indigo-600 dark:text-white mb-6">Vision</h3>
@@ -98,7 +98,7 @@ export default function MZHubIntro() {
                                             <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
                                                 <div className="w-full flex flex-row items-start justify-end px-6 md:px-12">
                                                     <div className="flex flex-col items-end pr-6 min-w-[60px]">
-                                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(03)</span>
+                                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(02)</span>
                                                     </div>
                                                     <div className="flex flex-col items-start text-left">
                                                         <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none text-spiritual-indigo-600 dark:text-white mb-6">Mission</h3>
