@@ -3,117 +3,118 @@
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import ScrollReveal from '@/components/ui/shared/scroll-reveal'
 import { motion } from 'framer-motion'
-import HorizontalAgentScroll from './HorizontalAgentScroll'
+import ScrollableCardStack from '@/components/ui/about/ScrollableCardStack'
+import GSAPHorizontalScroll from '@/components/ui/about/GSAPHorizontalScroll'
 import Image from 'next/image'
 
 export default function MZHubIntro() {
     return (
         <>
-        <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
-            <div className="relative overflow-hidden w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
-                <div className="relative space-y-20 md:space-y-28">
-                    {/* MEET MZHUB HERO */}
-                    <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
-                        <div className="relative h-[70vh] min-h-[460px] w-full">
-                            <div className="absolute inset-0">
-                                <div className="relative h-full w-full">
-                                    <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/75 to-white/80 dark:from-black/40 dark:via-black/60 dark:to-black/80 z-10 transition-colors duration-500" />
-                                    <div className="absolute inset-0">
-                                        <motion.div
-                                            className="h-full w-full"
-                                            initial={{ scale: 1.05, opacity: 0 }}
-                                            whileInView={{ scale: 1, opacity: 1 }}
-                                            transition={{ duration: 1.4, ease: [0.2, 0.8, 0.2, 1] }}
-                                        >
-                                            <div className="h-full w-full bg-[url('/shared/MZHub-logo.png')] bg-cover bg-center" />
-                                        </motion.div>
+            <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
+                <div className="relative overflow-hidden w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
+                    <div className="relative space-y-20 md:space-y-28">
+                        {/* MEET MZHUB HERO */}
+                        <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
+                            <div className="relative h-[70vh] min-h-[460px] w-full">
+                                <div className="absolute inset-0">
+                                    <div className="relative h-full w-full">
+                                        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/75 to-white/80 dark:from-black/40 dark:via-black/60 dark:to-black/80 z-10 transition-colors duration-500" />
+                                        <div className="absolute inset-0">
+                                            <motion.div
+                                                className="h-full w-full"
+                                                initial={{ scale: 1.05, opacity: 0 }}
+                                                whileInView={{ scale: 1, opacity: 1 }}
+                                                transition={{ duration: 1.4, ease: [0.2, 0.8, 0.2, 1] }}
+                                            >
+                                                <div className="h-full w-full bg-[url('/shared/MZHub-logo.png')] bg-cover bg-center" />
+                                            </motion.div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-spiritual-indigo-600 dark:text-white transition-colors duration-500">
-                                <motion.div
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                    className="uppercase text-xs tracking-[0.55em] text-spiritual-indigo-400 dark:text-white/70 mb-4"
-                                >
-                
-                                </motion.div>
-                                <motion.h2
-                                    initial={{ opacity: 0, y: 40 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 1.1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-                                    className="text-[clamp(3.5rem,8vw,8rem)] font-semibold uppercase tracking-[0.08em] leading-none text-current"
-                                >
-                                    Meet MZHub
-                                </motion.h2>
-                                <motion.p
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                                    className="mt-6 max-w-3xl text-base md:text-lg text-spiritual-indigo-700 dark:text-white/80"
-                                >
-                                    MZHub pairs spiritual leadership with ethical AI so institutions can extend guidance beyond walls without
-                                    softening doctrine, dignity, or human authority.
-                                </motion.p>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                                    className="mt-8 w-full flex justify-center"
-                                >
-                                    <div className="w-full max-w-2xl rounded-[2.2rem] border border-accent-gold/40 bg-gradient-to-br from-[#FFF8E7] via-white to-[#F7F9FC] px-8 py-8 shadow-xl text-center relative overflow-hidden dark:from-[#23263a] dark:via-[#181a29] dark:to-[#23263a] dark:border-accent-gold/25 dark:shadow-[0_8px_32px_0_rgba(40,40,80,0.45)]">
-                                        {/* Glow effect */}
-                                        <div className="pointer-events-none absolute -inset-1 rounded-[2.5rem] bg-gradient-to-br from-accent-gold/20 via-white/10 to-accent-gold/10 blur-2xl opacity-60 dark:from-accent-gold/10 dark:via-white/5 dark:to-accent-gold/20" />
-                                        <p className="relative z-10 text-xl md:text-2xl font-semibold text-spiritual-indigo-600 dark:text-accent-gold drop-shadow-sm tracking-tight">
-                                            MZHub does not digitise faith. It protects it — and helps<br />it travel further.
+                                <div className="relative z-20 flex h-full flex-col items-center justify-center px-4 text-center text-spiritual-indigo-600 dark:text-white transition-colors duration-500">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                        className="uppercase text-xs tracking-[0.55em] text-spiritual-indigo-400 dark:text-white/70 mb-4"
+                                    >
+
+                                    </motion.div>
+                                    <motion.h2
+                                        initial={{ opacity: 0, y: 40 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 1.1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+                                        className="text-[clamp(3.5rem,8vw,8rem)] font-semibold uppercase tracking-[0.08em] leading-none text-current"
+                                    >
+                                        Meet MZHub
+                                    </motion.h2>
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                                        className="mt-6 max-w-3xl text-base md:text-lg text-spiritual-indigo-700 dark:text-white/80"
+                                    >
+                                        MZHub pairs spiritual leadership with ethical AI so institutions can extend guidance beyond walls without
+                                        softening doctrine, dignity, or human authority.
+                                    </motion.p>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                        className="mt-8 w-full flex justify-center"
+                                    >
+                                        <div className="w-full max-w-2xl rounded-[2.2rem] border border-accent-gold/40 bg-gradient-to-br from-[#FFF8E7] via-white to-[#F7F9FC] px-8 py-8 shadow-xl text-center relative overflow-hidden dark:from-[#23263a] dark:via-[#181a29] dark:to-[#23263a] dark:border-accent-gold/25 dark:shadow-[0_8px_32px_0_rgba(40,40,80,0.45)]">
+                                            {/* Glow effect */}
+                                            <div className="pointer-events-none absolute -inset-1 rounded-[2.5rem] bg-gradient-to-br from-accent-gold/20 via-white/10 to-accent-gold/10 blur-2xl opacity-60 dark:from-accent-gold/10 dark:via-white/5 dark:to-accent-gold/20" />
+                                            <p className="relative z-10 text-xl md:text-2xl font-semibold text-spiritual-indigo-600 dark:text-accent-gold drop-shadow-sm tracking-tight">
+                                                MZHub does not digitise faith. It protects it — and helps<br />it travel further.
+                                            </p>
+                                        </div>
+                                    </motion.div>
+                                </div>
+                            </div>
+                        </ScrollReveal>
+
+                        {/* VISION & MISSION BLOCK */}
+                        <div className="mt-0 md:mt-16 w-full flex flex-col gap-y-32">
+                            {/* Vision Block with animation */}
+                            <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
+                                <div className="w-full flex flex-row items-start justify-start px-6 md:px-12">
+                                    <div className="flex flex-col items-end pr-6 min-w-[60px]">
+                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(02)</span>
+                                    </div>
+                                    <div className="flex flex-col items-start">
+                                        <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none text-spiritual-indigo-600 dark:text-white mb-6">Vision</h3>
+                                        <p className="max-w-md text-lg md:text-xl text-[#6479A3] dark:text-text-mist/90 leading-relaxed mb-4">
+                                            A world where spiritual wisdom is accessible, understood, and preserved — without losing meaning, dignity, or human guidance.
+                                        </p>
+                                        <p className="max-w-md text-base md:text-lg text-[#6479A3] dark:text-text-mist/80 leading-relaxed">
+                                            We envision technology helping faith traditions remain present across generations, cultures, and geographies, while staying rooted in responsibility, context, and care.
                                         </p>
                                     </div>
-                                </motion.div>
-                            </div>
+                                </div>
+                            </ScrollReveal>
+                            {/* Mission Block with animation */}
+                            <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
+                                <div className="w-full flex flex-row items-start justify-end px-6 md:px-12">
+                                    <div className="flex flex-col items-end pr-6 min-w-[60px]">
+                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(03)</span>
+                                    </div>
+                                    <div className="flex flex-col items-start text-left">
+                                        <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none text-spiritual-indigo-600 dark:text-white mb-6">Mission</h3>
+                                        <p className="max-w-md text-lg md:text-xl text-[#6479A3] dark:text-text-mist/90 leading-relaxed mb-4">
+                                            To empower faith-driven institutions with responsible AI that extends guidance without replacing human leadership.
+                                            MZHub preserves and organises sacred knowledge to enable meaningful, context-aware spiritual guidance at scale.
+                                        </p>
+                                        <p className="max-w-md text-base md:text-lg text-[#6479A3] dark:text-text-mist/80 leading-relaxed">
+                                            Through ethical automation, we reduce administrative burden so leaders can focus on care, presence, and purpose.
+                                        </p>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
                         </div>
-                    </ScrollReveal>
-
-                                        {/* VISION & MISSION BLOCK */}
-                                        <div className="mt-0 md:mt-16 w-full flex flex-col gap-y-32">
-                                            {/* Vision Block with animation */}
-                                            <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
-                                                <div className="w-full flex flex-row items-start justify-start px-6 md:px-12">
-                                                    <div className="flex flex-col items-end pr-6 min-w-[60px]">
-                                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(01)</span>
-                                                    </div>
-                                                    <div className="flex flex-col items-start">
-                                                        <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none text-spiritual-indigo-600 dark:text-white mb-6">Vision</h3>
-                                                        <p className="max-w-md text-lg md:text-xl text-[#6479A3] dark:text-text-mist/90 leading-relaxed mb-4">
-                                                            A world where spiritual wisdom is accessible, understood, and preserved — without losing meaning, dignity, or human guidance.
-                                                        </p>
-                                                        <p className="max-w-md text-base md:text-lg text-[#6479A3] dark:text-text-mist/80 leading-relaxed">
-                                                            We envision technology helping faith traditions remain present across generations, cultures, and geographies, while staying rooted in responsibility, context, and care.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </ScrollReveal>
-                                            {/* Mission Block with animation */}
-                                            <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
-                                                <div className="w-full flex flex-row items-start justify-end px-6 md:px-12">
-                                                    <div className="flex flex-col items-end pr-6 min-w-[60px]">
-                                                        <span className="text-base md:text-lg font-medium text-spiritual-indigo-400 dark:text-accent-gold/80">(02)</span>
-                                                    </div>
-                                                    <div className="flex flex-col items-start text-left">
-                                                        <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none text-spiritual-indigo-600 dark:text-white mb-6">Mission</h3>
-                                                        <p className="max-w-md text-lg md:text-xl text-[#6479A3] dark:text-text-mist/90 leading-relaxed mb-4">
-                                                            To empower faith-driven institutions with responsible AI that extends guidance without replacing human leadership.
-                                                            MZHub preserves and organises sacred knowledge to enable meaningful, context-aware spiritual guidance at scale.
-                                                        </p>
-                                                        <p className="max-w-md text-base md:text-lg text-[#6479A3] dark:text-text-mist/80 leading-relaxed">
-                                                            Through ethical automation, we reduce administrative burden so leaders can focus on care, presence, and purpose.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </ScrollReveal>
-                                        </div>
-                    {/* WHY THIS MATTERS
+                        {/* WHY THIS MATTERS
                     <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
                         <div className="relative grid items-start gap-6 md:gap-8 lg:gap-10 md:grid-cols-[0.68fr_0.32fr]">
                             <div className="absolute inset-0 rounded-[32px] bg-white/40 dark:bg-secondary-dark/40 backdrop-blur-[1px] opacity-60" aria-hidden="true" />
@@ -168,11 +169,11 @@ export default function MZHubIntro() {
                         </div>
                     </ScrollReveal> */}
 
-                    {/* MEET MZHUB */}
-                   
+                        {/* MEET MZHUB */}
 
-                    {/* WHY DIFFERENT */}
-                    {/* <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0} className="pt-8 md:pt-16">
+
+                        {/* WHY DIFFERENT */}
+                        {/* <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0} className="pt-8 md:pt-16">
                         <div className="space-y-10 rounded-[36px] bg-white dark:bg-secondary-dark/65 border border-secondary-light/10 dark:border-secondary-dark/40 shadow-[0_25px_60px_-25px_rgba(15,23,42,0.25)] px-4 md:px-10 py-10">
                             <div className="text-center space-y-2">
                                 <h3 className="text-2xl md:text-4xl font-semibold text-secondary-light dark:text-white">
@@ -244,97 +245,194 @@ export default function MZHubIntro() {
                         </div>
                     </ScrollReveal> */}
 
+                    </div>
                 </div>
-            </div>
-        </SectionWrapper>
+            </SectionWrapper>
 
-        {/* Why MZHub Is Different - Horizontal Scroll Section */}
-        <HorizontalAgentScroll />
+            {/* Why MZHub Is Different - ScrollableCardStack Section */}
+            <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark py-20 md:py-32 overflow-visible">
+                <div className="text-center mb-16 px-4 md:px-8">
+                    <h2 className="text-3xl md:text-5xl font-semibold text-secondary-light dark:text-white mb-4">
+                        Why MZHub Is Different
+                    </h2>
+                    <p className="text-lg md:text-xl text-secondary-light/70 dark:text-text-mist/80 mb-8 font-light">
+                        Typical AI tools answer questions. MZHub stewards meaning.
+                    </p>
+                    <div className="space-y-2">
+                        <p className="text-xl md:text-2xl font-medium text-secondary-light dark:text-accent-gold">
+                            Stewarding Guidance the Right Way
+                        </p>
+                        <p className="text-sm md:text-base text-secondary-light/60 dark:text-text-mist/60">
+                            Every response follows a deliberate, accountable journey — from knowledge to care.
+                        </p>
+                    </div>
+                </div>
 
-        <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
-            <div className="relative overflow-hidden w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
-                <div className="relative space-y-20 md:space-y-28">
-                    {/* CALM PAUSE */}
-                    <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
-                        <div className="py-20 md:py-28 overflow-hidden relative">
-                            <div className="flex whitespace-nowrap">
-                                <motion.div
-                                    className="flex"
-                                    initial={{ x: 0 }}
-                                    animate={{
-                                        x: '-50%',
-                                    }}
-                                    transition={{
-                                        x: {
-                                            repeat: Infinity,
-                                            repeatType: "loop",
-                                            duration: 20,
-                                            ease: "linear",
-                                        },
-                                    }}
-                                >
-                                    <span className="text-4xl md:text-5xl lg:text-6xl font-semibold text-secondary-light/90 dark:text-text-mist px-8 block">
-                                        Technology should never rush what is sacred.
-                                    </span>
-                                    <span className="text-4xl md:text-5xl lg:text-6xl font-semibold text-secondary-light/90 dark:text-text-mist px-8 block">
-                                        Technology should never rush what is sacred.
-                                    </span>
-                                </motion.div>
-                            </div>
-                        </div>
-                    </ScrollReveal>
+                <div className="block md:hidden">
+                    <ScrollableCardStack
+                        items={[
+                            {
+                                id: "1",
+                                title: "Knowledge Grounding Agent",
+                                subtitle: "Truth begins with trusted sources.",
+                                description: "Every response is grounded exclusively in institution-approved teachings, texts, and archives. No open-web speculation. No invented theology.",
+                                footer: "Institution-curated knowledge only",
+                                number: "01"
+                            },
+                            {
+                                id: "2",
+                                title: "Context Understanding Agent",
+                                subtitle: "Meaning depends on who asks — and why.",
+                                description: "Interprets intent, cultural background, emotional state, and situational nuance before a reply is formed.",
+                                footer: "Intent • Culture • Pastoral sensitivity",
+                                number: "02"
+                            },
+                            {
+                                id: "3",
+                                title: "Ethics & Doctrine Validation Agent",
+                                subtitle: "Every word is checked — not just generated.",
+                                description: "Validates responses against doctrinal boundaries, ethical guardrails, and institutional governance rules.",
+                                footer: "Alignment • Guardrails • Accountability",
+                                number: "03"
+                            },
+                            {
+                                id: "4",
+                                title: "Response Stewardship Agent",
+                                subtitle: "Care determines delivery.",
+                                description: "Sets tone, applies limits, and escalates sensitive matters to human leadership when needed.",
+                                footer: "Tone • Escalation • Human-in-the-loop",
+                                number: "04"
+                            }
+                        ]}
+                        cardHeight={500}
+                        className="w-full"
+                    />
+                </div>
 
+                <div className="hidden md:block">
+                    <GSAPHorizontalScroll
+                        items={[
+                            {
+                                id: "1",
+                                title: "Knowledge Grounding Agent",
+                                subtitle: "Truth begins with trusted sources.",
+                                description: "Every response is grounded exclusively in institution-approved teachings, texts, and archives. No open-web speculation. No invented theology.",
+                                footer: "Institution-curated knowledge only",
+                                number: "01"
+                            },
+                            {
+                                id: "2",
+                                title: "Context Understanding Agent",
+                                subtitle: "Meaning depends on who asks — and why.",
+                                description: "Interprets intent, cultural background, emotional state, and situational nuance before a reply is formed.",
+                                footer: "Intent • Culture • Pastoral sensitivity",
+                                number: "02"
+                            },
+                            {
+                                id: "3",
+                                title: "Ethics & Doctrine Validation Agent",
+                                subtitle: "Every word is checked — not just generated.",
+                                description: "Validates responses against doctrinal boundaries, ethical guardrails, and institutional governance rules.",
+                                footer: "Alignment • Guardrails • Accountability",
+                                number: "03"
+                            },
+                            {
+                                id: "4",
+                                title: "Response Stewardship Agent",
+                                subtitle: "Care determines delivery.",
+                                description: "Sets tone, applies limits, and escalates sensitive matters to human leadership when needed.",
+                                footer: "Tone • Escalation • Human-in-the-loop",
+                                number: "04"
+                            }
+                        ]}
+                    />
+                </div>
+            </SectionWrapper>
 
-                    {/* TRUST & GOVERNANCE - Redesigned */}
-                    <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
-                        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-20 py-12 md:py-20 px-4 md:px-12">
-                            {/* Left: Text Content */}
-                            <div className="flex-1 max-w-xl text-left">
-                                <div className="flex flex-col justify-start h-full md:items-start md:text-left mt-16">
-                                    <h3 className="text-[clamp(3.5rem,8vw,6rem)] font-bold leading-tight text-secondary-light dark:text-white mb-6" style={{fontFamily:'inherit'}}>
-                                        Innovation<br />Purpose<br />Functionality
-                                    </h3>
-                                    <p className="text-lg md:text-xl text-secondary-light/80 dark:text-text-mist mb-4">
-                                        A captivating design sparks connection. We ignite impact by merging originality, purpose, and practicality.
-                                    </p>
-                                    <p className="text-lg md:text-xl text-secondary-light/80 dark:text-text-mist mb-6">
-                                        At <span className="font-bold">MZHub</span>, our diverse team of experts co-creates innovative solutions, driven by collaboration, inclusivity, and creative excellence.
-                                    </p>
+            <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
+                <div className="relative overflow-hidden w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
+                    <div className="relative space-y-20 md:space-y-28">
+                        {/* CALM PAUSE */}
+                        <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
+                            <div className="py-20 md:py-28 overflow-hidden relative">
+                                <div className="flex whitespace-nowrap">
+                                    <motion.div
+                                        className="flex"
+                                        initial={{ x: 0 }}
+                                        animate={{
+                                            x: '-50%',
+                                        }}
+                                        transition={{
+                                            x: {
+                                                repeat: Infinity,
+                                                repeatType: "loop",
+                                                duration: 20,
+                                                ease: "linear",
+                                            },
+                                        }}
+                                    >
+                                        <span className="text-4xl md:text-5xl lg:text-6xl font-semibold text-secondary-light/90 dark:text-text-mist px-8 block">
+                                            Technology should never rush what is sacred.
+                                        </span>
+                                        <span className="text-4xl md:text-5xl lg:text-6xl font-semibold text-secondary-light/90 dark:text-text-mist px-8 block">
+                                            Technology should never rush what is sacred.
+                                        </span>
+                                    </motion.div>
                                 </div>
                             </div>
-                            {/* Right: Images Column */}
-                            <div className="flex-1 flex flex-col items-center gap-8 w-full max-w-md">
-                                <div className="flex flex-col gap-12 w-full relative">
-                                    {/* Top Image - left aligned */}
-                                    <div className="flex w-full justify-start mb-8">
-                                        <Image
-                                            src="/shared/MZHub-logo.png"
-                                            alt="MZHub Top"
-                                            width={320}
-                                            height={200}
-                                            className="rounded-xl shadow-lg object-contain bg-white dark:bg-secondary-dark p-2"
-                                            style={{ marginLeft: '0' }}
-                                        />
+                        </ScrollReveal>
+
+
+                        {/* TRUST & GOVERNANCE - Redesigned */}
+                        <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
+                            <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-20 py-12 md:py-20 px-4 md:px-12">
+                                {/* Left: Text Content */}
+                                <div className="flex-1 max-w-xl text-left">
+                                    <div className="flex flex-col justify-start h-full md:items-start md:text-left mt-16">
+                                        <h3 className="text-[clamp(3.5rem,8vw,6rem)] font-bold leading-tight text-secondary-light dark:text-white mb-6" style={{ fontFamily: 'inherit' }}>
+                                            Innovation<br />Purpose<br />Functionality
+                                        </h3>
+                                        <p className="text-lg md:text-xl text-secondary-light/80 dark:text-text-mist mb-4">
+                                            A captivating design sparks connection. We ignite impact by merging originality, purpose, and practicality.
+                                        </p>
+                                        <p className="text-lg md:text-xl text-secondary-light/80 dark:text-text-mist mb-6">
+                                            At <span className="font-bold">MZHub</span>, our diverse team of experts co-creates innovative solutions, driven by collaboration, inclusivity, and creative excellence.
+                                        </p>
                                     </div>
-                                    {/* Main Logo Image - right aligned, more offset */}
-                                    <div className="flex w-full justify-end mb-8">
-                                        <Image
-                                            src="/shared/MZHub-logo.png"
-                                            alt="MZHub Logo"
-                                            width={480}
-                                            height={320}
-                                            className="rounded-2xl shadow-xl object-contain bg-white dark:bg-secondary-dark p-4"
-                                            priority
-                                            style={{ marginRight: '0' }}
-                                        />
+                                </div>
+                                {/* Right: Images Column */}
+                                <div className="flex-1 flex flex-col items-center gap-8 w-full max-w-md">
+                                    <div className="flex flex-col gap-12 w-full relative">
+                                        {/* Top Image - left aligned */}
+                                        <div className="flex w-full justify-start mb-8">
+                                            <Image
+                                                src="/shared/MZHub-logo.png"
+                                                alt="MZHub Top"
+                                                width={320}
+                                                height={200}
+                                                className="rounded-xl shadow-lg object-contain bg-white dark:bg-secondary-dark p-2"
+                                                style={{ marginLeft: '0' }}
+                                            />
+                                        </div>
+                                        {/* Main Logo Image - right aligned, more offset */}
+                                        <div className="flex w-full justify-end mb-8">
+                                            <Image
+                                                src="/shared/MZHub-logo.png"
+                                                alt="MZHub Logo"
+                                                width={480}
+                                                height={320}
+                                                className="rounded-2xl shadow-xl object-contain bg-white dark:bg-secondary-dark p-4"
+                                                priority
+                                                style={{ marginRight: '0' }}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </ScrollReveal>
+                        </ScrollReveal>
 
-                    {/* IMPACT */}
-                    {/* <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
+                        {/* IMPACT */}
+                        {/* <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0}>
                         <div className="space-y-10">
                             <div className="text-center space-y-3">
                                 <span className="inline-flex items-center justify-center rounded-full border border-secondary-light/20 dark:border-accent-gold/40 px-4 py-1 text-xs font-semibold tracking-[0.45em] uppercase text-secondary-light/70 dark:text-accent-gold/80">
@@ -414,9 +512,9 @@ export default function MZHubIntro() {
                             </div>
                         </div>
                     </ScrollReveal> */}
+                    </div>
                 </div>
-            </div>
-        </SectionWrapper>
+            </SectionWrapper>
         </>
     )
 }

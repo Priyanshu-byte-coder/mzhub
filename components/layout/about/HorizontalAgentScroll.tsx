@@ -80,17 +80,21 @@ export default function HorizontalAgentScroll() {
     const viewportHeight = window.innerHeight
     const topOffset = 96
 
-    // Check if section is in viewport
-    const isInViewport = rect.top <= topOffset && rect.bottom > topOffset
-    if (!isInViewport) return false
+    // Require section to be fully visible before activating horizontal scroll
+    // Section should be past the top offset and have at least 80% visible
+    const sectionHeight = rect.height
+    const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, topOffset)
+    const visibilityRatio = visibleHeight / sectionHeight
+    
+    const isFullyVisible = rect.top <= topOffset && visibilityRatio >= 0.8
+    if (!isFullyVisible) return false
 
-    // Check if we've reached the end of horizontal scroll
+    // Allow trapping throughout the horizontal scroll range
     const scrollWidth = container.scrollWidth - container.clientWidth
     const scrollLeft = container.scrollLeft
-    const isAtEnd = scrollLeft >= scrollWidth - 10 // Allow small threshold
-
-    // Only trap if we haven't reached the end yet
-    return !isAtEnd
+    
+    // Trap scroll when we're in the middle of horizontal scrolling
+    return scrollWidth > 0
   }
 
   const clampPageScroll = (value: number) => {
@@ -107,36 +111,30 @@ export default function HorizontalAgentScroll() {
   }
 
   const applyHorizontalScroll = (deltaY: number) => {
-    const container = scrollContainerRef.current
+    const container = containerRef.current
     if (!container) return { consumed: false, atStart: true, atEnd: true }
 
-    const scrollWidth = container.scrollWidth - container.clientWidth
-    if (scrollWidth <= 0) return { consumed: false, atStart: true, atEnd: true }
+    // Calculate total scrollable width
+    const totalCards = agents.length
+    if (totalCards <= 1) return { consumed: false, atStart: true, atEnd: true }
 
-    const currentScroll = container.scrollLeft
-    // Use a smoother scroll step for better control
-    const scrollStep = deltaY * 1.2
-    const nextScroll = Math.min(Math.max(currentScroll + scrollStep, 0), scrollWidth)
+    // Convert deltaY to progress change (0 to 1)
+    // Adjust sensitivity: larger number = slower scroll
+    const sensitivity = 800
+    const progressDelta = deltaY / sensitivity
+    
+    const currentProgress = horizontalProgress
+    const nextProgress = Math.min(Math.max(currentProgress + progressDelta, 0), 1)
 
-    // Only update if there's meaningful movement
-    if (Math.abs(nextScroll - currentScroll) < 1) {
-      const progress = currentScroll / scrollWidth
-      setHorizontalProgress(progress)
-      return {
-        consumed: false,
-        atStart: currentScroll <= 5,
-        atEnd: currentScroll >= scrollWidth - 5,
-      }
-    }
-
-    container.scrollLeft = nextScroll
-    const progress = nextScroll / scrollWidth
-    setHorizontalProgress(progress)
+    // Check if we actually moved
+    const moved = Math.abs(nextProgress - currentProgress) > 0.001
+    
+    setHorizontalProgress(nextProgress)
 
     return {
-      consumed: true,
-      atStart: nextScroll <= 5,
-      atEnd: nextScroll >= scrollWidth - 5,
+      consumed: moved,
+      atStart: nextProgress <= 0.01,
+      atEnd: nextProgress >= 0.99,
     }
   }
 
@@ -148,28 +146,29 @@ export default function HorizontalAgentScroll() {
       setIsActive(trapActive)
 
       if (!trapActive) {
-        // If section is in view but we're at the end, allow normal scroll
         return
       }
 
       const direction = Math.sign(event.deltaY)
       const result = applyHorizontalScroll(event.deltaY)
       
-      // Allow exit when at boundaries
+      // Only allow exit at boundaries when scrolling in the exit direction
+      // Scrolling up at start = exit up
+      // Scrolling down at end = exit down
       const canExitUp = direction < 0 && result.atStart
       const canExitDown = direction > 0 && result.atEnd
 
       if (canExitUp || canExitDown) {
         setIsActive(false)
+        lockedScrollY.current = null
         return
       }
 
-      // Lock vertical scroll and apply horizontal movement
-      if (result.consumed) {
-        lockedScrollY.current = alignSectionTop()
-        window.scrollTo({ top: lockedScrollY.current, behavior: 'auto' })
-        event.preventDefault()
-      }
+      // Always lock vertical scroll and convert to horizontal movement
+      // This means scrolling down will move cards sideways until the end
+      lockedScrollY.current = alignSectionTop()
+      window.scrollTo({ top: lockedScrollY.current, behavior: 'auto' })
+      event.preventDefault()
     }
 
     const onTouchStart = (event: TouchEvent) => {
@@ -209,12 +208,8 @@ export default function HorizontalAgentScroll() {
     }
 
     const updateHorizontalProgress = () => {
-      const container = scrollContainerRef.current
-      if (!container) return
-      const scrollWidth = container.scrollWidth - container.clientWidth
-      if (scrollWidth <= 0) return
-      const progress = container.scrollLeft / scrollWidth
-      setHorizontalProgress(progress)
+      // Progress is now managed by state, no need to sync from scrollLeft
+      return
     }
 
     window.addEventListener('wheel', onWheel, { passive: false })
@@ -223,20 +218,12 @@ export default function HorizontalAgentScroll() {
       window.addEventListener('touchend', resetTouch)
       window.addEventListener('touchcancel', resetTouch)
 
-      const container = scrollContainerRef.current
-      if (container) {
-        container.addEventListener('scroll', updateHorizontalProgress)
-      }
-
       return () => {
         window.removeEventListener('wheel', onWheel)
         window.removeEventListener('touchstart', onTouchStart)
         window.removeEventListener('touchmove', onTouchMove)
         window.removeEventListener('touchend', resetTouch)
         window.removeEventListener('touchcancel', resetTouch)
-        if (container) {
-          container.removeEventListener('scroll', updateHorizontalProgress)
-        }
       }
   }, [isLargeScreen, isMounted])
 
@@ -311,7 +298,7 @@ export default function HorizontalAgentScroll() {
         {/* Horizontal Scrollable Container */}
         <div
           ref={scrollContainerRef}
-          className="overflow-x-auto overflow-y-hidden scrollbar-hide"
+          className="relative w-full overflow-hidden scrollbar-hide"
           style={{
             scrollBehavior: 'auto',
             WebkitOverflowScrolling: 'touch',
@@ -319,9 +306,11 @@ export default function HorizontalAgentScroll() {
         >
           <div
             ref={containerRef}
-            className="flex gap-8 md:gap-12 px-8 md:px-16"
+            className="flex gap-8 md:gap-12 px-8 md:px-16 transition-transform duration-300 ease-out"
             style={{
               width: 'max-content',
+              transform: `translateX(-${horizontalProgress * 100}%)`,
+              willChange: 'transform',
             }}
           >
             {agents.map((agent, index) => {
@@ -334,7 +323,7 @@ export default function HorizontalAgentScroll() {
                   className="flex-shrink-0 w-[85vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw] max-w-2xl"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{
-                    opacity: isVisible ? 1 : 0.6,
+                    opacity: 1,
                     scale: isActive ? 1.02 : 1,
                     x: 0,
                   }}
@@ -380,56 +369,25 @@ export default function HorizontalAgentScroll() {
 
                     {/* Content Section */}
                     <div className="flex-1 space-y-6">
-                      <motion.h3
-                        className="text-2xl md:text-3xl font-semibold text-secondary-light dark:text-white"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{
-                          opacity: isActive ? 1 : 0.8,
-                          y: isActive ? 0 : 10,
-                        }}
-                        transition={{ delay: isActive ? 0.1 : 0 }}
-                      >
+                      <h3 className="text-2xl md:text-3xl font-semibold text-secondary-light dark:text-white">
                         {agent.title}
-                      </motion.h3>
+                      </h3>
 
-                      <motion.p
-                        className="text-lg md:text-xl font-medium text-accent-gold dark:text-accent-gold/90"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{
-                          opacity: isActive ? 1 : 0.7,
-                          y: isActive ? 0 : 10,
-                        }}
-                        transition={{ delay: isActive ? 0.2 : 0 }}
-                      >
+                      <p className="text-lg md:text-xl font-medium text-accent-gold dark:text-accent-gold/90">
                         {agent.emphasis}
-                      </motion.p>
+                      </p>
 
-                      <motion.p
-                        className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist/80 leading-relaxed"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{
-                          opacity: isActive ? 1 : 0.6,
-                          y: isActive ? 0 : 10,
-                        }}
-                        transition={{ delay: isActive ? 0.3 : 0 }}
-                      >
+                      <p className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist/80 leading-relaxed">
                         {agent.description}
-                      </motion.p>
+                      </p>
                     </div>
 
                     {/* Footer Tag */}
-                    <motion.div
-                      className="mt-8 pt-6 border-t border-secondary-light/20 dark:border-secondary-dark/40"
-                      initial={{ opacity: 0 }}
-                      animate={{
-                        opacity: isActive ? 1 : 0.5,
-                      }}
-                      transition={{ delay: isActive ? 0.4 : 0 }}
-                    >
+                    <div className="mt-8 pt-6 border-t border-secondary-light/20 dark:border-secondary-dark/40">
                       <p className="text-xs md:text-sm text-secondary-light/60 dark:text-text-mist/60 uppercase tracking-wider">
                         {agent.footerTag}
                       </p>
-                    </motion.div>
+                    </div>
                   </div>
                 </motion.div>
               )
