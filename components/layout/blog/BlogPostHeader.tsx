@@ -28,12 +28,12 @@ export function BlogPostHeader({ post }: BlogPostHeaderProps) {
         <div className="absolute inset-0 bg-neutral-light/90 dark:bg-primary-dark/90" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="w-full lg:w-[73%] lg:ml-[27%] relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto px-4"
         >
           {/* Category Badge */}
           <motion.div
@@ -53,11 +53,6 @@ export function BlogPostHeader({ post }: BlogPostHeaderProps) {
             {post.title}
           </h1>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl text-secondary-light/80 dark:text-text-mist mb-8">
-            {post.description}
-          </p>
-
           {/* Meta Information */}
           <div className="flex flex-wrap items-center gap-6 text-sm text-secondary-light/70 dark:text-text-mist/70">
             <div className="flex items-center gap-2">
@@ -72,18 +67,6 @@ export function BlogPostHeader({ post }: BlogPostHeaderProps) {
               <Clock className="w-4 h-4" />
               <span>{post.readTime}</span>
             </div>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mt-8 pb-4">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1.5 bg-accent-blue/10 dark:bg-accent-gold/10 text-accent-blue dark:text-accent-gold text-xs rounded-md"
-              >
-                {tag}
-              </span>
-            ))}
           </div>
         </motion.div>
       </div>

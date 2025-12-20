@@ -28,6 +28,7 @@ export function getAllBlogPosts(): BlogMetadata[] {
           author: data.author || '',
           category: data.category || '',
           tags: data.tags || [],
+          thumbnail: data.thumbnail,
           image: data.image,
           readTime: data.readTime,
         } as BlogMetadata
@@ -43,7 +44,7 @@ export function getAllBlogPosts(): BlogMetadata[] {
 export function getBlogPost(slug: string): BlogPost | null {
   try {
     const fullPath = path.join(contentDirectory, `${slug}.mdx`)
-    
+
     if (!fs.existsSync(fullPath)) {
       return null
     }
@@ -59,6 +60,7 @@ export function getBlogPost(slug: string): BlogPost | null {
       author: data.author || '',
       category: data.category || '',
       tags: data.tags || [],
+      thumbnail: data.thumbnail,
       image: data.image,
       content,
       readTime: data.readTime,

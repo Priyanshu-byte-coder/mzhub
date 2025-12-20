@@ -51,6 +51,13 @@ export default function ParallaxHero({
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
+  const handleScrollClick = () => {
+    const nextSection = sectionRef.current?.nextElementSibling
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   const sectionClasses = combineClasses(
     "relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24",
     sectionClassName,
@@ -132,12 +139,14 @@ export default function ParallaxHero({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          onClick={handleScrollClick}
+          whileHover={{ scale: 1.1 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 border-accent-gold/30 rounded-full flex items-start justify-center p-2"
+            className="w-6 h-10 border-2 border-accent-gold/30 rounded-full flex items-start justify-center p-2 hover:border-accent-gold/50 transition-colors"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
