@@ -101,7 +101,7 @@ export default function VideoShowcase({
 
     return (
         <div
-            className={`relative w-full min-h-[500px] md:min-h-[600px] ${className}`}
+            className={`relative w-full min-h-[300px] md:min-h-[600px] ${className}`}
         >
             {/* Video - responsive positioning */}
             <div className="absolute bottom-2 md:bottom-6 w-full px-4 md:px-0 flex justify-center">

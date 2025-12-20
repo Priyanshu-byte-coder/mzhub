@@ -124,19 +124,19 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
                         const imageSrc = member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}`
                         const offsetClass = index % 2 === 1 ? 'md:translate-y-4' : ''
                         const infoBlocks = [
-                            {
+                            member.theologicalCredentials && {
                                 label: 'Theological credentials (if any)',
-                                value: member.theologicalCredentials || 'Bachelor of Divinity, studied under [lineage]',
+                                value: member.theologicalCredentials,
                             },
                             {
                                 label: 'Technical credentials',
                                 value: member.technicalCredentials || 'AWS Certified AI Practitioner, 10 years NLP experience',
                             },
-                            {
+                            member.faithBackground && {
                                 label: 'Faith background',
-                                value: member.faithBackground || 'Raised in [tradition], practicing member of [institution]',
+                                value: member.faithBackground,
                             },
-                        ]
+                        ].filter(Boolean) as Array<{ label: string; value: string }>
 
                         return (
                             <figure

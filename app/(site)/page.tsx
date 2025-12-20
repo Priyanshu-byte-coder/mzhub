@@ -102,7 +102,7 @@ export default function Home() {
             </section>
 
             {/* Video Showcase */}
-            <SectionWrapper id="showcase" className="bg-neutral-light dark:bg-primary-dark -mt-32 md:-mt-0">
+            <SectionWrapper id="showcase" className="bg-neutral-light dark:bg-primary-dark -mt-32 md:-mt-0 pt-4 md:pt-24">
                 <VideoShowcase
                     caption="Empowering faith communities through technology"
                 />
