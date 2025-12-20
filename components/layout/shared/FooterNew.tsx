@@ -29,15 +29,14 @@ export default function FooterNew() {
     quickLinks: [
       { label: 'Home', href: '/' },
       { label: 'About Us', href: '/about' },
-      { label: 'Platform', href: '/platform' },
-      { label: 'Community', href: '/community' },
+      { label: 'Projects', href: '/projects' },
       { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contact' },
+      { label: 'Vault', href: '/vault' },
     ],
     legal: [
       { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Cookie Settings', href: '/cookies' },
+      { label: 'Terms & Conditions', href: '/terms' },
     ],
   }
 
@@ -87,7 +86,7 @@ export default function FooterNew() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block transition-colors hover:text-primary"
+                  className="block text-foreground transition-colors hover:text-primary dark:hover:text-accent-gold"
                 >
                   {link.label}
                 </Link>
@@ -216,7 +215,7 @@ export default function FooterNew() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-primary"
+                className="text-foreground transition-colors hover:text-primary dark:hover:text-accent-gold"
               >
                 {link.label}
               </Link>
