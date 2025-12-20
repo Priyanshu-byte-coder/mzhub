@@ -16,33 +16,6 @@ export default function InvestorsPage() {
       router.push('/vault')
     }
   }, [router])
-  const proofs = [
-    {
-      title: "Financial Performance Report",
-      description: "Quarterly revenue growth and financial metrics",
-      date: "Q1 2024",
-      status: "Audited"
-    },
-    {
-      title: "Market Analysis & Projections",
-      description: "Market size, growth potential, and competitive positioning",
-      date: "March 2024",
-      status: "Audited"
-    },
-    {
-      title: "Business Model Documentation",
-      description: "Revenue streams, pricing strategy, and scalability plans",
-      date: "February 2024",
-      status: "Audited"
-    },
-    {
-      title: "Investment Deck",
-      description: "Comprehensive pitch deck with traction and milestones",
-      date: "January 2024",
-      status: "Audited"
-    }
-  ]
-
   return (
     <div className="min-h-screen bg-neutral-light dark:bg-primary-dark relative overflow-hidden">
       <BackgroundPathsOnly />
@@ -67,48 +40,111 @@ export default function InvestorsPage() {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-secondary-light dark:text-accent-gold mb-4">
-            Investors
+            Investors & Strategic Backers
           </h1>
           <p className="text-lg text-secondary-light/80 dark:text-text-mist max-w-2xl mx-auto">
-            Financial documentation and investment materials for potential investors
+            MZHub follows a long-term, mission-first growth approach supported by strategic backing and sustainable operations.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {proofs.map((proof, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.5 }}
-              className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-secondary-light/10 dark:border-accent-gold/10 hover:shadow-2xl transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">
-                    {proof.title}
-                  </h3>
-                  <p className="text-secondary-light/70 dark:text-text-mist/70 text-sm mb-3">
-                    {proof.description}
+        {/* Content Sections */}
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Operational Validation */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Operational Validation
+            </h2>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mb-4">
+              MZHub has demonstrated long-term operational credibility through:
+            </p>
+            <ul className="space-y-2 ml-4">
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Deep penetration in faith-based textile supply chains</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Decade-long distribution relationships</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Strong trust within minority and majority faith communities</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Community Adoption Proof */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Community Adoption Proof
+            </h2>
+            <ul className="space-y-2 ml-4 mb-4">
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Nearly complete adoption within certain faith communities for textile needs</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Millions of meters of faith-specific textiles supplied over the last decade</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Trusted supplier to missionaries, religious leaders, and institutions</span>
+              </li>
+            </ul>
+            <p className="text-secondary-light/80 dark:text-text-mist/80">
+              This operational foundation supports MZHub's transition into scalable digital faith-tech platforms.
+            </p>
+          </motion.div>
+
+          {/* Growth Strategy */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Growth Strategy
+            </h2>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-gold/20 flex items-center justify-center">
+                  <span className="text-accent-gold font-bold">1</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-secondary-light dark:text-accent-gold/90 mb-1">Phase 1</h3>
+                  <p className="text-secondary-light/80 dark:text-text-mist/80">
+                    Strengthen minority and underserved faith communities
                   </p>
                 </div>
-                <div className="flex items-center gap-1 text-green-600 dark:text-green-400 text-sm font-medium">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>{proof.status}</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-gold/20 flex items-center justify-center">
+                  <span className="text-accent-gold font-bold">2</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-secondary-light dark:text-accent-gold/90 mb-1">Phase 2</h3>
+                  <p className="text-secondary-light/80 dark:text-text-mist/80">
+                    Expand into larger national and global faith ecosystems
+                  </p>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between pt-4 border-t border-secondary-light/10 dark:border-accent-gold/10">
-                <span className="text-sm text-secondary-light/60 dark:text-text-mist/60">
-                  {proof.date}
-                </span>
-                <button className="flex items-center gap-2 text-accent-gold hover:text-accent-gold/80 transition-colors text-sm font-medium">
-                  <Download className="w-4 h-4" />
-                  <span>Download</span>
-                </button>
-              </div>
-            </motion.div>
-          ))}
+            </div>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mt-4 pt-4 border-t border-secondary-light/10 dark:border-accent-gold/10">
+              Growth is designed to be ethical, inclusive, and sustainable.
+            </p>
+          </motion.div>
         </div>
 
         <motion.div

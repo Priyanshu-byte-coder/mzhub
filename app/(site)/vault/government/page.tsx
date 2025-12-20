@@ -16,33 +16,6 @@ export default function GovernmentPage() {
       router.push('/vault')
     }
   }, [router])
-  const proofs = [
-    {
-      title: "Regulatory Compliance Certificate",
-      description: "Full compliance with data protection and privacy regulations",
-      date: "March 2024",
-      status: "Certified"
-    },
-    {
-      title: "Government Approval Documentation",
-      description: "Official approvals and licenses for operating spiritual technology platforms",
-      date: "February 2024",
-      status: "Certified"
-    },
-    {
-      title: "Tax Compliance Records",
-      description: "Complete tax filings and compliance documentation",
-      date: "January 2024",
-      status: "Certified"
-    },
-    {
-      title: "Security Audit Report",
-      description: "Third-party security assessment and certification",
-      date: "December 2023",
-      status: "Certified"
-    }
-  ]
-
   return (
     <div className="min-h-screen bg-neutral-light dark:bg-primary-dark relative overflow-hidden">
       <BackgroundPathsOnly />
@@ -67,48 +40,83 @@ export default function GovernmentPage() {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-secondary-light dark:text-accent-gold mb-4">
-            Government Officials
+            Government & Institutional Engagement
           </h1>
           <p className="text-lg text-secondary-light/80 dark:text-text-mist max-w-2xl mx-auto">
-            Official documentation and compliance certificates for regulatory authorities
+            MZHub is designed with institutional responsibility, compliance, and ethical safeguards at its core.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {proofs.map((proof, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.5 }}
-              className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-secondary-light/10 dark:border-accent-gold/10 hover:shadow-2xl transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">
-                    {proof.title}
-                  </h3>
-                  <p className="text-secondary-light/70 dark:text-text-mist/70 text-sm mb-3">
-                    {proof.description}
-                  </p>
-                </div>
-                <div className="flex items-center gap-1 text-green-600 dark:text-green-400 text-sm font-medium">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>{proof.status}</span>
-                </div>
+        {/* Content Sections */}
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Trust & Governance Principles */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Trust & Governance Principles
+            </h2>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mb-4">
+              MZHub platforms are built around:
+            </p>
+            <ul className="space-y-2 ml-4 mb-4">
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Data sovereignty (community-owned data)</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Content integrity and doctrinal approval workflows</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Human-in-the-loop oversight for sensitive topics</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Responsible AI guardrails aligned with global ethical frameworks</span>
+              </li>
+            </ul>
+            <p className="text-secondary-light/80 dark:text-text-mist/80">
+              These principles make MZHub suitable for engagement with public institutions, foundations, and regulated environments.
+            </p>
+          </motion.div>
+
+          {/* Institutional Readiness */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Institutional Readiness
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Secure, scalable architecture</span>
               </div>
-              
-              <div className="flex items-center justify-between pt-4 border-t border-secondary-light/10 dark:border-accent-gold/10">
-                <span className="text-sm text-secondary-light/60 dark:text-text-mist/60">
-                  {proof.date}
-                </span>
-                <button className="flex items-center gap-2 text-accent-gold hover:text-accent-gold/80 transition-colors text-sm font-medium">
-                  <Download className="w-4 h-4" />
-                  <span>Download</span>
-                </button>
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Vendor-independent infrastructure</span>
               </div>
-            </motion.div>
-          ))}
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Audit-ready workflows</span>
+              </div>
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Multilingual and regionally adaptive deployment</span>
+              </div>
+            </div>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mt-4">
+              MZHub is structured for long-term collaboration with government bodies, educational institutions, and public-sector initiatives focused on culture, heritage, and digital inclusion.
+            </p>
+          </motion.div>
         </div>
 
         <motion.div

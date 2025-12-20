@@ -16,33 +16,6 @@ export default function PartnershipPage() {
       router.push('/vault')
     }
   }, [router])
-  const proofs = [
-    {
-      title: "Strategic Alliance Agreement",
-      description: "Partnership with leading spiritual technology providers",
-      date: "January 2024",
-      status: "Active"
-    },
-    {
-      title: "Collaboration Framework",
-      description: "Joint initiatives with religious institutions worldwide",
-      date: "December 2023",
-      status: "Active"
-    },
-    {
-      title: "Technology Integration",
-      description: "Partnerships with AI and cloud service providers",
-      date: "November 2023",
-      status: "Active"
-    },
-    {
-      title: "Academic Partnerships",
-      description: "Research collaborations with theological institutions",
-      date: "October 2023",
-      status: "Active"
-    }
-  ]
-
   return (
     <div className="min-h-screen bg-neutral-light dark:bg-primary-dark relative overflow-hidden">
       <BackgroundPathsOnly />
@@ -69,49 +42,117 @@ export default function PartnershipPage() {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-secondary-light dark:text-accent-gold mb-4">
-            Partnership & Collaboration
+            Partnerships & Collaborations
           </h1>
           <p className="text-lg text-secondary-light/80 dark:text-text-mist max-w-2xl mx-auto">
-            Digital proofs of our strategic partnerships and collaborative initiatives
+            MZHub works closely with faith institutions, ethical businesses, and ecosystem partners to responsibly digitize spiritual knowledge and build sustainable faith-tech infrastructure.
           </p>
         </motion.div>
 
-        {/* Proofs Grid */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {proofs.map((proof, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.5 }}
-              className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-secondary-light/10 dark:border-accent-gold/10 hover:shadow-2xl transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">
-                    {proof.title}
-                  </h3>
-                  <p className="text-secondary-light/70 dark:text-text-mist/70 text-sm mb-3">
-                    {proof.description}
-                  </p>
-                </div>
-                <div className="flex items-center gap-1 text-green-600 dark:text-green-400 text-sm font-medium">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>{proof.status}</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center justify-between pt-4 border-t border-secondary-light/10 dark:border-accent-gold/10">
-                <span className="text-sm text-secondary-light/60 dark:text-text-mist/60">
-                  {proof.date}
-                </span>
-                <button className="flex items-center gap-2 text-accent-gold hover:text-accent-gold/80 transition-colors text-sm font-medium">
-                  <Download className="w-4 h-4" />
-                  <span>Download</span>
-                </button>
-              </div>
-            </motion.div>
-          ))}
+        {/* Content Sections */}
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Strategic Collaborations */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Strategic Collaborations
+            </h2>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mb-4">
+              MZHub collaborates with faith-driven institutions, textile organizations, content creators, and technology partners to ensure authenticity, scale, and long-term sustainability.
+            </p>
+            <div className="space-y-3">
+              <p className="text-secondary-light/70 dark:text-text-mist/70 font-medium">Key collaboration areas include:</p>
+              <ul className="space-y-2 ml-4">
+                <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                  <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                  <span>Faith institutions and spiritual organizations</span>
+                </li>
+                <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                  <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                  <span>Ethical textile and faith-based merchandise partners</span>
+                </li>
+                <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                  <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                  <span>Technology and AI infrastructure collaborators</span>
+                </li>
+                <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                  <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                  <span>Community platforms and engagement channels</span>
+                </li>
+              </ul>
+              <p className="text-secondary-light/80 dark:text-text-mist/80 mt-4">
+                These partnerships enable MZHub to deliver verified content, trusted commerce, and secure digital experiences across communities.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Content-Commerce Integration */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Content–Commerce Integration Partnerships
+            </h2>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mb-4">
+              MZHub integrates spiritual content with commerce in a non-intrusive, values-aligned manner:
+            </p>
+            <ul className="space-y-2 ml-4 mb-4">
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Marketplace integrations for faith-based attire and ritual products</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Seamless purchase flows embedded within spiritual content</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Multi-platform access across web, mobile, and WhatsApp</span>
+              </li>
+            </ul>
+            <p className="text-secondary-light/80 dark:text-text-mist/80">
+              This ensures monetization supports community sustainability, not exploitation.
+            </p>
+          </motion.div>
+
+          {/* Expansion & Ecosystem Growth */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Expansion & Ecosystem Growth
+            </h2>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mb-4">
+              MZHub actively partners with:
+            </p>
+            <ul className="space-y-2 ml-4 mb-4">
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Religious institutions</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>NGOs and social organizations</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Wellness and sustainability-focused brands</span>
+              </li>
+            </ul>
+            <p className="text-secondary-light/80 dark:text-text-mist/80">
+              These collaborations allow rapid adoption while preserving cultural and doctrinal integrity.
+            </p>
+          </motion.div>
         </div>
 
         {/* Security Notice */}

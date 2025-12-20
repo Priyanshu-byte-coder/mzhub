@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { GraduationCap, ArrowLeft, Download, Shield, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { BackgroundPathsOnly } from '@/components/ui/home/background-paths'
 import { isAuthenticated } from '@/lib/vault/auth'
 
@@ -16,33 +17,6 @@ export default function TalentPage() {
       router.push('/vault')
     }
   }, [router])
-  const proofs = [
-    {
-      title: "Team Credentials & Expertise",
-      description: "Comprehensive profiles of our leadership and technical team",
-      date: "March 2024",
-      status: "Updated"
-    },
-    {
-      title: "Academic Qualifications",
-      description: "Educational backgrounds and certifications of core team members",
-      date: "February 2024",
-      status: "Updated"
-    },
-    {
-      title: "Industry Experience Portfolio",
-      description: "Track record of successful projects and implementations",
-      date: "January 2024",
-      status: "Updated"
-    },
-    {
-      title: "Advisory Board Profiles",
-      description: "Credentials of our spiritual and technical advisors",
-      date: "December 2023",
-      status: "Updated"
-    }
-  ]
-
   return (
     <div className="min-h-screen bg-neutral-light dark:bg-primary-dark relative overflow-hidden">
       <BackgroundPathsOnly />
@@ -70,45 +44,148 @@ export default function TalentPage() {
             Talent & Team
           </h1>
           <p className="text-lg text-secondary-light/80 dark:text-text-mist max-w-2xl mx-auto">
-            Credentials and expertise of our talented team and advisors
+            MZHub is built by a multidisciplinary team combining faith sensitivity, technology expertise, and operational experience.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {proofs.map((proof, index) => (
+        {/* Team Members Grid */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-3xl font-bold text-secondary-light dark:text-accent-gold mb-8 text-center"
+          >
+            Meet Our Team
+          </motion.h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Vatsal Shah */}
             <motion.div
-              key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.5 }}
-              className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-secondary-light/10 dark:border-accent-gold/10 hover:shadow-2xl transition-all duration-300"
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-secondary-light/10 dark:border-accent-gold/10 hover:shadow-2xl transition-all duration-300"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">
-                    {proof.title}
-                  </h3>
-                  <p className="text-secondary-light/70 dark:text-text-mist/70 text-sm mb-3">
-                    {proof.description}
-                  </p>
-                </div>
-                <div className="flex items-center gap-1 text-green-600 dark:text-green-400 text-sm font-medium">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>{proof.status}</span>
-                </div>
+              <div className="aspect-square bg-gradient-to-br from-accent-gold/20 to-accent-gold/5 relative overflow-hidden">
+                <Image
+                  src="/team/vatsal-shah.png"
+                  alt="Vatsal Shah"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
-              
-              <div className="flex items-center justify-between pt-4 border-t border-secondary-light/10 dark:border-accent-gold/10">
-                <span className="text-sm text-secondary-light/60 dark:text-text-mist/60">
-                  {proof.date}
-                </span>
-                <button className="flex items-center gap-2 text-accent-gold hover:text-accent-gold/80 transition-colors text-sm font-medium">
-                  <Download className="w-4 h-4" />
-                  <span>Download</span>
-                </button>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">
+                  Vatsal Shah
+                </h3>
+                <p className="text-sm font-semibold text-accent-gold/80 dark:text-accent-gold/70 mb-4">
+                  Founder, CEO
+                </p>
+                <div className="space-y-2 text-sm text-secondary-light/70 dark:text-text-mist/70">
+                  <p>UB Whites</p>
+                  <p>SP Jain School of Global Management., Singapore, Dubai, Sydney</p>
+                  <p>Sales and Marketing at Woolworths Group</p>
+                  <p>SASMIRA Institute of Management and Research, Textile Science and Research</p>
+                </div>
               </div>
             </motion.div>
-          ))}
+
+            {/* Hitender Singh */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-secondary-light/10 dark:border-accent-gold/10 hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="aspect-square bg-gradient-to-br from-green-500/20 to-green-500/5 relative overflow-hidden">
+                <Image
+                  src="/team/hitender-singh.png"
+                  alt="Hitender Singh"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">
+                  Hitender Singh
+                </h3>
+                <p className="text-sm font-semibold text-accent-gold/80 dark:text-accent-gold/70 mb-4">
+                  Fractional CTO
+                </p>
+                <div className="space-y-2 text-sm text-secondary-light/70 dark:text-text-mist/70">
+                  <p>Over a decade of experience working with Fortune 500 clients, helping them adopt cloud, AI, and automation technologies</p>
+                  <p>Expert in Microsoft Cloud Solutions, enterprise business applications, and program management with a focus on digital transformation and innovation</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Tijender Singh */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-secondary-light/10 dark:border-accent-gold/10 hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="aspect-square bg-gradient-to-br from-blue-500/20 to-blue-500/5 relative overflow-hidden">
+                <Image
+                  src="/team/tijender-singh.png"
+                  alt="Tijender Singh"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">
+                  Tijender Singh
+                </h3>
+                <p className="text-sm font-semibold text-accent-gold/80 dark:text-accent-gold/70 mb-4">
+                  Fractional CTO
+                </p>
+                <div className="space-y-2 text-sm text-secondary-light/70 dark:text-text-mist/70">
+                  <p>Consultant in AI Products, Models, Strategy & Cloud (Azure, DevOps)</p>
+                  <p>Based in Germany | Employed by Accenture</p>
+                  <p>15+ years of experience working with global clients</p>
+                  <p>Expert in AI, Cloud Infrastructure, and Automation</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Content Sections */}
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Team Philosophy */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Team Philosophy
+            </h2>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mb-4">
+              MZHub's team is:
+            </p>
+            <ul className="space-y-2 ml-4">
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Secular and diverse in personal faith backgrounds</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>United by respect for all traditions</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Committed to building context-aware, responsible AI</span>
+              </li>
+            </ul>
+          </motion.div>
         </div>
 
         <motion.div

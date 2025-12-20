@@ -16,33 +16,6 @@ export default function CommunityPage() {
       router.push('/vault')
     }
   }, [router])
-  const proofs = [
-    {
-      title: "Community Engagement Report",
-      description: "Impact metrics and community feedback from 50+ institutions",
-      date: "February 2024",
-      status: "Verified"
-    },
-    {
-      title: "Social Impact Assessment",
-      description: "Third-party evaluation of community benefits and outcomes",
-      date: "January 2024",
-      status: "Verified"
-    },
-    {
-      title: "Stakeholder Testimonials",
-      description: "Documented feedback from religious leaders and community members",
-      date: "December 2023",
-      status: "Verified"
-    },
-    {
-      title: "Community Growth Metrics",
-      description: "User engagement and satisfaction data across platforms",
-      date: "November 2023",
-      status: "Verified"
-    }
-  ]
-
   return (
     <div className="min-h-screen bg-neutral-light dark:bg-primary-dark relative overflow-hidden">
       <BackgroundPathsOnly />
@@ -70,45 +43,124 @@ export default function CommunityPage() {
             Community & Social Stakeholders
           </h1>
           <p className="text-lg text-secondary-light/80 dark:text-text-mist max-w-2xl mx-auto">
-            Evidence of our positive impact on communities and social stakeholders
+            MZHub serves diverse spiritual communities by building inclusive, multilingual, and accessible digital ecosystems.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {proofs.map((proof, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.5 }}
-              className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-secondary-light/10 dark:border-accent-gold/10 hover:shadow-2xl transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-secondary-light dark:text-accent-gold mb-2">
-                    {proof.title}
-                  </h3>
-                  <p className="text-secondary-light/70 dark:text-text-mist/70 text-sm mb-3">
-                    {proof.description}
-                  </p>
-                </div>
-                <div className="flex items-center gap-1 text-green-600 dark:text-green-400 text-sm font-medium">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>{proof.status}</span>
-                </div>
+        {/* Content Sections */}
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Communities Served */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Communities Served
+            </h2>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mb-4">
+              MZHub supports multiple spiritual traditions, including:
+            </p>
+            <div className="grid md:grid-cols-2 gap-3">
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Jainism</span>
               </div>
-              
-              <div className="flex items-center justify-between pt-4 border-t border-secondary-light/10 dark:border-accent-gold/10">
-                <span className="text-sm text-secondary-light/60 dark:text-text-mist/60">
-                  {proof.date}
-                </span>
-                <button className="flex items-center gap-2 text-accent-gold hover:text-accent-gold/80 transition-colors text-sm font-medium">
-                  <Download className="w-4 h-4" />
-                  <span>Download</span>
-                </button>
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Hinduism</span>
               </div>
-            </motion.div>
-          ))}
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Sikh (Khalsa Path)</span>
+              </div>
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Buddhism</span>
+              </div>
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Zoroastrianism (Parsi)</span>
+              </div>
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Judaism</span>
+              </div>
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Islam</span>
+              </div>
+              <div className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Christianity</span>
+              </div>
+            </div>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mt-4">
+              Each community's teachings, rituals, and sensitivities are handled with contextual care.
+            </p>
+          </motion.div>
+
+          {/* Community Engagement Model */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Community Engagement Model
+            </h2>
+            <p className="text-secondary-light/80 dark:text-text-mist/80 mb-4">
+              MZHub enables:
+            </p>
+            <ul className="space-y-2 ml-4 mb-4">
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>WhatsApp-based spiritual guidance and group engagement</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Virtual sanghas, study circles, and devotional communities</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Youth and elder cohorts for intergenerational learning</span>
+              </li>
+            </ul>
+            <p className="text-secondary-light/80 dark:text-text-mist/80">
+              AI-powered tools help scale engagement without replacing human leadership.
+            </p>
+          </motion.div>
+
+          {/* Social Impact Focus */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="bg-white/90 dark:bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-secondary-light/10 dark:border-accent-gold/10"
+          >
+            <h2 className="text-2xl font-bold text-secondary-light dark:text-accent-gold mb-4">
+              Social Impact Focus
+            </h2>
+            <ul className="space-y-3 ml-4 mb-4">
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Preserving ancient wisdom through digitization</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Making spiritual knowledge accessible regardless of geography or language</span>
+              </li>
+              <li className="flex items-start gap-2 text-secondary-light/80 dark:text-text-mist/80">
+                <CheckCircle className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" />
+                <span>Supporting minority and underrepresented faith communities</span>
+              </li>
+            </ul>
+            <p className="text-secondary-light/80 dark:text-text-mist/80">
+              MZHub views technology as a social service, not just a product.
+            </p>
+          </motion.div>
         </div>
 
         <motion.div
