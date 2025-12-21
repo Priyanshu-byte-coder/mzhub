@@ -1,4 +1,5 @@
 import type { WithContext, Organization, Service, Article, FAQPage, BreadcrumbList, WebPage, WebSite } from 'schema-dts'
+import { getSiteUrl } from '@/lib/siteUrl'
 import type { ServiceInfo, FAQItem, BreadcrumbItem, PageInfo } from '@/types/schema-types'
 import type { BlogPost } from '@/types'
 
@@ -12,7 +13,7 @@ export function generateOrganizationSchema(): WithContext<Organization> {
         '@type': 'Organization',
         name: 'MZHub',
         description: 'AI-powered spiritual guidance platform helping religious institutions preserve teachings and connect with communities.',
-        url: 'https://mzhub.com',
+        url: getSiteUrl(),
         logo: 'https://mzhub.com/logo.png',
         email: 'contact@mzhub.com',
         telephone: '+1-555-123-4567',
@@ -38,7 +39,7 @@ export function generateServiceSchema(services: ServiceInfo[]): WithContext<Serv
     const baseProvider: Organization = {
         '@type': 'Organization',
         name: 'MZHub',
-        url: 'https://mzhub.com',
+        url: getSiteUrl(),
     }
 
     return services.map((service) => ({
@@ -81,7 +82,7 @@ export function generateArticleSchema(post: BlogPost, siteUrl: string): WithCont
             name: 'MZHub',
             logo: {
                 '@type': 'ImageObject',
-                url: `${siteUrl}/logo.png`,
+                url: `${getSiteUrl()}/logo.png`,
             },
         },
         mainEntityOfPage: {

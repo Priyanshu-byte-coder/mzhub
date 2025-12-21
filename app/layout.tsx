@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl, getSiteUrl } from '@/lib/siteUrl'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/shared/Navbar'
@@ -19,7 +20,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://mzhub.com'),
+    metadataBase: new URL(getSiteUrl()),
     title: {
         default: 'MZHub - Spiritual AI for Religious Institutions',
         template: '%s | MZHub'
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://mzhub.com',
+        url: getSiteUrl(),
         title: 'MZHub - Spiritual AI for Religious Institutions',
         description: 'Trusted by 50+ faith communities. AI-powered spiritual guidance preserving sacred teachings with 24/7 multilingual support.',
         siteName: 'MZHub',

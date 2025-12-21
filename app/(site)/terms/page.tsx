@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/siteUrl'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import ScrollReveal from '@/components/ui/shared/scroll-reveal'
 import { JsonLd } from '@/components/seo/JsonLd'
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Terms & Conditions',
     description: 'Terms & Conditions governing your access and use of the MZHUB platform.',
     alternates: {
-        canonical: 'https://mzhub.com/terms',
+        canonical: absoluteUrl('/terms'),
     },
 }
 
@@ -23,7 +24,7 @@ export default function TermsAndConditions() {
                         description: 'Terms & Conditions governing your access and use of the MZHUB platform.',
                         url: '/terms',
                     },
-                    'https://mzhub.com'
+                    absoluteUrl('')
                 )}
             />
             {/* Hero Section */}

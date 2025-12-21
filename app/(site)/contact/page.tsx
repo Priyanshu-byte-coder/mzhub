@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/siteUrl'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import Card from '@/components/ui/shared/Card'
 import ContactHero from '@/components/layout/contact/ContactHero'
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     description: 'Schedule a personalized demo of MZHub. See how we help religious institutions preserve sacred teachings and serve communities better. Get in touch within 24 hours.',
     keywords: ['contact MZHub', 'faith technology demo', 'spiritual AI demo', 'religious institution technology', 'schedule demo'],
     alternates: {
-        canonical: 'https://mzhub.com/contact',
+        canonical: absoluteUrl('/contact'),
     },
     openGraph: {
         title: 'Contact MZHub - Schedule Your Demo',
@@ -56,7 +57,7 @@ export default function Contact() {
                             description: 'Schedule a personalized demo of MZHub. See how we help religious institutions preserve sacred teachings and serve communities better.',
                             url: '/contact',
                         },
-                        'https://mzhub.com'
+                        absoluteUrl('')
                     ),
                 ]}
             />

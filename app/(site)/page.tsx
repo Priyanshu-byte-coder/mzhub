@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/siteUrl'
 import Link from 'next/link'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import { BlobButton } from '@/components/ui/shared/BlobButton'
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
         'faith community engagement'
     ],
     alternates: {
-        canonical: 'https://mzhub.com',
+        canonical: absoluteUrl('/'),
     },
     openGraph: {
         title: 'MZHub - Spiritual AI for Religious Institutions',
@@ -93,7 +94,7 @@ export default function Home() {
                             description: 'AI-powered spiritual guidance platform helping religious institutions preserve teachings and connect with communities.',
                             url: '/',
                         },
-                        'https://mzhub.com'
+                        absoluteUrl('')
                     ),
                 ]}
             />

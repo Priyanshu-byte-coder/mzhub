@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/siteUrl'
 import ProjectsClient from '@/components/layout/projects/ProjectsClient'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/schemas'
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Discover how MZHub helps religious institutions worldwide preserve sacred teachings and connect with communities through AI technology. Featured case studies and success stories.',
   keywords: ['faith technology projects', 'spiritual AI case studies', 'religious institution technology', 'digital transformation', 'spiritual guidance systems'],
   alternates: {
-    canonical: 'https://mzhub.com/projects',
+    canonical: absoluteUrl('/projects'),
   },
   openGraph: {
     title: 'MZHub Projects - Transforming Faith Through Technology',
@@ -36,7 +37,7 @@ export default function ProjectsPage() {
               description: 'Discover how MZHub helps religious institutions worldwide preserve sacred teachings and connect with communities through AI technology.',
               url: '/projects',
             },
-            'https://mzhub.com'
+            absoluteUrl('')
           ),
         ]}
       />

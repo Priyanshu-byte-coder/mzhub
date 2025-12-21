@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/siteUrl'
 import Link from 'next/link'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import { getTeamMembers } from '@/lib/about/teamMembers'
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     title: 'About Us',
     description: 'Learn about MZHub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
     alternates: {
-        canonical: 'https://mzhub.com/about',
+        canonical: absoluteUrl('/about'),
     },
 }
 
@@ -35,7 +36,7 @@ export default function About() {
                             description: 'Learn about MZHub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
                             url: '/about',
                         },
-                        'https://mzhub.com'
+                        absoluteUrl('')
                     ),
                 ]}
             />

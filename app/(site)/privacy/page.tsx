@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/siteUrl'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import ScrollReveal from '@/components/ui/shared/scroll-reveal'
 import { JsonLd } from '@/components/seo/JsonLd'
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Privacy Policy',
     description: 'Learn how MZHUB collects, uses, and protects your personal information.',
     alternates: {
-        canonical: 'https://mzhub.com/privacy',
+        canonical: absoluteUrl('/privacy'),
     },
 }
 
@@ -23,7 +24,7 @@ export default function PrivacyPolicy() {
                         description: 'Learn how MZHUB collects, uses, and protects your personal information.',
                         url: '/privacy',
                     },
-                    'https://mzhub.com'
+                    absoluteUrl('')
                 )}
             />
             {/* Hero Section */}

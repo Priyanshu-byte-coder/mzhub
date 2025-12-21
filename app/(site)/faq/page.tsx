@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/siteUrl'
 import Link from 'next/link'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import ScrollReveal from '@/components/ui/shared/scroll-reveal'
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     description: 'Find answers to common questions about MZHub\'s AI-powered spiritual guidance platform, implementation process, pricing, security, and how we serve religious institutions worldwide.',
     keywords: ['MZHub FAQ', 'faith technology questions', 'spiritual AI questions', 'religious institution technology', 'AI implementation', 'faith tech pricing', 'spiritual platform security'],
     alternates: {
-        canonical: 'https://mzhub.com/faq',
+        canonical: absoluteUrl('/faq'),
     },
     openGraph: {
         title: 'FAQ - Common Questions About MZHub Faith Technology',
@@ -188,7 +189,7 @@ export default function FAQ() {
                             description: 'Comprehensive answers to common questions about MZHub\'s AI-powered spiritual guidance platform for religious institutions.',
                             url: '/faq',
                         },
-                        'https://mzhub.com'
+                        absoluteUrl('')
                     ),
                 ]}
             />
