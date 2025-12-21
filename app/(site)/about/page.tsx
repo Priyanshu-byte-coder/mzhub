@@ -14,6 +14,9 @@ import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/sch
 export const metadata: Metadata = {
     title: 'About Us',
     description: 'Learn about MZHub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
+    alternates: {
+        canonical: 'https://mzhub.com/about',
+    },
 }
 
 export default function About() {

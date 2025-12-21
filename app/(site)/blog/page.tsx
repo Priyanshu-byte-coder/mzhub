@@ -9,6 +9,9 @@ import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/sch
 export const metadata: Metadata = {
     title: 'Blog | MZHub',
     description: 'Insights on AI, spirituality, technology, and building digital communities for religious institutions. Expert perspectives on faith-tech integration.',
+    alternates: {
+        canonical: 'https://mzhub.com/blog',
+    },
 }
 
 export default function Blog() {

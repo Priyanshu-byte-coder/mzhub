@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     title: 'MZHub - Spiritual AI for Faith Communities',
     description: 'AI-powered spiritual guidance platform helping religious institutions preserve teachings and connect with communities. Trusted by temples, churches, mosques worldwide.',
     keywords: ['spiritual AI', 'faith technology', 'religious institutions', 'AI spiritual guidance', 'digital heritage preservation', 'faith communities', 'temple technology', 'church AI'],
+    alternates: {
+        canonical: 'https://mzhub.com',
+    },
     openGraph: {
         title: 'MZHub - Spiritual AI for Faith Communities',
         description: 'Extend your spiritual reach with AI-powered guidance systems that preserve sacred teachings and serve communities better.',

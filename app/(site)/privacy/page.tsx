@@ -7,6 +7,9 @@ import { generateWebPageSchema } from '@/lib/seo/schemas'
 export const metadata: Metadata = {
     title: 'Privacy Policy',
     description: 'Learn how MZHUB collects, uses, and protects your personal information.',
+    alternates: {
+        canonical: 'https://mzhub.com/privacy',
+    },
 }
 
 export default function PrivacyPolicy() {

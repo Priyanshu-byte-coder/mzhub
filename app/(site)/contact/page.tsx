@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     title: 'Contact Us - Request a Demo | MZHub',
     description: 'Schedule a personalized demo of MZHub. See how we help religious institutions preserve sacred teachings and serve communities better. Get in touch within 24 hours.',
     keywords: ['contact MZHub', 'faith technology demo', 'spiritual AI demo', 'religious institution technology', 'schedule demo'],
+    alternates: {
+        canonical: 'https://mzhub.com/contact',
+    },
     openGraph: {
         title: 'Contact MZHub - Schedule Your Demo',
         description: 'Get in touch to transform your faith community with AI-powered spiritual guidance systems.',

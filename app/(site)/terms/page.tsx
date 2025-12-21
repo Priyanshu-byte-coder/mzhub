@@ -7,6 +7,9 @@ import { generateWebPageSchema } from '@/lib/seo/schemas'
 export const metadata: Metadata = {
     title: 'Terms & Conditions',
     description: 'Terms & Conditions governing your access and use of the MZHUB platform.',
+    alternates: {
+        canonical: 'https://mzhub.com/terms',
+    },
 }
 
 export default function TermsAndConditions() {

@@ -30,6 +30,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
         title: post.title,
         description: post.description,
+        alternates: {
+            canonical: `https://mzhub.com/blog/${params.slug}`,
+        },
     }
 }
 
