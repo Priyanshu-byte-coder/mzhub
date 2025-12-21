@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import ProjectsClient from '@/components/layout/projects/ProjectsClient'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   title: 'Our Projects - Faith Technology Case Studies | MZHub',
@@ -19,5 +21,23 @@ export const metadata: Metadata = {
 }
 
 export default function ProjectsPage() {
-  return <ProjectsClient />
+  return (
+    <>
+      {/* Structured Data */}
+      <JsonLd
+        data={[
+          generateOrganizationSchema(),
+          generateWebPageSchema(
+            {
+              name: 'Our Projects - Faith Technology Case Studies | MZHub',
+              description: 'Discover how MZHub helps religious institutions worldwide preserve sacred teachings and connect with communities through AI technology.',
+              url: '/projects',
+            },
+            'https://mzhub.com'
+          ),
+        ]}
+      />
+      <ProjectsClient />
+    </>
+  )
 }

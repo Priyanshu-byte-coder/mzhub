@@ -8,6 +8,8 @@ import { BlogPostContent } from '@/components/layout/blog/BlogPostContent'
 import { TableOfContents } from '@/components/layout/blog/TableOfContents'
 import { RelatedPosts } from '@/components/layout/blog/RelatedPosts'
 import { AuthorBio } from '@/components/layout/blog/AuthorBio'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/seo/schemas'
 
 export async function generateStaticParams() {
     const posts = getAllBlogPosts()
@@ -44,6 +46,21 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
     return (
         <div className="min-h-screen bg-neutral-light dark:bg-primary-dark">
+            {/* Structured Data */}
+            <JsonLd
+                data={[
+                    generateArticleSchema(post, 'https://mzhub.com'),
+                    generateBreadcrumbListSchema(
+                        [
+                            { name: 'Home', url: '/' },
+                            { name: 'Blog', url: '/blog' },
+                            { name: post.title, url: `/blog/${post.slug}` },
+                        ],
+                        'https://mzhub.com'
+                    ),
+                ]}
+            />
+
             <div className="pt-20">
                 <BlogPostHeader post={post} />
             </div>

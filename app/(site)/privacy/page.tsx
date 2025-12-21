@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import ScrollReveal from '@/components/ui/shared/scroll-reveal'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateWebPageSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',
@@ -10,6 +12,17 @@ export const metadata: Metadata = {
 export default function PrivacyPolicy() {
     return (
         <div className="bg-white dark:bg-primary-dark">
+            {/* Structured Data */}
+            <JsonLd
+                data={generateWebPageSchema(
+                    {
+                        name: 'Privacy Policy | MZHub',
+                        description: 'Learn how MZHUB collects, uses, and protects your personal information.',
+                        url: '/privacy',
+                    },
+                    'https://mzhub.com'
+                )}
+            />
             {/* Hero Section */}
             <SectionWrapper className="bg-gradient-to-b from-primary-light/50 to-neutral-light dark:from-primary-dark dark:to-secondary-dark pt-32 pb-16">
                 <div className="max-w-4xl mx-auto text-center">

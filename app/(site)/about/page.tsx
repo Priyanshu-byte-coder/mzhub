@@ -8,6 +8,8 @@ import MZHubIntro from '@/components/layout/about/MZHubIntro'
 import CoreValuesSticky from '@/components/ui/about/core-values-sticky'
 import AboutHero from '@/components/layout/about/AboutHero'
 import WhyThisMatters from '@/components/layout/about/WhyThisMatters'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -19,6 +21,21 @@ export default function About() {
 
     return (
         <div className="bg-white dark:bg-primary-dark">
+            {/* Structured Data */}
+            <JsonLd
+                data={[
+                    generateOrganizationSchema(),
+                    generateWebPageSchema(
+                        {
+                            name: 'About Us - MZHub',
+                            description: 'Learn about MZHub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
+                            url: '/about',
+                        },
+                        'https://mzhub.com'
+                    ),
+                ]}
+            />
+
             {/* Hero */}
             <AboutHero />
 

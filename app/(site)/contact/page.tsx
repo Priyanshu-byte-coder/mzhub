@@ -3,6 +3,8 @@ import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import Card from '@/components/ui/shared/Card'
 import ContactHero from '@/components/layout/contact/ContactHero'
 import ContactForm from '@/components/layout/contact/ContactForm'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateOrganizationSchema, generateFAQPageSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
     title: 'Contact Us - Request a Demo | MZHub',
@@ -22,8 +24,40 @@ export const metadata: Metadata = {
 }
 
 export default function Contact() {
+    // FAQ data extracted from the page content
+    const faqs = [
+        {
+            question: 'How long does implementation take?',
+            answer: 'Typically 2-4 weeks from contract signing to launch, depending on content volume.'
+        },
+        {
+            question: 'Is training provided?',
+            answer: 'Yes! We provide comprehensive training for your team and ongoing support.'
+        },
+        {
+            question: 'What are the pricing options?',
+            answer: 'Pricing varies by community size and features. We\'ll create a custom quote for you.'
+        }
+    ]
+
     return (
         <div className="bg-white dark:bg-primary-dark">
+            {/* Structured Data */}
+            <JsonLd
+                data={[
+                    generateOrganizationSchema(),
+                    generateFAQPageSchema(faqs),
+                    generateWebPageSchema(
+                        {
+                            name: 'Contact Us - Request a Demo | MZHub',
+                            description: 'Schedule a personalized demo of MZHub. See how we help religious institutions preserve sacred teachings and serve communities better.',
+                            url: '/contact',
+                        },
+                        'https://mzhub.com'
+                    ),
+                ]}
+            />
+
             {/* Hero */}
             <ContactHero />
 

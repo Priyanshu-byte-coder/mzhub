@@ -7,6 +7,8 @@ import { ContainerScroll } from '@/components/ui/home/container-scroll-animation
 import { StaggerTestimonials } from '@/components/layout/home/stagger-testimonials'
 import VideoShowcase from '@/components/layout/home/video-component'
 import HomeClient from '@/components/layout/home/HomeClient'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { generateOrganizationSchema, generateServiceSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
     title: 'MZHub - Spiritual AI for Faith Communities',
@@ -62,6 +64,26 @@ export default function Home() {
 
     return (
         <HomeClient>
+            {/* Structured Data */}
+            <JsonLd
+                data={[
+                    generateOrganizationSchema(),
+                    ...generateServiceSchema(capabilities.map(cap => ({
+                        name: cap.title,
+                        description: cap.body,
+                        category: 'Technology Service'
+                    }))),
+                    generateWebPageSchema(
+                        {
+                            name: 'MZHub - Spiritual AI for Faith Communities',
+                            description: 'AI-powered spiritual guidance platform helping religious institutions preserve teachings and connect with communities.',
+                            url: '/',
+                        },
+                        'https://mzhub.com'
+                    ),
+                ]}
+            />
+
             {/* Video Showcase */}
             <SectionWrapper id="showcase" className="bg-neutral-light dark:bg-primary-dark -mt-32 md:-mt-0 pt-4 md:pt-24">
                 <VideoShowcase
