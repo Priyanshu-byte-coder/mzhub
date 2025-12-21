@@ -11,22 +11,33 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateServiceSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
-    title: 'MZHub - Spiritual AI for Faith Communities',
-    description: 'AI-powered spiritual guidance platform helping religious institutions preserve teachings and connect with communities. Trusted by temples, churches, mosques worldwide.',
-    keywords: ['spiritual AI', 'faith technology', 'religious institutions', 'AI spiritual guidance', 'digital heritage preservation', 'faith communities', 'temple technology', 'church AI'],
+    title: 'MZHub - Spiritual AI for Religious Institutions',
+    description: 'Trusted by 50+ temples, churches & mosques worldwide. Enterprise-grade spiritual AI platform with 24/7 guidance, multilingual support, and complete institutional control.',
+    keywords: [
+        'spiritual AI platform',
+        'faith technology solution',
+        'religious institution software',
+        'AI spiritual guidance',
+        'temple management system',
+        'church technology platform',
+        'mosque digital tools',
+        'sacred teaching preservation',
+        'multilingual spiritual guidance',
+        'faith community engagement'
+    ],
     alternates: {
         canonical: 'https://mzhub.com',
     },
     openGraph: {
-        title: 'MZHub - Spiritual AI for Faith Communities',
-        description: 'Extend your spiritual reach with AI-powered guidance systems that preserve sacred teachings and serve communities better.',
+        title: 'MZHub - Spiritual AI for Religious Institutions',
+        description: 'Trusted by 50+ faith communities. Enterprise-grade spiritual AI with 24/7 guidance and complete institutional control.',
         type: 'website',
         siteName: 'MZHub',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'MZHub - Spiritual AI for Faith Communities',
-        description: 'AI-powered spiritual guidance for religious institutions worldwide',
+        title: 'MZHub - Spiritual AI for Religious Institutions',
+        description: 'Trusted by 50+ faith communities. Enterprise-grade spiritual AI with 24/7 guidance and institutional control.',
     },
 }
 

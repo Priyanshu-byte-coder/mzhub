@@ -21,10 +21,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
     metadataBase: new URL('https://MZHub.com'),
     title: {
-        default: 'MZHub - AI-Powered Spiritual Platforms for Religious Institutions',
+        default: 'MZHub - Spiritual AI for Religious Institutions',
         template: '%s | MZHub'
     },
-    description: 'Extend your spiritual reach with AI. MZHub helps religious institutions, temples, and ashrams deliver personalized guidance while preserving their sacred teachings.',
+    description: 'Trusted by 50+ faith communities worldwide. AI-powered spiritual guidance platform helping temples, churches, and mosques preserve sacred teachings while serving modern seekers with 24/7 multilingual support.',
     keywords: ['spiritual technology', 'AI for religious institutions', 'temple technology', 'ashram platform', 'spiritual guidance AI', 'faith tech'],
     authors: [{ name: 'MZHub' }],
     creator: 'MZHub',
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
         type: 'website',
         locale: 'en_US',
         url: 'https://MZHub.com',
-        title: 'MZHub - AI-Powered Spiritual Platforms',
-        description: 'Extend your spiritual reach with AI. Preserve sacred teachings while scaling personalized guidance.',
+        title: 'MZHub - Spiritual AI for Religious Institutions',
+        description: 'Trusted by 50+ faith communities. AI-powered spiritual guidance preserving sacred teachings with 24/7 multilingual support.',
         siteName: 'MZHub',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'MZHub - AI-Powered Spiritual Platforms',
-        description: 'Extend your spiritual reach with AI. Preserve sacred teachings while scaling personalized guidance.',
+        title: 'MZHub - Spiritual AI for Religious Institutions',
+        description: 'Trusted by 50+ faith communities. AI-powered spiritual guidance preserving sacred teachings with 24/7 multilingual support.',
     },
     robots: {
         index: true,

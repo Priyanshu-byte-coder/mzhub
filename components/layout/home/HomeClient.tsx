@@ -30,7 +30,10 @@ export default function HomeClient({ children }: HomeClientProps) {
                 <BackgroundPathsOnly />
                 <div className="container-custom relative z-20 text-center text-secondary-light dark:text-text-mist py-8 px-4 md:py-20">
                     <div className="flex items-center justify-center mb-6 md:mb-8">
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-serif flex items-center gap-4">
+                        <h1
+                            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-serif flex items-center gap-4"
+                            aria-label="MZHub: AI-Powered Spiritual Guidance Platform for Religious Institutions"
+                        >
                             <span className="text-2xl sm:text-2xl md:text-4xl lg:text-6xl text-secondary-light dark:text-text-mist">Spiritual</span>
                             <RotatingText
                                 texts={['Guru', 'AI']}
