@@ -100,8 +100,8 @@ export default function FooterNew() {
             <address className="space-y-2 text-sm not-italic text-muted-foreground">
               <p>Empowering spiritual institutions</p>
               <p>with AI-driven platforms</p>
-              <p className="pt-2">Email: hello@MZHub.com</p>
-              <p>Support: support@MZHub.com</p>
+              <p className="pt-2">Email: hello@mzhub.com</p>
+              <p>Support: support@mzhub.com</p>
             </address>
           </div>
 

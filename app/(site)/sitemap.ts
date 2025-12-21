@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getAllBlogPosts } from '@/lib/blog/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://MZHub.com'
+  const baseUrl = 'https://mzhub.com'
 
   // Get all blog posts dynamically
   const blogPosts = getAllBlogPosts()

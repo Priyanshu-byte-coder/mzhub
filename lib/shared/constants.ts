@@ -1,6 +1,6 @@
 export const SITE_NAME = 'MZHub'
 export const SITE_DESCRIPTION = 'AI-Powered Spiritual Platforms for Religious Institutions'
-export const SITE_URL = 'https://MZHub.com'
+export const SITE_URL = 'https://mzhub.com'
 
 export const SOCIAL_LINKS = {
   github: 'https://github.com',

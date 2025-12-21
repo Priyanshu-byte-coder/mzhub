@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://MZHub.com'),
+    metadataBase: new URL('https://mzhub.com'),
     title: {
         default: 'MZHub - Spiritual AI for Religious Institutions',
         template: '%s | MZHub'
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://MZHub.com',
+        url: 'https://mzhub.com',
         title: 'MZHub - Spiritual AI for Religious Institutions',
         description: 'Trusted by 50+ faith communities. AI-powered spiritual guidance preserving sacred teachings with 24/7 multilingual support.',
         siteName: 'MZHub',

@@ -80,8 +80,8 @@ export default function Contact() {
                                         <span className="text-2xl">📧</span>
                                         <div>
                                             <p className="font-semibold text-secondary-light dark:text-accent-gold">Email</p>
-                                            <a href="mailto:contact@MZHub.com" className="text-accent-blue dark:text-accent-gold hover:underline">
-                                                contact@MZHub.com
+                                            <a href="mailto:contact@mzhub.com" className="text-accent-blue dark:text-accent-gold hover:underline">
+                                                contact@mzhub.com
                                             </a>
                                         </div>
                                     </div>
