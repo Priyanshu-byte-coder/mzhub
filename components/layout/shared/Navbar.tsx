@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Home, Info, FolderOpen, BookOpen, Mail, Menu, X, Vault } from 'lucide-react'
+import { Home, Info, FolderOpen, BookOpen, Mail, Menu, X, Vault, HelpCircle } from 'lucide-react'
 import { MenuBar } from '@/components/ui/shared/glow-menu'
 import { ThemeToggleButton, useThemeTransition } from '@/components/ui/shared/theme-toggle-button'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -332,8 +332,25 @@ export default function Navbar() {
                                     })}
                                 </nav>
 
+                                {/* FAQ Link - Bottom */}
+                                <div className="pt-4 border-t border-border mt-auto mb-4">
+                                    <button
+                                        onClick={() => {
+                                            router.push('/faq')
+                                            setIsDesktopMenuOpen(false)
+                                        }}
+                                        className={`flex items-center gap-3 p-3 rounded-xl transition-all w-full ${pathname === '/faq'
+                                            ? 'bg-accent-gold/10 text-accent-gold dark:text-accent-gold'
+                                            : 'hover:bg-foreground/5 text-foreground/70'
+                                            }`}
+                                    >
+                                        <HelpCircle className="w-5 h-5" />
+                                        <span className="text-base font-medium">FAQs</span>
+                                    </button>
+                                </div>
+
                                 {/* Theme Toggle Section */}
-                                <div className="pt-6 border-t border-border">
+                                <div className="pt-4 border-t border-border">
                                     <div className="flex items-center justify-between">
                                         <span className="text-sm font-medium text-foreground">Theme</span>
                                         {mounted && (
@@ -407,7 +424,7 @@ export default function Navbar() {
                                 </div>
 
                                 {/* Navigation Links */}
-                                <nav className="flex flex-col gap-2">
+                                <nav className="flex flex-col gap-2 flex-1">
                                     {menuItems.map((item) => {
                                         const Icon = item.icon
                                         const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
@@ -427,6 +444,20 @@ export default function Navbar() {
                                         )
                                     })}
                                 </nav>
+
+                                {/* FAQ Link - Bottom Right */}
+                                <div className="pt-4 border-t border-border mt-auto">
+                                    <button
+                                        onClick={() => handleMobileNavClick('/faq')}
+                                        className={`flex items-center gap-3 p-3 rounded-xl transition-all w-full ${pathname === '/faq'
+                                            ? 'bg-accent-gold/10 text-accent-gold dark:text-accent-gold'
+                                            : 'hover:bg-foreground/5 text-foreground/70'
+                                            }`}
+                                    >
+                                        <HelpCircle className="w-5 h-5" />
+                                        <span className="text-base font-medium">FAQs</span>
+                                    </button>
+                                </div>
                             </div>
                         </motion.div>
                     </>

@@ -152,6 +152,11 @@ export default function Contact() {
                                         <p className="text-secondary-light/80 dark:text-text-mist text-sm">Pricing varies by community size and features. We'll create a custom quote for you.</p>
                                     </div>
                                 </div>
+                                <div className="mt-6 pt-4 border-t border-secondary-light/10 dark:border-accent-gold/10">
+                                    <a href="/faq" className="text-accent-blue dark:text-accent-gold hover:underline font-semibold text-sm">
+                                        View all FAQs →
+                                    </a>
+                                </div>
                             </Card>
                         </div>
                     </div>

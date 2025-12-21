@@ -32,6 +32,7 @@ export default function FooterNew() {
       { label: 'Projects', href: '/projects' },
       { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contact' },
+      { label: 'FAQ', href: '/faq' },
       { label: 'Vault', href: '/vault' },
     ],
     legal: [

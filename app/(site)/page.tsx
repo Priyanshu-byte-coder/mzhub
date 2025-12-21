@@ -259,8 +259,8 @@ export default function Home() {
                             <BlobButton as={Link} href="/contact">
                                 Schedule Demo
                             </BlobButton>
-                            <BlobButton as={Link} href="/projects">
-                                Learn More
+                            <BlobButton as={Link} href="/faq">
+                                View FAQs
                             </BlobButton>
                         </div>
                     </div>

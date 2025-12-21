@@ -10,6 +10,7 @@ import AboutHero from '@/components/layout/about/AboutHero'
 import WhyThisMatters from '@/components/layout/about/WhyThisMatters'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/schemas'
+import { BlobButton } from '@/components/ui/shared/BlobButton'
 
 export const metadata: Metadata = {
     title: 'About Us',
@@ -127,12 +128,14 @@ export default function About() {
                     <p className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist">
                         When stewardship-first AI feels right for your community, let us walk with you.
                     </p>
-                    <Link
-                        href="/contact"
-                        className="inline-flex items-center justify-center rounded-full border border-secondary-light/40 dark:border-accent-gold/50 text-secondary-light dark:text-accent-gold px-8 py-3 text-sm md:text-base font-semibold"
-                    >
-                        Partner with MZHub
-                    </Link>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <BlobButton as={Link} href="/contact">
+                            Partner with MZHub
+                        </BlobButton>
+                        <BlobButton as={Link} href="/projects">
+                            View Our Work
+                        </BlobButton>
+                    </div>
                 </div>
             </SectionWrapper>
 
