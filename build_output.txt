@@ -1,0 +1,44 @@
+
+> MZHub-website@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.33
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./lib/blog/blog.ts:2:1
+Module not found: Can't resolve 'fs'
+[0m [90m 1 |[39m [36mimport[39m { [33mBlogPost[39m[33m,[39m [33mBlogMetadata[39m } [36mfrom[39m [32m'@/types'[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m fs [36mfrom[39m [32m'fs'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m path [36mfrom[39m [32m'path'[39m[0m
+[0m [90m 4 |[39m [36mimport[39m matter [36mfrom[39m [32m'gray-matter'[39m[0m
+[0m [90m 5 |[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./app/(site)/blog/[slug]/opengraph-image.tsx
+./node_modules/next/dist/build/webpack/loaders/next-metadata-route-loader.js?page=%2F(site)%2Fblog%2F%5Bslug%5D%2Fopengraph-image-fx5gi7%2F%5B%5B...__metadata_id__%5D%5D%2Froute&filePath=C%3A%5CUsers%5CAdmin%5CCODING%5Cmzhub%5Cmzhub%5Capp%5C(site)%5Cblog%5C%5Bslug%5D%5Copengraph-image.tsx&isDynamic=1!?__next_metadata_route__
+./node_modules/next/dist/build/webpack/loaders/next-edge-app-route-loader/index.js?absolutePagePath=private-next-app-dir%2F(site)%2Fblog%2F%5Bslug%5D%2Fopengraph-image.tsx&page=%2F(site)%2Fblog%2F%5Bslug%5D%2Fopengraph-image-fx5gi7%2F%5B%5B...__metadata_id__%5D%5D%2Froute&appDirLoader=bmV4dC1hcHAtbG9hZGVyP25hbWU9YXBwJTJGKHNpdGUpJTJGYmxvZyUyRiU1QnNsdWclNUQlMkZvcGVuZ3JhcGgtaW1hZ2UtZng1Z2k3JTJGJTVCJTVCLi4uX19tZXRhZGF0YV9pZF9fJTVEJTVEJTJGcm91dGUmcGFnZT0lMkYoc2l0ZSklMkZibG9nJTJGJTVCc2x1ZyU1RCUyRm9wZW5ncmFwaC1pbWFnZS1meDVnaTclMkYlNUIlNUIuLi5fX21ldGFkYXRhX2lkX18lNUQlNUQlMkZyb3V0ZSZwYWdlUGF0aD1wcml2YXRlLW5leHQtYXBwLWRpciUyRihzaXRlKSUyRmJsb2clMkYlNUJzbHVnJTVEJTJGb3BlbmdyYXBoLWltYWdlLnRzeCZhcHBEaXI9QyUzQSU1Q1VzZXJzJTVDQWRtaW4lNUNDT0RJTkclNUNtemh1YiU1Q216aHViJTVDYXBwJmFwcFBhdGhzPSUyRihzaXRlKSUyRmJsb2clMkYlNUJzbHVnJTVEJTJGb3BlbmdyYXBoLWltYWdlJnBhZ2VFeHRlbnNpb25zPXRzeCZwYWdlRXh0ZW5zaW9ucz10cyZwYWdlRXh0ZW5zaW9ucz1qc3gmcGFnZUV4dGVuc2lvbnM9anMmYmFzZVBhdGg9JmFzc2V0UHJlZml4PSZuZXh0Q29uZmlnT3V0cHV0PSZwcmVmZXJyZWRSZWdpb249Jm1pZGRsZXdhcmVDb25maWc9ZTMwJTNEIQ%3D%3D&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!
+
+./lib/blog/blog.ts:3:1
+Module not found: Can't resolve 'path'
+[0m [90m 1 |[39m [36mimport[39m { [33mBlogPost[39m[33m,[39m [33mBlogMetadata[39m } [36mfrom[39m [32m'@/types'[39m[0m
+[0m [90m 2 |[39m [36mimport[39m fs [36mfrom[39m [32m'fs'[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m path [36mfrom[39m [32m'path'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m matter [36mfrom[39m [32m'gray-matter'[39m[0m
+[0m [90m 5 |[39m[0m
+[0m [90m 6 |[39m [36mconst[39m contentDirectory [33m=[39m path[33m.[39mjoin(process[33m.[39mcwd()[33m,[39m [32m'content/blog'[39m)[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./app/(site)/blog/[slug]/opengraph-image.tsx
+./node_modules/next/dist/build/webpack/loaders/next-metadata-route-loader.js?page=%2F(site)%2Fblog%2F%5Bslug%5D%2Fopengraph-image-fx5gi7%2F%5B%5B...__metadata_id__%5D%5D%2Froute&filePath=C%3A%5CUsers%5CAdmin%5CCODING%5Cmzhub%5Cmzhub%5Capp%5C(site)%5Cblog%5C%5Bslug%5D%5Copengraph-image.tsx&isDynamic=1!?__next_metadata_route__
+./node_modules/next/dist/build/webpack/loaders/next-edge-app-route-loader/index.js?absolutePagePath=private-next-app-dir%2F(site)%2Fblog%2F%5Bslug%5D%2Fopengraph-image.tsx&page=%2F(site)%2Fblog%2F%5Bslug%5D%2Fopengraph-image-fx5gi7%2F%5B%5B...__metadata_id__%5D%5D%2Froute&appDirLoader=bmV4dC1hcHAtbG9hZGVyP25hbWU9YXBwJTJGKHNpdGUpJTJGYmxvZyUyRiU1QnNsdWclNUQlMkZvcGVuZ3JhcGgtaW1hZ2UtZng1Z2k3JTJGJTVCJTVCLi4uX19tZXRhZGF0YV9pZF9fJTVEJTVEJTJGcm91dGUmcGFnZT0lMkYoc2l0ZSklMkZibG9nJTJGJTVCc2x1ZyU1RCUyRm9wZW5ncmFwaC1pbWFnZS1meDVnaTclMkYlNUIlNUIuLi5fX21ldGFkYXRhX2lkX18lNUQlNUQlMkZyb3V0ZSZwYWdlUGF0aD1wcml2YXRlLW5leHQtYXBwLWRpciUyRihzaXRlKSUyRmJsb2clMkYlNUJzbHVnJTVEJTJGb3BlbmdyYXBoLWltYWdlLnRzeCZhcHBEaXI9QyUzQSU1Q1VzZXJzJTVDQWRtaW4lNUNDT0RJTkclNUNtemh1YiU1Q216aHViJTVDYXBwJmFwcFBhdGhzPSUyRihzaXRlKSUyRmJsb2clMkYlNUJzbHVnJTVEJTJGb3BlbmdyYXBoLWltYWdlJnBhZ2VFeHRlbnNpb25zPXRzeCZwYWdlRXh0ZW5zaW9ucz10cyZwYWdlRXh0ZW5zaW9ucz1qc3gmcGFnZUV4dGVuc2lvbnM9anMmYmFzZVBhdGg9JmFzc2V0UHJlZml4PSZuZXh0Q29uZmlnT3V0cHV0PSZwcmVmZXJyZWRSZWdpb249Jm1pZGRsZXdhcmVDb25maWc9ZTMwJTNEIQ%3D%3D&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!
+
+
+> Build failed because of webpack errors

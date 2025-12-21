@@ -1,7 +1,7 @@
 import { generateOGImage, OG_IMAGE_SIZE } from '@/lib/seo/og-image'
 import { getBlogPost } from '@/lib/blog/blog'
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 export const size = OG_IMAGE_SIZE
 export const contentType = 'image/png'
 

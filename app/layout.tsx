@@ -1,23 +1,23 @@
 import type { Metadata } from 'next'
 import { absoluteUrl, getSiteUrl } from '@/lib/siteUrl'
-import { Inter, Playfair_Display } from 'next/font/google'
+// import { Inter, Playfair_Display } from 'next/font/google' // Disabled due to network error
 import './globals.css'
 import Navbar from '@/components/layout/shared/Navbar'
 import FooterNew from '@/components/layout/shared/FooterNew'
 import { ThemeProvider } from '@/components/layout/shared/theme-provider'
 import { LoadingScreen } from '@/components/ui/shared/loading-screen'
 
-const inter = Inter({
-    subsets: ['latin'],
-    variable: '--font-inter',
-    display: 'swap',
-})
+// const inter = Inter({
+//     subsets: ['latin'],
+//     variable: '--font-inter',
+//     display: 'swap',
+// })
 
-const playfair = Playfair_Display({
-    subsets: ['latin'],
-    variable: '--font-playfair',
-    display: 'swap',
-})
+// const playfair = Playfair_Display({
+//     subsets: ['latin'],
+//     variable: '--font-playfair',
+//     display: 'swap',
+// })
 
 export const metadata: Metadata = {
     metadataBase: new URL(getSiteUrl()),
@@ -59,7 +59,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className={`${inter.variable} ${playfair.variable} overflow-x-hidden`} suppressHydrationWarning>
+        <html lang="en" className={`overflow-x-hidden`} suppressHydrationWarning>
             <body className="font-sans overflow-x-hidden">
                 <ThemeProvider
                     attribute="class"
