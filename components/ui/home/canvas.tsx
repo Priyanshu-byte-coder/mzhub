@@ -195,8 +195,8 @@ function onMousemove(e: MouseEvent | TouchEvent) {
   document.removeEventListener("touchstart", onMousemove);
   
   document.addEventListener("mousemove", handleMove);
-  document.addEventListener("touchmove", handleMove);
-  document.addEventListener("touchstart", handleTouchStart);
+  document.addEventListener("touchmove", handleMove, { passive: false });
+  document.addEventListener("touchstart", handleTouchStart, { passive: false });
   
   handleMove(e);
   createLines();
