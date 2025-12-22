@@ -185,7 +185,7 @@ export default function CoreValuesSticky({
     }
 
     window.addEventListener('wheel', onWheel, { passive: false })
-    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchstart', onTouchStart, { passive: false })
     window.addEventListener('touchmove', onTouchMove, { passive: false })
     window.addEventListener('touchend', resetTouch)
     window.addEventListener('touchcancel', resetTouch)
