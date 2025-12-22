@@ -12,7 +12,7 @@ interface VideoShowcaseProps {
 }
 
 export default function VideoShowcase({
-    videoUrl = '/home/video/MZHub.mp4',
+    videoUrl = '/home/video/mzhub.mp4',
     posterUrl,
     caption,
     className = ''
