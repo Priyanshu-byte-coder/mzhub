@@ -35,11 +35,15 @@ export function ContactUsCard() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2, duration: 0.6 }}
                     >
-                        <p className="text-sm font-medium text-accent-orange tracking-wider uppercase mb-4">
-                            Wanna Contribute to MZHub?
+                        <p className="text-sm font-medium text-accent-gold tracking-wider uppercase mb-4">
+                            Join Our Community
                         </p>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                            Have Questions or Ideas?
                         </h2>
+                        <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                            Whether you want to contribute to MZHub, explore partnership opportunities, or simply learn more about how we can serve your faith community — we'd love to hear from you.
+                        </p>
                     </motion.div>
 
                     <motion.div
@@ -49,10 +53,10 @@ export function ContactUsCard() {
                     >
                         <Link
                             href="/contact"
-                            className="inline-flex items-center gap-2 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white px-6 py-3 rounded-full font-medium hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all duration-300 hover:gap-3 group"
+                            className="inline-flex items-center gap-2 bg-accent-gold hover:bg-accent-gold/90 text-primary-dark px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:gap-4 hover:shadow-xl group text-lg"
                         >
-                            Contact Us
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                            Get In Touch
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                         </Link>
                     </motion.div>
                 </div>

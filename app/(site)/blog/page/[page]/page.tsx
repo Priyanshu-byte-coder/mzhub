@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import { absoluteUrl } from '@/lib/siteUrl'
 import { getAllBlogPosts } from '@/lib/blog/blog'
 import { BlogCard } from '@/components/layout/blog/BlogCard'
@@ -7,6 +8,7 @@ import { BlogHero } from '@/components/layout/blog/BlogHero'
 import { ContactUsCard } from '@/components/layout/blog/ContactUsCard'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/schemas'
+import { BlobButton } from '@/components/ui/shared/BlobButton'
 
 const POSTS_PER_PAGE = 10
 
@@ -83,10 +85,14 @@ export default function BlogPaginated({ params }: { params: { page: string } }) 
         {/* Pagination controls */}
         <div className="flex justify-center gap-4 mt-8">
           {currentPage > 1 && (
-            <a className="underline" href={`/blog/page/${currentPage - 1}`}>Prev</a>
+            <BlobButton as={Link} href={`/blog/page/${currentPage - 1}`}>
+              Previous
+            </BlobButton>
           )}
           {currentPage < totalPages && (
-            <a className="underline" href={`/blog/page/${currentPage + 1}`}>Next</a>
+            <BlobButton as={Link} href={`/blog/page/${currentPage + 1}`}>
+              Next
+            </BlobButton>
           )}
         </div>
 

@@ -46,22 +46,4 @@ export const projects: Project[] = [
     year: '2023',
     tags: ['Meditation', 'Virtual Sangha', 'Teachings Archive'],
   },
-  {
-    id: '5',
-    title: 'Shalom Synagogue',
-    category: 'Jewish Community',
-    description: 'Torah study platform with AI-powered insights, community calendar, and multi-generational engagement tools.',
-    image: 'https://images.unsplash.com/photo-1609157012148-9f4a97fa6a2e?w=800&h=600&fit=crop',
-    year: '2024',
-    tags: ['Torah Study', 'Community Calendar', 'Family Portal'],
-  },
-  {
-    id: '6',
-    title: 'Gurudwara Sahib',
-    category: 'Sikh Temple',
-    description: 'Digital platform for Gurbani teachings, langar coordination, and global Sikh community connection.',
-    image: 'https://images.unsplash.com/photo-1604608672516-f1b9b1a4a0a5?w=800&h=600&fit=crop',
-    year: '2023',
-    tags: ['Gurbani', 'Langar Management', 'Global Community'],
-  },
 ]

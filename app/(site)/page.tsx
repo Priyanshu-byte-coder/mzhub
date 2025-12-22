@@ -123,21 +123,30 @@ export default function Home() {
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {capabilities.map((capability) => (
-                            <div
+                        {capabilities.map((capability, index) => (
+                            <ScrollReveal
                                 key={capability.number}
-                                className="h-full rounded-3xl border border-secondary-light/10 dark:border-secondary-dark/40 bg-white/85 dark:bg-primary-dark/60 shadow-sm px-6 py-8 flex flex-col space-y-4"
+                                baseOpacity={0}
+                                enableBlur={false}
+                                className="h-full"
                             >
-                                <span className="text-xs uppercase tracking-[0.4em] text-secondary-light/60 dark:text-text-mist/60">
-                                    {capability.number}
-                                </span>
-                                <h3 className="text-xl font-semibold text-secondary-light dark:text-white">
-                                    {capability.title}
-                                </h3>
-                                <p className="text-sm md:text-base text-secondary-light/85 dark:text-text-mist leading-relaxed">
-                                    {capability.body}
-                                </p>
-                            </div>
+                                <div 
+                                    className="h-full rounded-3xl border border-secondary-light/10 dark:border-secondary-dark/40 bg-white/85 dark:bg-primary-dark/60 shadow-sm px-6 py-8 flex flex-col space-y-4 hover:shadow-xl hover:scale-[1.02] hover:border-accent-gold/30 dark:hover:border-accent-gold/50 transition-all duration-300"
+                                    style={{
+                                        transitionDelay: `${index * 100}ms`
+                                    }}
+                                >
+                                    <span className="text-xs uppercase tracking-[0.4em] text-secondary-light/60 dark:text-text-mist/60">
+                                        {capability.number}
+                                    </span>
+                                    <h3 className="text-xl font-semibold text-secondary-light dark:text-white">
+                                        {capability.title}
+                                    </h3>
+                                    <p className="text-sm md:text-base text-secondary-light/85 dark:text-text-mist leading-relaxed">
+                                        {capability.body}
+                                    </p>
+                                </div>
+                            </ScrollReveal>
                         ))}
                     </div>
 
