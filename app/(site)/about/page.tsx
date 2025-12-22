@@ -124,7 +124,7 @@ export default function About() {
                 <TeamCarousel team={team} />
             </SectionWrapper>
 
-            <SectionWrapper className="bg-white dark:bg-primary-dark">
+            <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">
                 <div className="py-16 md:py-20 text-center space-y-5">
                     <p className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist">
                         When stewardship-first AI feels right for your community, let us walk with you.

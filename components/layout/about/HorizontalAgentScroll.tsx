@@ -249,7 +249,7 @@ export default function HorizontalAgentScroll() {
             Typical AI tools answer questions. MZHub stewards meaning.
           </p>
           <div className="space-y-2">
-            <p className="text-xl md:text-2xl font-medium text-secondary-light dark:text-accent-gold">
+            <p className="text-xl md:text-2xl font-medium text-secondary-light dark:text-spiritual-indigo-400">
               Stewarding Guidance the Right Way
             </p>
             <p className="text-sm md:text-base text-secondary-light/60 dark:text-text-mist/60">
@@ -263,7 +263,7 @@ export default function HorizontalAgentScroll() {
           <div className="max-w-6xl mx-auto">
             <div className="relative h-1 bg-secondary-light/20 dark:bg-secondary-dark/60 rounded-full mb-8">
               <motion.div
-                className="absolute top-1/2 h-3 w-3 -mt-1.5 bg-accent-gold rounded-full shadow-lg"
+                className="absolute top-1/2 h-3 w-3 -mt-1.5 bg-secondary-light dark:bg-spiritual-indigo-400 rounded-full shadow-lg"
                 style={{
                   left: `${horizontalProgress * 100}%`,
                   transform: 'translateX(-50%)',
@@ -280,7 +280,7 @@ export default function HorizontalAgentScroll() {
                   <motion.p
                     className={`text-xs md:text-sm font-medium transition-colors ${
                       index <= activeCardIndex
-                        ? 'text-secondary-light dark:text-accent-gold'
+                        ? 'text-secondary-light dark:text-spiritual-indigo-400'
                         : 'text-secondary-light/40 dark:text-text-mist/40'
                     }`}
                     animate={{
@@ -335,15 +335,15 @@ export default function HorizontalAgentScroll() {
                   <div
                     className={`relative h-[500px] md:h-[600px] rounded-3xl p-8 md:p-12 flex flex-col justify-between transition-all duration-300 ${
                       isActive
-                        ? 'bg-gradient-to-br from-spiritual-indigo-50 via-white to-accent-beige/30 dark:from-secondary-dark/80 dark:via-primary-dark/60 dark:to-secondary-dark/70 border-2 border-accent-gold/40 dark:border-accent-gold/50 shadow-2xl'
+                        ? 'bg-gradient-to-br from-spiritual-indigo-50 via-white to-spiritual-indigo-100/40 dark:from-secondary-dark/80 dark:via-primary-dark/60 dark:to-secondary-dark/70 border-2 border-secondary-light/50 dark:border-spiritual-indigo-400/60 shadow-2xl'
                         : 'bg-gradient-to-br from-white via-neutral-light to-spiritual-indigo-50/50 dark:from-secondary-dark/60 dark:via-primary-dark/40 dark:to-secondary-dark/50 border border-secondary-light/20 dark:border-secondary-dark/40 shadow-lg'
                     }`}
                   >
                     {/* Top Section: Icon and Number */}
                     <div className="flex justify-between items-start mb-6">
-                      <div className="h-12 w-12 rounded-xl bg-accent-gold/20 dark:bg-accent-gold/10 flex items-center justify-center">
+                      <div className="h-12 w-12 rounded-xl bg-secondary-light/10 dark:bg-spiritual-indigo-500/20 flex items-center justify-center">
                         <svg
-                          className="w-6 h-6 text-accent-gold"
+                          className="w-6 h-6 text-secondary-light dark:text-spiritual-indigo-400"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -359,7 +359,7 @@ export default function HorizontalAgentScroll() {
                       <span
                         className={`text-2xl md:text-3xl font-bold ${
                           isActive
-                            ? 'text-accent-gold'
+                            ? 'text-secondary-light dark:text-spiritual-indigo-400'
                             : 'text-secondary-light/40 dark:text-text-mist/40'
                         }`}
                       >
@@ -373,7 +373,7 @@ export default function HorizontalAgentScroll() {
                         {agent.title}
                       </h3>
 
-                      <p className="text-lg md:text-xl font-medium text-accent-gold dark:text-accent-gold/90">
+                      <p className="text-lg md:text-xl font-medium text-secondary-light/90 dark:text-spiritual-indigo-300">
                         {agent.emphasis}
                       </p>
 

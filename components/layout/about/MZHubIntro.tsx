@@ -11,14 +11,14 @@ export default function MZHubIntro() {
     return (
         <>
             <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark">
-                <div className="relative overflow-hidden w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
+                <div className="relative overflow-visible w-full px-0 md:px-8 lg:px-12 py-0 md:py-28 text-secondary-light dark:text-text-mist">
                     <div className="relative space-y-20 md:space-y-28">
                         {/* MEET MZHUB HERO */}
                         <ScrollReveal baseOpacity={0.1} enableBlur={false} baseRotation={0}>
-                            <div className="relative h-[70vh] min-h-[460px] w-full">
+                            <div className="relative h-[70vh] min-h-[460px] w-screen left-1/2 right-1/2 -translate-x-1/2">
                                 <div className="absolute inset-0">
                                     <div className="relative h-full w-full">
-                                        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/75 to-white/80 dark:from-black/40 dark:via-black/60 dark:to-black/80 z-10 transition-colors duration-500" />
+                                        <div className="absolute inset-0" />
                                         <div className="absolute inset-0">
                                             <motion.div
                                                 className="h-full w-full"
@@ -26,7 +26,7 @@ export default function MZHubIntro() {
                                                 whileInView={{ scale: 1, opacity: 1 }}
                                                 transition={{ duration: 1.4, ease: [0.2, 0.8, 0.2, 1] }}
                                             >
-                                                <div className="h-full w-full bg-[url('/shared/MZHub-logo.png')] bg-cover bg-center" />
+                                                <div className="h-full w-full bg-[url('/projects/community-bg.jpg')] bg-contain bg-center bg-no-repeat opacity-30" />
                                             </motion.div>
                                         </div>
                                     </div>
@@ -64,9 +64,7 @@ export default function MZHubIntro() {
                                         transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                         className="mt-8 w-full flex justify-center"
                                     >
-                                        <div className="w-full max-w-2xl rounded-[2.2rem] border border-accent-gold/40 bg-gradient-to-br from-[#FFF8E7] via-white to-[#F7F9FC] px-8 py-8 shadow-xl text-center relative overflow-hidden dark:from-[#23263a] dark:via-[#181a29] dark:to-[#23263a] dark:border-accent-gold/25 dark:shadow-[0_8px_32px_0_rgba(40,40,80,0.45)]">
-                                            {/* Glow effect */}
-                                            <div className="pointer-events-none absolute -inset-1 rounded-[2.5rem] bg-gradient-to-br from-accent-gold/20 via-white/10 to-accent-gold/10 blur-2xl opacity-60 dark:from-accent-gold/10 dark:via-white/5 dark:to-accent-gold/20" />
+                                        <div className="w-full max-w-2xl rounded-[2.2rem] bg-white/60 dark:bg-secondary-dark/60 backdrop-blur-md px-8 py-8 text-center relative overflow-hidden shadow-lg border border-white/20 dark:border-secondary-dark/40">
                                             <p className="relative z-10 text-xl md:text-2xl font-semibold text-spiritual-indigo-600 dark:text-accent-gold drop-shadow-sm tracking-tight">
                                                 MZHub does not digitise faith. It protects it — and helps<br />it travel further.
                                             </p>
@@ -174,7 +172,7 @@ export default function MZHubIntro() {
 
                         {/* WHY DIFFERENT */}
                         {/* <ScrollReveal baseOpacity={0.15} enableBlur={false} baseRotation={0} className="pt-8 md:pt-16">
-                        <div className="space-y-10 rounded-[36px] bg-white dark:bg-secondary-dark/65 border border-secondary-light/10 dark:border-secondary-dark/40 shadow-[0_25px_60px_-25px_rgba(15,23,42,0.25)] px-4 md:px-10 py-10">
+                        <div className="space-y-10 rounded-[36px] bg-white dark:bg-secondary-dark/65 border border-gray-200 dark:border-secondary-dark/40 shadow-lg px-4 md:px-10 py-10">
                             <div className="text-center space-y-2">
                                 <h3 className="text-2xl md:text-4xl font-semibold text-secondary-light dark:text-white">
                                     Why MZHub Is Different
@@ -185,7 +183,7 @@ export default function MZHubIntro() {
                             </div>
 
                             <div className="grid gap-6 md:grid-cols-2">
-                                <div className="rounded-3xl border border-secondary-light/15 dark:border-secondary-dark/60 bg-secondary-light/5 dark:bg-primary-dark/60 px-6 md:px-8 py-8 space-y-4 text-left">
+                                <div className="rounded-3xl border border-gray-200 dark:border-secondary-dark/60 bg-white dark:bg-primary-dark/60 px-6 md:px-8 py-8 space-y-4 text-left shadow-sm">
                                     <p className="text-xs uppercase tracking-[0.45em] text-secondary-light/60 dark:text-text-mist/60">
                                         Typical AI Platforms
                                     </p>
@@ -203,7 +201,7 @@ export default function MZHubIntro() {
                                     </div>
                                 </div>
 
-                                <div className="rounded-[32px] border border-secondary-light/12 dark:border-secondary-dark/50 bg-gradient-to-br from-white via-accent-beige/35 to-white dark:from-secondary-dark/70 dark:via-primary-dark/60 dark:to-secondary-dark/70 px-6 md:px-10 py-10 space-y-5">
+                                <div className="rounded-[32px] border border-gray-200 dark:border-secondary-dark/50 bg-white dark:bg-secondary-dark/70 px-6 md:px-10 py-10 space-y-5 shadow-sm">
                                     <p className="text-xs uppercase tracking-[0.45em] text-secondary-light/60 dark:text-accent-gold/70">
                                         MZHub's Multi-Agent Architecture
                                     </p>
@@ -226,7 +224,7 @@ export default function MZHubIntro() {
                                         }].map((agent, idx) => (
                                             <div
                                                 key={agent.title}
-                                                className="rounded-2xl border border-secondary-light/15 dark:border-secondary-dark/40 bg-white/90 dark:bg-secondary-dark/65 px-5 py-4 shadow-sm transition duration-300 hover:-translate-y-1"
+                                                className="rounded-2xl border border-gray-200 dark:border-secondary-dark/40 bg-white dark:bg-secondary-dark/65 px-5 py-4 shadow transition duration-300 hover:-translate-y-1"
                                                 style={{ marginTop: idx * 6 }}
                                             >
                                                 <p className="text-sm font-semibold text-secondary-light dark:text-white">{agent.title}</p>
@@ -237,7 +235,7 @@ export default function MZHubIntro() {
                                 </div>
                             </div>
 
-                            <div className="mt-6 rounded-[28px] border border-accent-gold/30 bg-gradient-to-r from-accent-beige/70 via-white to-accent-gold/20 dark:from-secondary-dark/70 dark:via-primary-dark/60 dark:to-secondary-dark/65 shadow-lg px-6 md:px-10 py-6 text-center">
+                            <div className="mt-6 rounded-[28px] border border-gray-200 dark:border-secondary-dark/40 bg-white dark:bg-secondary-dark/65 shadow px-6 md:px-10 py-6 text-center">
                                 <p className="text-base md:text-lg font-semibold text-secondary-light dark:text-accent-gold">
                                     This architecture creates the "aha" moment — faithful guidance delivered with built-in oversight.
                                 </p>
@@ -252,18 +250,15 @@ export default function MZHubIntro() {
             {/* Why MZHub Is Different - ScrollableCardStack Section */}
             <SectionWrapper fullWidth className="bg-neutral-light dark:bg-primary-dark py-2 md:py-4 overflow-visible">
                 <div className="text-center mb-0 md:mb-0 px-4 md:px-8 relative">
-                    {/* Decorative accent */}
-                    <div className="flex justify-center mb-1 md:mb-2">
-                        <span className="inline-block h-1.5 w-12 md:w-16 rounded-full bg-gradient-to-r from-accent-gold via-spiritual-indigo-400 to-accent-gold opacity-80"></span>
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-spiritual-indigo-600 dark:text-accent-gold mb-1 md:mb-2 drop-shadow-sm">
+                    {/* Decorative accent removed */}
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-spiritual-indigo-600 dark:text-white mb-1 md:mb-2 drop-shadow-sm">
                         Why MZHub Is Different
                     </h2>
                     <p className="text-base md:text-xl text-secondary-light/80 dark:text-text-mist/80 mb-1 md:mb-2 font-normal md:font-light max-w-2xl mx-auto">
-                        Typical AI tools answer questions. <span className="font-semibold text-spiritual-indigo-500 dark:text-accent-gold">MZHub stewards meaning.</span>
+                        Typical AI tools answer questions. <span className="font-semibold text-spiritual-indigo-500 dark:text-white">MZHub stewards meaning.</span>
                     </p>
                     <div className="space-y-0.5 md:space-y-1">
-                        <p className="text-lg md:text-xl font-semibold text-spiritual-indigo-600 dark:text-accent-gold">
+                        <p className="text-lg md:text-xl font-semibold text-spiritual-indigo-600 dark:text-white">
                             Stewarding Guidance the Right Way
                         </p>
                         <p className="text-sm md:text-base text-secondary-light/70 dark:text-text-mist/70 max-w-xl mx-auto">
@@ -405,27 +400,27 @@ export default function MZHubIntro() {
                                     </div>
                                 </div>
                                 {/* Right: Images Column */}
-                                <div className="flex-1 flex flex-col items-center gap-8 w-full max-w-md">
+                                <div className="flex-1 flex flex-col items-center gap-8 w-full max-w-2xl">
                                     <div className="flex flex-col gap-12 w-full relative">
                                         {/* Top Image - left aligned */}
                                         <div className="flex w-full justify-start mb-8">
                                             <Image
-                                                src="/shared/MZHub-logo.png"
+                                                src="/about/top.png"
                                                 alt="MZHub Top"
-                                                width={320}
-                                                height={200}
-                                                className="rounded-xl shadow-lg object-contain bg-white dark:bg-secondary-dark p-2"
+                                                width={400}
+                                                height={400}
+                                                className="rounded-xl shadow-lg object-cover"
                                                 style={{ marginLeft: '0' }}
                                             />
                                         </div>
                                         {/* Main Logo Image - right aligned, more offset */}
                                         <div className="flex w-full justify-end mb-8">
                                             <Image
-                                                src="/shared/MZHub-logo.png"
+                                                src="/about/bottom.png"
                                                 alt="MZHub Logo"
-                                                width={480}
-                                                height={320}
-                                                className="rounded-2xl shadow-xl object-contain bg-white dark:bg-secondary-dark p-4"
+                                                width={500}
+                                                height={500}
+                                                className="rounded-2xl shadow-xl object-cover"
                                                 priority
                                                 style={{ marginRight: '0' }}
                                             />

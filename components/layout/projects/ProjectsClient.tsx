@@ -69,9 +69,9 @@ export default function ProjectsClient() {
             <section
                 className="py-20 md:py-32 relative overflow-hidden"
                 style={{
-                    backgroundImage: 'url(/projects/community-bg.jpeg)',
+                    backgroundImage: 'url(/projects/community-bg.jpg)',
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundPosition: 'center 75%',
                     backgroundRepeat: 'no-repeat'
                 }}
             >
