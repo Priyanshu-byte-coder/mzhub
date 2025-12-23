@@ -173,15 +173,14 @@ function onMousemove(e: MouseEvent | TouchEvent) {
   }
 
   function handleMove(ev: MouseEvent | TouchEvent) {
-    if ("touches" in ev) {
-      pos.x = ev.touches[0].pageX;
-      pos.y = ev.touches[0].pageY;
-    } else {
+    if (ev instanceof MouseEvent) {
       pos.x = ev.clientX;
       pos.y = ev.clientY;
+    } else if (ev.touches.length === 1) {
+      pos.x = ev.touches[0].pageX;
+      pos.y = ev.touches[0].pageY;
     }
-
-    ev.preventDefault();
+    // Don't prevent default to allow scrolling
   }
 
   function handleTouchStart(ev: TouchEvent) {
@@ -195,8 +194,8 @@ function onMousemove(e: MouseEvent | TouchEvent) {
   document.removeEventListener("touchstart", onMousemove);
   
   document.addEventListener("mousemove", handleMove);
-  document.addEventListener("touchmove", handleMove, { passive: false });
-  document.addEventListener("touchstart", handleTouchStart, { passive: false });
+  document.addEventListener("touchmove", handleMove, { passive: true });
+  document.addEventListener("touchstart", handleTouchStart, { passive: true });
   
   handleMove(e);
   createLines();

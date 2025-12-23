@@ -6,7 +6,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 import { BlobButton } from '@/components/ui/shared/BlobButton'
 
-import VisuvateHero from '@/components/layout/about/VisuvateHero'
+import ParallaxHero from '@/components/layout/shared/ParallaxHero'
 import PhilosophySection from '@/components/layout/about/PhilosophySection'
 import ValuesTimeline from '@/components/layout/about/ValuesTimeline'
 import MissionVisionSection from '@/components/layout/about/MissionVisionSection'
@@ -60,16 +60,7 @@ export default function About() {
     const team = getTeamMembers()
 
     return (
-        <main 
-            className="bg-white dark:bg-primary-dark min-h-screen w-full"
-            style={{ 
-                position: 'relative',
-                overflowX: 'hidden',
-                overflowY: 'visible',
-                WebkitOverflowScrolling: 'touch',
-                touchAction: 'pan-y pan-x'
-            }}
-        >
+        <main className="bg-white dark:bg-primary-dark min-h-screen w-full">
             {/* Structured Data for SEO */}
             <JsonLd
                 data={[
@@ -90,8 +81,17 @@ export default function About() {
                 About MZHub - AI Spiritual Platform for Religious Institutions | Bridging Ancient Wisdom with Modern Technology
             </h1>
 
-            {/* Hero Section - Visuvate Style */}
-            <VisuvateHero />
+            {/* Hero Section */}
+            <ParallaxHero
+                eyebrow="Who We Are"
+                title={
+                    <>
+                        About <span className="text-accent-gold">Us</span>
+                    </>
+                }
+                description="MZHub is an AI-powered spiritual platform that builds meaningful digital experiences with reverence and purpose."
+                backgroundVariant="about"
+            />
 
             {/* Philosophy Section */}
             <PhilosophySection />
