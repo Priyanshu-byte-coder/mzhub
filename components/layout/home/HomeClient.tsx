@@ -25,7 +25,7 @@ export default function HomeClient({ children }: HomeClientProps) {
     return (
         <>
             {/* Hero Section with Client Interactions */}
-            <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-neutral-light dark:bg-primary-dark">
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-light dark:bg-primary-dark">
                 <AnimatedCanvas />
                 <BackgroundPathsOnly />
                 <div className="container-custom relative z-20 text-center text-secondary-light dark:text-text-mist py-8 px-4 md:py-20">

@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     authors: [{ name: 'MZHub' }],
     creator: 'MZHub',
     publisher: 'MZHub',
+    icons: {
+        icon: '/shared/MZHub-logo.png',
+        apple: '/shared/MZHub-logo.png',
+    },
     openGraph: {
         type: 'website',
         locale: 'en_US',
