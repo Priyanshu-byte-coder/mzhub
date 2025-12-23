@@ -61,11 +61,13 @@ export default function About() {
 
     return (
         <main 
-            className="bg-white dark:bg-primary-dark min-h-screen overflow-x-hidden"
+            className="bg-white dark:bg-primary-dark min-h-screen w-full"
             style={{ 
-                overflowY: 'auto',
+                position: 'relative',
+                overflowX: 'hidden',
+                overflowY: 'visible',
                 WebkitOverflowScrolling: 'touch',
-                touchAction: 'pan-y'
+                touchAction: 'pan-y pan-x'
             }}
         >
             {/* Structured Data for SEO */}
@@ -108,23 +110,6 @@ export default function About() {
 
             {/* CTA Section - Visuvate Style */}
             <CTASection />
-
-            {/* Final CTA */}
-            <section className="py-12 md:py-16 bg-neutral-light dark:bg-primary-dark">
-                <div className="container-custom px-4 sm:px-6 text-center space-y-5">
-                    <p className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist">
-                        When stewardship-first AI feels right for your community, let us walk with you.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <BlobButton as={Link} href="/contact">
-                            Partner with MZHub
-                        </BlobButton>
-                        <BlobButton as={Link} href="/projects">
-                            View Our Work
-                        </BlobButton>
-                    </div>
-                </div>
-            </section>
 
             {/* Schema.org structured data for keywords */}
             <script

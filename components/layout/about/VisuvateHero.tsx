@@ -28,56 +28,51 @@ export default function VisuvateHero() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="space-y-6 md:space-y-10"
         >
-          {/* Main Title - Visuvate Style */}
+          {/* Main Title - About Us Only */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight"
           >
-            <span className="text-secondary-light dark:text-white font-serif">About</span>
-            <span className="text-accent-gold font-serif italic ml-2 md:ml-4">Us</span>
+            <span className="text-secondary-light dark:text-white font-serif">About </span>
+            <span className="text-accent-gold font-serif italic">Us</span>
           </motion.h1>
 
-          {/* Logo/Icon similar to Visuvate */}
+          {/* MZHub Logo - Light/Dark Theme */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex justify-center py-6 md:py-10"
+            className="flex justify-center py-4 md:py-6"
           >
-            <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-36 lg:h-36">
-              <svg 
-                viewBox="0 0 100 100" 
-                className="w-full h-full text-secondary-light/20 dark:text-white/20"
-                fill="currentColor"
-              >
-                <path d="M50 10 L90 50 L50 90 L10 50 Z" />
-                <path d="M50 25 L75 50 L50 75 L25 50 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-              </svg>
+            <div className="relative w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40">
+              {/* Light theme logo */}
+              <img 
+                src="/shared/MZHub-logo.svg" 
+                alt="MZHub Logo"
+                className="w-full h-full object-contain dark:hidden opacity-30"
+              />
+              {/* Dark theme logo */}
+              <img 
+                src="/shared/MZHub-logo_w.svg" 
+                alt="MZHub Logo"
+                className="w-full h-full object-contain hidden dark:block opacity-30"
+              />
             </div>
           </motion.div>
 
-          {/* Description */}
+          {/* Short Description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="max-w-3xl mx-auto space-y-6"
+            className="max-w-3xl mx-auto"
           >
-            <p className="text-lg sm:text-xl md:text-2xl text-secondary-light/80 dark:text-text-mist leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-secondary-light/80 dark:text-text-mist leading-relaxed">
               <span className="font-semibold text-secondary-light dark:text-white">MZHub</span> is an{" "}
               <span className="font-semibold text-accent-gold">AI-powered spiritual platform</span>{" "}
-              that builds <span className="font-semibold">meaningful digital experiences</span> with 
-              reverence and purpose. We create technology that is spiritually grounded, ethically sound, 
-              and meaningful to the communities who use it.
-            </p>
-
-            <p className="text-base sm:text-lg md:text-xl text-secondary-light/70 dark:text-text-mist/80 leading-relaxed">
-              Every project begins with understanding and ends with care. Our goal is 
-              to design experiences that feel <span className="font-semibold">effortless and intentional</span> while delivering 
-              measurable results that help <span className="font-semibold text-accent-gold">faith communities grow</span> and{" "}
-              <span className="font-semibold text-accent-gold">perform better online</span>.
+              that builds <span className="font-semibold">meaningful digital experiences</span> with reverence and purpose.
             </p>
           </motion.div>
         </motion.div>
