@@ -1,21 +1,56 @@
 import type { Metadata } from 'next'
 import { absoluteUrl } from '@/lib/siteUrl'
 import Link from 'next/link'
-import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import { getTeamMembers } from '@/lib/about/teamMembers'
-import ScrollReveal from '@/components/ui/shared/scroll-reveal'
-import TeamCarousel from '@/components/layout/about/team-carousel'
-import MZHubIntro from '@/components/layout/about/MZHubIntro'
-import CoreValuesSticky from '@/components/ui/about/core-values-sticky'
-import AboutHero from '@/components/layout/about/AboutHero'
-import WhyThisMatters from '@/components/layout/about/WhyThisMatters'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 import { BlobButton } from '@/components/ui/shared/BlobButton'
 
+import VisuvateHero from '@/components/layout/about/VisuvateHero'
+import PhilosophySection from '@/components/layout/about/PhilosophySection'
+import ValuesTimeline from '@/components/layout/about/ValuesTimeline'
+import MissionVisionSection from '@/components/layout/about/MissionVisionSection'
+import WhyDifferentSection from '@/components/layout/about/WhyDifferentSection'
+import TeamSection from '@/components/layout/about/TeamSection'
+import CTASection from '@/components/layout/about/CTASection'
+
 export const metadata: Metadata = {
-    title: 'About Us',
-    description: 'Learn about MZHub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
+    title: 'About Us | MZHub - AI Spiritual Platform for Religious Institutions',
+    description: 'Learn about MZHub, an AI-powered spiritual platform bridging ancient wisdom with modern technology. Discover our mission, core values, and dedicated team serving religious institutions worldwide with ethical AI solutions.',
+    keywords: [
+        'MZHub',
+        'AI spiritual platform',
+        'religious AI',
+        'spiritual technology',
+        'faith-based AI',
+        'religious institutions',
+        'spiritual guidance',
+        'AI ethics',
+        'sacred knowledge preservation',
+        'digital ministry',
+        'church technology',
+        'mosque technology',
+        'temple technology',
+        'spiritual wisdom AI',
+        'ethical AI for faith',
+        'religious content management',
+        'spiritual community platform',
+        'AI-powered guidance',
+        'faith community technology',
+        'religious digital transformation'
+    ],
+    openGraph: {
+        title: 'About Us | MZHub - AI Spiritual Platform',
+        description: 'MZHub bridges ancient spiritual wisdom with modern AI technology. Learn about our mission to serve religious institutions with ethical, reverent AI solutions.',
+        type: 'website',
+        url: absoluteUrl('/about'),
+        siteName: 'MZHub',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'About Us | MZHub - AI Spiritual Platform',
+        description: 'MZHub bridges ancient spiritual wisdom with modern AI technology. Learn about our mission to serve religious institutions.',
+    },
     alternates: {
         canonical: absoluteUrl('/about'),
     },
@@ -25,15 +60,22 @@ export default function About() {
     const team = getTeamMembers()
 
     return (
-        <div className="bg-white dark:bg-primary-dark">
-            {/* Structured Data */}
+        <main 
+            className="bg-white dark:bg-primary-dark min-h-screen overflow-x-hidden"
+            style={{ 
+                overflowY: 'auto',
+                WebkitOverflowScrolling: 'touch',
+                touchAction: 'pan-y'
+            }}
+        >
+            {/* Structured Data for SEO */}
             <JsonLd
                 data={[
                     generateOrganizationSchema(),
                     generateWebPageSchema(
                         {
-                            name: 'About Us - MZHub',
-                            description: 'Learn about MZHub\'s mission to bridge spiritual wisdom and AI technology, our core values, and the team dedicated to serving religious institutions.',
+                            name: 'About Us - MZHub AI Spiritual Platform',
+                            description: 'Learn about MZHub, an AI-powered spiritual platform bridging ancient wisdom with modern technology. Discover our mission, core values, and dedicated team serving religious institutions worldwide.',
                             url: '/about',
                         },
                         absoluteUrl('')
@@ -41,91 +83,35 @@ export default function About() {
                 ]}
             />
 
-            {/* Hero */}
-            <AboutHero />
+            {/* Hidden SEO Keywords */}
+            <h1 className="sr-only">
+                About MZHub - AI Spiritual Platform for Religious Institutions | Bridging Ancient Wisdom with Modern Technology
+            </h1>
 
-            <WhyThisMatters />
+            {/* Hero Section - Visuvate Style */}
+            <VisuvateHero />
 
-            {/* Mission */}
-            <MZHubIntro />
+            {/* Philosophy Section */}
+            <PhilosophySection />
 
-            {/* Core Values replaced with Sticky Scroll */}
-            {/**
-            <SectionWrapper className="bg-neutral-light dark:bg-primary-dark" fullWidth>
-                <div className="w-full px-4 sm:px-8 lg:px-12">
-                    <div className="w-full">
-                        <CoreValuesSticky
-                            videoSrc="/home/video/MZHub.mp4"
-                            topOffset={112}
-                            headingTitle="Our Core Values"
-                            headingSubtitle="These principles guide every decision we make"
-                            items={[
-                                {
-                                    title: 'Reverence for Tradition',
-                                    text: 'We approach spiritual teachings with deep respect. Technology simply preserves what elders already share.',
-                                    details: [
-                                        'We observe archivists, chant keepers, and ritual artists before touching any interface.',
-                                        'Councils review tone, gestures, and ceremonial cues every quarter.'
-                                    ],
-                                    highlights: [
-                                        'Palette captured from temple murals',
-                                        'Sound beds sourced from live ceremonies',
-                                        'Blessing prompts signed by lineage elders'
-                                    ],
-                                    fillerBlocks: 6
-                                },
-                                {
-                                    title: 'Institutional Sovereignty',
-                                    text: 'Religious leaders keep full control of doctrine, approvals, and deployment cadence.',
-                                    details: [
-                                        'Guardrail workshops let clergy define red lines before launch.',
-                                        'In-house stewards learn content tooling and rollback steps.'
-                                    ],
-                                    highlights: [
-                                        'Council-facing provenance reports',
-                                        'Self-hosting kits for sensitive archives',
-                                        'Emergency rollback switch in governance UI'
-                                    ],
-                                    fillerBlocks: 6
-                                },
-                                {
-                                    title: 'Privacy as Sacred',
-                                    text: 'Spiritual seeking is intimate, so every inquiry stays encrypted, logged, and under institutional guardianship.',
-                                    details: [
-                                        'Pastoral escalation flows redact sensitive fragments before routing to leaders.',
-                                        'Annual drills simulate incidents so guardians rehearse every protection step.'
-                                    ],
-                                    highlights: [
-                                        'Multi-region redundancy tuned for sacred sites',
-                                        'Anonymized analytics dashboards for leaders',
-                                        'Consent receipts via email or SMS for every devotee'
-                                    ],
-                                    fillerBlocks: 6
-                                },
-                            ]}
-                        />
-                    </div>
-                </div>
-            </SectionWrapper>
-            **/}
+            {/* Mission & Vision */}
+            <MissionVisionSection />
 
-            {/* Team */}
-            <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">
-                <div className="text-center mb-12">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <p className="text-sm uppercase tracking-[0.4em] text-secondary-light/70 dark:text-text-mist/70">Meet Our Team</p>
-                        <h2 className="mt-4 text-4xl font-bold text-secondary-light dark:text-accent-gold">Faces behind the mission</h2>
-                    </ScrollReveal>
-                    <p className="mt-4 text-base text-secondary-light/80 dark:text-text-mist/80">
-                        Every partnership blends rigorous AI craft with reverence for sacred wisdom. Hover to bring each story from archival grayscale to living color.
-                    </p>
-                </div>
+            {/* Values Timeline - Visuvate Style */}
+            <ValuesTimeline />
 
-                <TeamCarousel team={team} />
-            </SectionWrapper>
+            {/* Why MZHub Is Different */}
+            <WhyDifferentSection />
 
-            <SectionWrapper className="bg-neutral-light dark:bg-primary-dark">
-                <div className="py-16 md:py-20 text-center space-y-5">
+            {/* Team Section */}
+            <TeamSection team={team} />
+
+            {/* CTA Section - Visuvate Style */}
+            <CTASection />
+
+            {/* Final CTA */}
+            <section className="py-12 md:py-16 bg-neutral-light dark:bg-primary-dark">
+                <div className="container-custom px-4 sm:px-6 text-center space-y-5">
                     <p className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist">
                         When stewardship-first AI feels right for your community, let us walk with you.
                     </p>
@@ -138,8 +124,32 @@ export default function About() {
                         </BlobButton>
                     </div>
                 </div>
-            </SectionWrapper>
+            </section>
 
-        </div>
+            {/* Schema.org structured data for keywords */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "MZHub",
+                        "description": "AI-powered spiritual platform bridging ancient wisdom with modern technology for religious institutions",
+                        "url": absoluteUrl('/'),
+                        "sameAs": [],
+                        "knowsAbout": [
+                            "Artificial Intelligence",
+                            "Spiritual Technology",
+                            "Religious Content Management",
+                            "Faith-based AI Solutions",
+                            "Sacred Knowledge Preservation",
+                            "Digital Ministry",
+                            "Ethical AI",
+                            "Multi-faith Platform"
+                        ]
+                    })
+                }}
+            />
+        </main>
     )
 }
