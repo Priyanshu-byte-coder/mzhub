@@ -279,7 +279,7 @@ export default function FAQ() {
                                 className="group p-6 rounded-xl border border-secondary-light/10 dark:border-secondary-dark/40 bg-white/85 dark:bg-card/70 hover:shadow-lg transition-all"
                             >
                                 <h3 className="text-xl font-semibold text-secondary-light dark:text-accent-gold mb-3 group-hover:text-accent-blue dark:group-hover:text-accent-gold/80 transition-colors">
-                                    🎯 View Case Studies
+                                    🎯 View Our Projects
                                 </h3>
                                 <p className="text-sm text-secondary-light/70 dark:text-text-mist/70">
                                     See how faith communities worldwide are using MZHub to preserve teachings and serve their members.

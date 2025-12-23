@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import ParallaxHero from '@/components/layout/shared/ParallaxHero'
 import { BlobButton } from '@/components/ui/shared/BlobButton'
-import { ProjectCard } from '@/components/ui/projects/project-card'
+import ThreeDCarousel from '@/components/ui/shared/ThreeDCarousel'
 import { projects } from '@/lib/projects/projectsData'
 
 export default function ProjectsClient() {
@@ -31,7 +31,7 @@ export default function ProjectsClient() {
                 backgroundVariant="projects"
             />
 
-            {/* Projects Grid */}
+            {/* Projects Carousel */}
             <section id="projects" className="py-20 md:py-32">
                 <div className="container-custom px-4">
                     <motion.div
@@ -47,7 +47,7 @@ export default function ProjectsClient() {
                                     Featured Projects
                                 </p>
                                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-light dark:text-text-mist font-serif">
-                                    Case Studies
+                                    Our Work
                                 </h2>
                             </div>
                             <p className="text-lg text-secondary-light/70 dark:text-text-mist/70 max-w-xl">
@@ -57,11 +57,12 @@ export default function ProjectsClient() {
                         </div>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                        {projects.map((project, index) => (
-                            <ProjectCard key={project.id} project={project} index={index} />
-                        ))}
-                    </div>
+                    <ThreeDCarousel 
+                        items={projects}
+                        autoRotate={true}
+                        rotateInterval={5000}
+                        cardHeight={500}
+                    />
                 </div>
             </section>
 

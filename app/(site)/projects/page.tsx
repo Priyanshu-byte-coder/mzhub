@@ -5,9 +5,9 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
-  title: 'Our Projects - Faith Technology Case Studies | MZHub',
-  description: 'Discover how MZHub helps religious institutions worldwide preserve sacred teachings and connect with communities through AI technology. Featured case studies and success stories.',
-  keywords: ['faith technology projects', 'spiritual AI case studies', 'religious institution technology', 'digital transformation', 'spiritual guidance systems'],
+  title: 'Our Projects - Faith Technology Solutions | MZHub',
+  description: 'Discover how MZHub helps religious institutions worldwide preserve sacred teachings and connect with communities through AI technology. Featured projects and success stories.',
+  keywords: ['faith technology projects', 'spiritual AI solutions', 'religious institution technology', 'digital transformation', 'spiritual guidance systems'],
   alternates: {
     canonical: absoluteUrl('/projects'),
   },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MZHub Projects - Case Studies',
+    title: 'MZHub Projects - Our Work',
     description: 'See how we help religious institutions preserve teachings worldwide',
   },
 }
@@ -33,7 +33,7 @@ export default function ProjectsPage() {
           generateOrganizationSchema(),
           generateWebPageSchema(
             {
-              name: 'Our Projects - Faith Technology Case Studies | MZHub',
+              name: 'Our Projects - Faith Technology Solutions | MZHub',
               description: 'Discover how MZHub helps religious institutions worldwide preserve sacred teachings and connect with communities through AI technology.',
               url: '/projects',
             },
