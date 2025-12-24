@@ -33,7 +33,7 @@ export default function CTASection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
           style={{
             backgroundImage: 'url(/projects/community-bg.jpg)',
           }}

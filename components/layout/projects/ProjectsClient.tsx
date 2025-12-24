@@ -57,7 +57,7 @@ export default function ProjectsClient() {
                         </div>
                     </motion.div>
 
-                    <ThreeDCarousel 
+                    <ThreeDCarousel
                         items={projects}
                         autoRotate={true}
                         rotateInterval={5000}
@@ -67,17 +67,21 @@ export default function ProjectsClient() {
             </section>
 
             {/* CTA Section */}
-            <section
-                className="py-20 md:py-32 relative overflow-hidden"
-                style={{
-                    backgroundImage: 'url(/projects/community-bg.jpg)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center 75%',
-                    backgroundRepeat: 'no-repeat'
-                }}
-            >
-                {/* Light overlay to make background lighter */}
-                <div className="absolute inset-0 bg-white/85 dark:bg-primary-dark/85"></div>
+            <section className="py-20 md:py-32 relative overflow-hidden">
+                {/* Background Image with Overlay - Matching About Page Structure */}
+                <div className="absolute inset-0">
+                    <div
+                        className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
+                        style={{
+                            backgroundImage: 'url(/projects/community-bg.jpg)',
+                        }}
+                    />
+                    {/* Dark overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 dark:from-black/80 dark:via-black/70 dark:to-black/80" />
+
+                    {/* Additional accent gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-accent-gold/10 via-transparent to-accent-gold/10" />
+                </div>
 
                 <div className="container-custom px-4 text-center relative z-10">
                     <motion.div
@@ -87,23 +91,25 @@ export default function ProjectsClient() {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="max-w-4xl mx-auto space-y-8"
                     >
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-serif text-secondary-light dark:text-text-mist">
-                            Ready to Start Your
-                            <br />
-                            <span className="text-accent-gold">Digital Journey?</span>
-                        </h2>
+                        <div className="min-h-[220px] sm:min-h-[280px] md:min-h-[320px] flex items-center justify-center flex-col">
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-serif text-white">
+                                Ready to Start Your
+                                <br />
+                                <span className="text-accent-gold">Digital Journey?</span>
+                            </h2>
+                        </div>
 
-                        <p className="text-xl text-secondary-light/80 dark:text-text-mist/80 max-w-2xl mx-auto">
+                        <p className="text-xl text-white/80 max-w-2xl mx-auto">
                             Join religious institutions worldwide who trust MZHub to preserve
                             their teachings and serve their communities.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-                            <BlobButton as={Link} href="/contact">
-                                Schedule a Demo
-                            </BlobButton>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
                             <BlobButton as={Link} href="/about">
-                                Learn More
+                                About Us
+                            </BlobButton>
+                            <BlobButton as={Link} href="/contact">
+                                Get in touch
                             </BlobButton>
                         </div>
                     </motion.div>

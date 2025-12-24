@@ -130,7 +130,7 @@ export default function Home() {
                                 enableBlur={false}
                                 className="h-full"
                             >
-                                <div 
+                                <div
                                     className="h-full rounded-3xl border border-secondary-light/10 dark:border-secondary-dark/40 bg-white/85 dark:bg-primary-dark/60 shadow-sm px-6 py-8 flex flex-col space-y-4 hover:shadow-xl hover:scale-[1.02] hover:border-accent-gold/30 dark:hover:border-accent-gold/50 transition-all duration-300"
                                     style={{
                                         transitionDelay: `${index * 100}ms`
@@ -243,29 +243,37 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Final CTA */}
-            <section
-                className="py-20 md:py-32 relative overflow-hidden"
-                style={{
-                    backgroundImage: 'url(/projects/community-bg.jpg)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                }}
-            >
-                {/* Light overlay to make background lighter */}
-                <div className="absolute inset-0 bg-white/85 dark:bg-primary-dark/85"></div>
+            <section className="py-20 md:py-32 relative overflow-hidden">
+                {/* Background Image with Overlay - Matching About Page Structure */}
+                <div className="absolute inset-0">
+                    <div
+                        className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
+                        style={{
+                            backgroundImage: 'url(/projects/community-bg.jpg)',
+                        }}
+                    />
+                    {/* Dark overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 dark:from-black/80 dark:via-black/70 dark:to-black/80" />
+
+                    {/* Additional accent gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-accent-gold/10 via-transparent to-accent-gold/10" />
+                </div>
 
                 <div className="container-custom px-4 text-center relative z-10">
-                    <div className="max-w-4xl mx-auto">
+                    <div className="max-w-4xl mx-auto space-y-8">
                         <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-secondary-light dark:text-accent-gold">
-                                Ready to Extend Your Spiritual Reach?
-                            </h2>
+                            <div className="min-h-[220px] sm:min-h-[280px] md:min-h-[320px] flex items-center justify-center flex-col">
+                                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-serif text-white">
+                                    Ready to Extend Your
+                                    <br />
+                                    <span className="text-accent-gold">Spiritual Reach?</span>
+                                </h2>
+                            </div>
                         </ScrollReveal>
-                        <p className="text-xl mb-8 text-secondary-light/80 dark:text-text-mist">
+                        <p className="text-xl text-white/80 max-w-2xl mx-auto">
                             Join religious institutions worldwide who are using MZHub to preserve their teachings and serve their communities better.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
                             <BlobButton as={Link} href="/contact">
                                 Schedule Demo
                             </BlobButton>

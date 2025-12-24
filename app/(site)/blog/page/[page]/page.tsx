@@ -96,9 +96,10 @@ export default function BlogPaginated({ params }: { params: { page: string } }) 
           )}
         </div>
 
-        {/* Contact Us Card */}
-        <ContactUsCard />
       </section>
+
+      {/* Contact Us Card - Full Width */}
+      <ContactUsCard />
     </div>
   )
 }
