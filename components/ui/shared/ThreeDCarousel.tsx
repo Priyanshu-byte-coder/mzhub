@@ -4,6 +4,8 @@ import React, {
   useRef,
   useEffect,
   useState,
+  useCallback,
+  useMemo,
   TouchEvent,
 } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
@@ -70,16 +72,16 @@ const ThreeDCarousel = ({
     return () => observer.disconnect();
   }, []);
 
-  const onTouchStart = (e: TouchEvent) => {
+  const onTouchStart = useCallback((e: TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
     setTouchEnd(null);
-  };
+  }, []);
 
-  const onTouchMove = (e: TouchEvent) => {
+  const onTouchMove = useCallback((e: TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const onTouchEnd = () => {
+  const onTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     if (distance > minSwipeDistance) {
@@ -87,10 +89,10 @@ const ThreeDCarousel = ({
     } else if (distance < -minSwipeDistance) {
       setActive((prev) => (prev - 1 + items.length) % items.length);
     }
-  };
+  }, [touchStart, touchEnd, items.length, minSwipeDistance]);
 
-  // 3D positioning variants for cards
-  const cardVariants = {
+  // 3D positioning variants for cards - memoized since static
+  const cardVariants = useMemo(() => ({
     center: {
       x: 0,
       zIndex: 30,
@@ -123,14 +125,14 @@ const ThreeDCarousel = ({
       opacity: 0,
       filter: "blur(0px) brightness(0.9)",
     },
-  } as const;
+  } as const), []);
 
-  const getCardVariant = (index: number) => {
+  const getCardVariant = useCallback((index: number) => {
     if (index === active) return "center";
     if (index === (active + 1) % items.length) return "right";
     if (index === (active - 1 + items.length) % items.length) return "left";
     return "hidden";
-  };
+  }, [active, items.length]);
 
   return (
     <section
@@ -160,8 +162,8 @@ const ThreeDCarousel = ({
                 variants={cardVariants}
                 initial="hidden"
                 animate={getCardVariant(index)}
-                transition={{ 
-                  duration: 0.8, 
+                transition={{
+                  duration: 0.8,
                   ease: [0.25, 0.46, 0.45, 0.94],
                   opacity: { duration: 0.6 },
                   scale: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] },
@@ -169,7 +171,7 @@ const ThreeDCarousel = ({
               >
                 <div
                   className="overflow-hidden bg-white dark:bg-card border border-border/40 shadow-lg hover:shadow-2xl hover:shadow-accent-gold/20 flex flex-col rounded-2xl transition-shadow duration-500"
-                  style={{ 
+                  style={{
                     height: `${cardHeight}px`,
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",
@@ -267,11 +269,10 @@ const ThreeDCarousel = ({
             {items.map((_, idx) => (
               <button
                 key={idx}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  active === idx
-                    ? "bg-accent-gold w-8"
-                    : "bg-secondary-light/30 dark:bg-text-mist/30 w-2 hover:bg-accent-gold/50"
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 ${active === idx
+                  ? "bg-accent-gold w-8"
+                  : "bg-secondary-light/30 dark:bg-text-mist/30 w-2 hover:bg-accent-gold/50"
+                  }`}
                 onClick={() => setActive(idx)}
                 aria-label={`Go to item ${idx + 1}`}
               />

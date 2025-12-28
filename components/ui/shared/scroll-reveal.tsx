@@ -12,7 +12,7 @@ interface ScrollRevealProps {
   className?: string;
 }
 
-export default function ScrollReveal({
+const ScrollReveal = React.memo(function ScrollReveal({
   children,
   baseOpacity = 0,
   enableBlur = true,
@@ -62,11 +62,14 @@ export default function ScrollReveal({
         filter: isVisible
           ? "blur(0px)"
           : enableBlur
-          ? `blur(${blurStrength}px)`
-          : "none",
+            ? `blur(${blurStrength}px)`
+            : "none",
       }}
     >
       {children}
     </div>
   );
-}
+});
+
+export default ScrollReveal;
+

@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 
@@ -42,7 +43,7 @@ const values: Value[] = [
   }
 ]
 
-function ValueCard({ value, index }: { value: Value; index: number }) {
+const ValueCard = React.memo(function ValueCard({ value, index }: { value: Value; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardRef, { once: true, amount: 0.5 })
 
@@ -52,11 +53,10 @@ function ValueCard({ value, index }: { value: Value; index: number }) {
       initial={{ opacity: 0, x: value.position === "left" ? -50 : 50 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative flex items-start gap-6 md:gap-12 ${
-        value.position === "left" 
-          ? "md:flex-row md:text-right" 
-          : "md:flex-row-reverse md:text-left"
-      } flex-col text-left`}
+      className={`relative flex items-start gap-6 md:gap-12 ${value.position === "left"
+        ? "md:flex-row md:text-right"
+        : "md:flex-row-reverse md:text-left"
+        } flex-col text-left`}
     >
       {/* Content */}
       <div className={`flex-1 ${value.position === "left" ? "md:pr-8" : "md:pl-8"}`}>
@@ -92,13 +92,13 @@ function ValueCard({ value, index }: { value: Value; index: number }) {
       <div className="hidden md:block flex-1" />
     </motion.div>
   )
-}
+});
 
 export default function ValuesTimeline() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(titleRef, { once: true, amount: 0.5 })
-  
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -107,7 +107,7 @@ export default function ValuesTimeline() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative py-20 md:py-32 bg-neutral-light dark:bg-primary-dark overflow-hidden"
     >

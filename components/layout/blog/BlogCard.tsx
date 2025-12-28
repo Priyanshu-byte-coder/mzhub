@@ -1,5 +1,6 @@
 'use client'
 
+import React, { useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -11,9 +12,13 @@ interface BlogCardProps {
   index: number
 }
 
-export function BlogCard({ post, index }: BlogCardProps) {
-  // Determine if card should be on left or right (zig-zag pattern)
-  const isEven = index % 2 === 0
+export const BlogCard = React.memo(function BlogCard({ post, index }: BlogCardProps) {
+  // Memoize derived values to prevent recalculation
+  const isEven = useMemo(() => index % 2 === 0, [index])
+  const formattedDate = useMemo(() =>
+    new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+    [post.date]
+  )
 
   return (
     <motion.div
@@ -43,7 +48,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
             <div className="flex items-center gap-4 text-sm text-secondary-light/60 dark:text-text-mist/60 mb-4">
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
-                <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                <span>{formattedDate}</span>
               </div>
               <div className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
@@ -69,4 +74,4 @@ export function BlogCard({ post, index }: BlogCardProps) {
       </Link>
     </motion.div>
   )
-}
+});

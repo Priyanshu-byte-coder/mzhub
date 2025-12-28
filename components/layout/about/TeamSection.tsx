@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
@@ -9,7 +10,7 @@ interface TeamSectionProps {
   team: TeamMember[]
 }
 
-function TeamCard({ member, index }: { member: TeamMember; index: number }) {
+const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamMember; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardRef, { once: true, amount: 0.3 })
 
@@ -122,7 +123,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       </div>
     </motion.div>
   )
-}
+});
 
 export default function TeamSection({ team }: TeamSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
