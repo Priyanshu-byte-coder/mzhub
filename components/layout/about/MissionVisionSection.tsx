@@ -35,10 +35,34 @@ export default function MissionVisionSection() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 max-w-2xl mx-auto"
           >
-            <div className="rounded-2xl bg-white/60 dark:bg-secondary-dark/40 backdrop-blur-md px-6 py-6 md:px-8 md:py-8 border border-white/20 dark:border-secondary-dark/40 shadow-lg">
-              <p className="text-lg md:text-xl font-semibold text-secondary-light dark:text-accent-gold">
-                MZHub does not digitise faith. It protects it — and helps it travel further.
-              </p>
+            <div className="relative group">
+              {/* Glowing background effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-accent-gold/20 via-accent-gold/30 to-accent-gold/20 dark:from-accent-gold/30 dark:via-accent-gold/40 dark:to-accent-gold/30 rounded-[32px] blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Main card with organic design */}
+              <div className="relative rounded-[32px] bg-gradient-to-br from-white/95 via-white/90 to-accent-gold/5 dark:from-primary-dark/90 dark:via-primary-dark/80 dark:to-accent-gold/10 backdrop-blur-xl px-8 py-10 md:px-12 md:py-12 border-2 border-accent-gold/20 dark:border-accent-gold/30 shadow-2xl overflow-hidden">
+                {/* Decorative corner accents */}
+                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-accent-gold/30 rounded-tl-[32px]" />
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-accent-gold/30 rounded-br-[32px]" />
+                
+                {/* Organic shape overlay */}
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-[0.03] dark:opacity-[0.05]">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="40" fill="currentColor" className="text-accent-gold" />
+                  </svg>
+                </div>
+                
+                {/* Quote icon */}
+                <div className="absolute top-6 left-6 md:top-8 md:left-8 text-accent-gold/20 dark:text-accent-gold/30">
+                  <svg className="w-8 h-8 md:w-10 md:h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+                  </svg>
+                </div>
+                
+                <p className="relative text-xl md:text-2xl lg:text-3xl font-bold text-secondary-light dark:text-accent-gold leading-relaxed text-center">
+                  MZHub does not digitise faith. It protects it — and helps it travel further.
+                </p>
+              </div>
             </div>
           </motion.div>
         </motion.div>

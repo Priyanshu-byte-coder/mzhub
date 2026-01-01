@@ -13,6 +13,8 @@ import MissionVisionSection from '@/components/layout/about/MissionVisionSection
 import WhyDifferentSection from '@/components/layout/about/WhyDifferentSection'
 import TeamSection from '@/components/layout/about/TeamSection'
 import CTASection from '@/components/layout/about/CTASection'
+import TeamCompositionSection from '@/components/layout/about/TeamCompositionSection'
+import HowWePartnerSection from '@/components/layout/about/HowWePartnerSection'
 
 export const metadata: Metadata = {
     title: 'About Us | MZHub - AI Spiritual Platform for Religious Institutions',
@@ -83,13 +85,14 @@ export default function About() {
 
             {/* Hero Section */}
             <ParallaxHero
-                eyebrow="Who We Are"
+                eyebrow="Our Mission"
                 title={
                     <>
-                        About <span className="text-accent-gold">Us</span>
+                        Faith is inherited,{' '}
+                        <span className="text-accent-gold">understanding is built</span>
                     </>
                 }
-                description="MZHub is an AI-powered spiritual platform that builds meaningful digital experiences with reverence and purpose."
+                description="Helping the next generation answer the 'why' — We are a faith-tech agency that transforms spiritual content into accessible knowledge, AI companions, and sustainable commerce ecosystems."
                 backgroundVariant="about"
             />
 
@@ -104,6 +107,12 @@ export default function About() {
 
             {/* Why MZHub Is Different */}
             <WhyDifferentSection />
+
+            {/* Team Composition */}
+            <TeamCompositionSection />
+
+            {/* How We Partner */}
+            <HowWePartnerSection />
 
             {/* Team Section */}
             <TeamSection team={team} />

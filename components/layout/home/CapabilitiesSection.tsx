@@ -54,7 +54,7 @@ export default function CapabilitiesSection({ capabilities }: CapabilitiesSectio
                     </ScrollReveal>
                 </div>
 
-                <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid gap-5 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                     {capabilities.map((capability, index) => {
                         const Icon = iconMap[capability.icon as keyof typeof iconMap]
                         const isActive = activeCard === capability.number
@@ -67,7 +67,7 @@ export default function CapabilitiesSection({ capabilities }: CapabilitiesSectio
                                 className="h-full"
                             >
                                 <div
-                                    className="group h-full min-h-[400px] sm:min-h-[450px] rounded-[28px] sm:rounded-[36px] border-2 border-secondary-light/10 dark:border-secondary-dark/40 bg-gradient-to-br from-white/95 via-white/90 to-neutral-light/80 dark:from-primary-dark/80 dark:via-primary-dark/70 dark:to-primary-dark/60 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden backdrop-blur-sm"
+                                    className="group h-full min-h-[380px] sm:min-h-[450px] rounded-[24px] sm:rounded-[36px] border-2 border-secondary-light/10 dark:border-secondary-dark/40 bg-gradient-to-br from-white/95 via-white/90 to-neutral-light/80 dark:from-primary-dark/80 dark:via-primary-dark/70 dark:to-primary-dark/60 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden backdrop-blur-sm"
                                     style={{
                                         transitionDelay: `${index * 100}ms`,
                                         backgroundImage: `

@@ -9,6 +9,8 @@ import { StaggerTestimonials } from '@/components/layout/home/stagger-testimonia
 import VideoShowcase from '@/components/layout/home/video-component'
 import HomeClient from '@/components/layout/home/HomeClient'
 import CapabilitiesSection from '@/components/layout/home/CapabilitiesSection'
+import PhilosophySection from '@/components/layout/home/PhilosophySection'
+import InquisitivesSection from '@/components/layout/home/InquisitivesSection'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateServiceSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 
@@ -137,77 +139,10 @@ export default function Home() {
             <CapabilitiesSection capabilities={capabilities} />
 
             {/* Philosophy & Trust */}
-            <SectionWrapper id="philosophy" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="max-w-6xl mx-auto space-y-12 px-4">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={4} blurStrength={10}>
-                        <div className="text-center space-y-4">
-                            <p className="uppercase text-sm tracking-[0.45em] text-secondary-light/70 dark:text-text-mist/70">
-                                TECHNOLOGY IN SERVICE OF FAITH
-                            </p>
-                            <h2 className="text-3xl md:text-5xl font-semibold text-secondary-light dark:text-accent-gold">
-                                Technology in Service of Faith
-                            </h2>
-                            <p className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist max-w-3xl mx-auto">
-                                A philosophy built on stewardship, humility, and responsibility
-                            </p>
-                        </div>
-                    </ScrollReveal>
+            <PhilosophySection />
 
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={2} blurStrength={6}>
-                        <div className="rounded-[28px] border border-secondary-light/15 dark:border-secondary-dark/50 bg-white/85 dark:bg-card/70 shadow-xl px-6 md:px-12 py-10 text-center">
-                            <p className="text-xl md:text-2xl font-semibold text-secondary-light dark:text-accent-gold leading-relaxed">
-                                AI should amplify spiritual wisdom — never replace it.
-                                <br />Technology must serve tradition, not the other way around.
-                            </p>
-                        </div>
-                    </ScrollReveal>
-
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={3} blurStrength={8}>
-                        <div className="grid gap-6 md:grid-cols-2">
-                            {[{
-                                title: 'What We Believe',
-                                points: [
-                                    'Human spiritual leadership is irreplaceable',
-                                    'Doctrine must remain institution-controlled',
-                                    'Faith demands care, context, and continuity',
-                                    'Technology should be transparent and accountable'
-                                ]
-                            }, {
-                                title: 'What We Promise',
-                                points: [
-                                    'Complete institutional oversight',
-                                    'Rigorous doctrinal alignment',
-                                    'Privacy, security, and data sovereignty',
-                                    'Continuous ethical review'
-                                ]
-                            }].map((card) => (
-                                <div
-                                    key={card.title}
-                                    className="rounded-[24px] border border-secondary-light/12 dark:border-secondary-dark/50 bg-white/85 dark:bg-card/70 shadow-lg px-6 md:px-8 py-8 space-y-5"
-                                >
-                                    <h3 className="text-xl font-semibold text-secondary-light dark:text-white">
-                                        {card.title}
-                                    </h3>
-                                    <ul className="space-y-4 text-sm md:text-base text-secondary-light/85 dark:text-text-mist leading-relaxed">
-                                        {card.points.map((point) => (
-                                            <li key={point} className="relative pl-5">
-                                                <span className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-secondary-light/70 dark:bg-accent-gold" />
-                                                {point}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </ScrollReveal>
-
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={1} blurStrength={4}>
-                        <p className="text-center text-base md:text-lg text-secondary-light/80 dark:text-accent-gold">
-                            Faith is inherited — understanding is built. MZHub exists to protect both.
-                        </p>
-                    </ScrollReveal>
-                </div>
-            </SectionWrapper>
+            {/* Meet the Inquisitives */}
+            <InquisitivesSection />
 
             {/* Testimonial */}
             <SectionWrapper id="social-proof" className="bg-neutral-light dark:bg-primary-dark">
