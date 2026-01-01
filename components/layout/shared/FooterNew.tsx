@@ -15,6 +15,7 @@ import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react"
 import { useTheme } from "next-themes"
 import "@theme-toggles/react/css/Classic.css"
 import { Classic } from "@theme-toggles/react"
+import LocationMap from './LocationMap'
 
 export default function FooterNew() {
   const currentYear = new Date().getFullYear()
@@ -44,6 +45,12 @@ export default function FooterNew() {
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
+        {/* Map Section */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 text-center">Our Global Presence</h2>
+          <LocationMap />
+        </div>
+
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Section with Newsletter */}
           <div className="relative lg:col-span-1">
