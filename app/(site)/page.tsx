@@ -8,6 +8,7 @@ import { ContainerScroll } from '@/components/ui/home/container-scroll-animation
 import { StaggerTestimonials } from '@/components/layout/home/stagger-testimonials'
 import VideoShowcase from '@/components/layout/home/video-component'
 import HomeClient from '@/components/layout/home/HomeClient'
+import CapabilitiesSection from '@/components/layout/home/CapabilitiesSection'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { generateOrganizationSchema, generateServiceSchema, generateWebPageSchema } from '@/lib/seo/schemas'
 
@@ -47,33 +48,59 @@ export default function Home() {
     const capabilities = [
         {
             number: '01',
-            title: 'AI-Powered Spiritual Guidance',
-            body: 'Knowledge-grounded companions that provide contextual, doctrine-aligned guidance while respecting institutional boundaries.'
+            icon: 'lightbulb',
+            title: 'From Information to Understanding',
+            body: 'Bridge the gap between ancient text and modern curiosity with AI that knows the "why". Transform static scriptures into living conversations that help seekers understand the deeper meaning behind every ritual and teaching.',
+            impactStory: 'Imagine a 18-year-old seeker finding the exact meaning of a 500-year-old ritual in seconds on WhatsApp. That is what we build.'
         },
         {
             number: '02',
-            title: 'Digital Heritage Preservation',
-            body: 'AI-OCR transcription and content structuring to preserve manuscripts, sermons, and archives for the digital age.'
+            icon: 'scroll',
+            title: 'Breathing Life into Archives',
+            body: 'Transforming static manuscripts into living, searchable knowledge for the next generation. Preserve your heritage while making it accessible, ensuring ancient wisdom speaks to modern hearts.',
+            impactStory: 'A grandmother\'s handwritten prayer book from 1920, now digitally preserved and instantly accessible to her great-grandchildren across continents, in their native language.'
         },
         {
             number: '03',
-            title: 'Community Engagement Automation',
-            body: 'Thoughtful automation for messages, reminders, reflections, and community updates — delivered with care.'
+            icon: 'heart',
+            title: 'Intentional Connection',
+            body: 'Moving beyond bulk messages to thoughtful, automated engagement that feels personal, not programmed. Every interaction honors the individual journey while strengthening community bonds.',
+            impactStory: 'A community member receives a personalized reflection on their spiritual milestone, timed perfectly, feeling seen and supported by their faith community.'
         },
         {
             number: '04',
+            icon: 'shield',
             title: 'Institutional Governance & Control',
-            body: 'Full oversight over content sources, responses, escalation paths, and ethical guardrails.'
+            body: 'Full oversight over content sources, responses, escalation paths, and ethical guardrails. Your doctrine, your values, your control—always.',
+            impactStory: 'Religious leaders maintain complete authority over AI responses, ensuring every answer aligns perfectly with their tradition\'s teachings and values.'
         },
         {
             number: '05',
+            icon: 'network',
             title: 'Multi-Platform Presence',
-            body: 'Deploy your digital ecosystem across web, mobile, and conversational platforms like WhatsApp and Arattai.'
+            body: 'Deploy your digital ecosystem across web, mobile, and conversational platforms like WhatsApp and Arattai. Meet your community where they already are.',
+            impactStory: 'A seeker asks a spiritual question on WhatsApp at midnight and receives thoughtful, doctrine-aligned guidance instantly—no app download required.'
         },
         {
             number: '06',
+            icon: 'globe',
             title: 'Multilingual & Global Access',
-            body: 'Serve seekers across languages and geographies without losing cultural or doctrinal nuance.'
+            body: 'Serve seekers across languages and geographies without losing cultural or doctrinal nuance. Break down barriers while preserving authenticity.',
+            impactStory: 'A diaspora community member reconnects with their ancestral faith through teachings delivered in their preferred language, maintaining cultural authenticity.'
+        },
+        {
+            number: '07',
+            icon: 'coins',
+            title: 'Sustainable Ecosystems',
+            body: 'Integrate donation gateways, discourse subscriptions, and event bookings directly into your community platforms. Transform spiritual engagement into sustainable support for your mission.',
+            impactStory: 'A community seamlessly processes monthly contributions, event registrations, and premium content access—all within their familiar chat interface.'
+        },
+        {
+            number: '08',
+            icon: 'settings',
+            title: 'Operational Stewardship',
+            body: 'Automating the administrative "how"—from tithes to registrations—so leaders and their teams can focus on the "why". Free your ministry from paperwork to focus on people.',
+            impactStory: 'A spiritual leader spends 70% less time on administrative tasks, redirecting that energy to counseling, teaching, and deepening community connections.'
         }
     ];
 
@@ -107,54 +134,7 @@ export default function Home() {
             </SectionWrapper>
 
             {/* Platform Capabilities */}
-            <SectionWrapper id="features" className="bg-neutral-light dark:bg-primary-dark">
-                <div className="max-w-6xl mx-auto px-4">
-                    <div className="text-center mb-12 space-y-3">
-                        <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={4} blurStrength={10}>
-                            <div className="space-y-3">
-                                <h2 className="text-3xl md:text-4xl font-semibold text-secondary-light dark:text-accent-gold">
-                                    Platform Capabilities
-                                </h2>
-                                <p className="text-base md:text-lg text-secondary-light/80 dark:text-text-mist">
-                                    Everything required to build a responsible, scalable faith ecosystem
-                                </p>
-                            </div>
-                        </ScrollReveal>
-                    </div>
-
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {capabilities.map((capability, index) => (
-                            <ScrollReveal
-                                key={capability.number}
-                                baseOpacity={0}
-                                enableBlur={false}
-                                className="h-full"
-                            >
-                                <div
-                                    className="h-full rounded-3xl border border-secondary-light/10 dark:border-secondary-dark/40 bg-white/85 dark:bg-primary-dark/60 shadow-sm px-6 py-8 flex flex-col space-y-4 hover:shadow-xl hover:scale-[1.02] hover:border-accent-gold/30 dark:hover:border-accent-gold/50 transition-all duration-300"
-                                    style={{
-                                        transitionDelay: `${index * 100}ms`
-                                    }}
-                                >
-                                    <span className="text-xs uppercase tracking-[0.4em] text-secondary-light/60 dark:text-text-mist/60">
-                                        {capability.number}
-                                    </span>
-                                    <h3 className="text-xl font-semibold text-secondary-light dark:text-white">
-                                        {capability.title}
-                                    </h3>
-                                    <p className="text-sm md:text-base text-secondary-light/85 dark:text-text-mist leading-relaxed">
-                                        {capability.body}
-                                    </p>
-                                </div>
-                            </ScrollReveal>
-                        ))}
-                    </div>
-
-                    <p className="text-center text-sm md:text-base text-secondary-light/70 dark:text-text-mist mt-10">
-                        Capabilities built to support faith — not redefine it.
-                    </p>
-                </div>
-            </SectionWrapper>
+            <CapabilitiesSection capabilities={capabilities} />
 
             {/* Philosophy & Trust */}
             <SectionWrapper id="philosophy" className="bg-neutral-light dark:bg-primary-dark">
