@@ -15,7 +15,6 @@ import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react"
 import { useTheme } from "next-themes"
 import "@theme-toggles/react/css/Classic.css"
 import { Classic } from "@theme-toggles/react"
-import LocationMap from './LocationMap'
 
 export default function FooterNew() {
   const currentYear = new Date().getFullYear()
@@ -45,14 +44,8 @@ export default function FooterNew() {
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
-        {/* Map Section */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-center">Our Global Presence</h2>
-          <LocationMap />
-        </div>
-
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand Section with Newsletter */}
+          {/* Brand Section with Global Presence */}
           <div className="relative lg:col-span-1">
             <Link href="/" className="flex items-center space-x-3 mb-4">
               <Image
@@ -64,26 +57,54 @@ export default function FooterNew() {
               />
               <span className="text-2xl font-bold">MZHub</span>
             </Link>
-            <h2 className="mb-4 text-2xl font-bold tracking-tight">Stay Connected</h2>
-            <p className="mb-6 text-muted-foreground">
-              Join our newsletter for the latest updates and exclusive offers on spiritual technology.
-            </p>
-            <form className="relative">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="pr-12 backdrop-blur-sm"
-              />
-              <Button
-                type="submit"
-                size="icon"
-                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-primary text-primary-foreground transition-transform hover:scale-105"
-              >
-                <Send className="h-4 w-4" />
-                <span className="sr-only">Subscribe</span>
-              </Button>
-            </form>
-            <div className="absolute -right-4 top-0 h-24 w-24 rounded-full bg-primary/10 blur-2xl" />
+
+            {/* World Map with Location */}
+            <div className="mt-4">
+              <h4 className="text-sm font-semibold mb-2 text-muted-foreground">Our Global Presence</h4>
+              <div className="relative rounded-lg overflow-hidden">
+                {/* World Map Image */}
+                <Image
+                  src="/shared/world-map.png"
+                  alt="World Map"
+                  width={400}
+                  height={200}
+                  className="w-full h-auto opacity-60 dark:opacity-40"
+                />
+
+                {/* Mumbai Location Pin */}
+                <div
+                  className="absolute"
+                  style={{ left: '66%', top: '46%' }}
+                >
+                  {/* Pulse animation */}
+                  <div className="absolute w-2 h-2 bg-primary/40 dark:bg-accent-gold/40 rounded-full animate-ping" />
+                  {/* Pin dot */}
+                  <div className="relative w-2 h-2 bg-primary dark:bg-accent-gold rounded-full border border-white dark:border-gray-800 shadow-lg" />
+                </div>
+
+                {/* Location Card */}
+                <div
+                  className="absolute bg-background/95 dark:bg-card/95 backdrop-blur-sm border border-border rounded-lg shadow-lg px-2 py-1.5"
+                  style={{ left: '45%', top: '25%', transform: 'translateX(-50%)' }}
+                >
+                  <div className="flex items-center gap-2">
+                    {/* India Flag */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://flagcdn.com/w40/in.png"
+                      alt="India flag"
+                      width={20}
+                      height={14}
+                      className="h-3.5 w-5 rounded-sm border border-border/40 object-cover"
+                    />
+                    <div className="leading-tight">
+                      <div className="font-semibold text-xs text-foreground">India</div>
+                      <div className="text-[10px] text-muted-foreground">Mumbai, Maharashtra</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -113,7 +134,7 @@ export default function FooterNew() {
             </address>
           </div>
 
-          {/* Social Media & Theme Toggle */}
+          {/* Social Media, Theme Toggle & Newsletter */}
           <div className="relative">
             <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
             <TooltipProvider>
@@ -209,6 +230,29 @@ export default function FooterNew() {
                   />
                 </div>
               )}
+            </div>
+
+            {/* Stay Connected - Newsletter */}
+            <div className="mt-8 pt-6 border-t border-border/50">
+              <h4 className="text-lg font-semibold mb-3">Stay Connected</h4>
+              <p className="mb-4 text-sm text-muted-foreground">
+                Join our newsletter for updates on spiritual technology.
+              </p>
+              <form className="relative">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="pr-12 backdrop-blur-sm"
+                />
+                <Button
+                  type="submit"
+                  size="icon"
+                  className="absolute right-1 top-1 h-8 w-8 rounded-full bg-primary text-primary-foreground transition-transform hover:scale-105"
+                >
+                  <Send className="h-4 w-4" />
+                  <span className="sr-only">Subscribe</span>
+                </Button>
+              </form>
             </div>
           </div>
         </div>
