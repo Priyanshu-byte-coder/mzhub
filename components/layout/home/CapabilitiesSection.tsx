@@ -172,24 +172,95 @@ function MobileCarousel({ capabilities, iconMap, activeCard, toggleCard, renderC
 
 export default function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) {
     const [activeCard, setActiveCard] = useState<string | null>(null)
-    const [desktopIndex, setDesktopIndex] = useState(0)
+    const [translateX, setTranslateX] = useState(0)
+    const [isHovered, setIsHovered] = useState(false)
+    const [swipeStart, setSwipeStart] = useState<number | null>(null)
+    const [swipeEnd, setSwipeEnd] = useState<number | null>(null)
+    const [isMounted, setIsMounted] = useState(false)
+    const containerRef = useRef<HTMLDivElement>(null)
+    const animationRef = useRef<number | null>(null)
 
     const toggleCard = (number: string) => {
         setActiveCard(activeCard === number ? null : number)
     }
 
-    // Desktop infinite carousel autoplay with 2000ms delay
+    // Client-side mounting flag to prevent hydration mismatch
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
+
+    // Smooth continuous auto-scroll (pixel-by-pixel animation)
     useEffect(() => {
         const mediaQuery = window.matchMedia('(min-width: 1024px)')
+        if (!mediaQuery.matches || isHovered) return
 
-        if (!mediaQuery.matches) return
+        const cardWidth = 320 + 32 // card width + gap
+        const totalWidth = cardWidth * capabilities.length
+        const speed = 1.5 // pixels per frame (adjust for speed)
 
-        const interval = setInterval(() => {
-            setDesktopIndex((prev) => (prev + 1) % capabilities.length)
-        }, 2000)
+        const animate = () => {
+            setTranslateX((prev) => {
+                const next = prev + speed
+                // Reset when we've scrolled through one full set
+                if (next >= totalWidth) {
+                    return 0
+                }
+                return next
+            })
+            animationRef.current = requestAnimationFrame(animate)
+        }
 
-        return () => clearInterval(interval)
-    }, [capabilities.length])
+        animationRef.current = requestAnimationFrame(animate)
+
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current)
+            }
+        }
+    }, [capabilities.length, isHovered])
+
+    // Swipe handlers for desktop
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (window.innerWidth < 1024) return
+        setSwipeStart(e.clientX)
+        setSwipeEnd(null)
+    }
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (swipeStart === null || window.innerWidth < 1024) return
+        setSwipeEnd(e.clientX)
+    }
+
+    const handleMouseUp = () => {
+        if (!swipeStart || !swipeEnd || window.innerWidth < 1024) return
+        
+        const distance = swipeStart - swipeEnd
+        const minSwipeDistance = 50
+        
+        if (Math.abs(distance) > minSwipeDistance) {
+            const cardWidth = 320 + 32
+            if (distance > 0) {
+                // Swiped left - jump forward
+                setTranslateX((prev) => prev + cardWidth)
+            } else {
+                // Swiped right - jump backward
+                setTranslateX((prev) => Math.max(0, prev - cardWidth))
+            }
+        }
+        
+        setSwipeStart(null)
+        setSwipeEnd(null)
+    }
+
+    const handleMouseEnter = () => {
+        setIsHovered(true)
+    }
+
+    const handleMouseLeave = () => {
+        setIsHovered(false)
+        setSwipeStart(null)
+        setSwipeEnd(null)
+    }
 
     return (
         <SectionWrapper id="features" className="bg-neutral-light dark:bg-primary-dark">
@@ -219,12 +290,23 @@ export default function CapabilitiesSection({ capabilities }: CapabilitiesSectio
                     renderCard={renderCard}
                 />
 
-                {/* Desktop: Single-line Infinite Auto Carousel */}
-                <div className="hidden lg:block overflow-hidden">
+                {/* Desktop: Continuous Auto-scroll with Swipe Control */}
+                <div 
+                    className="hidden lg:block overflow-hidden cursor-pointer"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    ref={containerRef}
+                >
                     <div
-                        className="flex gap-8 transition-transform duration-500 ease-in-out"
-                        style={{
-                            transform: `translateX(calc(-${desktopIndex * (320 + 32)}px))`,
+                        className="flex gap-8"
+                        style={isMounted ? {
+                            transform: `translateX(-${translateX}px)`,
+                            transition: 'none',
+                        } : {
+                            transform: 'translateX(0px)',
                         }}
                     >
                         {/* Duplicate cards for infinite loop effect */}

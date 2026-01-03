@@ -5,7 +5,6 @@
 /* Import custom styles */
 @import '../styles/variables.css';
 @import '../styles/typography.css';
-@import 'leaflet/dist/leaflet.css';
 
 
 html {
