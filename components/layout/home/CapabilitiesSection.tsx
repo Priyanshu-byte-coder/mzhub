@@ -4,10 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import SectionWrapper from '@/components/ui/shared/SectionWrapper'
 import ScrollReveal from '@/components/ui/shared/scroll-reveal'
 import { Lightbulb, BookOpen, Heart, Shield, Network, Globe, Coins, Settings } from 'lucide-react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
 
 interface Capability {
     number: string
@@ -32,80 +29,167 @@ const iconMap = {
     settings: Settings,
 }
 
+// Mobile Carousel Component
+interface MobileCarouselProps {
+    capabilities: Capability[]
+    iconMap: typeof iconMap
+    activeCard: string | null
+    toggleCard: (number: string) => void
+    renderCard: (capability: Capability, Icon: any, isActive: boolean, index: number) => JSX.Element
+}
+
+function MobileCarousel({ capabilities, iconMap, activeCard, toggleCard, renderCard }: MobileCarouselProps) {
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [touchStart, setTouchStart] = useState<number | null>(null)
+    const [touchEnd, setTouchEnd] = useState<number | null>(null)
+    const [isDragging, setIsDragging] = useState(false)
+    const [dragOffset, setDragOffset] = useState(0)
+    const containerRef = useRef<HTMLDivElement>(null)
+
+    const minSwipeDistance = 50
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null)
+        setTouchStart(e.targetTouches[0].clientX)
+        setIsDragging(true)
+    }
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        if (!touchStart) return
+        const currentTouch = e.targetTouches[0].clientX
+        setTouchEnd(currentTouch)
+        setDragOffset(currentTouch - touchStart)
+    }
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) {
+            setIsDragging(false)
+            setDragOffset(0)
+            return
+        }
+
+        const distance = touchStart - touchEnd
+        const isLeftSwipe = distance > minSwipeDistance
+        const isRightSwipe = distance < -minSwipeDistance
+
+        if (isLeftSwipe && currentIndex < capabilities.length - 1) {
+            setCurrentIndex(currentIndex + 1)
+        }
+        if (isRightSwipe && currentIndex > 0) {
+            setCurrentIndex(currentIndex - 1)
+        }
+
+        setIsDragging(false)
+        setDragOffset(0)
+    }
+
+    const goToSlide = (index: number) => {
+        setCurrentIndex(index)
+    }
+
+    return (
+        <div className="lg:hidden">
+            {/* Carousel Container */}
+            <div
+                ref={containerRef}
+                className="relative overflow-hidden"
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+            >
+                <div
+                    className="flex transition-transform duration-300 ease-out"
+                    style={{
+                        transform: `translateX(calc(-${currentIndex * 100}% + ${isDragging ? dragOffset : 0}px))`,
+                        transition: isDragging ? 'none' : 'transform 0.3s ease-out'
+                    }}
+                >
+                    {capabilities.map((capability, index) => {
+                        const Icon = iconMap[capability.icon as keyof typeof iconMap]
+                        const isActive = activeCard === capability.number
+
+                        return (
+                            <div
+                                key={capability.number}
+                                className="w-full flex-shrink-0 px-4"
+                            >
+                                <div className="min-h-[380px] sm:min-h-[450px]">
+                                    {renderCard(capability, Icon, isActive, index)}
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+
+            {/* Dot Navigation */}
+            <div className="flex justify-center gap-2 mt-6">
+                {capabilities.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => goToSlide(index)}
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${currentIndex === index
+                            ? 'bg-accent-gold w-8'
+                            : 'bg-secondary-light/20 dark:bg-white/20 hover:bg-secondary-light/40 dark:hover:bg-white/40'
+                            }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                ))}
+            </div>
+
+            {/* Arrow Navigation (optional for accessibility) */}
+            <div className="flex justify-center gap-4 mt-4">
+                <button
+                    onClick={() => currentIndex > 0 && setCurrentIndex(currentIndex - 1)}
+                    disabled={currentIndex === 0}
+                    className={`p-2 rounded-full border border-accent-gold/30 transition-all duration-300 ${currentIndex === 0
+                        ? 'opacity-30 cursor-not-allowed'
+                        : 'hover:bg-accent-gold/10 active:scale-95'
+                        }`}
+                    aria-label="Previous slide"
+                >
+                    <svg className="w-5 h-5 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button
+                    onClick={() => currentIndex < capabilities.length - 1 && setCurrentIndex(currentIndex + 1)}
+                    disabled={currentIndex === capabilities.length - 1}
+                    className={`p-2 rounded-full border border-accent-gold/30 transition-all duration-300 ${currentIndex === capabilities.length - 1
+                        ? 'opacity-30 cursor-not-allowed'
+                        : 'hover:bg-accent-gold/10 active:scale-95'
+                        }`}
+                    aria-label="Next slide"
+                >
+                    <svg className="w-5 h-5 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    )
+}
+
 export default function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) {
     const [activeCard, setActiveCard] = useState<string | null>(null)
-    const pinContainerRef = useRef<HTMLDivElement>(null)
-    const topRowRef = useRef<HTMLDivElement>(null)
-    const bottomRowRef = useRef<HTMLDivElement>(null)
+    const [desktopIndex, setDesktopIndex] = useState(0)
 
     const toggleCard = (number: string) => {
         setActiveCard(activeCard === number ? null : number)
     }
 
+    // Desktop infinite carousel autoplay with 2000ms delay
     useEffect(() => {
-        // Only initialize on desktop (lg breakpoint = 1024px)
         const mediaQuery = window.matchMedia('(min-width: 1024px)')
-        
-        const initScrollTrigger = () => {
-            if (!mediaQuery.matches || !pinContainerRef.current || !topRowRef.current || !bottomRowRef.current) {
-                return
-            }
 
-            // Calculate scroll distance based on content width
-            const topRowWidth = topRowRef.current.scrollWidth - topRowRef.current.clientWidth
-            const bottomRowWidth = bottomRowRef.current.scrollWidth - bottomRowRef.current.clientWidth
-            const maxWidth = Math.max(topRowWidth, bottomRowWidth)
+        if (!mediaQuery.matches) return
 
-            // Create timeline for horizontal scroll
-            // Pin only the card container when both rows are visible
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: pinContainerRef.current,
-                    start: 'center center',
-                    end: () => `+=${maxWidth * 2}`,
-                    scrub: 1,
-                    pin: pinContainerRef.current,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                }
-            })
+        const interval = setInterval(() => {
+            setDesktopIndex((prev) => (prev + 1) % capabilities.length)
+        }, 2000)
 
-            // Animate top row: left to right
-            tl.to(topRowRef.current, {
-                x: -topRowWidth,
-                ease: 'none',
-            }, 0)
-
-            // Animate bottom row: right to left (opposite direction)
-            tl.fromTo(bottomRowRef.current, 
-                { x: -bottomRowWidth },
-                {
-                    x: 0,
-                    ease: 'none',
-                }, 0)
-        }
-
-        initScrollTrigger()
-
-        // Reinitialize on resize
-        const handleResize = () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-            initScrollTrigger()
-        }
-
-        mediaQuery.addEventListener('change', handleResize)
-        window.addEventListener('resize', handleResize)
-
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-            mediaQuery.removeEventListener('change', handleResize)
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [])
-
-    // Split capabilities into two rows
-    const topRowCapabilities = capabilities.slice(0, 4)
-    const bottomRowCapabilities = capabilities.slice(4, 8)
+        return () => clearInterval(interval)
+    }, [capabilities.length])
 
     return (
         <SectionWrapper id="features" className="bg-neutral-light dark:bg-primary-dark">
@@ -126,48 +210,30 @@ export default function CapabilitiesSection({ capabilities }: CapabilitiesSectio
                     </ScrollReveal>
                 </div>
 
-                {/* Mobile/Tablet: Standard grid layout */}
-                <div className="lg:hidden grid gap-5 sm:gap-8 grid-cols-1 sm:grid-cols-2">
-                    {capabilities.map((capability, index) => {
-                        const Icon = iconMap[capability.icon as keyof typeof iconMap]
-                        const isActive = activeCard === capability.number
+                {/* Mobile: Swipeable Carousel */}
+                <MobileCarousel
+                    capabilities={capabilities}
+                    iconMap={iconMap}
+                    activeCard={activeCard}
+                    toggleCard={toggleCard}
+                    renderCard={renderCard}
+                />
 
-                        return (
-                            <ScrollReveal
-                                key={capability.number}
-                                baseOpacity={0}
-                                enableBlur={false}
-                                className="h-full"
-                            >
-                                {renderCard(capability, Icon, isActive, index)}
-                            </ScrollReveal>
-                        )
-                    })}
-                </div>
-
-                {/* Desktop: Horizontal scroll rows - Pinned Container */}
-                <div ref={pinContainerRef} className="hidden lg:flex flex-col justify-center overflow-hidden min-h-screen">
-                    {/* Top Row - Scrolls Left to Right */}
-                    <div ref={topRowRef} className="flex gap-8 mb-8 will-change-transform">
-                        {topRowCapabilities.map((capability, index) => {
+                {/* Desktop: Single-line Infinite Auto Carousel */}
+                <div className="hidden lg:block overflow-hidden">
+                    <div
+                        className="flex gap-8 transition-transform duration-500 ease-in-out"
+                        style={{
+                            transform: `translateX(calc(-${desktopIndex * (320 + 32)}px))`,
+                        }}
+                    >
+                        {/* Duplicate cards for infinite loop effect */}
+                        {[...capabilities, ...capabilities].map((capability, index) => {
                             const Icon = iconMap[capability.icon as keyof typeof iconMap]
                             const isActive = activeCard === capability.number
                             return (
-                                <div key={capability.number} className="flex-shrink-0 w-[320px]">
-                                    {renderCard(capability, Icon, isActive, index)}
-                                </div>
-                            )
-                        })}
-                    </div>
-
-                    {/* Bottom Row - Scrolls Right to Left */}
-                    <div ref={bottomRowRef} className="flex gap-8 will-change-transform">
-                        {bottomRowCapabilities.map((capability, index) => {
-                            const Icon = iconMap[capability.icon as keyof typeof iconMap]
-                            const isActive = activeCard === capability.number
-                            return (
-                                <div key={capability.number} className="flex-shrink-0 w-[320px]">
-                                    {renderCard(capability, Icon, isActive, index + 4)}
+                                <div key={`${capability.number}-${index}`} className="flex-shrink-0 w-[320px]">
+                                    {renderCard(capability, Icon, isActive, index % capabilities.length)}
                                 </div>
                             )
                         })}
@@ -207,9 +273,8 @@ export default function CapabilitiesSection({ capabilities }: CapabilitiesSectio
 
                 {/* Card Content */}
                 <div
-                    className={`relative z-10 h-full flex flex-col p-6 sm:p-8 transition-all duration-500 ${
-                        isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                    }`}
+                    className={`relative z-10 h-full flex flex-col p-6 sm:p-8 transition-all duration-500 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                        }`}
                 >
                     {/* Icon */}
                     <div className="mb-6 flex items-center justify-between">
@@ -251,9 +316,8 @@ export default function CapabilitiesSection({ capabilities }: CapabilitiesSectio
 
                 {/* Impact Story Overlay */}
                 <div
-                    className={`absolute inset-0 bg-gradient-to-br from-accent-gold via-accent-gold/95 to-accent-gold/90 dark:from-accent-gold/95 dark:via-accent-gold/90 dark:to-accent-gold/85 rounded-[28px] sm:rounded-[36px] p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 z-20 ${
-                        isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                    }`}
+                    className={`absolute inset-0 bg-gradient-to-br from-accent-gold via-accent-gold/95 to-accent-gold/90 dark:from-accent-gold/95 dark:via-accent-gold/90 dark:to-accent-gold/85 rounded-[28px] sm:rounded-[36px] p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 z-20 ${isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                        }`}
                 >
                     {/* Decorative pattern overlay */}
                     <div className="absolute inset-0 opacity-10">
@@ -276,7 +340,7 @@ export default function CapabilitiesSection({ capabilities }: CapabilitiesSectio
                                 Impact Story
                             </span>
                         </div>
-                        
+
                         <p className="text-base sm:text-lg text-white leading-relaxed font-medium">
                             {capability.impactStory}
                         </p>
