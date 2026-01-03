@@ -71,6 +71,71 @@ export default function FooterNew() {
                   className="w-full h-auto opacity-60 dark:opacity-40"
                 />
 
+                {/* Finland Location Pin */}
+                <div
+                  className="absolute"
+                  style={{ left: '53%', top: '20%' }}
+                >
+                  {/* Pulse animation */}
+                  <div className="absolute w-2 h-2 bg-primary/40 dark:bg-accent-gold/40 rounded-full animate-ping" />
+                  {/* Pin dot */}
+                  <div className="relative w-2 h-2 bg-primary dark:bg-accent-gold rounded-full border border-white dark:border-gray-800 shadow-lg" />
+                </div>
+
+                {/* Finland Location Card */}
+                <div
+                  className="absolute bg-background/95 dark:bg-card/95 backdrop-blur-sm border border-border rounded-lg shadow-lg px-2 py-1.5"
+                  style={{ left: '55%', top: '5%' }}
+                >
+                  <div className="flex items-center gap-2">
+                    {/* Finland Flag */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://flagcdn.com/w40/fi.png"
+                      alt="Finland flag"
+                      width={20}
+                      height={14}
+                      className="h-3.5 w-5 rounded-sm border border-border/40 object-cover"
+                    />
+                    <div className="leading-tight">
+                      <div className="font-semibold text-xs text-foreground">Finland</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Germany Location Pin */}
+                <div
+                  className="absolute"
+                  style={{ left: '50%', top: '26%' }}
+                >
+                  {/* Pulse animation */}
+                  <div className="absolute w-2 h-2 bg-primary/40 dark:bg-accent-gold/40 rounded-full animate-ping" />
+                  {/* Pin dot */}
+                  <div className="relative w-2 h-2 bg-primary dark:bg-accent-gold rounded-full border border-white dark:border-gray-800 shadow-lg" />
+                </div>
+
+                {/* Germany Location Card */}
+                <div
+                  className="absolute bg-background/95 dark:bg-card/95 backdrop-blur-sm border border-border rounded-lg shadow-lg px-2 py-1.5"
+                  style={{ left: '21%', top: '28%' }}
+                >
+                  <div className="flex items-center gap-2">
+                    {/* Germany Flag */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://flagcdn.com/w40/de.png"
+                      alt="Germany flag"
+                      width={20}
+                      height={14}
+                      className="h-3.5 w-5 rounded-sm border border-border/40 object-cover"
+                    />
+                    <div className="leading-tight">
+                      <div className="font-semibold text-xs text-foreground">Germany</div>
+                      <div className="text-[10px] text-muted-foreground">Hamburg</div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Mumbai Location Pin */}
                 <div
                   className="absolute"
@@ -82,10 +147,10 @@ export default function FooterNew() {
                   <div className="relative w-2 h-2 bg-primary dark:bg-accent-gold rounded-full border border-white dark:border-gray-800 shadow-lg" />
                 </div>
 
-                {/* Location Card */}
+                {/* Mumbai Location Card */}
                 <div
                   className="absolute bg-background/95 dark:bg-card/95 backdrop-blur-sm border border-border rounded-lg shadow-lg px-2 py-1.5"
-                  style={{ left: '45%', top: '25%', transform: 'translateX(-50%)' }}
+                  style={{ left: '68%', top: '48%' }}
                 >
                   <div className="flex items-center gap-2">
                     {/* India Flag */}
@@ -99,7 +164,7 @@ export default function FooterNew() {
                     />
                     <div className="leading-tight">
                       <div className="font-semibold text-xs text-foreground">India</div>
-                      <div className="text-[10px] text-muted-foreground">Mumbai, Maharashtra</div>
+                      <div className="text-[10px] text-muted-foreground">Mumbai</div>
                     </div>
                   </div>
                 </div>
