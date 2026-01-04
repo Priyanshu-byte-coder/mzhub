@@ -1,6 +1,5 @@
 "use client"
 
-import { useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { BlobButton } from '@/components/ui/shared/BlobButton'
@@ -22,18 +21,41 @@ interface HomeClientProps {
     children: React.ReactNode
 }
 
+// Memoized carousel items - shared between components
+const carouselItems = [
+    { title: 'Temples', icon: MdOutlineTempleHindu, description: 'Hindu temples and mandirs serving local and global communities' },
+    { title: 'Ashrams', icon: Flower2, description: 'Spiritual retreat centers and meditation communities' },
+    { title: 'Churches', icon: Church, description: 'Christian congregations and ministries of all denominations' },
+    { title: 'Mosques', icon: FaMosque, description: 'Islamic centers and Muslim community organizations' },
+    { title: 'Synagogues', icon: LiaSynagogueSolid, description: 'Jewish congregations and study centers' },
+    { title: 'Monasteries', icon: HomeIcon, description: 'Buddhist and contemplative religious communities' },
+    { title: 'Gurudwaras', icon: FaKhanda, description: 'Sikh temples and community centers' },
+    { title: 'Spiritual Centers', icon: Flower2, description: 'Multi-faith and interfaith spiritual organizations' }
+];
+
+// Exported "Who We Serve" section component for flexible positioning
+export function WhoWeServeSection() {
+    return (
+        <section id="audience-carousel" className="bg-white text-secondary-light dark:bg-primary-dark dark:text-white py-20 md:py-32">
+            <div className="text-center mb-16">
+                <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-light dark:text-accent-gold">Who We Serve</h2>
+                </ScrollReveal>
+                <p className="text-xl text-secondary-light/80 dark:text-text-mist max-w-3xl mx-auto">
+                    MZHub is purpose-built for religious institutions seeking to expand their digital presence
+                </p>
+            </div>
+
+            <InfiniteCarousel
+                items={carouselItems}
+                speed={5}
+                direction="left"
+            />
+        </section>
+    )
+}
+
 export default function HomeClient({ children }: HomeClientProps) {
-    // Memoize carousel items to prevent recreation on each render
-    const carouselItems = useMemo(() => [
-        { title: 'Temples', icon: MdOutlineTempleHindu, description: 'Hindu temples and mandirs serving local and global communities' },
-        { title: 'Ashrams', icon: Flower2, description: 'Spiritual retreat centers and meditation communities' },
-        { title: 'Churches', icon: Church, description: 'Christian congregations and ministries of all denominations' },
-        { title: 'Mosques', icon: FaMosque, description: 'Islamic centers and Muslim community organizations' },
-        { title: 'Synagogues', icon: LiaSynagogueSolid, description: 'Jewish congregations and study centers' },
-        { title: 'Monasteries', icon: HomeIcon, description: 'Buddhist and contemplative religious communities' },
-        { title: 'Gurudwaras', icon: FaKhanda, description: 'Sikh temples and community centers' },
-        { title: 'Spiritual Centers', icon: Flower2, description: 'Multi-faith and interfaith spiritual organizations' }
-    ], []);
     return (
         <>
             {/* Hero Section with Client Interactions */}
@@ -83,24 +105,6 @@ export default function HomeClient({ children }: HomeClientProps) {
 
             {/* Rest of the page content passed as children */}
             {children}
-
-            {/* Target Audience Section with Icons (must be in client component) */}
-            <section id="audience-carousel" className="bg-white text-secondary-light dark:bg-primary-dark dark:text-white py-20 md:py-32">
-                <div className="text-center mb-16">
-                    <ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-light dark:text-accent-gold">Who We Serve</h2>
-                    </ScrollReveal>
-                    <p className="text-xl text-secondary-light/80 dark:text-text-mist max-w-3xl mx-auto">
-                        MZHub is purpose-built for religious institutions seeking to expand their digital presence
-                    </p>
-                </div>
-
-                <InfiniteCarousel
-                    items={carouselItems}
-                    speed={5}
-                    direction="left"
-                />
-            </section>
         </>
     )
 }

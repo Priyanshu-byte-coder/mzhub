@@ -1,3 +1,4 @@
+/* Light mode base styles */
 .blob-btn {
   z-index: 1;
   position: relative;
@@ -16,6 +17,11 @@
   border-radius: 30px;
 }
 
+/* Dark mode text color */
+.dark .blob-btn {
+  color: #f59e0b;
+}
+
 /* Tablet and larger */
 @media (min-width: 640px) {
   .blob-btn {
@@ -32,6 +38,7 @@
   }
 }
 
+/* Light mode border */
 .blob-btn:before {
   content: "";
   z-index: 1;
@@ -42,6 +49,11 @@
   height: 100%;
   border: 2px solid #6366f1;
   border-radius: 30px;
+}
+
+/* Dark mode border */
+.dark .blob-btn:before {
+  border-color: #f59e0b;
 }
 
 .blob-btn:after {
@@ -56,9 +68,15 @@
   border-radius: 30px;
 }
 
+/* Hover state - light mode */
 .blob-btn:hover {
   color: #ffffff;
   border-radius: 30px;
+}
+
+/* Hover state - dark mode */
+.dark .blob-btn:hover {
+  color: #1a1a2e;
 }
 
 .blob-btn:hover:after {
@@ -68,6 +86,7 @@
   border-radius: 30px;
 }
 
+/* Light mode inner background */
 .blob-btn__inner {
   z-index: -1;
   overflow: hidden;
@@ -80,6 +99,11 @@
   background: #ffffff;
 }
 
+/* Dark mode inner background */
+.dark .blob-btn__inner {
+  background: #1a1a2e;
+}
+
 .blob-btn__blobs {
   position: relative;
   display: block;
@@ -87,6 +111,7 @@
   filter: url('#goo');
 }
 
+/* Light mode blob color */
 .blob-btn__blob {
   position: absolute;
   top: 2px;
@@ -96,6 +121,11 @@
   border-radius: 100%;
   transform: translate3d(0, 150%, 0) scale(1.7);
   transition: transform 0.45s;
+}
+
+/* Dark mode blob color */
+.dark .blob-btn__blob {
+  background: #f59e0b;
 }
 
 @supports (filter: url('#goo')) {

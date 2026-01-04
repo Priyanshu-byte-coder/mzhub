@@ -53,23 +53,6 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
             {/* Peaceful overlay on hover */}
             <div className="absolute inset-0 bg-gradient-radial from-transparent via-accent-gold/5 to-accent-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           </div>
-
-          {/* Founder badge with divine glow */}
-          {member.isFounder && (
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={isInView ? { scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.2 + 0.5, type: "spring" }}
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-accent-gold/40 blur-md rounded-full" />
-                <span className="relative inline-block px-4 py-1.5 text-xs font-semibold bg-gradient-to-r from-accent-gold to-accent-gold/80 text-white rounded-full shadow-lg">
-                  Founder
-                </span>
-              </div>
-            </motion.div>
-          )}
         </div>
 
         {/* Name with gentle reveal */}

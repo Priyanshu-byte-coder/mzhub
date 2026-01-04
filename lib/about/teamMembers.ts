@@ -6,17 +6,17 @@ export interface TeamMember {
     theologicalCredentials?: string
     technicalCredentials?: string
     faithBackground?: string
-    isFounder?: boolean
+
 }
 
 export const teamMembers: TeamMember[] = [
     {
         name: 'Vatsal Shah',
         role: 'Founder, CEO',
-        bio: 'Vatsal leads MZHub with a vision to bridge ancient wisdom with modern technology. With a strong educational background from SP Jain School of Global Management across Singapore, Dubai, and Sydney, and experience in sales and marketing at Woolworths Group, Vatsal brings strategic leadership and business acumen to the mission.',
+        bio: 'Vatsal leads MZHub with a mission to bridge ancient wisdom and modern technology through cultural preservation and making credible knowledge accessible with scale. Drawing from a global education at SP Jain School of Global Management and his leadership as Executive Vice President of Valencia Nutrition Limited, he manages 12+ business verticals across wellness, nutracare, and consumer products. Vatsal applies his expertise in scaling complex FMCG powerhouses to build a faith-tech ecosystem that prioritizes social responsibility and human authority. Driven by the belief that work is a form of service, he is dedicated to ensuring that sacred knowledge remains vibrant and accessible for the betterment of society.',
         image: '/team/vatsal-shah.png',
         technicalCredentials: 'SP Jain School of Global Management (Singapore, Dubai, Sydney), Sales and Marketing at Woolworths Group, SASMIRA Institute of Management and Research (Textile Science and Research)',
-        isFounder: true,
+
     },
     {
         name: 'Hitender Singh',

@@ -7,7 +7,7 @@ import ScrollReveal from '@/components/ui/shared/scroll-reveal'
 import { ContainerScroll } from '@/components/ui/home/container-scroll-animation'
 import { StaggerTestimonials } from '@/components/layout/home/stagger-testimonials'
 import VideoShowcase from '@/components/layout/home/video-component'
-import HomeClient from '@/components/layout/home/HomeClient'
+import HomeClient, { WhoWeServeSection } from '@/components/layout/home/HomeClient'
 import CapabilitiesSection from '@/components/layout/home/CapabilitiesSection'
 import PhilosophySection from '@/components/layout/home/PhilosophySection'
 import InquisitivesSection from '@/components/layout/home/InquisitivesSection'
@@ -156,6 +156,9 @@ export default function Home() {
                 </div>
                 <StaggerTestimonials />
             </SectionWrapper>
+
+            {/* Who We Serve - Target Audience Section */}
+            <WhoWeServeSection />
 
             {/* Final CTA */}
             <section className="py-20 md:py-32 relative overflow-hidden">
