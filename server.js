@@ -3,8 +3,11 @@ const { parse } = require('url')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = process.env.WEBSITE_HOSTNAME || 'localhost'
-const port = process.env.PORT || 3000
+const hostname = '0.0.0.0'
+const port = parseInt(process.env.PORT || '8080', 10)
+
+console.log(`Starting server in ${dev ? 'development' : 'production'} mode`)
+console.log(`Port: ${port}`)
 
 // Create Next.js app
 const app = next({ dev, hostname, port })
@@ -25,7 +28,8 @@ app.prepare().then(() => {
       console.error(err)
       process.exit(1)
     })
-    .listen(port, () => {
+    .listen(port, hostname, () => {
       console.log(`> Ready on http://${hostname}:${port}`)
+      console.log(`> Environment: ${process.env.NODE_ENV}`)
     })
 })
