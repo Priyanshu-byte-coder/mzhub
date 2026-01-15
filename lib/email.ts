@@ -12,7 +12,7 @@ const smtpConfig = {
 }
 
 const adminEmail = process.env.ADMIN_EMAIL || 'builtbyneal@gmail.com'
-const fromEmail = process.env.SMTP_USER || 'builtbyneal@gmail.com'
+const fromEmail = process.env.FROM_EMAIL || process.env.ADMIN_EMAIL || 'builtbyneal@gmail.com'
 
 /**
  * Create reusable transporter

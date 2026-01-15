@@ -23,6 +23,7 @@
     "@vercel/og": "^0.8.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
     "framer-motion": "^11.18.2",
     "gray-matter": "^4.0.3",
     "gsap": "^3.14.2",
