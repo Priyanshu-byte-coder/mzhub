@@ -7,36 +7,41 @@ import { Lock, KeyRound, Shield } from 'lucide-react'
 import { BackgroundPathsOnly } from '@/components/ui/home/background-paths'
 import { setVaultSession } from '@/lib/vault/auth'
 
-const PASSKEYS = {
-  'PARTNERSHIP2024': { path: '/vault/partnership', page: 'partnership' },
-  'COMMUNITY2024': { path: '/vault/community', page: 'community' },
-  'GOVERNMENT2024': { path: '/vault/government', page: 'government' },
-  'TALENT2024': { path: '/vault/talent', page: 'talent' },
-  'INVESTORS2024': { path: '/vault/investors', page: 'investors' },
-}
-
 export default function VaultPage() {
   const [passkey, setPasskey] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
     setIsLoading(true)
 
-    const upperPasskey = passkey.toUpperCase().trim()
-    const passkeyData = PASSKEYS[upperPasskey as keyof typeof PASSKEYS]
+    try {
+      const response = await fetch('/api/vault/verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ passkey: passkey.trim() }),
+      })
 
-    if (passkeyData) {
-      setVaultSession(passkeyData.page)
-      setTimeout(() => {
-        router.push(passkeyData.path)
-      }, 500)
-    } else {
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setVaultSession(data.page)
+        setTimeout(() => {
+          router.push(data.path)
+        }, 500)
+      } else {
+        setIsLoading(false)
+        setError(data.error || 'Invalid passkey. Please try again.')
+        setPasskey('')
+      }
+    } catch {
       setIsLoading(false)
-      setError('Invalid passkey. Please try again.')
+      setError('An error occurred. Please try again.')
       setPasskey('')
     }
   }
@@ -44,7 +49,7 @@ export default function VaultPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-neutral-light dark:bg-primary-dark relative overflow-hidden">
       <BackgroundPathsOnly />
-      
+
       <div className="container-custom relative z-10 px-4 py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,7 +67,7 @@ export default function VaultPage() {
             >
               <Shield className="w-10 h-10 text-white" />
             </motion.div>
-            
+
             <h1 className="text-4xl md:text-5xl font-bold text-secondary-light dark:text-accent-gold mb-4">
               Secure Vault
             </h1>
