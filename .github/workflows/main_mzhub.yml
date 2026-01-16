@@ -17,10 +17,15 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci --production=false
 
       - name: Build Next.js app
         run: npm run build
+
+      - name: Install production dependencies only
+        run: |
+          rm -rf node_modules
+          npm ci --production
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
