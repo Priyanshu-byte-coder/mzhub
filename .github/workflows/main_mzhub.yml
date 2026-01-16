@@ -17,19 +17,23 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm ci --production=false
+        run: npm ci
 
       - name: Build Next.js app
         run: npm run build
 
-      - name: Install production dependencies only
+      - name: Create deployment package
         run: |
-          rm -rf node_modules
-          npm ci --production
+          mkdir -p deploy
+          cp -r .next deploy/
+          cp -r public deploy/ || true
+          cp -r node_modules deploy/
+          cp package*.json deploy/
+          cp next.config.js deploy/
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: mzhub
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+          package: ./deploy

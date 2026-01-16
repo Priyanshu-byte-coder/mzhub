@@ -7,7 +7,7 @@
 /coverage
 
 # next.js
-# /.next/  # Commented out - needed for Azure deployment
+/.next/
 /out/
 
 # production
